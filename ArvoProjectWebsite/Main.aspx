@@ -10,7 +10,9 @@
 </head>
 <body>
     <form id="formMain" runat="server">
-        <h1>Alto titulo</h1>
+        <h1>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            Alto titulo</h1>
         <nav>
             <h3>Barra loca</h3>
             <ul>
@@ -26,7 +28,9 @@
                 <h3>al lado</h3>
             </aside>
             <section>
-                <h3>sector de contenido</h3>
+                <h3>sector de contenido&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label2" runat="server" Text="Hola Jony"></asp:Label>
+                </h3>
             </section>
             
 
