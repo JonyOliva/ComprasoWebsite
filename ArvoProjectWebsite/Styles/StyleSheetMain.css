@@ -1,0 +1,38 @@
+﻿body {
+}
+h1{
+    text-align: center;
+    background-color:deepskyblue;
+}
+.contenido {
+    max-width: 95%;
+    position: relative;
+    margin: 0px auto;
+}
+.contenido section {
+    width: 70%;
+    float: left;
+    padding: 2px;
+    background-color: darkkhaki;
+}
+.contenido aside {
+    width: 25%;
+    float: left;
+    padding: 2px;
+    background-color: khaki;
+}
+nav {
+    background-color: coral;
+    margin: 1px;
+    text-align: center;
+}
+nav li{
+    float: left;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden; 
+    text-align: center;
+}
