@@ -15,7 +15,7 @@ namespace Entidad
         private string descripcion;
         private float precio;
         private int stock;
-        private bool descuentp;
+        private bool descuento;
 
         public string IDProducto
         {
@@ -67,8 +67,8 @@ namespace Entidad
 
         public bool Descuento
         {
-            get { return descuentp; }
-            set { descuentp = value; }
+            get { return descuento; }
+            set { descuento = value; }
         }
     }
 }
