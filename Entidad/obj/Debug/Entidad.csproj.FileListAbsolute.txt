@@ -1,0 +1,6 @@
+C:\Users\Jony\source\repos\ArvoProjectWebsite\Entidad\bin\Debug\Entidad.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\Entidad\bin\Debug\Entidad.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csprojAssemblyReference.cache
+C:\Users\Jony\source\repos\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\Jony\source\repos\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.pdb

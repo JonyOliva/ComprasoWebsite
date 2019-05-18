@@ -1,0 +1,9 @@
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Release\CapaLogicadeNegocio.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Release\CapaLogicadeNegocio.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Release\Entidad.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Release\Entidad.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Release\CapaLogicadeNegocio.csprojAssemblyReference.cache
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Release\CapaLogicadeNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Release\CapaLogicadeNegocio.csproj.CopyComplete
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Release\CapaLogicadeNegocio.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Release\CapaLogicadeNegocio.pdb
