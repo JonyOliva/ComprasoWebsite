@@ -44,11 +44,5 @@
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CapaLogicadeNegocio\CapaLogicadeNegocio.csproj">
-      <Project>{52d314f0-43a9-48d5-80a5-8ab027dbb40e}</Project>
-      <Name>CapaLogicadeNegocio</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

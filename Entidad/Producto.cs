@@ -9,10 +9,12 @@ namespace Entidad
     public class Producto
     {
         private string idProducto;
+        private string nombre;
         private string categoria;
         private string subCategoria;
         private string marca;
         private string descripcion;
+        private string fichaTecnica;
         private float precio;
         private int stock;
         private bool descuento;
@@ -21,6 +23,12 @@ namespace Entidad
         {
             get { return idProducto; }
             set { idProducto = value; }
+        }
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
         }
 
         public string Categoria
@@ -45,6 +53,12 @@ namespace Entidad
         {
             get { return descripcion; }
             set { descripcion = value; }
+        }
+
+        public string FichaTecnica
+        {
+            get { return fichaTecnica; }
+            set { fichaTecnica = value; }
         }
 
         public float Precio
