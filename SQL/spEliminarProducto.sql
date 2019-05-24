@@ -12,5 +12,8 @@ CREATE PROCEDURE spEliminarProducto
 @Descuento float
 )
 AS
+IF((SELECT Stock FROM PRODUCTOS WHERE IDProducto=@IDProducto) <= 1)
 DELETE FROM PRODUCTOS WHERE IDProducto=@IDProducto
+ELSE
+UPDATE PRODUCTOS SET Stock=Stock-1 WHERE IDProducto=@IDProducto
 RETURN
