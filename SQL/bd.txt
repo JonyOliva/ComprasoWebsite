@@ -1,0 +1,98 @@
+USE MASTER 
+GO
+CREATE DATABASE BD_COMPRASO
+GO
+USE BD_COMPRASO
+GO
+CREATE TABLE USUARIOS
+(
+IDUsuario char(4),
+Nombre char(15) NOT NULL,
+Apellido char(15) NOT NULL,
+DNI char(8) NOT NULL,
+Email char(15),
+nroCel char(12),
+FechaNac date NOT NULL,
+CONSTRAINT PK_USUARIOS PRIMARY KEY (IDUsuario)
+)
+GO
+CREATE TABLE DirrecxUsuario
+(
+IDUsuario char(4) NOT NULL,
+CodDirreccion smallint IDENTITY(1,1),
+Provincia char(20) NOT NULL,
+Dirreccion char(20)
+CONSTRAINT PK_DirxUs PRIMARY KEY (IDUsuario, CodDirreccion),
+CONSTRAINT FK_DirxUs FOREIGN KEY (IDUsuario) REFERENCES USUARIOS (IDUsuario)
+)
+GO
+CREATE TABLE ENVIOS
+(
+IDEnvio char(2),
+Costo smallmoney NOT NULL,
+TiempoEnvioAprox tinyint NOT NULL,
+Provincia char(20) NOT NULL,
+CONSTRAINT PK_Envios PRIMARY KEY (IDEnvio)
+)
+GO
+CREATE TABLE VENTAS
+(
+IDVenta int IDENTITY(1,1),
+NroTarjeta char(16) NOT NULL, 
+IDUsuario char(4) NOT NULL,
+CodDirreccion smallint NOT NULL,
+Descuento float,
+Total money NOT NULL,
+IDEnvio char(2) REFERENCES ENVIOS (IDEnvio),
+CONSTRAINT PK_Ventas PRIMARY KEY (IDVenta)
+)
+GO
+CREATE TABLE CATEGORIAS
+(
+IDCategoria char(4) PRIMARY KEY,
+Nombre char(20) NOT NULL,
+Descripcion char(50) NOT NULL
+)
+GO
+CREATE TABLE SUBCATEGORIAS
+(
+IDSubCategoria char(4),
+IDCategoria char(4),
+Nombre char(20) NOT NULL,
+Descripcion char(50) NOT NULL,
+CONSTRAINT PK_SubCat PRIMARY KEY (IDSubCategoria, IDCategoria),
+CONSTRAINT FK_SubCat FOREIGN KEY (IDCategoria) REFERENCES CATEGORIAS (IDCategoria)
+)
+GO
+CREATE TABLE MARCAS
+(
+IDMarca char(4) PRIMARY KEY,
+Nombre char(15) NOT NULL,
+Descripcion char(50)
+)
+GO
+CREATE TABLE PRODUCTOS
+(
+IDProducto char(4),
+Nombre char(15) NOT NULL,
+Categoria char(4) NOT NULL,
+SubCategoria char(4) NOT NULL,
+Marca char(4) REFERENCES MARCAS (IDMarca) NOT NULL,
+Descripcion char(200),
+Stock int NOT NULL,
+Precio money NOT NULL,
+Descuento float,
+CONSTRAINT PK_Produc PRIMARY KEY (IDProducto),
+CONSTRAINT FK_Produc FOREIGN KEY (Categoria, SubCategoria) REFERENCES SUBCATEGORIAS (IDCategoria, IDSubCategoria)
+)
+GO
+CREATE TABLE DETVENTAS
+(
+IDVenta char(4),
+IDProducto char(4),
+Descuento float,
+Cantidad int NOT NULL,
+Total money NOT NULL,
+CONSTRAINT PK_DetVentas PRIMARY KEY (IDVenta, IDProducto)
+)
+GO
