@@ -1,7 +1,6 @@
 ﻿html, body {
     height: 100%;
-    margin: 0px;
-}
+    }
 table{
     width:100%;
     height:125px;
@@ -17,8 +16,8 @@ h3{
 .contenido {
     max-width: 95%;
     position: relative;
-    margin: 0px auto;
-}
+    }
+
 .contenido section {
     width: 70%;
     height: 100%;
@@ -46,8 +45,6 @@ nav li{
 }
 nav ul {
     list-style-type: none;
-    padding: 0px;
-    margin: 0px;
     overflow: hidden; 
     text-align: center;
 }
