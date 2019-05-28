@@ -1,12 +1,9 @@
 CREATE PROCEDURE spActualizarStockProducto
 (
 @IDProducto char(10),
-@Nombre char(10),
-@Stock float
+@Stock float,
+@Cantidad int
 )
 AS
-IF((SELECT Stock FROM PRODUCTOS WHERE IDProducto=@IDProducto) <= 1)
-DELETE FROM PRODUCTOS WHERE IDProducto=@IDProducto
-ELSE
-UPDATE PRODUCTOS SET Stock=Stock-1 WHERE IDProducto=@IDProducto
+UPDATE PRODUCTOS SET Stock=Stock+Cantidad WHERE IDProducto=@IDProducto
 RETURN

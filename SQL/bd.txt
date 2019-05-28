@@ -96,36 +96,40 @@ PrecioUnitario_DETV money NOT NULL,
 CONSTRAINT PK_DetVentas PRIMARY KEY (IDVenta_DETV, IDProducto_DETV)
 )
 GO
-CREATE TABLE TarjetasxUsuario
-(
-IDUsuario_TxU char(4) NOT NULL,
-NroTarjeta char(16),
-IDTarjeta char(4) NOT NULL,
-Titular char(30) NOT NULL,
-Vencimiento date NOT NULL,
-CONSTRAINT PK_TxU PRIMARY KEY (NroTarjeta)
-)
-GO
 CREATE TABLE CUOTAS
 (
-IDCuota char(4),
+IDCuota_CUO char(4),
 Cantidad_CUO tinyint NOT NULL,
 Interes_CUO float,
-CONSTRAINT PK_Cuotas PRIMARY KEY (IDCuota)
+CONSTRAINT PK_Cuotas PRIMARY KEY (IDCuota_CUO)
+)
+GO
+CREATE TABLE CuotasxTarjetas
+(
+IDTarjeta_CxT char(4),
+IDCuota_CxT char(4),
+CONSTRAINT PK_CxT PRIMARY KEY (IDTarjeta_CxT, IDCuota_CxT),
+CONSTRAINT FK_CxT FOREIGN KEY (IDCuota_CxT) REFERENCES CUOTAS (IDCuota_CUO)
 )
 GO
 CREATE TABLE TARJETAS
 (
-IDTarjeta char(4),
+IDTarjeta_TARJ char(4),
 Nombre_TARJ char(20) NOT NULL,
 IDCuotas_TARJ char(4),
-CONSTRAINT PK_Tarjetas PRIMARY KEY (IDTarjeta)
+CONSTRAINT PK_Tarjetas PRIMARY KEY (IDTarjeta_TARJ),
+--CONSTRAINT FK_Tarj FOREIGN KEY (IDTarjeta_TARJ) REFERENCES CuotasxTarjetas (IDTarjeta_CxT) ESTA PARTE TIRA ERROR, ES UNA MIERDA
 )
 GO
-CREATE TABLE CuotasxTajetas
+CREATE TABLE TarjetasxUsuario
 (
-IDTarjeta_CxT char(4),
-IDCuota_CxT char(4),
-CONTRAINT PK_CxT PRIMARY KEY (IDTarjeta_CxT, IDCuota_CxT)
+IDUsuario_TxU char(4) NOT NULL,
+NroTarjeta char(16),
+
+IDTarjeta_TxU char(4) NOT NULL,
+Titular char(30) NOT NULL,
+Vencimiento date NOT NULL,
+CONSTRAINT PK_TxU PRIMARY KEY (NroTarjeta),
+CONSTRAINT FK_TxU FOREIGN KEY (IDTarjeta_TxU) REFERENCES TARJETAS (IDTarjeta_TARJ)
 )
 GO
