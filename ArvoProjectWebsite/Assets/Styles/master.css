@@ -5,11 +5,9 @@
 }
 
     .header .searchbar {
-        float: left;
         border-radius: 10px;
         width: 600px;
         height: 30px;
-        display: inline-block;
         align-self: center;
         margin: 12px;
     }
@@ -50,5 +48,3 @@ nav {
 .navbar-item:hover {
     background-color: dodgerblue;
 }
-
-﻿
