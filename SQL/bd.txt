@@ -7,83 +7,80 @@ GO
 CREATE TABLE USUARIOS
 (
 IDUsuario char(4),
-Nombre char(15) NOT NULL,
-Apellido char(15) NOT NULL,
-DNI char(8) NOT NULL,
-Email char(15),
-nroCel char(12),
-FechaNac date NOT NULL,
+Nombre_USU char(15) NOT NULL,
+Apellido_USU char(15) NOT NULL,
+DNI_USU char(8) NOT NULL,
+Email_USU char(15),
+nroCel_USU char(12),
+FechaNac_USU date NOT NULL,
 CONSTRAINT PK_USUARIOS PRIMARY KEY (IDUsuario)
 )
 GO
 CREATE TABLE DirrecxUsuario
 (
-IDUsuario char(4) NOT NULL,
+IDUsuario_DIRE char(4) NOT NULL,
 CodDirreccion smallint IDENTITY(1,1),
-Provincia char(20) NOT NULL,
-Dirreccion char(20)
-CONSTRAINT PK_DirxUs PRIMARY KEY (IDUsuario, CodDirreccion),
-CONSTRAINT FK_DirxUs FOREIGN KEY (IDUsuario) REFERENCES USUARIOS (IDUsuario)
+Provincia_DIRE char(20) NOT NULL,
+Dirreccion_DIRE char(20)
+CONSTRAINT PK_DirxUs PRIMARY KEY (IDUsuario_DIRE, CodDirreccion),
+CONSTRAINT FK_DirxUs FOREIGN KEY (IDUsuario_DIRE) REFERENCES USUARIOS (IDUsuario)
 )
 GO
 CREATE TABLE ENVIOS
 (
 IDEnvio char(2),
-Costo smallmoney NOT NULL,
-TiempoEnvioAprox tinyint NOT NULL,
-Provincia char(20) NOT NULL,
+Costo_ENVIO smallmoney NOT NULL,
+Tiempo_ENVIO tinyint NOT NULL,
+Provincia_ENVIO char(20) NOT NULL,
 CONSTRAINT PK_Envios PRIMARY KEY (IDEnvio)
 )
 GO
 CREATE TABLE VENTAS
 (
 IDVenta int IDENTITY(1,1),
-NroTarjeta char(16) NOT NULL, 
-IDUsuario char(4) NOT NULL,
-CodDirreccion smallint NOT NULL,
-Descuento float,
-Total money NOT NULL,
-IDEnvio char(2) REFERENCES ENVIOS (IDEnvio),
+NroTarjeta_VENTA char(16) NOT NULL, 
+IDUsuario_VENTA char(4) NOT NULL,
+CodDirreccion_VENTA smallint NOT NULL,
+Descuento_VENTA float,
+Total_VENTA money NOT NULL,
+IDEnvio_VENTA char(2) REFERENCES ENVIOS (IDEnvio),
 CONSTRAINT PK_Ventas PRIMARY KEY (IDVenta)
 )
 GO
 CREATE TABLE CATEGORIAS
 (
 IDCategoria char(4) PRIMARY KEY,
-Nombre char(20) NOT NULL,
-Descripcion char(50) NOT NULL
+Nombre_CAT char(20) NOT NULL,
 )
 GO
 CREATE TABLE SUBCATEGORIAS
 (
 IDSubCategoria char(4),
-IDCategoria char(4),
-Nombre char(20) NOT NULL,
-Descripcion char(50) NOT NULL,
+IDCategoria_SUBCAT char(4),
+Nombre_SUBCAT char(20) NOT NULL,
 CONSTRAINT PK_SubCat PRIMARY KEY (IDSubCategoria, IDCategoria),
-CONSTRAINT FK_SubCat FOREIGN KEY (IDCategoria) REFERENCES CATEGORIAS (IDCategoria)
+CONSTRAINT FK_SubCat FOREIGN KEY (IDCategoria_SUBCAT) REFERENCES CATEGORIAS (IDCategoria)
 )
 GO
 CREATE TABLE MARCAS
 (
-IDMarca char(4) PRIMARY KEY,
-Nombre char(15) NOT NULL,
-Descripcion char(50)
+IDMarca char(5) PRIMARY KEY,
+Nombre_MARCA char(15) NOT NULL,
 )
 GO
 CREATE TABLE PRODUCTOS
 (
 IDProducto char(4),
-Nombre char(15) NOT NULL,
-Categoria char(4) NOT NULL,
-SubCategoria char(4) NOT NULL,
-Marca char(4) REFERENCES MARCAS (IDMarca) NOT NULL,
-Descripcion char(200),
-Stock int NOT NULL,
-Precio money NOT NULL,
-Descuento float,
+Nombre_PROD char(15) NOT NULL,
+IDCategoria_PROD char(4) NOT NULL,
+IDSubCategoria_PROD char(4) NOT NULL,
+IDMarca_PROD char(5) REFERENCES MARCAS (IDMarca) NOT NULL,
+Descripcion_PROD char(200),
+Stock_PROD int NOT NULL,
+Precio_PROD money NOT NULL,
+Descuento_PROD float,
 CONSTRAINT PK_Produc PRIMARY KEY (IDProducto),
-CONSTRAINT FK_Produc FOREIGN KEY (Categoria, SubCategoria) REFERENCES SUBCATEGORIAS (IDCategoria, IDSubCategoria)
+CONSTRAINT FK_Produc FOREIGN KEY (IDCategoria_PROD, IDSubCategoria_PROD) REFERENCES SUBCATEGORIAS (IDCategoria, IDSubCategoria)
 )
 GO
 CREATE TABLE DETVENTAS
