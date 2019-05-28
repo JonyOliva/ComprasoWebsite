@@ -6,93 +6,110 @@ USE BD_COMPRASO
 GO
 CREATE TABLE USUARIOS
 (
-IDUsuario char(4),
-Nombre char(15) NOT NULL,
-Apellido char(15) NOT NULL,
-DNI char(8) NOT NULL,
-Email char(15),
-nroCel char(12),
-FechaNac date NOT NULL,
-CONSTRAINT PK_USUARIOS PRIMARY KEY (IDUsuario)
+u_IDUsuario char(4),
+u_Nombre char(15) NOT NULL,
+u_Apellido char(15) NOT NULL,
+u_DNI char(8) NOT NULL,
+u_Email char(15),
+u_nroCel char(12),
+u_FechaNac date NOT NULL,
+CONSTRAINT PK_USUARIOS PRIMARY KEY (u_IDUsuario)
 )
 GO
 CREATE TABLE DirrecxUsuario
 (
-IDUsuario char(4) NOT NULL,
-CodDirreccion smallint IDENTITY(1,1),
-Provincia char(20) NOT NULL,
-Dirreccion char(20)
-CONSTRAINT PK_DirxUs PRIMARY KEY (IDUsuario, CodDirreccion),
+du_IDUsuario char(4) NOT NULL,
+du_CodDirreccion smallint IDENTITY(1,1),
+du_Provincia char(20) NOT NULL,
+du_Dirreccion char(20)
+CONSTRAINT PK_DirxUs PRIMARY KEY (du_IDUsuario,du_CodDirreccion),
 CONSTRAINT FK_DirxUs FOREIGN KEY (IDUsuario) REFERENCES USUARIOS (IDUsuario)
 )
 GO
 CREATE TABLE ENVIOS
 (
-IDEnvio char(2),
-Costo smallmoney NOT NULL,
-TiempoEnvioAprox tinyint NOT NULL,
-Provincia char(20) NOT NULL,
-CONSTRAINT PK_Envios PRIMARY KEY (IDEnvio)
+e_IDEnvio char(2),
+e_Costo smallmoney NOT NULL,
+e_TiempoEnvioAprox tinyint NOT NULL,
+e_Provincia char(20) NOT NULL,
+CONSTRAINT PK_Envios PRIMARY KEY (e_IDEnvio)
 )
 GO
 CREATE TABLE VENTAS
 (
-IDVenta int IDENTITY(1,1),
-NroTarjeta char(16) NOT NULL, 
-IDUsuario char(4) NOT NULL,
-CodDirreccion smallint NOT NULL,
-Descuento float,
-Total money NOT NULL,
-IDEnvio char(2) REFERENCES ENVIOS (IDEnvio),
-CONSTRAINT PK_Ventas PRIMARY KEY (IDVenta)
+v_IDVenta int IDENTITY(1,1),
+v_NroTarjeta char(16) NOT NULL, 
+v_IDUsuario char(4) NOT NULL,
+v_CodDirreccion smallint NOT NULL,
+v_Descuento float,
+v_Total money NOT NULL,
+v_IDEnvio char(2) REFERENCES ENVIOS (e_IDEnvio),
+CONSTRAINT PK_Ventas PRIMARY KEY (v_IDVenta)
 )
 GO
 CREATE TABLE CATEGORIAS
 (
-IDCategoria char(4) PRIMARY KEY,
-Nombre char(20) NOT NULL,
-Descripcion char(50) NOT NULL
+c_IDCategoria char(4) PRIMARY KEY,
+c_Nombre char(20) NOT NULL,
+c_Descripcion char(50) NOT NULL
 )
 GO
 CREATE TABLE SUBCATEGORIAS
 (
-IDSubCategoria char(4),
-IDCategoria char(4),
-Nombre char(20) NOT NULL,
-Descripcion char(50) NOT NULL,
-CONSTRAINT PK_SubCat PRIMARY KEY (IDSubCategoria, IDCategoria),
-CONSTRAINT FK_SubCat FOREIGN KEY (IDCategoria) REFERENCES CATEGORIAS (IDCategoria)
+sc_IDSubCategoria char(4),
+sc_IDCategoria char(4),
+sc_Nombre char(20) NOT NULL,
+sc_Descripcion char(50) NOT NULL,
+CONSTRAINT PK_SubCat PRIMARY KEY (sc_IDSubCategoria,sc_IDCategoria),
+CONSTRAINT FK_SubCat FOREIGN KEY (sc_IDCategoria) REFERENCES CATEGORIAS (c_IDCategoria)
 )
 GO
 CREATE TABLE MARCAS
 (
-IDMarca char(4) PRIMARY KEY,
-Nombre char(15) NOT NULL,
-Descripcion char(50)
+m_IDMarca char(4) PRIMARY KEY,
+m_Nombre char(15) NOT NULL,
+m_Descripcion char(50)
 )
 GO
 CREATE TABLE PRODUCTOS
 (
-IDProducto char(4),
-Nombre char(15) NOT NULL,
-Categoria char(4) NOT NULL,
-SubCategoria char(4) NOT NULL,
-Marca char(4) REFERENCES MARCAS (IDMarca) NOT NULL,
-Descripcion char(200),
-Stock int NOT NULL,
-Precio money NOT NULL,
-Descuento float,
-CONSTRAINT PK_Produc PRIMARY KEY (IDProducto),
-CONSTRAINT FK_Produc FOREIGN KEY (Categoria, SubCategoria) REFERENCES SUBCATEGORIAS (IDCategoria, IDSubCategoria)
+pr_IDProducto char(4),
+pr_Nombre char(15) NOT NULL,
+pr_Categoria char(4) NOT NULL,
+pr_SubCategoria char(4) NOT NULL,
+pr_Marca char(4) REFERENCES MARCAS (IDMarca) NOT NULL,
+pr_Descripcion char(200),
+pr_Stock int NOT NULL,
+pr_Precio money NOT NULL,
+pr_Descuento float,
+pr_imagenurl char(50),
+CONSTRAINT PK_Produc PRIMARY KEY (pr_IDProducto),
+CONSTRAINT FK_Produc FOREIGN KEY (pr_Categoria,pr_SubCategoria) 
+REFERENCES SUBCATEGORIAS (sc_IDCategoria, sc_IDSubCategoria)
 )
 GO
 CREATE TABLE DETVENTAS
 (
-IDVenta char(4),
-IDProducto char(4),
-Descuento float,
-Cantidad int NOT NULL,
-Total money NOT NULL,
-CONSTRAINT PK_DetVentas PRIMARY KEY (IDVenta, IDProducto)
+dv_IDVenta char(4),
+dv_IDProducto char(4),
+dv_Descuento float,
+dv_Cantidad int NOT NULL,
+dv_Total money NOT NULL,
+CONSTRAINT PK_DetVentas PRIMARY KEY (dv_IDVenta,dv_IDProducto)
 )
+GO
+
+CREATE PROCEDURE busquedaProducto
+@busqueda char(15)
+AS SELECT pr_Nombre,pr_Marca,pr_Descripcion,pr_Precio FROM PRODUCTOS 
+WHERE pr_Nombre LIKE '%'+@busqueda+'%' 
+OR pr_Descripcion LIKE '%'+@busqueda+'%' 
+OR pr_Marca LIKE '%'+@busqueda+'%'
+go
+
+CREATE PROCEDURE filtroCategoria
+@NCAT char(4)
+AS SELECT pr_Nombre,pr_Marca,pr_Descripcion,pr_Precio FROM PRODUCTOS
+INNER JOIN CATEGORIAS ON pr_Categoria = c_IDCategoria
+WHERE c_IDCategoria = @NCAT
 GO
