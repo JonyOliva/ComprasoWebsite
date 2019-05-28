@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CapaLogicadeNegocio;
 
-namespace ArvoProjectWebsite
+namespace ArvoProjectWebsite.WebForms
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class frmSignup : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

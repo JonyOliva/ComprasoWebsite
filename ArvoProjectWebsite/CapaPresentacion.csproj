@@ -86,7 +86,6 @@
     <Content Include="Assets\Styles\Main.css" />
     <Content Include="Assets\Styles\master.css" />
     <Content Include="Assets\Styles\productos.css" />
-    <Content Include="Assets\Styles\StyleSheetMain.css" />
     <Content Include="Assets\Styles\usuario.css" />
     <Content Include="bin\ArvoProjectWebsite.dll" />
     <Content Include="bin\ArvoProjectWebsite.pdb" />
@@ -134,12 +133,14 @@
     <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
-    <Content Include="frmCarrito.aspx" />
-    <Content Include="frmListaProductos.aspx" />
-    <Content Include="frmLogin.aspx" />
-    <Content Include="frmMenuAdmin.aspx" />
-    <Content Include="frmProducto.aspx" />
-    <Content Include="Index.aspx" />
+    <Content Include="WebForms\frmCarrito.aspx" />
+    <Content Include="WebForms\frmCompra.aspx" />
+    <Content Include="WebForms\frmListaProductos.aspx" />
+    <Content Include="WebForms\frmLogin.aspx" />
+    <Content Include="WebForms\frmMenuAdmin.aspx" />
+    <Content Include="WebForms\frmProducto.aspx" />
+    <Content Include="WebForms\frmSignup.aspx" />
+    <Content Include="WebForms\Index.aspx" />
     <Content Include="obj\Debug\ArvoProjectWebsite.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\ArvoProjectWebsite.dll" />
     <Content Include="obj\Debug\ArvoProjectWebsite.pdb" />
@@ -194,49 +195,62 @@
     <Content Include="obj\Release\Package\PackageTmp\Styles\StyleSheetMain.css" />
     <Content Include="obj\Release\_WPPLastBuildInfo.txt" />
     <Content Include="Web.config" />
-    <Content Include="Main.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCarrito.aspx.cs">
+    <Compile Include="WebForms\frmCarrito.aspx.cs">
       <DependentUpon>frmCarrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmCarrito.aspx.designer.cs">
+    <Compile Include="WebForms\frmCarrito.aspx.designer.cs">
       <DependentUpon>frmCarrito.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmListaProductos.aspx.cs">
+    <Compile Include="WebForms\frmCompra.aspx.cs">
+      <DependentUpon>frmCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\frmCompra.aspx.designer.cs">
+      <DependentUpon>frmCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\frmListaProductos.aspx.cs">
       <DependentUpon>frmListaProductos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmListaProductos.aspx.designer.cs">
+    <Compile Include="WebForms\frmListaProductos.aspx.designer.cs">
       <DependentUpon>frmListaProductos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.aspx.cs">
+    <Compile Include="WebForms\frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmLogin.aspx.designer.cs">
+    <Compile Include="WebForms\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmMenuAdmin.aspx.cs">
+    <Compile Include="WebForms\frmMenuAdmin.aspx.cs">
       <DependentUpon>frmMenuAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmMenuAdmin.aspx.designer.cs">
+    <Compile Include="WebForms\frmMenuAdmin.aspx.designer.cs">
       <DependentUpon>frmMenuAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmProducto.aspx.cs">
+    <Compile Include="WebForms\frmProducto.aspx.cs">
       <DependentUpon>frmProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmProducto.aspx.designer.cs">
+    <Compile Include="WebForms\frmProducto.aspx.designer.cs">
       <DependentUpon>frmProducto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Index.aspx.cs">
+    <Compile Include="WebForms\frmSignup.aspx.cs">
+      <DependentUpon>frmSignup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\frmSignup.aspx.designer.cs">
+      <DependentUpon>frmSignup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Index.aspx.designer.cs">
+    <Compile Include="WebForms\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -246,13 +260,6 @@
     <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Main.aspx.cs">
-      <DependentUpon>Main.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Main.aspx.designer.cs">
-      <DependentUpon>Main.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Scripts\boostrap\bootstrap.bundle.js.map" />
