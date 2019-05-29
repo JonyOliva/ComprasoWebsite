@@ -8,35 +8,61 @@
  
     <title>Iniciar Sesión</title>
 
-    <link href="Assets/Styles/usuario.css" rel="stylesheet" />
-    <link href="Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/Styles/usuario.css" rel="stylesheet" />
+    <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
   
 
 </head>
-<body>
+<body class="fondogris">
     <form id="form1" runat="server">
         
-        <div class="container-fluid align-content-xl-stretch">
-            <div class="row">  <div class="col"><h1 class="azul">Iniciar Sesión</h1></div>
+        <div class="caja">
+        <div class="container" >
+           
+            <div class="row">
+                <img src="../Assets/Images/compraso_l.png" alt="logo" /></div>
+           
+            <div class="row text-center">  <div class="col bg-azul"><h4 class="text-light">Iniciar Sesión</h4></div>
                 </div>
-             <div class="row"> <div class="col">Usuario:</div>
-                 <div class="col"><asp:TextBox ID="txtUsuario" runat="server" Width="220px"></asp:TextBox></div>
+             <div class="row">
+                <hr />
+            </div>
+             <div class="row"> <div class="col-5 text-right">Usuario:</div>
+                 <div class="col text-left"><asp:TextBox ID="txtUsuario" runat="server" Width="220px">
+                                            </asp:TextBox>
+                     <asp:Label ID="lblAst1" runat="server" ForeColor="Red" Text="*" Visible="False"></asp:Label>
+                 </div>
              </div>
-            <div class="row pt-2"> <div class="col">Contraseña:</div>
-                 <div class="col"><asp:TextBox ID="txtPass" runat="server" Width="220px"></asp:TextBox></div>
+            <div class="row pt-2"> <div class="col-5 text-right">Contraseña:</div>
+                 <div class="col text-left"><asp:TextBox ID="txtPass" runat="server" Width="220px"></asp:TextBox>
+                     <asp:Label ID="lblAst2" runat="server" ForeColor="Red" Text="*" Visible="False"></asp:Label>
+                </div>
              </div>
-              <div class="row pt-2"> <div class="col"><asp:CheckBox ID="chrRecordar" runat="server" Text="Recordar Usuario " TextAlign="Left" /></div>
+              <div class="row pt-2"> <div class="col-9 text-right"><asp:CheckBox ID="chrRecordar" runat="server" Text="&nbsp Recordar Usuario " /></div>
         </div>
-        
+            <div class="row">
+                <div class="text-center"> <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="False"></asp:Label></div>
+                <br />
+            </div>
+            <div class="row pt-2 align-items-lg-center text-center ">
+                <div class="col align-self-md-center"> <asp:Button ID="btnLogin" CssClass="btnlogin bg-azul" runat="server" Text="Ingresar" /></div></div>
+            <br />
+            
+            <div class="row">
+                <div class="col text-left">
+                <asp:LinkButton ID="linkOlvido" runat="server">¿Olvidó su contraseña?</asp:LinkButton></div>
+                <div class="col text-right">
+                ¿No está registrado? &nbsp<asp:LinkButton ID="linkRegistrar" runat="server">Registrarse</asp:LinkButton></div></div>
+            <div class="row">
+                <hr />
+            </div>
+        </div>
        
-      
-        
-        <br />
-        <br />
-        <asp:Button ID="btnLogin" runat="server" Text="Entrar" />
-        <br />
-        <br />
-        <asp:LinkButton ID="linkOlvido" runat="server">¿Olvidó su contraseña?</asp:LinkButton>
+      </div>       
+    
     </form>
+    <p>
+&nbsp;
+    </p>
 </body>
 </html>

@@ -13,5 +13,19 @@ namespace ArvoProjectWebsite
         {
 
         }
+
+        
+
+        protected void InicSec_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmLogin.aspx");
+        }
+
+       
+
+        protected void Carrito_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmCarrito.aspx");
+        }
     }
 }

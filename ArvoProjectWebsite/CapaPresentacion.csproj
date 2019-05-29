@@ -72,6 +72,7 @@
     <Content Include="Assets\Images\notebook.jpg" />
     <Content Include="Assets\Images\promo1.png" />
     <Content Include="Assets\Images\promo2.png" />
+    <Content Include="Assets\Images\SMARTTV-ARVO32.png" />
     <Content Include="Assets\Images\tv.jpg" />
     <Content Include="Assets\Scripts\boostrap\bootstrap.bundle.js" />
     <Content Include="Assets\Scripts\boostrap\bootstrap.bundle.min.js" />

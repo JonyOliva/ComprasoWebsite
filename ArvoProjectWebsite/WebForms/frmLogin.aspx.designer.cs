@@ -31,6 +31,15 @@ namespace ArvoProjectWebsite {
         protected global::System.Web.UI.WebControls.TextBox txtUsuario;
         
         /// <summary>
+        /// Control lblAst1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAst1;
+        
+        /// <summary>
         /// Control txtPass.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace ArvoProjectWebsite {
         protected global::System.Web.UI.WebControls.TextBox txtPass;
         
         /// <summary>
+        /// Control lblAst2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAst2;
+        
+        /// <summary>
         /// Control chrRecordar.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace ArvoProjectWebsite {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chrRecordar;
+        
+        /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
         /// Control btnLogin.
@@ -65,5 +92,14 @@ namespace ArvoProjectWebsite {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton linkOlvido;
+        
+        /// <summary>
+        /// Control linkRegistrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkRegistrar;
     }
 }

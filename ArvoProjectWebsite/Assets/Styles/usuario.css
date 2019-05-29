@@ -1,5 +1,13 @@
-﻿.azul {
+﻿
+
+.azul {
     color: #0431B4;
+}
+
+.fondogris {
+    background-image: url(../Images/2.jpg);
+    background-size: 100%;
+    /*background-color: gray;*/
 }
 
 .loginform {
@@ -11,3 +19,25 @@
     color: #333333; 
        
 }
+
+.bg-azul {
+    background-color: midnightblue;
+}
+.btnlogin {
+width: 250px;
+height: 50px;
+border: none;
+color: white;
+
+}
+
+.caja {
+    align-self: center;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 110px;
+    max-width: 40%;
+    background-color: white;
+    vertical-align: middle;
+}
+

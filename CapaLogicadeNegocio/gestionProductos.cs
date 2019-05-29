@@ -36,7 +36,7 @@ namespace CapaLogicadeNegocio
         }
         public DataTable getListaProductos()
         {
-            BaseDeDatos bd = new BaseDeDatos(Utilidades.getStringConectionLocal());
+            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
             return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
         }
     }

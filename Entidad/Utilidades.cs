@@ -36,12 +36,12 @@ namespace Entidad
             return new String(ID);
         }
 
-        public static string getStringConectionFromServer()
+        public static string GetStringConectionFromServer()
         {
             return "workstation id=ComprasoBD.mssql.somee.com;packet size=4096;user id=arvo;pwd=arvoadmin;data source=ComprasoBD.mssql.somee.com;persist security info=False;initial catalog=ComprasoBD";
         }
 
-        public static string getStringConectionLocal()
+        public static string GetStringConectionLocal()
         {
             return "Data Source = localhost\\sqlexpress; Initial Catalog = BD_COMPRASO; Integrated Security = True";
         }
