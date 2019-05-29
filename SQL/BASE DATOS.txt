@@ -53,7 +53,7 @@ CodDirreccion_VENTA smallint NOT NULL,
 Descuento_VENTA float,
 Total_VENTA money NOT NULL,
 IDEnvio_VENTA char(2) REFERENCES ENVIOS (IDEnvio),
-EstadoEnvio tinyint NOT NULL,
+Estado tinyint NOT NULL,
 CONSTRAINT PK_Ventas PRIMARY KEY (IDVenta)
 )
 GO
