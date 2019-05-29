@@ -131,7 +131,7 @@
                         <br />Precio_PROD:
                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("Precio_PROD") %>' />
                         <br />
-                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("RutaImagen") %>' />
+                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' />
                         <br /></td>
                 </ItemTemplate>
                 <LayoutTemplate>

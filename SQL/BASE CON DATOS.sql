@@ -53,7 +53,7 @@ CodDirreccion_VENTA smallint NOT NULL,
 Descuento_VENTA float,
 Total_VENTA money NOT NULL,
 IDEnvio_VENTA char(2) REFERENCES ENVIOS (IDEnvio),
-EstadoEnvio tinyint NOT NULL,
+Estado tinyint NOT NULL,
 CONSTRAINT PK_Ventas PRIMARY KEY (IDVenta)
 )
 GO
@@ -179,7 +179,7 @@ INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD, IDSubCategoria_
 VALUES ('P001','SMART TV 32" ARVO','C001','S001','M001',
 'El TELEVISOR 32" SMART TV  de ARVO cuenta con una pantalla widescreen (16:9) con resolución HD (1366x768). La tecnología LED no sólo reduce el consumo de energía sino que aporta una gran calidad de imagen y contraste.
 Para poder disfrutar al máximo de la mejor calidad y definición de imagen se deben respetar las indicaciones recomendadas de distancia óptima desde el televisor al televidente.',
-3,8999.99,0,'~/ArvoProjectWebsite/Assets/Images/SMARTTV-ARVO32',1)
+3,8999.99,0,'~/Assets/Images/SMARTTV-ARVO32.png',1)
 
 INSERT INTO CUOTAS(IDCuota_CUO, Cantidad_CUO, Interes_CUO)
 VALUES('001C',1,0),('002C',3,1.25)
