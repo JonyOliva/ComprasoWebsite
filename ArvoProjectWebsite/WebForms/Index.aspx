@@ -56,7 +56,7 @@
 
     <!--BARRA MENU-->
         <nav class="flex">
-        <a class="navbar-item" href="#">Tecnología</a>
+        <a class="navbar-item" href="/WebForms/frmListaProductos.aspx">Tecnología</a>
         <a class="navbar-item" href="#">Electrodomésticos</a>
         <a class="navbar-item" href="#">Categoria</a>
         <a class="navbar-item" href="#">Categoria</a>

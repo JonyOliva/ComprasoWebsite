@@ -21,7 +21,7 @@ namespace CapaAccesoaDatos
             return connection;
         }
     
-        DataTable getTable(string selectConsulta, string tableName)
+        public DataTable getTable(string selectConsulta, string tableName)
         {
             SqlDataAdapter adapter = new SqlDataAdapter(selectConsulta, connection);
             DataTable table = new DataTable(tableName);

@@ -191,8 +191,6 @@
     <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.XPath.XDocument.dll" />
     <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\vbc.exe" />
     <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\VBCSCompiler.exe" />
-    <Content Include="obj\Release\Package\PackageTmp\Main.aspx" />
-    <Content Include="obj\Release\Package\PackageTmp\Styles\StyleSheetMain.css" />
     <Content Include="obj\Release\_WPPLastBuildInfo.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -328,6 +326,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\Package\PackageTmp\Styles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

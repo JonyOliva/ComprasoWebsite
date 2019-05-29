@@ -49,7 +49,6 @@ C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\VBCS
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.dll
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.dll
-C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.pdb
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.pdb
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
@@ -58,3 +57,5 @@ C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Release\Cap
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Release\CapaPresentacion.csproj.CopyComplete
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Release\ArvoProjectWebsite.dll
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Release\ArvoProjectWebsite.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.pdb

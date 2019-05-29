@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 using CapaAccesoaDatos;
 using Entidad;
 
@@ -11,7 +12,7 @@ namespace CapaLogicadeNegocio
 {
     public class gestionProductos
     {
-        string databasePath = " * ruta * ";
+        string databasePath = " * ruta * ";// Utilidades.getStringConectionLocal()
         BaseDeDatos bd;
         public gestionProductos()
         {
@@ -32,6 +33,11 @@ namespace CapaLogicadeNegocio
 
             int resp = bd.ExecStoredProcedure(cmd, "spEliminarProducto");
             return Convert.ToBoolean(resp);
+        }
+        public DataTable getListaProductos()
+        {
+            BaseDeDatos bd = new BaseDeDatos(Utilidades.getStringConectionLocal());
+            return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
         }
     }
 }

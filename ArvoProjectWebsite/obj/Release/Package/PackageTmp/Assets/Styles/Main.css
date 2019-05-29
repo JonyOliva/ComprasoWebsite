@@ -1,0 +1,22 @@
+﻿body {
+    
+    background-color: floralwhite;
+}
+
+
+.text-center {
+    text-align: center;
+
+}
+
+
+
+.flex {
+    display: flex;
+}
+
+
+bold{
+    font-weight:bold;
+}
+

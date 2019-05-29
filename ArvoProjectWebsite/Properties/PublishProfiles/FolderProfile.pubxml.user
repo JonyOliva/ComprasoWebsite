@@ -9,23 +9,122 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <_PublishTargetUrl>C:\Users\Jony\Desktop\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="Assets/Images/carrito.jpg">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Images/compraso_l.png">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Images/notebook.jpg">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Images/promo1.png">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Images/promo2.png">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Images/tv.jpg">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Scripts/boostrap/bootstrap.bundle.js">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Scripts/boostrap/bootstrap.bundle.js.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Scripts/boostrap/bootstrap.bundle.min.js">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Scripts/boostrap/bootstrap.bundle.min.js.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Scripts/boostrap/bootstrap.js">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Scripts/boostrap/bootstrap.js.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Scripts/boostrap/bootstrap.min.js">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Scripts/boostrap/bootstrap.min.js.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap-grid.css">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap-grid.css.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap-grid.min.css">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap-grid.min.css.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap-reboot.css">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap-reboot.css.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap-reboot.min.css">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap-reboot.min.css.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap.css">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap.css.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap.min.css">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/bootstrap/bootstrap.min.css.map">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/Main.css">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/master.css">
+      <publishTime>05/28/2019 18:59:53</publishTime>
+    </File>
+    <File Include="Assets/Styles/productos.css">
+      <publishTime>05/27/2019 19:02:45</publishTime>
+    </File>
+    <File Include="Assets/Styles/usuario.css">
+      <publishTime>05/28/2019 18:59:53</publishTime>
+    </File>
     <File Include="bin/ArvoProjectWebsite.dll">
-      <publishTime>05/17/2019 20:57:13</publishTime>
+      <publishTime>05/29/2019 13:20:08</publishTime>
+    </File>
+    <File Include="bin/ArvoProjectWebsite.dll.config">
+      <publishTime>05/29/2019 12:59:32</publishTime>
     </File>
     <File Include="bin/ArvoProjectWebsite.pdb">
-      <publishTime>05/17/2019 20:57:13</publishTime>
+      <publishTime>05/29/2019 13:20:08</publishTime>
+    </File>
+    <File Include="bin/CapaAccesoaDatos.dll">
+      <publishTime>05/29/2019 13:16:47</publishTime>
+    </File>
+    <File Include="bin/CapaAccesoaDatos.pdb">
+      <publishTime>05/29/2019 13:16:47</publishTime>
     </File>
     <File Include="bin/CapaLogicadeNegocio.dll">
-      <publishTime>05/17/2019 20:57:12</publishTime>
+      <publishTime>05/29/2019 13:16:47</publishTime>
     </File>
     <File Include="bin/CapaLogicadeNegocio.pdb">
-      <publishTime>05/17/2019 20:57:12</publishTime>
+      <publishTime>05/29/2019 13:16:47</publishTime>
     </File>
     <File Include="bin/Entidad.dll">
-      <publishTime>05/17/2019 20:57:12</publishTime>
+      <publishTime>05/29/2019 13:16:47</publishTime>
     </File>
     <File Include="bin/Entidad.pdb">
-      <publishTime>05/17/2019 20:57:12</publishTime>
+      <publishTime>05/29/2019 13:16:47</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -175,7 +274,31 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>05/17/2019 20:55:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/17/2019 15:03:40</publishTime>
+      <publishTime>05/29/2019 13:16:48</publishTime>
+    </File>
+    <File Include="WebForms/frmCarrito.aspx">
+      <publishTime>05/28/2019 18:59:53</publishTime>
+    </File>
+    <File Include="WebForms/frmCompra.aspx">
+      <publishTime>05/28/2019 19:23:04</publishTime>
+    </File>
+    <File Include="WebForms/frmListaProductos.aspx">
+      <publishTime>05/29/2019 13:14:09</publishTime>
+    </File>
+    <File Include="WebForms/frmLogin.aspx">
+      <publishTime>05/28/2019 18:59:53</publishTime>
+    </File>
+    <File Include="WebForms/frmMenuAdmin.aspx">
+      <publishTime>05/28/2019 18:59:53</publishTime>
+    </File>
+    <File Include="WebForms/frmProducto.aspx">
+      <publishTime>05/28/2019 18:59:53</publishTime>
+    </File>
+    <File Include="WebForms/frmSignup.aspx">
+      <publishTime>05/28/2019 19:18:54</publishTime>
+    </File>
+    <File Include="WebForms/Index.aspx">
+      <publishTime>05/29/2019 13:16:07</publishTime>
     </File>
   </ItemGroup>
 </Project>

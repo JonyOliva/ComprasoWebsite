@@ -18,3 +18,5 @@ C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug
 C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.csproj.CopyComplete
 C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.dll
 C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaAccesoaDatos.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaAccesoaDatos.pdb
