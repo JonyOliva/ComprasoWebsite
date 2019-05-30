@@ -10,3 +10,9 @@ C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAcc
 C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.csproj.CoreCompileInputs.cache
 C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.dll
 C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaAccesoaDatos\bin\Debug\CapaAccesoaDatos.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaAccesoaDatos\bin\Debug\CapaAccesoaDatos.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.csprojAssemblyReference.cache
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.csproj.CoreCompileInputs.cache
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.pdb

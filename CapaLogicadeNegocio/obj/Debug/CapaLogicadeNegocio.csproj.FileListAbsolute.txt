@@ -20,3 +20,14 @@ C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug
 C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.pdb
 C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaAccesoaDatos.dll
 C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaAccesoaDatos.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaLogicadeNegocio.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaLogicadeNegocio.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaAccesoaDatos.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\Entidad.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaAccesoaDatos.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\Entidad.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.csprojAssemblyReference.cache
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.csproj.CoreCompileInputs.cache
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.csproj.CopyComplete
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.pdb

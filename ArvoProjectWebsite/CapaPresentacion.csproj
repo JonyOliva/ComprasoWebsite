@@ -139,6 +139,7 @@
     <Content Include="WebForms\frmListaProductos.aspx" />
     <Content Include="WebForms\frmLogin.aspx" />
     <Content Include="WebForms\frmMenuAdmin.aspx" />
+    <Content Include="WebForms\frmMenuUsuario.aspx" />
     <Content Include="WebForms\frmProducto.aspx" />
     <Content Include="WebForms\frmSignup.aspx" />
     <Content Include="WebForms\Index.aspx" />
@@ -230,6 +231,13 @@
     </Compile>
     <Compile Include="WebForms\frmMenuAdmin.aspx.designer.cs">
       <DependentUpon>frmMenuAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\frmMenuUsuario.aspx.cs">
+      <DependentUpon>frmMenuUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\frmMenuUsuario.aspx.designer.cs">
+      <DependentUpon>frmMenuUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\frmProducto.aspx.cs">
       <DependentUpon>frmProducto.aspx</DependentUpon>
