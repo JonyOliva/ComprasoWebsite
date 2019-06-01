@@ -53,8 +53,22 @@
         <p>
             Compras</p>
         <p>
-            <asp:GridView ID="grdComprasMenuUsuarios" runat="server" AutoGenerateSelectButton="True">
+            <asp:GridView ID="grdComprasMenuUsuarios" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:ImageField DataImageUrlField= "RutaImagen">
+                    </asp:ImageField>
+                    <asp:BoundField DataField="RutaImagen" HeaderText="RutaImagen" SortExpression="RutaImagen" />
+                    <asp:BoundField DataField="IDProducto_DETV" HeaderText="IDProducto_DETV" SortExpression="IDProducto_DETV" />
+                    <asp:BoundField DataField="Cantidad_DETV" HeaderText="Cantidad_DETV" SortExpression="Cantidad_DETV" />
+                    <asp:BoundField DataField="PrecioUnitario_DETV" HeaderText="PrecioUnitario_DETV" SortExpression="PrecioUnitario_DETV" />
+                    <asp:BoundField DataField="Descuento_DETV" HeaderText="Descuento_DETV" SortExpression="Descuento_DETV" />
+                    <asp:BoundField DataField="IDVenta" HeaderText="IDVenta" InsertVisible="False" ReadOnly="True" SortExpression="IDVenta" />
+                    <asp:BoundField DataField="Total_VENTA" HeaderText="Total_VENTA" SortExpression="Total_VENTA" />
+                </Columns>
             </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionString %>" SelectCommand="select RTRIM(RutaImagen) AS RutaImagen,IDProducto_DETV,Cantidad_DETV, PrecioUnitario_DETV, Descuento_DETV,IDVenta ,Total_VENTA  from VENTAS inner join DETVENTAS on IDVenta = IDVenta_DETV
+inner join PRODUCTOS on IDProducto_DETV = IDProducto
+where IDUsuario_VENTA = '0000'"></asp:SqlDataSource>
         </p>
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

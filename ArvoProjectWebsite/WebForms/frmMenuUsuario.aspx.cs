@@ -19,8 +19,8 @@ namespace ArvoProjectWebsite.WebForms
                 grdDireccionesMenuUsuarios.DataBind();
                 grdMdePagoMenuUsuarios.DataSource = gUsuario.getListaTarjetasxUsuario("0000");
                 grdMdePagoMenuUsuarios.DataBind();
-                grdComprasMenuUsuarios.DataSource = gUsuario.getListaComprasxUsuario("0000");
-                grdComprasMenuUsuarios.DataBind();
+                //grdComprasMenuUsuarios.DataSource = gUsuario.getListaComprasxUsuario("0000");
+                //grdComprasMenuUsuarios.DataBind();
             }
         }
     }
