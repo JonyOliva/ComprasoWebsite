@@ -67,22 +67,22 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.LinkButton lbtnModificarMailMenuUsuario;
         
         /// <summary>
-        /// Control lstDireccionesMenuUsuarios.
+        /// Control grdDireccionesMenuUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstDireccionesMenuUsuarios;
+        protected global::System.Web.UI.WebControls.GridView grdDireccionesMenuUsuarios;
         
         /// <summary>
-        /// Control btnEditarMenuUsuarios.
+        /// Control btnAgregarDireccionesMenuUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditarMenuUsuarios;
+        protected global::System.Web.UI.WebControls.Button btnAgregarDireccionesMenuUsuarios;
         
         /// <summary>
         /// Control btnEliminarMenuUsuarios.
@@ -94,22 +94,22 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.Button btnEliminarMenuUsuarios;
         
         /// <summary>
-        /// Control lstMdePagoMenuUsuarios.
+        /// Control grdMdePagoMenuUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstMdePagoMenuUsuarios;
+        protected global::System.Web.UI.WebControls.GridView grdMdePagoMenuUsuarios;
         
         /// <summary>
-        /// Control btnEditarMdPagoMenuUsuarios.
+        /// Control btnAgregarMdPagoMenuUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditarMdPagoMenuUsuarios;
+        protected global::System.Web.UI.WebControls.Button btnAgregarMdPagoMenuUsuarios;
         
         /// <summary>
         /// Control btnEliminarMdePagoMenuUsuarios.
@@ -121,12 +121,21 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.Button btnEliminarMdePagoMenuUsuarios;
         
         /// <summary>
-        /// Control lbtnComprasMenuUsuarios.
+        /// Control grdComprasMenuUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnComprasMenuUsuarios;
+        protected global::System.Web.UI.WebControls.GridView grdComprasMenuUsuarios;
+        
+        /// <summary>
+        /// Control btnCancelarCompraMenuUsuarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarCompraMenuUsuarios;
     }
 }

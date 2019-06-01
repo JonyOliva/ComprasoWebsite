@@ -14,6 +14,7 @@ namespace CapaAccesoaDatos
 
         public BaseDeDatos(string path)
         {
+            
             connection = new SqlConnection(path);
         }
         public SqlConnection getConnection()
