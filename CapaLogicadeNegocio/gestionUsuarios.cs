@@ -22,19 +22,19 @@ namespace CapaLogicadeNegocio
 
         public DataTable getListaDirecxUsuario(string IdUsuario)
         {
-            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
             return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IdUsuario_DIR = "+ IdUsuario, "Direcciones");
         }
 
         public DataTable getListaTarjetasxUsuario(string IdUsuario)
         {
-            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
             return bd.getTable("SELECT * FROM TarjetasxUsuario where IDUsuario_TxU =" + IdUsuario, "TarjetasUsuario");
         }
 
         public DataTable getListaComprasxUsuario(string IdUsuario)
         {
-            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
             DataTable Tabla = bd.getTable("select RutaImagen,IDProducto_DETV,Cantidad_DETV, PrecioUnitario_DETV, Descuento_DETV,IDVenta ,Total_VENTA  from VENTAS" +
                 " inner join DETVENTAS on IDVenta = IDVenta_DETV inner join PRODUCTOS on IDProducto_DETV = IDProducto where IDUsuario_VENTA = " + IdUsuario,
                 "ComprasUsuario");
@@ -43,6 +43,22 @@ namespace CapaLogicadeNegocio
                 dr[0] = dr[0].ToString().Trim();
             }
             return Tabla;
+        }
+        public bool getUsuario(ref Usuario usuario)
+        {
+            BaseDeDatos bd = new BaseDeDatos(databasePath); 
+            DataTable data = bd.getTable("SELECT * FROM USUARIOS WHERE Email_USU='" + usuario.Email + "' AND DNI_USU='" + usuario.DNI + "'", "usuario");
+            if(data.Rows.Count > 0)
+            {
+                usuario.IDUsuario = data.Rows[0]["IDUsuario"].ToString().Trim();
+                usuario.Admin = Convert.ToBoolean(data.Rows[0]["Admin_USU"]);
+                usuario.Nombre = data.Rows[0]["Nombre_USU"].ToString().Trim();
+                usuario.Apellido = data.Rows[0]["Apellido_USU"].ToString().Trim();
+                usuario.nroCel = data.Rows[0]["nroCel_USU"].ToString().Trim();
+                usuario.FechaNac = data.Rows[0]["FechaNac_USU"].ToString().Trim();
+                return true;
+            }
+            return false;
         }
     }
 }

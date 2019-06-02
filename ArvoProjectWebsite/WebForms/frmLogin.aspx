@@ -41,11 +41,11 @@
               <div class="row pt-2"> <div class="col-9 text-right"><asp:CheckBox ID="chrRecordar" runat="server" Text="&nbsp Recordar Usuario " /></div>
         </div>
             <div class="row">
-                <div class="text-center"> <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="False"></asp:Label></div>
+                <div class="text-center"> <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="False">Los datos ingresados son incorrectos.</asp:Label></div>
                 <br />
             </div>
             <div class="row pt-2 align-items-lg-center text-center ">
-                <div class="col align-self-md-center"> <asp:Button ID="btnLogin" CssClass="btnlogin bg-azul" runat="server" Text="Ingresar" /></div></div>
+                <div class="col align-self-md-center"> <asp:Button ID="btnLogin" CssClass="btnlogin bg-azul" runat="server" Text="Ingresar" OnClick="btnLogin_Click" /></div></div>
             <br />
             
             <div class="row">

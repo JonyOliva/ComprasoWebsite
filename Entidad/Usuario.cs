@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidad
 {
-    class Usuario
+    public class Usuario
     {
         private string idUsuario;
+        private bool admin;
         private string nombre;
         private string apellido;
         private string dni;
@@ -50,6 +51,11 @@ namespace Entidad
         {
             get { return fechaNac; }
             set { fechaNac = value; }
+        }
+        public bool Admin
+        {
+            get { return admin; }
+            set { admin = value; }
         }
     }
 }

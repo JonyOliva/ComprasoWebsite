@@ -27,7 +27,6 @@ namespace CapaLogicadeNegocio
             cmd.Parameters.AddWithValue("@SubCat", prod.SubCategoria);
             cmd.Parameters.AddWithValue("@Marca", prod.Marca);
             cmd.Parameters.AddWithValue("@Descrip", prod.Descripcion);
-            cmd.Parameters.AddWithValue("@FichaTec", prod.FichaTecnica);
             cmd.Parameters.AddWithValue("@Stock", prod.Stock);
             cmd.Parameters.AddWithValue("@Descuento", prod.Descuento);
 
@@ -38,6 +37,12 @@ namespace CapaLogicadeNegocio
         {
             BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
             return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
+        }
+        public Producto getProducto(string IDProducto)
+        {
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
+            DataTable data = bd.getTable("SELECT * FROM PRODUCTOS WHERE IDProducto='" + IDProducto + "'", "producto");
+            return (Producto)data.Rows[0];
         }
     }
 }

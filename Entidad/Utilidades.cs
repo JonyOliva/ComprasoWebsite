@@ -8,8 +8,7 @@ namespace Entidad
 {
     public enum EstadoCompra
     {
-        Procesando,
-        Cancelando,
+        Enproceso,
         Cancelada,
         Enviada,
         Entregado
