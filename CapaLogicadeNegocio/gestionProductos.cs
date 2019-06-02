@@ -12,7 +12,7 @@ namespace CapaLogicadeNegocio
 {
     public class gestionProductos
     {
-        string databasePath = " * ruta * ";// Utilidades.getStringConectionLocal()
+        string databasePath = Utilidades.GetStringConectionLocal();
         BaseDeDatos bd;
         public gestionProductos()
         {
@@ -43,6 +43,13 @@ namespace CapaLogicadeNegocio
             BaseDeDatos bd = new BaseDeDatos(databasePath);
             DataTable data = bd.getTable("SELECT * FROM PRODUCTOS WHERE IDProducto='" + IDProducto + "'", "producto");
             return (Producto)data.Rows[0];
+        }
+
+        public DataRow getrowProducto(string idprod)//no se si anda
+        {
+            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
+            return bd.getTable("Select Nombre_PROD, Precio_PROD, RutaImagen from PRODUCTOS " +
+               "where IDProducto = '" + idprod + "'", "Producto").Rows[0];
         }
     }
 }

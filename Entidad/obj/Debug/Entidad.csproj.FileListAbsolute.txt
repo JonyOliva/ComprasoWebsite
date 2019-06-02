@@ -10,3 +10,9 @@ C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csp
 C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
 C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.dll
 C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.pdb
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\Entidad\bin\Debug\Entidad.dll
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\Entidad\bin\Debug\Entidad.pdb
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csprojAssemblyReference.cache
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.dll
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.pdb

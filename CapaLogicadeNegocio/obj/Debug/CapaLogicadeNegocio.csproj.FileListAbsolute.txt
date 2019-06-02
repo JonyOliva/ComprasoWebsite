@@ -31,3 +31,14 @@ E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogic
 E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.csproj.CopyComplete
 E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.dll
 E:\Mis Documentos\UTN\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.pdb
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaLogicadeNegocio.dll
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaLogicadeNegocio.pdb
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaAccesoaDatos.dll
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\Entidad.dll
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\CapaAccesoaDatos.pdb
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\bin\Debug\Entidad.pdb
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.csprojAssemblyReference.cache
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.csproj.CopyComplete
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.dll
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaLogicadeNegocio\obj\Debug\CapaLogicadeNegocio.pdb
