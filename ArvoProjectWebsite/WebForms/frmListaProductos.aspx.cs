@@ -15,7 +15,9 @@ namespace ArvoProjectWebsite
         {
             if (!IsPostBack)
             {
-                
+                llenarFiltroMarcas();
+                llenarFiltroCategorias();
+                llenarFiltroSubCats();
             }
         }
         //void botom_carrito(string idproducto) //BOTO DE AÑADIR AL CARRITO
@@ -34,5 +36,29 @@ namespace ArvoProjectWebsite
         //        this.Session["Carrito"] = carrito;
         //    }
         //}
+        void llenarFiltroMarcas()
+        {
+            gestionProductos gp = new gestionProductos();
+            rblMarcas.DataValueField = "IDMarca";
+            rblMarcas.DataTextField = "Nombre_MARCA";
+            rblMarcas.DataSource = gp.getListaMarcas();
+            rblMarcas.DataBind();
+        }
+        void llenarFiltroCategorias()
+        {
+            gestionProductos gp = new gestionProductos();
+            rblCat.DataValueField = "IDCategoria";
+            rblCat.DataTextField = "Nombre_CAT";
+            rblCat.DataSource = gp.getListaCategorias();
+            rblCat.DataBind();
+        }
+        void llenarFiltroSubCats()
+        {
+            gestionProductos gp = new gestionProductos();
+            rblSubCat.DataValueField = "IDSubCategoria";
+            rblSubCat.DataTextField = "Nombre_SUBCAT";
+            rblSubCat.DataSource = gp.getListaSubCategorias();
+            rblSubCat.DataBind();
+        }
     }
 }

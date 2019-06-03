@@ -35,8 +35,23 @@ namespace CapaLogicadeNegocio
         }
         public DataTable getListaProductos()
         {
-            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
             return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
+        }
+        public DataTable getListaMarcas()
+        {
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
+            return bd.getTable("SELECT * FROM MARCAS", "marcas");
+        }
+        public DataTable getListaCategorias()
+        {
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
+            return bd.getTable("SELECT * FROM CATEGORIAS", "categorias");
+        }
+        public DataTable getListaSubCategorias()
+        {
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
+            return bd.getTable("SELECT * FROM SUBCATEGORIAS", "categorias");
         }
         public Producto getProducto(string IDProducto)
         {
@@ -51,5 +66,6 @@ namespace CapaLogicadeNegocio
             return bd.getTable("Select Nombre_PROD, Precio_PROD, RutaImagen from PRODUCTOS " +
                "where IDProducto = '" + idprod + "'", "Producto").Rows[0];
         }
+
     }
 }

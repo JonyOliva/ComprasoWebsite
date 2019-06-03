@@ -84,6 +84,7 @@
     <Content Include="Assets\Styles\bootstrap\bootstrap-reboot.min.css" />
     <Content Include="Assets\Styles\bootstrap\bootstrap.css" />
     <Content Include="Assets\Styles\bootstrap\bootstrap.min.css" />
+    <Content Include="Assets\Styles\listaProductos.css" />
     <Content Include="Assets\Styles\Main.css" />
     <Content Include="Assets\Styles\master.css" />
     <Content Include="Assets\Styles\productos.css" />

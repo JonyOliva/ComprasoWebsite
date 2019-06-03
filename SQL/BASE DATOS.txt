@@ -17,6 +17,7 @@ Nombre_USU char(30) NOT NULL,
 Apellido_USU char(40) NOT NULL,
 DNI_USU char(9) NOT NULL,
 Email_USU char(60) UNIQUE NOT NULL,
+Password_USU char(8) NOT NULL,
 nroCel_USU char(12),
 FechaNac_USU date NOT NULL,
 CONSTRAINT PK_USUARIOS PRIMARY KEY (IDUsuario)
