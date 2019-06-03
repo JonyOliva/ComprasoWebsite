@@ -46,8 +46,6 @@ namespace ArvoProjectWebsite
 
         public void eliminarprodCarrito(List<Producto> prod, int pos)
         {
-            TextBox1.Text = prod.Count.ToString();
-            TextBox2.Text = pos.ToString();
             if(prod.Count > 0)
                 prod.RemoveAt(pos);
             if (prod.Count == 0)
