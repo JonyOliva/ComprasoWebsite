@@ -19,6 +19,8 @@
         </asp:GridView>
         <asp:LinkButton ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click">Seguir comprando</asp:LinkButton>
         <asp:LinkButton ID="lnkComprar" runat="server" OnClick="lnkComprar_Click">Proceder a la comprar</asp:LinkButton>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
     </form>
 </body>
 </html>

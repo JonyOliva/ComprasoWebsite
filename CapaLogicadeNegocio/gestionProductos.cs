@@ -51,5 +51,10 @@ namespace CapaLogicadeNegocio
             return bd.getTable("Select Nombre_PROD, Precio_PROD, RutaImagen from PRODUCTOS " +
                "where IDProducto = '" + idprod + "'", "Producto").Rows[0];
         }
+
+        public void agregarProductoCarrito(DataTable tbl, Producto prod)
+        {
+
+        }
     }
 }

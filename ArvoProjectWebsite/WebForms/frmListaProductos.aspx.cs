@@ -18,21 +18,28 @@ namespace ArvoProjectWebsite
                 
             }
         }
-        //void botom_carrito(string idproducto) //BOTO DE AÑADIR AL CARRITO
-        //{
-        //    List<Producto> carrito = new List<Producto>();
-        //    gestionProductos gp = new gestionProductos();
-        //    if (this.Session["Carrito"] != null)
-        //    {
-        //        carrito = (List<Producto>)this.Session["Carrito"];
-        //        carrito.Add(gp.getProducto(idproducto));
-        //        this.Session["Carrito"] = carrito;
-        //    }
-        //    else
-        //    {
-        //        carrito.Add(gp.getProducto(idproducto));
-        //        this.Session["Carrito"] = carrito;
-        //    }
-        //}
+
+        protected void LinkButton1_Command(object sender, CommandEventArgs e)
+        {
+
+            List<Producto> carrito = new List<Producto>();
+            gestionProductos gp = new gestionProductos();
+            if (this.Session["Carrito"] != null)
+            {
+                carrito = (List<Producto>)this.Session["Carrito"];
+                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
+                this.Session["Carrito"] = carrito;
+            }
+            else
+            {
+                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
+                this.Session["Carrito"] = carrito;
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmCarrito.aspx");
+        }
     }
 }

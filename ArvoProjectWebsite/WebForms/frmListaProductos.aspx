@@ -73,15 +73,6 @@
         
         <div>
             <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="3">
-                <AlternatingItemTemplate>
-                    <td runat="server" style="background-color: #FFFFFF;color: #284775;">Nombre_PROD:
-                        <asp:Label ID="Nombre_PRODLabel" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
-                        <br />Stock_PROD:
-                        <asp:Label ID="Stock_PRODLabel" runat="server" Text='<%# Eval("Stock_PROD") %>' />
-                        <br />Precio_PROD:
-                        <asp:Label ID="Precio_PRODLabel" runat="server" Text='<%# Eval("Precio_PROD") %>' />
-                        <br /></td>
-                </AlternatingItemTemplate>
                 <EditItemTemplate>
                     <td runat="server" style="background-color: #999999;">Nombre_PROD:
                         <asp:TextBox ID="Nombre_PRODTextBox" runat="server" Text='<%# Bind("Nombre_PROD") %>' />
@@ -126,12 +117,12 @@
                 <ItemTemplate>
                     <td runat="server" style="background-color: #E0FFFF;color: #333333;">Nombre_PROD:
                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
-                        <br />Stock_PROD:
-                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Stock_PROD") %>' />
                         <br />Precio_PROD:
-                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("Precio_PROD") %>' />
+                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Precio_PROD") %>' />
                         <br />
                         <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' />
+                        <br />
+                        <asp:LinkButton ID="lbtnAgregarcarrito" runat="server" CommandArgument='<%# Eval("IDProducto").ToString() %>' CommandName="añadir al carrito" OnCommand="LinkButton1_Command">Añadir al carrito</asp:LinkButton>
                         <br /></td>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -159,7 +150,8 @@
                         <br /></td>
                 </SelectedItemTemplate>
             </asp:ListView>
-            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionString %>" SelectCommand="SELECT [Nombre_PROD], [Stock_PROD], [Precio_PROD], [RutaImagen] FROM [PRODUCTOS]"></asp:SqlDataSource>
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
+            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionString %>" SelectCommand="SELECT [Nombre_PROD], [Precio_PROD], [RutaImagen], [IDProducto] FROM [PRODUCTOS]"></asp:SqlDataSource>
         </div>
     
     <!--FOOTER (En construccion)-->

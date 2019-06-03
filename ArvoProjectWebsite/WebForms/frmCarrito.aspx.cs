@@ -15,40 +15,8 @@ namespace ArvoProjectWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                grdCarrito.RowCommand += new GridViewCommandEventHandler(grdCarrito_RowCommand);
-
-                DataTable tbl = new DataTable();
-                string idprod = "P001";
-                gestionCarrito gc = new gestionCarrito();
-                gc.agregarCarrito(tbl, idprod);
-                this.Session["Carrito"] = tbl;
-                
-                //List<Producto> carrito = new List<Producto>(); HAY QUE PROBAR ESTA WEA FACU
-                //if(this.Session["Carrito"] != null)
-                //{
-                //    carrito = (List<Producto>)this.Session["Carrito"];
-                //    grdCarrito.DataSource = carrito;
-                //}
-                //else
-                //{
-                 //   Server.Transfer("/WebForms/default.aspx");
-                    //NO HAY CARRITO BOLUDO
-                //}
-                
-                grdCarrito.DataSource = (DataTable)this.Session["Carrito"];
-                if (this.Session["Carrito"] != null)
-                    lblNocarrito.Visible = false;
-                grdCarrito.DataBind();
-            }
-            if (IsPostBack)
-            {
-                if (((DataTable)this.Session["Carrito"]).Rows.Count == 0 || this.Session["Carrito"] == null)
-                    lblNocarrito.Visible = false;
-                grdCarrito.DataSource = (DataTable)this.Session["Carrito"];
-                grdCarrito.DataBind();
-            }
+            grdCarrito.RowCommand += new GridViewCommandEventHandler(grdCarrito_RowCommand);
+            actualizarCarrito();
         }
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
@@ -63,19 +31,42 @@ namespace ArvoProjectWebsite
 
         protected void grdCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Select")
+            if (e.CommandName == "Delete")
             {
                 int pos = int.Parse(e.CommandArgument.ToString());
-                ((DataTable)this.Session["Carrito"]).Rows.RemoveAt(pos);
-                if (((DataTable)this.Session["Carrito"]).Rows.Count == 0)
-                    this.Session["Carrito"] = null;
-                grdCarrito.DataBind();
+                eliminarprodCarrito((List<Producto>)this.Session["Carrito"], pos);
+                actualizarCarrito();
             }
         }
 
         protected void grdCarrito_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+        }
+
+        public void eliminarprodCarrito(List<Producto> prod, int pos)
+        {
+            TextBox1.Text = prod.Count.ToString();
+            TextBox2.Text = pos.ToString();
+            if(prod.Count > 0)
+                prod.RemoveAt(pos);
+            if (prod.Count == 0)
+                prod = null;
+        }
+
+        public void actualizarCarrito()
+        {
+            if (this.Session["carrito"] == null || ((List<Producto>)this.Session["carrito"]).Count == 0)
+            {
+                lblNocarrito.Visible = true;
+            }
+            else
+            {
+                lblNocarrito.Visible = false;
+
+            }
+            grdCarrito.DataSource = (List<Producto>)this.Session["Carrito"];
+            grdCarrito.DataBind();
         }
     }
 }
