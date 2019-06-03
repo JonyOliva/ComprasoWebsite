@@ -14,6 +14,7 @@ namespace Entidad
         private string apellido;
         private string dni;
         private string email;
+        private string password;
         private string nrocel;
         private string fechaNac;
 
@@ -41,6 +42,11 @@ namespace Entidad
         {
             get { return email; }
             set { email = value; }
+        }
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
         }
         public string nroCel
         {

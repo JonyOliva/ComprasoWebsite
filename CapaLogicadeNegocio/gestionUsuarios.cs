@@ -47,10 +47,11 @@ namespace CapaLogicadeNegocio
         public bool getUsuario(ref Usuario usuario)
         {
             BaseDeDatos bd = new BaseDeDatos(databasePath); 
-            DataTable data = bd.getTable("SELECT * FROM USUARIOS WHERE Email_USU='" + usuario.Email + "' AND DNI_USU='" + usuario.DNI + "'", "usuario");
+            DataTable data = bd.getTable("SELECT * FROM USUARIOS WHERE Email_USU='" + usuario.Email + "'", "usuario");
             if(data.Rows.Count > 0)
             {
                 usuario.IDUsuario = data.Rows[0]["IDUsuario"].ToString().Trim();
+                usuario.Password = data.Rows[0]["Password_USU"].ToString().Trim();
                 usuario.Admin = Convert.ToBoolean(data.Rows[0]["Admin_USU"]);
                 usuario.Nombre = data.Rows[0]["Nombre_USU"].ToString().Trim();
                 usuario.Apellido = data.Rows[0]["Apellido_USU"].ToString().Trim();

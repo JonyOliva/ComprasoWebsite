@@ -27,21 +27,21 @@
              <div class="row">
                 <hr />
             </div>
-             <div class="row"> <div class="col-5 text-right">Usuario:</div>
+             <div class="row"> <div class="col-5 text-right">Email:</div>
                  <div class="col text-left"><asp:TextBox ID="txtUsuario" runat="server" Width="220px">
                                             </asp:TextBox>
                      <asp:Label ID="lblAst1" runat="server" ForeColor="Red" Text="*" Visible="False"></asp:Label>
                  </div>
              </div>
             <div class="row pt-2"> <div class="col-5 text-right">Contraseña:</div>
-                 <div class="col text-left"><asp:TextBox ID="txtPass" runat="server" Width="220px"></asp:TextBox>
+                 <div class="col text-left"><asp:TextBox ID="txtPass" runat="server" Width="220px" TextMode="Password"></asp:TextBox>
                      <asp:Label ID="lblAst2" runat="server" ForeColor="Red" Text="*" Visible="False"></asp:Label>
                 </div>
              </div>
               <div class="row pt-2"> <div class="col-9 text-right"><asp:CheckBox ID="chrRecordar" runat="server" Text="&nbsp Recordar Usuario " /></div>
         </div>
             <div class="row">
-                <div class="text-center"> <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="False">Los datos ingresados son incorrectos.</asp:Label></div>
+                <div class="text-center"> <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></div>
                 <br />
             </div>
             <div class="row pt-2 align-items-lg-center text-center ">

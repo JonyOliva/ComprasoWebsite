@@ -20,8 +20,8 @@ namespace ArvoProjectWebsite
                 if (!String.IsNullOrWhiteSpace(IDProducto))
                 {
                     gestionProductos gp = new gestionProductos();
-                    //Producto prodActual = gp.getProducto(IDProducto);
-                    //lblContainer.Text = prodActual.Nombre + " " + prodActual.Precio;
+                    Producto prodActual = gp.getProducto(IDProducto);
+                    lblContainer.Text = prodActual.Nombre + " " + prodActual.Precio;
                 }
             }
         }

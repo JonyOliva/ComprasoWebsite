@@ -5,13 +5,10 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-
-    <title>Compraso</title>
-    <link href="/Assets/Styles/Main.css" rel="stylesheet" />
-    <link href="/Assets/Styles/productos.css" rel="stylesheet" />
-    <link href="/Assets/Styles/master.css" rel="stylesheet" />
+     
+    <title>Productos</title>
+    <link href="/Assets/Styles/listaProductos.css" rel="stylesheet" />
     <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
 
 </head>
 
@@ -24,26 +21,31 @@
          
              ESTE FORM SE CONECTA CON LA BD DEL SERVIDOR
          -->
-
-        <div class="container-fluid">
-            <div class="row align-items-center align-content-between">
-                <div class="col-3"><a href="index.aspx" id="logo"><img src="/Assets/Images/compraso_l.png" alt="Compraso" /></a></div>
-                <div class="col-6" style="margin-top:11px"><div class="input-group mb-3">
-            <input class="form-control py-2 border-right-0 border" type="text" placeholder="Buscar producto..." id="buscador" />
-            <span class="input-group-append">
-                <button class="btn btn-outline-secondary border-left-0 border" type="button">
-                    <i class="fa fa-search"></i>
-                </button>
-              </span></div>  
-  </div>
-
-                <div class="col-1"><button class="btn" type="button">
-                    <i class="fas fa-shopping-cart"></i>
-                </button></div>
-                <div class="col-2"> 
-                   <asp:LinkButton class="text-decoration-none" ID="InicSec" runat="server"><i class="far fa-user"></i> Iniciar sesión</asp:LinkButton> 
+        <div>
+            
+            <div class="container">
+                <div class="row"> 
+                    
+                    <div class="col text-right">
+                        <asp:DropDownList ID="ddlOrdenar" runat="server">
+                        <asp:ListItem></asp:ListItem>
+                        <asp:ListItem Value="1">Menor a mayo</asp:ListItem>
+                        <asp:ListItem Value="2">Mayor a menor</asp:ListItem>
+                    </asp:DropDownList>
                     </div>
-
+                    
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <h5>Marcas</h5>
+                        <asp:RadioButtonList ID="rblMarcas" runat="server" Font-Overline="False" TextAlign="Left">
+                        </asp:RadioButtonList>
+                        <h5>Categorias</h5>
+                        <asp:RadioButtonList ID="rblCat" runat="server" Font-Overline="False" TextAlign="Left">
+                        </asp:RadioButtonList>
+                        <h5>Subcategorias</h5>
+                        <asp:RadioButtonList ID="rblSubCat" runat="server" Font-Overline="False" TextAlign="Left">
+                        </asp:RadioButtonList>
 
             </div>
         </div>
@@ -81,6 +83,9 @@
                         <br />Precio_PROD:
                         <asp:TextBox ID="Precio_PRODTextBox" runat="server" Text='<%# Bind("Precio_PROD") %>' />
                         <br />
+                        RutaImagen:
+                        <asp:TextBox ID="RutaImagenTextBox" runat="server" Text='<%# Bind("RutaImagen") %>' />
+                        <br />
                         <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Actualizar" />
                         <br />
                         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancelar" />
@@ -103,26 +108,33 @@
                 </GroupTemplate>
                 <InsertItemTemplate>
                     <td runat="server" style="">Nombre_PROD:
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Nombre_PROD") %>' />
+                        <asp:TextBox ID="Nombre_PRODTextBox" runat="server" Text='<%# Bind("Nombre_PROD") %>' />
                         <br />Stock_PROD:
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Stock_PROD") %>' />
+                        <asp:TextBox ID="Stock_PRODTextBox" runat="server" Text='<%# Bind("Stock_PROD") %>' />
                         <br />Precio_PROD:
-                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Precio_PROD") %>' />
+                        <asp:TextBox ID="Precio_PRODTextBox" runat="server" Text='<%# Bind("Precio_PROD") %>' />
+                        <br />
+                        RutaImagen:
+                        <asp:TextBox ID="RutaImagenTextBox" runat="server" Text='<%# Bind("RutaImagen") %>' />
                         <br />
                         <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insertar" />
                         <br />
-                        <asp:Button ID="Button1" runat="server" CommandName="Cancel" Text="Borrar" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Borrar" />
                         <br /></td>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <td runat="server" style="background-color: #E0FFFF;color: #333333;">Nombre_PROD:
                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
-                        <br />Precio_PROD:
+                        <br />
+                        <asp:ImageButton ID="imgProducto" runat="server" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' 
+                            style="max-height:480px;max-width:320px;height:auto;width:auto;" Height="16px"/>
+                        <br />
+                        <br />
+                        Precio_PROD:
                         <asp:Label ID="Label2" runat="server" Text='<%# Eval("Precio_PROD") %>' />
                         <br />
-                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' />
-                        <br />
                         <asp:LinkButton ID="lbtnAgregarcarrito" runat="server" CommandArgument='<%# Eval("IDProducto").ToString() %>' CommandName="añadir al carrito" OnCommand="LinkButton1_Command">Añadir al carrito</asp:LinkButton>
+
                         <br /></td>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -136,21 +148,30 @@
                             </td>
                         </tr>
                         <tr runat="server">
-                            <td runat="server" style="text-align: center;background-color: #5D7B9D;font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF"></td>
+                            <td runat="server" style="text-align: center;background-color: #5D7B9D;font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF">
+                                <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                                    <Fields>
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                    </Fields>
+                                </asp:DataPager>
+                            </td>
                         </tr>
                     </table>
                 </LayoutTemplate>
                 <SelectedItemTemplate>
                     <td runat="server" style="background-color: #E2DED6;font-weight: bold;color: #333333;">Nombre_PROD:
-                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
+                        <asp:Label ID="Nombre_PRODLabel" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
                         <br />Stock_PROD:
-                        <asp:Label ID="Label5" runat="server" Text='<%# Eval("Stock_PROD") %>' />
+                        <asp:Label ID="Stock_PRODLabel" runat="server" Text='<%# Eval("Stock_PROD") %>' />
                         <br />Precio_PROD:
-                        <asp:Label ID="Label6" runat="server" Text='<%# Eval("Precio_PROD") %>' />
-                        <br /></td>
+                        <asp:Label ID="Precio_PRODLabel" runat="server" Text='<%# Eval("Precio_PROD") %>' />
+                        <br />RutaImagen:
+                        <asp:Label ID="RutaImagenLabel" runat="server" Text='<%# Eval("RutaImagen") %>' />
+                        <br />
+                    </td>
                 </SelectedItemTemplate>
             </asp:ListView>
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
+&nbsp;<asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
             <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionString %>" SelectCommand="SELECT [Nombre_PROD], [Precio_PROD], [RutaImagen], [IDProducto] FROM [PRODUCTOS]"></asp:SqlDataSource>
         </div>
     
@@ -159,7 +180,8 @@
             <!--ARVO SRL | Todos los derechos reservados-->
         </footer>
         
-
+                    </div>
+                </div>
         
     </form>
 
