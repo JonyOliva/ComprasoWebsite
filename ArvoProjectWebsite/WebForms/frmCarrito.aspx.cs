@@ -25,6 +25,18 @@ namespace ArvoProjectWebsite
                 gc.agregarCarrito(tbl, idprod);
                 this.Session["Carrito"] = tbl;
                 
+                //List<Producto> carrito = new List<Producto>(); HAY QUE PROBAR ESTA WEA FACU
+                //if(this.Session["Carrito"] != null)
+                //{
+                //    carrito = (List<Producto>)this.Session["Carrito"];
+                //    grdCarrito.DataSource = carrito;
+                //}
+                //else
+                //{
+                 //   Server.Transfer("/WebForms/default.aspx");
+                    //NO HAY CARRITO BOLUDO
+                //}
+                
                 grdCarrito.DataSource = (DataTable)this.Session["Carrito"];
                 if (this.Session["Carrito"] != null)
                     lblNocarrito.Visible = false;
