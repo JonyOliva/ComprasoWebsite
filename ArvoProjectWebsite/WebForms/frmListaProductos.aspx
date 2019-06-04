@@ -47,9 +47,34 @@
                         <asp:RadioButtonList ID="rblSubCat" runat="server" Font-Overline="False" TextAlign="Left">
                         </asp:RadioButtonList>
 
-                    </div>
-                    <div class="col-md-9">
-                        <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="5">
+            </div>
+        </div>
+      
+    <%--<header class="header">
+        <a href="index.aspx" id="logo"><img src="/Assets/Images/compraso_l.png" alt="Compraso" /></a>
+        <input class="searchbar" id="Buscador" placeholder=" Buscar Producto..." />
+        <a href="#" class="carrito">carrito</a>
+           
+    </header>--%>
+   
+
+    <!--BARRA MENU-->
+        <nav class="flex">
+        <a class="navbar-item" href="#">Tecnología</a>
+        <a class="navbar-item" href="#">Electrodomésticos</a>
+        <a class="navbar-item" href="#">Categoria</a>
+        <a class="navbar-item" href="#">Categoria</a>
+        <a class="navbar-item" href="#">Casa y Jardín</a>
+       
+    </nav>
+    
+        <aside> 
+
+
+        </aside>
+        
+        <div>
+            <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="3">
                 <EditItemTemplate>
                     <td runat="server" style="background-color: #999999;">Nombre_PROD:
                         <asp:TextBox ID="Nombre_PRODTextBox" runat="server" Text='<%# Bind("Nombre_PROD") %>' />
@@ -99,15 +124,17 @@
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <td runat="server" style="background-color: #E0FFFF;color: #333333;">Nombre_PROD:
-                        <asp:Label ID="Nombre_PRODLabel" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
-                        <br />Stock_PROD:
-                        <asp:Label ID="Stock_PRODLabel" runat="server" Text='<%# Eval("Stock_PROD") %>' />
-                        <br />Precio_PROD:
-                        <asp:Label ID="Precio_PRODLabel" runat="server" Text='<%# Eval("Precio_PROD") %>' />
-                        <br />
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
                         <br />
                         <asp:ImageButton ID="imgProducto" runat="server" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' 
-                            style="max-height:480px;max-width:320px;height:auto;width:auto;"/>
+                            style="max-height:480px;max-width:320px;height:auto;width:auto;" Height="16px"/>
+                        <br />
+                        <br />
+                        Precio_PROD:
+                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Precio_PROD") %>' />
+                        <br />
+                        <asp:LinkButton ID="lbtnAgregarcarrito" runat="server" CommandArgument='<%# Eval("IDProducto").ToString() %>' CommandName="añadir al carrito" OnCommand="LinkButton1_Command">Añadir al carrito</asp:LinkButton>
+
                         <br /></td>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -144,17 +171,17 @@
                     </td>
                 </SelectedItemTemplate>
             </asp:ListView>
+&nbsp;<asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
+            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionString %>" SelectCommand="SELECT [Nombre_PROD], [Precio_PROD], [RutaImagen], [IDProducto] FROM [PRODUCTOS]"></asp:SqlDataSource>
+        </div>
+    
+    <!--FOOTER (En construccion)-->
+        <footer>
+            <!--ARVO SRL | Todos los derechos reservados-->
+        </footer>
+        
                     </div>
                 </div>
-
-            </div>
-
-            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [Nombre_PROD], [Stock_PROD], [Precio_PROD], [RutaImagen] FROM [PRODUCTOS] WHERE ([ACTIVO] = @ACTIVO)">
-                <SelectParameters>
-                    <asp:Parameter DefaultValue="true" Name="ACTIVO" Type="Boolean" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-        </div>
         
     </form>
 
