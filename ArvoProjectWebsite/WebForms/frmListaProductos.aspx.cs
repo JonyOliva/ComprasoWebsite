@@ -15,8 +15,12 @@ namespace ArvoProjectWebsite
         {
             if (!IsPostBack)
             {
+                if(Session["filtroCategoria"] == null)
+                {
+                    Server.Transfer("/WebForms/default.aspx");
+                }
+
                 llenarFiltroMarcas();
-                llenarFiltroCategorias();
                 llenarFiltroSubCats();
             }
         }
@@ -29,26 +33,19 @@ namespace ArvoProjectWebsite
         void llenarFiltroMarcas()
         {
             gestionProductos gp = new gestionProductos();
-            rblMarcas.DataValueField = "IDMarca";
-            rblMarcas.DataTextField = "Nombre_MARCA";
-            rblMarcas.DataSource = gp.getListaMarcas();
-            rblMarcas.DataBind();
+            ddlMarcas.DataValueField = "IDMarca";
+            ddlMarcas.DataTextField = "Nombre_MARCA";
+            ddlMarcas.DataSource = gp.getListaMarcas();
+            ddlMarcas.DataBind();
         }
-        void llenarFiltroCategorias()
-        {
-            gestionProductos gp = new gestionProductos();
-            rblCat.DataValueField = "IDCategoria";
-            rblCat.DataTextField = "Nombre_CAT";
-            rblCat.DataSource = gp.getListaCategorias();
-            rblCat.DataBind();
-        }
+
         void llenarFiltroSubCats()
         {
             gestionProductos gp = new gestionProductos();
-            rblSubCat.DataValueField = "IDSubCategoria";
-            rblSubCat.DataTextField = "Nombre_SUBCAT";
-            rblSubCat.DataSource = gp.getListaSubCategorias();
-            rblSubCat.DataBind();
+            ddlSubCat.DataValueField = "IDSubCategoria";
+            ddlSubCat.DataTextField = "Nombre_SUBCAT";
+            ddlSubCat.DataSource = gp.getListaSubCategorias();
+            ddlSubCat.DataBind();
         }
 
         protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)

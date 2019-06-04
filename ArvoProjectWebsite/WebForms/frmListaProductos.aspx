@@ -24,29 +24,34 @@
         <div>
             
             <div class="container">
-                <div class="row"> 
-                    
+                <div class="row justify-content-end"> 
+                    <div class="col offset-9 text-right">
+                        <h6 >Ordenar por:</h6>
+                    </div>
                     <div class="col text-right">
                         <asp:DropDownList ID="ddlOrdenar" runat="server">
                         <asp:ListItem></asp:ListItem>
-                        <asp:ListItem Value="1">Menor a mayo</asp:ListItem>
-                        <asp:ListItem Value="2">Mayor a menor</asp:ListItem>
+                        <asp:ListItem Value="1">Menor precio</asp:ListItem>
+                        <asp:ListItem Value="2">Mayor precio</asp:ListItem>
                     </asp:DropDownList>
                     </div>
                     
                 </div>
                 <div class="row text-center">
                     <div class="col-md-3">
-                        <h5>Marcas</h5>
-                        <asp:RadioButtonList ID="rblMarcas" runat="server" Font-Overline="False" TextAlign="Left">
-                        </asp:RadioButtonList>
-                        <h5>Categorias</h5>
-                        <asp:RadioButtonList ID="rblCat" runat="server" Font-Overline="False" TextAlign="Left">
-                        </asp:RadioButtonList>
-                        <h5>Subcategorias</h5>
-                        <asp:RadioButtonList ID="rblSubCat" runat="server" Font-Overline="False" TextAlign="Left">
-                        </asp:RadioButtonList>
+                        <div class="row">
+                            <h6 class="col">Marcas</h6>
+                            <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="col">
+                            </asp:DropDownList>
 
+                        </div>
+                        <br />
+                        <div class="row">
+                            <h6 class="col">Subcategorias</h6>
+                            <asp:DropDownList ID="ddlSubCat" runat="server" CssClass="col">
+                            </asp:DropDownList>
+                        </div>
+                        
                     </div>
                     <div class="col-md-9">
                         <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="5">

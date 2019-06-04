@@ -31,31 +31,22 @@ namespace ArvoProjectWebsite {
         protected global::System.Web.UI.WebControls.DropDownList ddlOrdenar;
         
         /// <summary>
-        /// Control rblMarcas.
+        /// Control ddlMarcas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblMarcas;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMarcas;
         
         /// <summary>
-        /// Control rblCat.
+        /// Control ddlSubCat.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblCat;
-        
-        /// <summary>
-        /// Control rblSubCat.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblSubCat;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubCat;
         
         /// <summary>
         /// Control lstViewProductos.
