@@ -19,8 +19,8 @@
         <div class="caja">
         <div class="container" >
            
-            <div class="row">
-                <img src="../Assets/Images/compraso_l.png" alt="logo" /></div>
+            <div class="row ml-1">
+                <img src="../Assets/Images/compraso_l2.png" alt="logo" /></div>
            
             <div class="row text-center">  <div class="col bg-azul"><h4 class="text-light">Iniciar Sesión</h4></div>
                 </div>
@@ -41,7 +41,7 @@
               <div class="row pt-2"> <div class="col-9 text-right"><asp:CheckBox ID="chrRecordar" runat="server" Text="&nbsp Recordar Usuario " /></div>
         </div>
             <div class="row">
-                <div class="text-center"> <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></div>
+                <div class="col text-center"> <asp:Label ID="lblError" runat="server" ForeColor="Red" ></asp:Label></div>
                 <br />
             </div>
             <div class="row pt-2 align-items-lg-center text-center ">

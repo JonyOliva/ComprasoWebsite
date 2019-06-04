@@ -38,18 +38,18 @@ namespace ArvoProjectWebsite
                         }
                         else
                         {
-                            lblError.Text = "Los datos ingresados son incorrectos";
+                            lblError.Text = "* Los datos ingresados son incorrectos";
                             txtPass.Text = "";
                         }
                     }
                     else
                     {
-                        lblError.Text = "No pueden quedar campos vacios";
+                        lblError.Text = "* No pueden quedar campos vacios";
                         lblAst2.Visible = true;
                     }
                 }
                 else {
-                    lblError.Text = "No existe ningún usuario con el email ingresado";
+                    lblError.Text = "* No existe ningún usuario con el email ingresado";
                 }
             }
             else
@@ -59,7 +59,7 @@ namespace ArvoProjectWebsite
                 {
                     lblAst2.Visible = true;
                 }
-                lblError.Text = "No pueden quedar campos vacios";
+                lblError.Text = "* No pueden quedar campos vacios";
             }
         }
     }
