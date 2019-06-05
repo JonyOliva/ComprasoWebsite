@@ -142,7 +142,6 @@
     <Content Include="WebForms\frmMenuAdmin.aspx" />
     <Content Include="WebForms\frmMenuUsuario.aspx" />
     <Content Include="WebForms\frmProducto.aspx" />
-    <Content Include="WebForms\frmSignup.aspx" />
     <Content Include="WebForms\default.aspx" />
     <Content Include="obj\Debug\ArvoProjectWebsite.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\ArvoProjectWebsite.dll" />
@@ -247,13 +246,6 @@
     <Compile Include="WebForms\frmProducto.aspx.designer.cs">
       <DependentUpon>frmProducto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\frmSignup.aspx.cs">
-      <DependentUpon>frmSignup.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\frmSignup.aspx.designer.cs">
-      <DependentUpon>frmSignup.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebForms\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -268,6 +260,13 @@
     <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\frmSignUp.aspx.cs">
+      <DependentUpon>frmSignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\frmSignUp.aspx.designer.cs">
+      <DependentUpon>frmSignUp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -330,6 +329,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebForms\frmSignUp.aspx" />
     <Content Include="WebForms\MasterPage.Master" />
   </ItemGroup>
   <ItemGroup>

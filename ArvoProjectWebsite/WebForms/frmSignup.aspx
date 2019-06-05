@@ -1,51 +1,78 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmSignup.aspx.cs" Inherits="ArvoProjectWebsite.WebForms.frmSignup" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div style="margin-left: 160px">
-            CREAR USUARIO<br />
-            <br />
-            MAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtMailSignUp" runat="server" Width="229px"></asp:TextBox>
-            <br />
-            <br />
-            APELLIDO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtApellidoSignUp" runat="server" Width="229px"></asp:TextBox>
-            <br />
-            <br />
-            NOMBRE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtNombreSignUp" runat="server" Width="229px"></asp:TextBox>
-            <br />
-            <br />
-            TELÉFONO:&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtTelefonoSignUp" runat="server" Width="229px"></asp:TextBox>
-            <br />
-            <br />
-            FECHA DE NACIMIENTO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="16px" ShowDayHeader="False" ShowGridLines="True" Width="120px">
-                <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-                <NextPrevStyle VerticalAlign="Bottom" />
-                <OtherMonthDayStyle ForeColor="#808080" />
-                <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-                <SelectorStyle BackColor="#CCCCCC" />
-                <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
-                <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-                <WeekendDayStyle BackColor="#FFFFCC" />
-            </asp:Calendar>
-            <br />
-            <br />
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmSignUp.aspx.cs" Inherits="ArvoProjectWebsite.WebForms.frmSignUp" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="../Assets/Styles/Main.css" rel="stylesheet" />
+    <link href="/Assets/Styles/usuario.css" rel="stylesheet" />
+    
+    <p class="text-left">
+        &nbsp;</p>
+    <p class="text-left" style="text-decoration: underline; margin-left: 120px">
+        REGISTRAR USUARIO</p>
+    <p class="text-left" >
+        &nbsp;</p>
+    <p class="text-left">
+        Mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtMailSignUp" runat="server" TextMode="Email" Width="273px" ToolTip="Ingrese un email válido. Formato aaa@bbb.ccc"></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblMailSignUp" runat="server" Font-Italic="True" Font-Size="Small" ForeColor="#CC0000"></asp:Label>
+    </p>
+    <p class="text-left">
+        Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtNombreSignUp" runat="server" Width="280px" ToolTip="Ingrese su nombre."></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblNombreSignUp" runat="server" style="font-size: small; font-style: italic; color: #CC0000"></asp:Label>
+    </p>
+    <p class="text-left">
+        Apellido:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtApellidoSignUp" runat="server" Width="279px" ToolTip="Ingrese su apellido."></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblApellidoSignUp" runat="server" style="font-style: italic; color: #CC0000; font-size: small"></asp:Label>
+    </p>
+    <p class="text-left">
+        Contraseña:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtContraSingUp" runat="server" TextMode="Password" ToolTip="Ingrese su contraseña."></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblContraSignUp" runat="server" style="font-size: small; font-style: italic; color: #CC0000"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnRegistrarSingUp" runat="server" Text="Registrar" />
-            <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <br />
-        </div>
-    </form>
-</body>
-</html>
+    </p>
+    <p class="text-left">
+        Repetir Contraseña:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtRepContraSignUp" runat="server" TextMode="Password" ToolTip="Ingrese nuevamente su contraseña."></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblRepContraSignUp" runat="server" style="font-size: small; font-style: italic; color: #CC0000"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <p class="text-left">
+        C.U.I.T/C.U.I.L:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtCuit1SignUp" runat="server" Width="35px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
+&nbsp;-
+        <asp:TextBox ID="txtDniSignUp" runat="server" Width="135px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
+&nbsp;-
+        <asp:TextBox ID="txtCuit2SignUp" runat="server" Width="25px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblCuitSignUp" runat="server" style="font-style: italic; color: #CC0000; font-size: small"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <p class="text-left">
+        Fecha Nacimiento:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <asp:TextBox ID="txtFechaSignUp" runat="server" Width="173px" TextMode="Date"></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblFechaSignUp" runat="server" style="font-style: italic; font-size: small; color: #CC0000"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <p class="text-left">
+        Nro. Cel/Tel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtTelefonoSignUp" runat="server" ></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblTelefonoSignUp" runat="server" style="color: #CC0000; font-size: small; font-style: italic"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <p class="text-left">
+        &nbsp;</p>
+    <p class="text-left">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnRegistrarSignUp" runat="server" OnClick="btnRegistrarSignUp_Click" Text="Registrar" />
+    </p>
+
+
+</asp:Content>
