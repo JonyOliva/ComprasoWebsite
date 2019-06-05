@@ -30,6 +30,7 @@
                 <div class="col-3"><a href="default.aspx" id="logo"><img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
                 <div class="col-6" style="margin-top:15px"><div class="input-group mb-3">
             <input class="form-control py-2 border-right-0 border" type="text" placeholder="Buscar producto..." id="buscador" />
+    
             <span class="input-group-append">
                 <button class="btn btn-outline-secondary border-left-0 border" type="button">
                     <i class="fa fa-search"></i>
@@ -52,13 +53,20 @@
  
 
     <!--BARRA MENU-->
-        <nav class="flex">
-        <a class="navbar-item" href="/WebForms/frmListaProductos.aspx">Informática</a>
+    <nav class="flex">
+        
+        <asp:LinkButton ID="item0" CssClass="navbar-item" runat="server" CommandArgument="C001" CommandName="IDCat" OnCommand="item_Command">Informática</asp:LinkButton>
+        <asp:LinkButton ID="item1" CssClass="navbar-item" runat="server" CommandArgument="C002" CommandName="IDCat" OnCommand="item_Command">TV, Audio y Video</asp:LinkButton>
+        <asp:LinkButton ID="item2" CssClass="navbar-item" runat="server" CommandArgument="C003" CommandName="IDCat" OnCommand="item_Command">Electrodomésticos</asp:LinkButton>
+        <asp:LinkButton ID="item3" CssClass="navbar-item" runat="server" CommandArgument="C004" CommandName="IDCat" OnCommand="item_Command">Celulares y Tablets</asp:LinkButton>
+        <asp:LinkButton ID="item4" CssClass="navbar-item" runat="server" CommandArgument="C005" CommandName="IDCat" OnCommand="item_Command">Casa y Jardín</asp:LinkButton>
+
+        <%--<a class="navbar-item" href="/WebForms/frmListaProductos.aspx">Informática</a>
         <a class="navbar-item" href="#">TV, Audio y Video</a>
         <a class="navbar-item" href="#">Electrodomésticos</a>
-        <a class="navbar-item" href="#">Celulares y Tablets</a>
-        <a class="navbar-item" href="#">Casa y Jardín</a>
-       
+        <a class="navbar-item" href="#" >Celulares y Tablets</a>
+        <a class="navbar-item" href="#">Casa y Jardín</a>--%>
+        
     </nav>
     
         <div>
