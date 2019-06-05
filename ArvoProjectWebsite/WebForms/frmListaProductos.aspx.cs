@@ -15,9 +15,9 @@ namespace ArvoProjectWebsite
         {
             if (!IsPostBack)
             {
-                if(Session["filtroCategoria"] == null)
+                if (Session["filtroCategoria"] == null)
                 {
-                    Server.Transfer("/WebForms/default.aspx");
+                    Server.Transfer("/default.aspx");
                 }
 
                 llenarFiltroMarcas();
@@ -60,9 +60,15 @@ namespace ArvoProjectWebsite
             }
             else
             {
+                
                 carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
                 this.Session["Carrito"] = carrito;
             }
+        }
+
+        protected void imgProducto_Command(object sender, CommandEventArgs e)
+        {
+            Response.Redirect("frmProducto.aspx?IDProd=" + e.CommandArgument);
         }
     }
 }
