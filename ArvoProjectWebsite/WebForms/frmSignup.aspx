@@ -12,19 +12,19 @@
     <p class="text-left" >
         &nbsp;</p>
     <p class="text-left">
-        Mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtMailSignUp" runat="server" TextMode="Email" Width="273px" ToolTip="Ingrese un email válido. Formato aaa@bbb.ccc"></asp:TextBox>
+        Mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtMailSignUp" runat="server" TextMode="Email" Width="273px" ToolTip="Ingrese un email válido. Formato aaa@bbb.ccc" MaxLength="60"></asp:TextBox>
     &nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblMailSignUp" runat="server" Font-Italic="True" Font-Size="Small" ForeColor="#CC0000"></asp:Label>
     </p>
     <p class="text-left">
         Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtNombreSignUp" runat="server" Width="280px" ToolTip="Ingrese su nombre."></asp:TextBox>
+        <asp:TextBox ID="txtNombreSignUp" runat="server" Width="280px" ToolTip="Ingrese su nombre." MaxLength="30"></asp:TextBox>
     &nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblNombreSignUp" runat="server" style="font-size: small; font-style: italic; color: #CC0000"></asp:Label>
     </p>
     <p class="text-left">
         Apellido:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtApellidoSignUp" runat="server" Width="279px" ToolTip="Ingrese su apellido."></asp:TextBox>
+        <asp:TextBox ID="txtApellidoSignUp" runat="server" Width="279px" ToolTip="Ingrese su apellido." MaxLength="40"></asp:TextBox>
     &nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblApellidoSignUp" runat="server" style="font-style: italic; color: #CC0000; font-size: small"></asp:Label>
     </p>
@@ -44,11 +44,11 @@
     </p>
     <p class="text-left">
         C.U.I.T/C.U.I.L:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtCuit1SignUp" runat="server" Width="35px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
+        <asp:TextBox ID="txtCuit1SignUp" runat="server" Width="35px" ToolTip="No ingrese &quot;-&quot;." MaxLength="2"></asp:TextBox>
 &nbsp;-
-        <asp:TextBox ID="txtDniSignUp" runat="server" Width="135px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
+        <asp:TextBox ID="txtDniSignUp" runat="server" Width="135px" ToolTip="No ingrese &quot;-&quot;." MaxLength="9"></asp:TextBox>
 &nbsp;-
-        <asp:TextBox ID="txtCuit2SignUp" runat="server" Width="25px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
+        <asp:TextBox ID="txtCuit2SignUp" runat="server" Width="25px" ToolTip="No ingrese &quot;-&quot;." MaxLength="1"></asp:TextBox>
     &nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblCuitSignUp" runat="server" style="font-style: italic; color: #CC0000; font-size: small"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -62,7 +62,7 @@
     </p>
     <p class="text-left">
         Nro. Cel/Tel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtTelefonoSignUp" runat="server" ></asp:TextBox>
+        <asp:TextBox ID="txtTelefonoSignUp" runat="server" MaxLength="12" ></asp:TextBox>
     &nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblTelefonoSignUp" runat="server" style="color: #CC0000; font-size: small; font-style: italic"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

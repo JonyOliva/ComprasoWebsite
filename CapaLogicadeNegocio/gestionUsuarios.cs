@@ -61,5 +61,21 @@ namespace CapaLogicadeNegocio
             }
             return false;
         }
+
+        public bool AgregarUsuario(Usuario usu)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
+            cmd.Parameters.AddWithValue("@NombreUsuario", usu.Nombre);
+            cmd.Parameters.AddWithValue("@ApellidoUsuario", usu.Apellido);
+            cmd.Parameters.AddWithValue("@Password", usu.Password);
+            cmd.Parameters.AddWithValue("@DniUsuario", usu.DNI);
+            cmd.Parameters.AddWithValue("EmailUsuario", usu.Email);
+            cmd.Parameters.AddWithValue("@NroTelefono", usu.nroCel);
+            cmd.Parameters.AddWithValue("@FechaNacUsuario", usu.FechaNac);
+
+            int resp = bd.ExecStoredProcedure(cmd, "spAgregarUsuario");
+            return Convert.ToBoolean(resp);
+        }
     }
 }

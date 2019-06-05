@@ -103,16 +103,18 @@
                         <br /></td>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <td runat="server" style="background-color: #E0FFFF;color: #333333;">Nombre_PROD:
-                        <asp:Label ID="Nombre_PRODLabel" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
-                        <br />Stock_PROD:
+                    <td runat="server" style="background-color: aliceblue;color: #333333;">
+                        <asp:Label ID="Nombre_PRODLabel" runat="server" CssClass="font-weight-bold" Text='<%# Eval("Nombre_PROD") %>' />
+                        Disponibles:
                         <asp:Label ID="Stock_PRODLabel" runat="server" Text='<%# Eval("Stock_PROD") %>' />
-                        <br />Precio_PROD:
-                        <asp:Label ID="Precio_PRODLabel" runat="server" Text='<%# Eval("Precio_PROD") %>' />
+                        <asp:Label ID="lblDescuento" runat="server" CssClass="text-danger border border-danger" Text='<%# Eval("Descuento_PROD") + "% OFF" %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>'></asp:Label>
+                        
+                        <br />Precio:
+                        <asp:Label ID="Precio_PRODLabel" runat="server" CssClass="text-success" Text='<%# Eval("Precio_PROD") %>' />
                         <br />
-                        <br />
+                        
                         <asp:ImageButton ID="imgProducto" runat="server" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' 
-                            style="max-height:480px;max-width:320px;height:auto;width:auto;"/>
+                            style="max-height:144px;max-width:200px;height:auto;width:auto;" CommandName="IdProd" CommandArgument='<%# Eval("IDProducto") %>' OnCommand="imgProducto_Command" />
                         <br /></td>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -154,9 +156,10 @@
 
             </div>
 
-            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [Nombre_PROD], [Stock_PROD], [Precio_PROD], [RutaImagen] FROM [PRODUCTOS] WHERE ([ACTIVO] = @ACTIVO)">
+            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [IDProducto], [Nombre_PROD], [RutaImagen], [Descuento_PROD], [Stock_PROD], [Precio_PROD] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([IDCategoria_PROD] = @IDCategoria_PROD))">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="true" Name="ACTIVO" Type="Boolean" />
+                    <asp:SessionParameter Name="IDCategoria_PROD" SessionField="filtroCategoria" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
         </div>

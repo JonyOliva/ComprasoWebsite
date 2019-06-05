@@ -16,12 +16,18 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void InicSec_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmLogin.aspx");
+            Response.Redirect("/WebForms/frmLogin.aspx");
         }
 
         protected void Carrito_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmCarrito.aspx");
+            Response.Redirect("/WebForms/frmCarrito.aspx");
+        }
+
+        protected void item_Command(object sender, CommandEventArgs e)
+        {
+            Session["filtroCategoria"] = e.CommandArgument;
+            Response.Redirect("/WebForms/frmListaProductos.aspx");
         }
     }
 }
