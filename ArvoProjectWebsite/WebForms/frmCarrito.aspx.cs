@@ -21,12 +21,23 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmListaProductos.aspx");
+            Response.Redirect("frmListaProductos.aspx"); 
         }
 
         protected void lnkComprar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmCompra.aspx");
+            if (lblNocarrito.Visible == true)
+                Response.Write("<script language=javascript>alert('No posee productos en el carrito');</script>");
+
+                else if (int.Parse(((TextBox)grdCarrito.Rows[2].FindControl("txtCantidad")).Text) < 1)
+                {
+                    Response.Write("<script language=javascript>alert('Cantidad no puede ser menor a 1');</script>");
+                }
+                else
+                {
+                    Response.Redirect("frmCompra.aspx");
+                }
+            
         }
 
         protected void grdCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -65,6 +76,16 @@ namespace ArvoProjectWebsite
             }
             grdCarrito.DataSource = (List<Producto>)this.Session["Carrito"];
             grdCarrito.DataBind();
+        }
+
+        protected void InicSec_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmLogin.aspx");
+        }
+
+        protected void Carrito_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmCarrito.aspx");
         }
     }
 }

@@ -60,11 +60,15 @@ namespace CapaLogicadeNegocio
             return (Producto)data.Rows[0];
         }
 
-        public DataRow getrowProducto(string idprod)//no se si anda
+        public DataTable busquedaProductos(string busqueda)
         {
-            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
-            return bd.getTable("Select Nombre_PROD, Precio_PROD, RutaImagen from PRODUCTOS " +
-               "where IDProducto = '" + idprod + "'", "Producto").Rows[0];
+            BaseDeDatos bd = new BaseDeDatos(databasePath);
+            DataTable tbl = bd.getTable("SELECT Nombre_PROD,Descripcion_PROD,Precio_PROD,Nombre_MARCA,RutaImagen " +
+                "FROM PRODUCTOS INNER JOIN MARCAS on IDMarca_prod = IDMarca " +
+                "WHERE Nombre_PROD LIKE '%" + busqueda + "%' " +
+                "OR Descripcion_PROD LIKE '%" + busqueda + "%' " +
+                "OR Nombre_MARCA LIKE'%" + busqueda + "%'", "Productos");
+            return tbl;
         }
     }
 }
