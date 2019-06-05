@@ -11,13 +11,13 @@ GO
 
 CREATE TABLE USUARIOS
 (
-IDUsuario char(4),
+IDUsuario char(12),
 Admin_USU bit NOT NULL,
 Nombre_USU char(30) NOT NULL,
 Apellido_USU char(40) NOT NULL,
 DNI_USU char(9) NOT NULL,
 Email_USU char(60) UNIQUE NOT NULL,
-Password_USU char(8) NOT NULL,
+Password_USU char(15) NOT NULL,
 nroCel_USU char(12),
 FechaNac_USU date NOT NULL,
 CONSTRAINT PK_USUARIOS PRIMARY KEY (IDUsuario)
@@ -26,7 +26,7 @@ GO
 
 CREATE TABLE DirecxUsuario
 (
-IDUsuario_DIR char(4) NOT NULL,
+IDUsuario_DIR char(12) NOT NULL,
 CodDirreccion smallint IDENTITY(1,1),
 Provincia_DIR char(40) NOT NULL,
 Direccion_DIR char(40),
@@ -49,7 +49,7 @@ CREATE TABLE VENTAS
 (
 IDVenta int IDENTITY(1,1),
 NroTarjeta_VENTA char(16) NOT NULL, 
-IDUsuario_VENTA char(4) NOT NULL,
+IDUsuario_VENTA char(12) NOT NULL,
 CodDirreccion_VENTA smallint NOT NULL,
 Descuento_VENTA float,
 Total_VENTA money NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE SUBCATEGORIAS
 (
 IDSubCategoria char(4),
 IDCategoria_SUBCAT char(4),
-Nombre_SUBCAT char(20) NOT NULL,
+Nombre_SUBCAT char(40) NOT NULL,
 CONSTRAINT PK_SubCat PRIMARY KEY (IDSubCategoria, IDCategoria_SUBCAT),
 CONSTRAINT FK_SubCat FOREIGN KEY (IDCategoria_SUBCAT) REFERENCES CATEGORIAS (IDCategoria)
 )
@@ -143,7 +143,7 @@ GO
 
 CREATE TABLE TarjetasxUsuario
 (
-IDUsuario_TxU char(4) NOT NULL,
+IDUsuario_TxU char(12) NOT NULL,
 NroTarjeta char(16) NOT NULL,
 IDTarjeta_TxU char(4) NOT NULL,
 Titular char(30) NOT NULL,
@@ -168,62 +168,70 @@ add CONSTRAINT FK_CxTarj FOREIGN KEY(IDTARJETA_CxT) REFERENCES TARJETAS(IDTarjet
 
 
 INSERT INTO MARCAS(IDMarca, Nombre_MARCA)
-VALUES('M001', 'ARVO'),('M002', 'SAMSUNG'),('M003','SONY')
+SELECT 'M001', 'ARVO' UNION
+SELECT 'M002', 'SAMSUNG' UNION
+SELECT 'M003','SONY'
 
 INSERT INTO CATEGORIAS(IDCategoria, Nombre_CAT)
-VALUES ('C001','TELEVISORES'),('C002',''),('C003','')
+SELECT 'C001','Informatica' UNION
+SELECT 'C002','Tv, Audio y Video' UNION
+SELECT 'C003','Electrodomesticos' UNION
+SELECT 'C004', 'Celulares y Tablets' UNION
+SELECT 'C005', 'Casa y Jardin'
 
 INSERT INTO SUBCATEGORIAS(IDSubCategoria, IDCategoria_SUBCAT,Nombre_SUBCAT)
-VALUES ('S001','C001','LED Y SMART TV') ,('S002','',''),('S003','','')
+SELECT 'S001','C002','Led y Smart TV' UNION
+SELECT 'S002','C001','Notebooks' UNION
+SELECT 'S003','C001','Impresoras y Cartuchos' UNION
+SELECT 'S004','C004','Celulares'
+
 
 INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD, IDSubCategoria_PROD, IDMarca_PROD, Descripcion_PROD, Stock_PROD, Precio_PROD, Descuento_PROD, RutaImagen, ACTIVO)
-VALUES ('P001','SMART TV 32" ARVO','C001','S001','M001',
+SELECT 'P001','SMART TV 32" ARVO','C002','S001','M001',
 'El TELEVISOR 32" SMART TV  de ARVO cuenta con una pantalla widescreen (16:9) con resolución HD (1366x768). La tecnología LED no sólo reduce el consumo de energía sino que aporta una gran calidad de imagen y contraste.
 Para poder disfrutar al máximo de la mejor calidad y definición de imagen se deben respetar las indicaciones recomendadas de distancia óptima desde el televisor al televidente.',
-3,8999.99,0,'~/Assets/Images/SMARTTV-ARVO32.png',1)
-
-INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD, IDSubCategoria_PROD, IDMarca_PROD, Descripcion_PROD, Stock_PROD, Precio_PROD, Descuento_PROD, RutaImagen, ACTIVO)
-VALUES ('P002','NOTEBOOK 15.6" CORE I3','C002','S002','M004',
+3,8999.99,0,'~/Assets/Images/SMARTTV-ARVO32.png',1 UNION
+SELECT 'P002','NOTEBOOK 15.6" CORE I3','C001','S002','M003',
 'La notebook Bangho G5-i3 tiene un diseño muy sólido y por otro lado, cuenta con un práctico teclado numérico.
 Su pantalla LCD TFT de 15,6 pulgadas y resolución HD (1366 x 768 pixeles) te permitirá acceder a internet y disfrutar de películas y juegos con una gran definición.
 Su procesador Intel Core i3 7100U y su memoria RAM de 4GB se complementan para ofrecer el máximo rendimiento con un bajo consumo de energía.',
-6,34.999,10,'',1)
-
-INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD, IDSubCategoria_PROD, IDMarca_PROD, Descripcion_PROD, Stock_PROD, Precio_PROD, Descuento_PROD, RutaImagen, ACTIVO)
-VALUES ('P003','IMPRESORA MULTIFUNCIÓN','C002','S003','M002',
+6,34.999,10,'',1 UNION
+SELECT 'P003','IMPRESORA MULTIFUNCIÓN','C001','S003','M002',
 'Con la impresora multifunción Brother DCPT710W vas a poder imprimir, escanear y copiar, documentos y fotos en forma rápida con colores vibrantes y textos nítidos. Además vas a poder ahorrar espacio, gracias a su diseño ultra compacto que encaja prácticamente en cualquier espacio.',
-21,13.499,5,'',1)
-
-INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD, IDSubCategoria_PROD, IDMarca_PROD, Descripcion_PROD, Stock_PROD, Precio_PROD, Descuento_PROD, RutaImagen, ACTIVO)
-VALUES ('P004','SAMSUNG GALAXY J6 PLUS','C002','S002','M002',
+21,13.499,5,'',1 UNION
+SELECT 'P004','SAMSUNG GALAXY J6 PLUS','C004','S004','M002',
 'El celular Galaxy J6 Plus se caracteriza por un diseño robusto y estilizado, además de cómodo y atractivo. A través de su pantalla touch TFT LCD de 6 pulgadas de resolución HD (1480x720), vas a poder comunicarte y divertirte.
  Su batería de 3300 mAh te garantiza muchas horas de uso: disfrutá alrededor de 23 horas de conversación.',
-9,14.999,0,'',1)
+9,14.999,0,'',1
 
 INSERT INTO CUOTAS(IDCuota_CUO, Cantidad_CUO, Interes_CUO)
-VALUES('001C',1,0),('002C',3,1.25)
+SELECT '001C',1,0 UNION
+SELECT '002C',3,1.25
 
 INSERT INTO TARJETAS(IDTarjeta_TARJ,Nombre_TARJ)
-VALUES('T001','ARVOCARD')
+SELECT 'T001','ARVOCARD'
 
 INSERT INTO CuotasxTarjetas(IDTarjeta_CxT,IDCuota_CxT)
-VALUES ('T001','001C'),('T001','002C')
+SELECT 'T001','001C' UNION
+SELECT 'T001','002C'
 
 INSERT INTO ENVIOS(IDEnvio, Costo_ENVIO, Tiempo_ENVIO, Provincia_ENVIO)
-VALUES ('01',100,24,'CABA'),('02',150,24,'GBA'),('03',165,36,'BUENOS AIRES')
+SELECT '01',100,24,'CABA' UNION
+SELECT '02',150,24,'GBA' UNION
+SELECT '03',165,36,'BUENOS AIRES'
 
-INSERT INTO USUARIOS(IDUsuario,Admin_USU,Nombre_USU,Apellido_USU,DNI_USU,Email_USU,nroCel_USU,FechaNac_USU)
-VALUES('0000',1,'CLAUDIO','CLAUDIO','000000001','CLAUDIO@ARVO.CF','111111111','01/01/1000')
+INSERT INTO USUARIOS(IDUsuario,Password_USU, Admin_USU,Nombre_USU,Apellido_USU,DNI_USU,Email_USU,nroCel_USU,FechaNac_USU)
+SELECT '0000','123456', 1,'CLAUDIO','CLAUDIO','000000001','CLAUDIO@ARVO.CF','111111111','01/01/1000'
 
 INSERT INTO DirecxUsuario(IDUsuario_DIR,Provincia_DIR,Direccion_DIR)
-VALUES('0000','CABA','9 DE JULIO 123')
+SELECT '0000','CABA','9 DE JULIO 123'
 
 INSERT INTO TarjetasxUsuario(IDUsuario_TxU,NroTarjeta,IDTarjeta_TxU,Titular,Vencimiento)
-VALUES('0000','0000000000000000','T001','CLAUDIO','01/01/2020')
+SELECT '0000','0000000000000000','T001','CLAUDIO','01/01/2020'
 
 
-INSERT INTO VENTAS(NroTarjeta_VENTA, IDUsuario_VENTA, CodDirreccion_VENTA, Descuento_VENTA, Total_VENTA, IDEnvio_VENTA, EstadoEnvio)
-VALUES('000000000000000','0000','1',0,9099.99,'01','1')
+INSERT INTO VENTAS(NroTarjeta_VENTA, IDUsuario_VENTA, CodDirreccion_VENTA, Descuento_VENTA, Total_VENTA, IDEnvio_VENTA, Estado)
+SELECT '000000000000000','0000','1',0,9099.99,'01',1
 
 INSERT INTO DETVENTAS(IDVenta_DETV,IDProducto_DETV,Descuento_DETV,Cantidad_DETV,PrecioUnitario_DETV)
-VALUES(1,'P001',0,1,8999.99)
+SELECT 1,'P001',0,1,8999.99

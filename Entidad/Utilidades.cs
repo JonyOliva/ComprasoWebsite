@@ -44,5 +44,25 @@ namespace Entidad
         {
             return "Data Source = localhost\\sqlexpress; Initial Catalog = BD_COMPRASO; Integrated Security = True";
         }
+
+        public static bool ContieneNumeros(string cadena, int cantidad)
+        {
+            for(int i = 0; i < cantidad; i++)
+            {
+                if (cadena[i] > 47 && cadena[i] < 58) return true;
+            }
+
+            return false;
+        }
+
+        public static bool ContieneLetras(string cadena, int cantidad)
+        {
+            for(int i = 0; i < cantidad; i++)
+            {
+                if (cadena[i] < 47 || cadena[i] > 58) return true;
+            }
+
+            return false;
+        }
     }
 }
