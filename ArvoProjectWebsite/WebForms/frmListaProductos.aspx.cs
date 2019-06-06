@@ -25,6 +25,22 @@ namespace ArvoProjectWebsite
             }
         }
 
+        protected void InicSec_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebForms/frmLogin.aspx");
+        }
+
+        protected void Carrito_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebForms/frmCarrito.aspx");
+        }
+
+        protected void item_Command(object sender, CommandEventArgs e)
+        {
+            Session["filtroCategoria"] = e.CommandArgument;
+            Response.Redirect("/WebForms/frmListaProductos.aspx");
+        }
+
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("frmCarrito.aspx");
@@ -70,5 +86,6 @@ namespace ArvoProjectWebsite
         {
             Response.Redirect("frmProducto.aspx?IDProd=" + e.CommandArgument);
         }
+
     }
 }

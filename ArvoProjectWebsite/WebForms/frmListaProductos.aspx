@@ -1,34 +1,75 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmListaProductos.aspx.cs" Inherits="ArvoProjectWebsite.frmListaProductos" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-     
-    <title>Productos</title>
-    <link href="/Assets/Styles/listaProductos.css" rel="stylesheet" />
+    <title>Compraso</title>
+   
+    <link href="/Assets/Styles/Main.css" rel="stylesheet" />
+    <link href="/Assets/Styles/productos.css" rel="stylesheet" />
+    <link href="/Assets/Styles/master.css" rel="stylesheet" />
     <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+    
+    <link href="/Assets/Styles/Main.css" rel="stylesheet" />
+    <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
 
 </head>
 
-
 <body>
+     <!--ENCABEZADO-->
+        <form id="form2" runat="server">
+        <div class="container-fluid mt-2 mb-2">
+            <div class="row align-items-center align-content-between">
+                <div class="col-3"><a href="default.aspx" id="logo"><img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
+                <div class="col-6" style="margin-top:15px"><div class="input-group mb-3">
+            <input class="form-control py-2 border-right-0 border" type="text" placeholder="Buscar producto..." id="buscador" />
     
-    <form id="form1" runat="server">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+              </span></div>  
+  </div>
+
+                <div class="col-2 text-right">
+                         <asp:LinkButton class="text-dark" ID="InicSec" runat="server" OnClick="InicSec_Click"><i class="far fa-user fa-lg"></i> Iniciar sesión</asp:LinkButton>
+                </div>
+                <div class="col-1"> 
+                     <asp:LinkButton class="text-dark" ID="Carrito" runat="server" OnClick="Carrito_Click"><i class="fas fa-shopping-cart fa-lg"></i></asp:LinkButton>
+               
+                    </div>
+
+
+            </div>
+        </div>
+    
+ 
+
+    <!--BARRA MENU-->
+    <nav class="flex">
+        
+        <asp:LinkButton ID="item0" CssClass="navbar-item" runat="server" CommandArgument="C001" CommandName="IDCat" OnCommand="item_Command">Informática</asp:LinkButton>
+        <asp:LinkButton ID="item1" CssClass="navbar-item" runat="server" CommandArgument="C002" CommandName="IDCat" OnCommand="item_Command">TV, Audio y Video</asp:LinkButton>
+        <asp:LinkButton ID="item2" CssClass="navbar-item" runat="server" CommandArgument="C003" CommandName="IDCat" OnCommand="item_Command">Electrodomésticos</asp:LinkButton>
+        <asp:LinkButton ID="item3" CssClass="navbar-item" runat="server" CommandArgument="C004" CommandName="IDCat" OnCommand="item_Command">Celulares y Tablets</asp:LinkButton>
+        <asp:LinkButton ID="item4" CssClass="navbar-item" runat="server" CommandArgument="C005" CommandName="IDCat" OnCommand="item_Command">Casa y Jardín</asp:LinkButton>
+        
+    </nav>
 
          <!--ENCABEZADO          
          
              ESTE FORM SE CONECTA CON LA BD DEL SERVIDOR
          -->
-        <div>
-            
-            <div class="container">
+        <div style=" background-color: whitesmoke;">
+            <br />
+            <div class="container border border-secondary rounded bg-white">
                 <div class="row justify-content-end"> 
-                    <div class="col offset-9 text-right">
-                        <h6 >Ordenar por:</h6>
-                    </div>
-                    <div class="col text-right">
+                    <h6 class="col offset-8" >Ordenar por:</h6>
+                    <div class="col">
                         <asp:DropDownList ID="ddlOrdenar" runat="server">
                         <asp:ListItem></asp:ListItem>
                         <asp:ListItem Value="1">Menor precio</asp:ListItem>
@@ -55,22 +96,6 @@
                     </div>
                     <div class="col-md-9">
                         <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="5">
-                <EditItemTemplate>
-                    <td runat="server" style="background-color: #999999;">Nombre_PROD:
-                        <asp:TextBox ID="Nombre_PRODTextBox" runat="server" Text='<%# Bind("Nombre_PROD") %>' />
-                        <br />Stock_PROD:
-                        <asp:TextBox ID="Stock_PRODTextBox" runat="server" Text='<%# Bind("Stock_PROD") %>' />
-                        <br />Precio_PROD:
-                        <asp:TextBox ID="Precio_PRODTextBox" runat="server" Text='<%# Bind("Precio_PROD") %>' />
-                        <br />
-                        RutaImagen:
-                        <asp:TextBox ID="RutaImagenTextBox" runat="server" Text='<%# Bind("RutaImagen") %>' />
-                        <br />
-                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Actualizar" />
-                        <br />
-                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancelar" />
-                        <br /></td>
-                </EditItemTemplate>
                 <EmptyDataTemplate>
                     <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
                         <tr>
@@ -78,43 +103,35 @@
                         </tr>
                     </table>
                 </EmptyDataTemplate>
-                <EmptyItemTemplate>
-<td runat="server" />
-                </EmptyItemTemplate>
                 <GroupTemplate>
                     <tr id="itemPlaceholderContainer" runat="server">
                         <td id="itemPlaceholder" runat="server"></td>
                     </tr>
                 </GroupTemplate>
-                <InsertItemTemplate>
-                    <td runat="server" style="">Nombre_PROD:
-                        <asp:TextBox ID="Nombre_PRODTextBox" runat="server" Text='<%# Bind("Nombre_PROD") %>' />
-                        <br />Stock_PROD:
-                        <asp:TextBox ID="Stock_PRODTextBox" runat="server" Text='<%# Bind("Stock_PROD") %>' />
-                        <br />Precio_PROD:
-                        <asp:TextBox ID="Precio_PRODTextBox" runat="server" Text='<%# Bind("Precio_PROD") %>' />
-                        <br />
-                        RutaImagen:
-                        <asp:TextBox ID="RutaImagenTextBox" runat="server" Text='<%# Bind("RutaImagen") %>' />
-                        <br />
-                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insertar" />
-                        <br />
-                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Borrar" />
-                        <br /></td>
-                </InsertItemTemplate>
                 <ItemTemplate>
-                    <td runat="server" style="background-color: aliceblue;color: #333333;">
-                        <asp:Label ID="Nombre_PRODLabel" runat="server" CssClass="font-weight-bold" Text='<%# Eval("Nombre_PROD") %>' />
-                        Disponibles:
-                        <asp:Label ID="Stock_PRODLabel" runat="server" Text='<%# Eval("Stock_PROD") %>' />
-                        <asp:Label ID="lblDescuento" runat="server" CssClass="text-danger border border-danger" Text='<%# Eval("Descuento_PROD") + "% OFF" %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>'></asp:Label>
-                        
-                        <br />Precio:
-                        <asp:Label ID="Precio_PRODLabel" runat="server" CssClass="text-success" Text='<%# Eval("Precio_PROD") %>' />
-                        <br />
-                        
-                        <asp:ImageButton ID="imgProducto" runat="server" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' 
-                            style="max-height:144px;max-width:200px;height:auto;width:auto;" CommandName="IdProd" CommandArgument='<%# Eval("IDProducto") %>' OnCommand="imgProducto_Command" />
+                    <td runat="server" class="rounded border-primary">
+                        <table class="w-100">
+                            <tr>
+                                <td>
+                                    <asp:ImageButton ID="imgProducto" runat="server" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' OnCommand="imgProducto_Command" style="max-height:144px;max-width:200px;height:auto;width:auto;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblDescuento" runat="server" CssClass="text-success border border-success" Text='<%# Eval("Descuento_PROD") + "% OFF" %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>'></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Precio_PRODLabel" runat="server" CssClass="text-danger font-weight-bold" Text='<%# "$" + Eval("Precio_PROD") %>'></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Nombre_PRODLabel" runat="server" CssClass="font-weight-bold" Text='<%# Eval("Nombre_PROD") %>'></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
                         <br /></td>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -138,36 +155,29 @@
                         </tr>
                     </table>
                 </LayoutTemplate>
-                <SelectedItemTemplate>
-                    <td runat="server" style="background-color: #E2DED6;font-weight: bold;color: #333333;">Nombre_PROD:
-                        <asp:Label ID="Nombre_PRODLabel" runat="server" Text='<%# Eval("Nombre_PROD") %>' />
-                        <br />Stock_PROD:
-                        <asp:Label ID="Stock_PRODLabel" runat="server" Text='<%# Eval("Stock_PROD") %>' />
-                        <br />Precio_PROD:
-                        <asp:Label ID="Precio_PRODLabel" runat="server" Text='<%# Eval("Precio_PROD") %>' />
-                        <br />RutaImagen:
-                        <asp:Label ID="RutaImagenLabel" runat="server" Text='<%# Eval("RutaImagen") %>' />
-                        <br />
-                    </td>
-                </SelectedItemTemplate>
             </asp:ListView>
+                        <br />
                     </div>
                 </div>
 
             </div>
 
-            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [IDProducto], [Nombre_PROD], [RutaImagen], [Descuento_PROD], [Stock_PROD], [Precio_PROD] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([IDCategoria_PROD] = @IDCategoria_PROD))">
+            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [Nombre_PROD], [Precio_PROD], [Descuento_PROD], [RutaImagen], [IDProducto] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([IDCategoria_PROD] = @IDCategoria_PROD))">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="true" Name="ACTIVO" Type="Boolean" />
                     <asp:SessionParameter Name="IDCategoria_PROD" SessionField="filtroCategoria" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
+             <br />
         </div>
         
-    </form>
+        <footer>
+            <!--ARVO SRL | Todos los derechos reservados-->
+        </footer>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+    </form>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 </html>
