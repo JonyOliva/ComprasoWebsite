@@ -20,13 +20,47 @@ namespace ArvoProjectWebsite.WebForms
                 {
                     gestionProductos gp = new gestionProductos();
                     Producto prodActual = gp.getProducto(IDProducto);
+                    btnComprar.CommandArgument = prodActual.IDProducto;
+
+                    lblStock.Text = prodActual.Stock + " unidades disponibles!";
+                    lblPrecioFinal.Text = "$" + Utilidades.precioaMostar(Utilidades.getPrecioConDescuento(prodActual.Precio, prodActual.Descuento));
                     lblNomProd.Text = prodActual.Nombre;
                     lblDescrip.Text = prodActual.Descripcion.Trim();
                     imgPrincipal.ImageUrl = prodActual.RutaImagen.Trim();
                     imgPrincipal.DataBind();
+
+                    if(prodActual.Descuento > 0)
+                    {
+                        lblPrecio.Visible = true;
+                        lblPrecio.Text = "Precio anterior $" + prodActual.Precio;
+                        lblDesc.Visible = true;
+                        lblDesc.Text = prodActual.Descuento + " %OFF!";
+                    }
                 }
+                else
+                {
+                    Server.Transfer("/default.aspx");
+                }
+                
             }
         }
 
+        protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)
+        {
+            List<Producto> carrito = new List<Producto>();
+            gestionProductos gp = new gestionProductos();
+            if (this.Session["Carrito"] != null)
+            {
+                carrito = (List<Producto>)this.Session["Carrito"];
+                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
+                this.Session["Carrito"] = carrito;
+            }
+            else
+            {
+
+                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
+                this.Session["Carrito"] = carrito;
+            }
+        }
     }
 }

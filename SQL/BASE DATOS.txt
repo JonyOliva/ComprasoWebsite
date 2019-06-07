@@ -190,19 +190,19 @@ INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD, IDSubCategoria_
 SELECT 'P001','SMART TV 32" ARVO','C002','S001','M001',
 'El TELEVISOR 32" SMART TV  de ARVO cuenta con una pantalla widescreen (16:9) con resolución HD (1366x768). La tecnología LED no sólo reduce el consumo de energía sino que aporta una gran calidad de imagen y contraste.
 Para poder disfrutar al máximo de la mejor calidad y definición de imagen se deben respetar las indicaciones recomendadas de distancia óptima desde el televisor al televidente.',
-3,8999.99,0,'~/Assets/Images/P001.png',1 UNION
+3,8999,0,'~/Assets/Images/P001.png',1 UNION
 SELECT 'P002','NOTEBOOK 15.6" CORE I3','C001','S002','M003',
 'La notebook Bangho G5-i3 tiene un diseño muy sólido y por otro lado, cuenta con un práctico teclado numérico.
 Su pantalla LCD TFT de 15,6 pulgadas y resolución HD (1366 x 768 pixeles) te permitirá acceder a internet y disfrutar de películas y juegos con una gran definición.
 Su procesador Intel Core i3 7100U y su memoria RAM de 4GB se complementan para ofrecer el máximo rendimiento con un bajo consumo de energía.',
-6,34.999,10,'~/Assets/Images/P002.png',1 UNION
+6,34999,10,'~/Assets/Images/P002.png',1 UNION
 SELECT 'P003','IMPRESORA MULTIFUNCIÓN','C001','S003','M002',
 'Con la impresora multifunción Brother DCPT710W vas a poder imprimir, escanear y copiar, documentos y fotos en forma rápida con colores vibrantes y textos nítidos. Además vas a poder ahorrar espacio, gracias a su diseño ultra compacto que encaja prácticamente en cualquier espacio.',
-21,13.499,5,'~/Assets/Images/P003.png',1 UNION
+21,13499,5,'~/Assets/Images/P003.png',1 UNION
 SELECT 'P004','SAMSUNG GALAXY J6 PLUS','C004','S004','M002',
 'El celular Galaxy J6 Plus se caracteriza por un diseño robusto y estilizado, además de cómodo y atractivo. A través de su pantalla touch TFT LCD de 6 pulgadas de resolución HD (1480x720), vas a poder comunicarte y divertirte.
  Su batería de 3300 mAh te garantiza muchas horas de uso: disfrutá alrededor de 23 horas de conversación.',
-9,14.999,0,'~/Assets/Images/P004.png',1
+9,14999,0,'~/Assets/Images/P004.png',1
 
 INSERT INTO CUOTAS(IDCuota_CUO, Cantidad_CUO, Interes_CUO)
 SELECT '001C',1,0 UNION

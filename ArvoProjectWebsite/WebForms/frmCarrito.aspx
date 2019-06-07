@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
         <div class="container-fluid mt-2 mb-2">
             <div class="row align-items-center align-content-between">
-                <div class="col-3"><a href="default.aspx" id="logo"><img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
+                <div class="col-3"><a href="/default.aspx" id="logo"><img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
                 <div class="col-6" style="margin-top:15px"><div class="input-group mb-3">
             &nbsp;</div>  
   </div>

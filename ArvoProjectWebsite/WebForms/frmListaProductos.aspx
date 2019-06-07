@@ -8,6 +8,7 @@
     <title>Compraso</title>
    
     <link href="/Assets/Styles/Main.css" rel="stylesheet" />
+    <link href="/Assets/Styles/listaProductos.css" rel="stylesheet" />
     <link href="/Assets/Styles/productos.css" rel="stylesheet" />
     <link href="/Assets/Styles/master.css" rel="stylesheet" />
     <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
@@ -24,7 +25,7 @@
         <form id="form2" runat="server">
         <div class="container-fluid mt-2 mb-2">
             <div class="row align-items-center align-content-between">
-                <div class="col-3"><a href="default.aspx" id="logo"><img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
+                <div class="col-3"><a href="/default.aspx" id="logo"><img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
                 <div class="col-6" style="margin-top:15px"><div class="input-group mb-3">
             <input class="form-control py-2 border-right-0 border" type="text" placeholder="Buscar producto..." id="buscador" />
     
@@ -108,9 +109,9 @@
                         <td id="itemPlaceholder" runat="server"></td>
                     </tr>
                 </GroupTemplate>
-                <ItemTemplate>
-                    <td runat="server" class="rounded border-primary">
-                        <table class="w-100">
+                <ItemTemplate >
+                    <td runat="server" class="rounded border-primary" style="text-align: center !important">
+                        <table class="altaclase">
                             <tr>
                                 <td>
                                     <asp:ImageButton ID="imgProducto" runat="server" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' OnCommand="imgProducto_Command" style="max-height:144px;max-width:200px;height:auto;width:auto;" />
@@ -118,21 +119,23 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="lblDescuento" runat="server" CssClass="text-success border border-success" Text='<%# Eval("Descuento_PROD") + "% OFF" %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>'></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <asp:Label ID="Precio_PRODLabel" runat="server" CssClass="text-danger font-weight-bold" Text='<%# "$" + Eval("Precio_PROD") %>'></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     <asp:Label ID="Nombre_PRODLabel" runat="server" CssClass="font-weight-bold" Text='<%# Eval("Nombre_PROD") %>'></asp:Label>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblDescuento" runat="server" CssClass=" text-success border border-success " Text='<%# Eval("Descuento_PROD") + "% OFF" %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>'></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblPrecioAnt" runat="server" Text='<%# "$" + Entidad.Utilidades.precioaMostar(Eval("Precio_PROD")) %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>' style="text-decoration:line-through; font-size: small; color: gray"></asp:Label>
+                                    <asp:Label ID="Precio_PRODLabel" runat="server" CssClass="text-danger" Text='<%# "$" + Entidad.Utilidades.precioaMostar(Entidad.Utilidades.getPrecioConDescuento(Eval("Precio_PROD"), Eval("Descuento_PROD"))) %>' style="font-size: larger;"></asp:Label>                                    
+                                </td>
+                            </tr>
                         </table>
-                        <br /></td>
+                        <asp:ImageButton ID="btnComprar" runat="server" ImageUrl="~/Assets/Images/btnComprar.png" Width="40%" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IDProd" ImageAlign="Middle" OnCommand="lbtnAñadircarr_Command" />
+                    </td>
                 </ItemTemplate>
                 <LayoutTemplate>
                     <table runat="server">

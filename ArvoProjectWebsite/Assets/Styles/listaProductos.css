@@ -2,13 +2,11 @@
 
 }
 
-#rblMarcas label {
-    margin-right: 7px;
-    text-align: right;
-}
-
 h5{
     text-align: left;
     margin-bottom: 3px;
     margin-top 15px;
+}
+.altaclase:hover {
+    background-color: aliceblue;
 }

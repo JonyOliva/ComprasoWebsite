@@ -71,11 +71,7 @@
     <Content Include="Assets\Images\carrito.jpg" />
     <Content Include="Assets\Images\compraso_l.png" />
     <Content Include="Assets\Images\notebook.jpg" />
-    <Content Include="Assets\Images\P001-1.png" />
-    <Content Include="Assets\Images\P002-1.JPG" />
-    <Content Include="Assets\Images\P003-1.JPG" />
-    <Content Include="Assets\Images\P003-2.JPG" />
-    <Content Include="Assets\Images\P004-1.JPG" />
+    <Content Include="Assets\Images\P002.JPG" />
     <Content Include="Assets\Images\promo1.png" />
     <Content Include="Assets\Images\promo2.png" />
     <Content Include="Assets\Scripts\boostrap\bootstrap.bundle.js" />
