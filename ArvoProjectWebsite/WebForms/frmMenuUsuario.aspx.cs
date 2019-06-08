@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaLogicadeNegocio;
+using Entidad;
 
 namespace ArvoProjectWebsite.WebForms
 {
@@ -12,16 +13,35 @@ namespace ArvoProjectWebsite.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                gestionUsuarios gUsuario = new gestionUsuarios();
-                grdDireccionesMenuUsuarios.DataSource = gUsuario.getListaDirecxUsuario("0000");
-                grdDireccionesMenuUsuarios.DataBind();
-                grdMdePagoMenuUsuarios.DataSource = gUsuario.getListaTarjetasxUsuario("0000");
-                grdMdePagoMenuUsuarios.DataBind();
-                //grdComprasMenuUsuarios.DataSource = gUsuario.getListaComprasxUsuario("0000");
-                //grdComprasMenuUsuarios.DataBind();
+
             }
+        }
+
+        protected void lbtnDireccionesMenuUsuario_Click(object sender, EventArgs e)
+        {
+            lblMenuUsuario.Text = "Direcciones";
+            gestionUsuarios gestionUsuarios = new gestionUsuarios();
+            //gestionUsuarios.getListaDirecxUsuario(((Usuario)this.Application["Usuario"]).IDUsuario);
+            grdMenuUsuario.DataSource = gestionUsuarios.getListaDirecxUsuario("0000");
+            grdMenuUsuario.DataBind();
+        }
+
+        protected void lbtnMdPMenuUsuario_Click(object sender, EventArgs e)
+        {
+            lblMenuUsuario.Text = "Medios de Pago";
+            gestionUsuarios gestionUsuarios = new gestionUsuarios();
+            grdMenuUsuario.DataSource = gestionUsuarios.getListaTarjetasxUsuario("0000");
+            grdMenuUsuario.DataBind();
+        }
+
+        protected void lbtnComprasMenuUsuario_Click(object sender, EventArgs e)
+        {
+            lblMenuUsuario.Text = "COMPRAS";
+            gestionUsuarios gestionUsuarios = new gestionUsuarios();
+            grdMenuUsuario.DataSource = gestionUsuarios.getListaComprasxUsuario("0000");
+            grdMenuUsuario.DataBind();
         }
     }
 }
