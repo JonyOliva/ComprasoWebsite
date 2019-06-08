@@ -43,5 +43,20 @@ namespace ArvoProjectWebsite.WebForms
             grdMenuUsuario.DataSource = gestionUsuarios.getListaComprasxUsuario("0000");
             grdMenuUsuario.DataBind();
         }
+
+        protected void grdMenuUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void grdMenuUsuario_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+
+        }
+
+        protected void grdMenuUsuario_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
     }
 }
