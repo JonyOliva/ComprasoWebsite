@@ -35,15 +35,9 @@ namespace CapaLogicadeNegocio
         public DataTable getListaComprasxUsuario(string IdUsuario)
         {
             BaseDeDatos bd = new BaseDeDatos(databasePath);
-            DataTable Tabla = bd.getTable("select RutaImagen,IDProducto_DETV,Cantidad_DETV, PrecioUnitario_DETV, Descuento_DETV,IDVenta ,Total_VENTA  from VENTAS" +
-                " inner join DETVENTAS on IDVenta = IDVenta_DETV inner join PRODUCTOS on IDProducto_DETV = IDProducto where IDUsuario_VENTA = " + IdUsuario,
-                "ComprasUsuario");
-            foreach(DataRow dr in Tabla.Rows)
-            {
-                dr[0] = dr[0].ToString().Trim();
-            }
-            return Tabla;
+            return bd.getTable("SELECT * FROM VENTAS WHERE IDUsuario_VENTA = " + IdUsuario, "ComprasUsuario");
         }
+
         public bool getUsuario(ref Usuario usuario)
         {
             BaseDeDatos bd = new BaseDeDatos(databasePath); 

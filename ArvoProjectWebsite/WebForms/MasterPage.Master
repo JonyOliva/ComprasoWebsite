@@ -61,12 +61,7 @@
         <asp:LinkButton ID="item3" CssClass="navbar-item" runat="server" CommandArgument="C004" CommandName="IDCat" OnCommand="item_Command">Celulares y Tablets</asp:LinkButton>
         <asp:LinkButton ID="item4" CssClass="navbar-item" runat="server" CommandArgument="C005" CommandName="IDCat" OnCommand="item_Command">Casa y Jardín</asp:LinkButton>
 
-        <%--<a class="navbar-item" href="/WebForms/frmListaProductos.aspx">Informática</a>
-        <a class="navbar-item" href="#">TV, Audio y Video</a>
-        <a class="navbar-item" href="#">Electrodomésticos</a>
-        <a class="navbar-item" href="#" >Celulares y Tablets</a>
-        <a class="navbar-item" href="#">Casa y Jardín</a>--%>
-        
+               
     </nav>
     
         <div>
@@ -77,7 +72,8 @@
 
 
  <!--FOOTER (En construccion)-->
-        <footer>
+        <footer class="footer">
+            <div class="datos-footer">ARVO SRL | Todos los derechos reservados - 2019</div>
             <!--ARVO SRL | Todos los derechos reservados-->
         </footer>
 

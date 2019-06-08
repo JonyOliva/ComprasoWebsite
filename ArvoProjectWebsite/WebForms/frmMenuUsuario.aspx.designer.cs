@@ -13,15 +13,6 @@ namespace ArvoProjectWebsite.WebForms {
     public partial class frmMenuUsuario {
         
         /// <summary>
-        /// Control form1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// Control lblNombreMenuUsuario.
         /// </summary>
         /// <remarks>
@@ -40,15 +31,6 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.Label lblDniMenuUsuario;
         
         /// <summary>
-        /// Control lbtnModificarDniMenuUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnModificarDniMenuUsuario;
-        
-        /// <summary>
         /// Control lblMailMenuUsuario.
         /// </summary>
         /// <remarks>
@@ -58,93 +40,48 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.Label lblMailMenuUsuario;
         
         /// <summary>
-        /// Control lbtnModificarMailMenuUsuario.
+        /// Control lbtnDireccionesMenuUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnModificarMailMenuUsuario;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnDireccionesMenuUsuario;
         
         /// <summary>
-        /// Control grdDireccionesMenuUsuarios.
+        /// Control lbtnMdPMenuUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdDireccionesMenuUsuarios;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnMdPMenuUsuario;
         
         /// <summary>
-        /// Control btnAgregarDireccionesMenuUsuarios.
+        /// Control lbtnComprasMenuUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarDireccionesMenuUsuarios;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnComprasMenuUsuario;
         
         /// <summary>
-        /// Control btnEliminarMenuUsuarios.
+        /// Control lblMenuUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminarMenuUsuarios;
+        protected global::System.Web.UI.WebControls.Label lblMenuUsuario;
         
         /// <summary>
-        /// Control grdMdePagoMenuUsuarios.
+        /// Control grdMenuUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdMdePagoMenuUsuarios;
-        
-        /// <summary>
-        /// Control btnAgregarMdPagoMenuUsuarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarMdPagoMenuUsuarios;
-        
-        /// <summary>
-        /// Control btnEliminarMdePagoMenuUsuarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminarMdePagoMenuUsuarios;
-        
-        /// <summary>
-        /// Control grdComprasMenuUsuarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdComprasMenuUsuarios;
-        
-        /// <summary>
-        /// Control SqlDataSource1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-        
-        /// <summary>
-        /// Control btnCancelarCompraMenuUsuarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelarCompraMenuUsuarios;
+        protected global::System.Web.UI.WebControls.GridView grdMenuUsuario;
     }
 }
