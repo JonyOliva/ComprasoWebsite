@@ -47,4 +47,39 @@ nav {
 
 .navbar-item:hover {
     background-color: dodgerblue;
+    text-decoration: none;
+    
+    
+}
+
+.navbar-item:active {
+    text-decoration:none;
+}
+
+.footer {
+    width: 100%;
+    background: #b0b0b0;
+    color: #fff;
+    padding: 30px 0 0 0;
+    font-size: 80%;
+}
+
+.footer-der {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+}
+
+.datos-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
 }

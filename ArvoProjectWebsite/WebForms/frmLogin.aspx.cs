@@ -62,5 +62,10 @@ namespace ArvoProjectWebsite
                 lblError.Text = "* No pueden quedar campos vacios";
             }
         }
+
+        protected void linkRegistrar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmSignUp.aspx");
+        }
     }
 }

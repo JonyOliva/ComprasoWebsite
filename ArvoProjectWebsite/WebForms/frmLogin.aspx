@@ -20,7 +20,7 @@
         <div class="container" >
            
             <div class="row ml-1">
-                <img src="../Assets/Images/compraso_l2.png" alt="logo" /></div>
+                <a href="/default.aspx" id="logo"><img src="../Assets/Images/compraso_l2.png" alt="logo" /></a></div>
            
             <div class="row text-center">  <div class="col bg-azul"><h4 class="text-light">Iniciar Sesión</h4></div>
                 </div>
@@ -28,13 +28,13 @@
                 <hr />
             </div>
              <div class="row"> <div class="col-5 text-right">Email:</div>
-                 <div class="col text-left"><asp:TextBox ID="txtUsuario" runat="server" Width="220px">
+                 <div class="col"><asp:TextBox ID="txtUsuario" runat="server" Width="220px">
                                             </asp:TextBox>
                      <asp:Label ID="lblAst1" runat="server" ForeColor="Red" Text="*" Visible="False"></asp:Label>
                  </div>
              </div>
             <div class="row pt-2"> <div class="col-5 text-right">Contraseña:</div>
-                 <div class="col text-left"><asp:TextBox ID="txtPass" runat="server" Width="220px" TextMode="Password"></asp:TextBox>
+                 <div class="col"><asp:TextBox ID="txtPass" runat="server" Width="220px" TextMode="Password"></asp:TextBox>
                      <asp:Label ID="lblAst2" runat="server" ForeColor="Red" Text="*" Visible="False"></asp:Label>
                 </div>
              </div>
@@ -46,15 +46,15 @@
             </div>
             <div class="row pt-2 align-items-lg-center text-center ">
                 <div class="col align-self-md-center"> <asp:Button ID="btnLogin" CssClass="btnlogin bg-azul" runat="server" Text="Ingresar" OnClick="btnLogin_Click" /></div></div>
-            <br />
+            <hr />
             
             <div class="row">
-                <div class="col text-left">
+                <div class="col">
                 <asp:LinkButton ID="linkOlvido" runat="server">¿Olvidó su contraseña?</asp:LinkButton></div>
                 <div class="col text-right">
-                ¿No está registrado? &nbsp<asp:LinkButton ID="linkRegistrar" runat="server">Registrarse</asp:LinkButton></div></div>
+                ¿No está registrado? &nbsp<asp:LinkButton ID="linkRegistrar" runat="server" OnClick="linkRegistrar_Click">Registrarse</asp:LinkButton></div></div>
             <div class="row">
-                <hr />
+                <br />
             </div>
         </div>
        

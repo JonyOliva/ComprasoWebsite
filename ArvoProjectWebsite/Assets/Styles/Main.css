@@ -1,14 +1,7 @@
-﻿body {
-    
-    background-color: floralwhite;
-}
-
-
-.text-center {
+﻿.text-center {
     text-align: center;
 
 }
-
 
 
 .flex {
@@ -16,11 +9,21 @@
 }
 
 
-bold{
+.bold{
     font-weight:bold;
 }
 
 .subrayado{
     text-decoration-line: underline;
+}
+
+.msjError {
+    font-style: italic;
+    color: #CC0000;
+    font-size: small;
+}
+
+.maxWidth {
+   width: 100%;
 }
 

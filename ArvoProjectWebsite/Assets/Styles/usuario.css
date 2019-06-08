@@ -10,6 +10,11 @@
     /*background-color: gray;*/
 }
 
+.fondoceleste {
+    background-image: url(../Images/1.jpg);
+    background-size: 100%;
+}
+
 .loginform {
     margin: 20px;
     background: #EFF3FB;

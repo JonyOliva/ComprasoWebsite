@@ -18,7 +18,7 @@
       <img class="d-block w-100" src="/Assets/Images/promo2.png" alt="Promo 2"/>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="/Assets/Images/promo2.png" alt="Promo 3"/>
+      <img class="d-block w-100" src="/Assets/Images/promo3.jpg" alt="Promo 3"/>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselOfertas" role="button" data-slide="prev">
