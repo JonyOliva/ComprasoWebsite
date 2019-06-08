@@ -6,6 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link href="/Assets/Styles/Main.css" rel="stylesheet" />
+    <link href="/Assets/Styles/productos.css" rel="stylesheet" />
+    <link href="/Assets/Styles/master.css" rel="stylesheet" />
+    <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.cs
 </head>
 <body>
     <form id="form1" runat="server">
@@ -48,17 +53,14 @@
             <br />
             <asp:Label ID="lblNocarrito" runat="server" Text="No posee ningún articulo en el carrito."></asp:Label>
         </div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand" OnRowDeleting="grdCarrito_RowDeleting">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand" OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound">
             <Columns>
-                <asp:ImageField>
+                <asp:ImageField DataImageUrlField="RutaImagen">
                 </asp:ImageField>
-                <asp:CommandField ShowDeleteButton="True" DeleteText="Quitar" />
+                <asp:CommandField DeleteText="Quitar" ShowDeleteButton="True" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Label ID="lblCantidad" runat="server" Text="Cantidad"></asp:Label>
-                        :
-                        <asp:TextBox ID="txtCantidad" runat="server" Height="16px" style="margin-top: 0px" Width="50px">1</asp:TextBox>
+                        &nbsp;<asp:TextBox ID="txtCantidad" runat="server" Height="16px" style="margin-top: 0px" Width="50px">1</asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -67,5 +69,9 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:LinkButton ID="lnkComprar" runat="server" OnClick="lnkComprar_Click">Proceder a la comprar</asp:LinkButton>
     </form>
+
+    </form>
+
+
 </body>
 </html>

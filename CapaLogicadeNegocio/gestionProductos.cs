@@ -70,5 +70,6 @@ namespace CapaLogicadeNegocio
                 "OR Nombre_MARCA LIKE'%" + busqueda + "%'", "Productos");
             return tbl;
         }
+
     }
 }

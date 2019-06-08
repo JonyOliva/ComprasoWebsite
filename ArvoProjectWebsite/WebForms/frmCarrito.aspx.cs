@@ -45,7 +45,7 @@ namespace ArvoProjectWebsite
             if (e.CommandName == "Delete")
             {
                 int pos = int.Parse(e.CommandArgument.ToString());
-                eliminarprodCarrito((List<Producto>)this.Session["Carrito"], pos);
+                eliminarprodCarrito(((List<Producto>)this.Session["Carrito"]), pos);
                 actualizarCarrito();
             }
         }
@@ -65,7 +65,7 @@ namespace ArvoProjectWebsite
 
         public void actualizarCarrito()
         {
-            if (this.Session["carrito"] == null || ((List<Producto>)this.Session["carrito"]).Count == 0)
+            if (this.Session["Carrito"] == null || ((List<Producto>)this.Session["Carrito"]).Count == 0)
             {
                 lblNocarrito.Visible = true;
             }
@@ -74,7 +74,7 @@ namespace ArvoProjectWebsite
                 lblNocarrito.Visible = false;
 
             }
-            grdCarrito.DataSource = (List<Producto>)this.Session["Carrito"];
+            cargarCarrito();
             grdCarrito.DataBind();
         }
 
@@ -86,6 +86,36 @@ namespace ArvoProjectWebsite
         protected void Carrito_Click(object sender, EventArgs e)
         {
             Response.Redirect("frmCarrito.aspx");
+        }
+
+        public void cargarCarrito()
+        {
+            if(this.Session["Carrito"]!= null)
+            { 
+                DataTable tbl = new DataTable();
+                tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
+                tbl.Columns.Add(new DataColumn("Marca", System.Type.GetType("System.String")));
+                tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
+                tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
+
+
+                foreach (Producto item in ((List<Producto>)this.Session["Carrito"]))
+                {
+                    DataRow row = tbl.NewRow();
+                    row["Producto"] = item.Nombre;
+                    row["Marca"] = item.Marca;
+                    row["Precio"] = item.Precio;
+                    row["RutaImagen"] = item.RutaImagen;
+                    tbl.Rows.Add(row);
+                }
+
+                grdCarrito.DataSource = tbl;
+            }
+        }
+
+        protected void grdCarrito_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[6].Visible = false;
         }
     }
 }
