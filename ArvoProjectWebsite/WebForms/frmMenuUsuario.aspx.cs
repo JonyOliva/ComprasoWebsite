@@ -38,7 +38,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprasMenuUsuario_Click(object sender, EventArgs e)
         {
-            lblMenuUsuario.Text = "COMPRAS";
+            lblMenuUsuario.Text = "Compras";
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
             grdMenuUsuario.DataSource = gestionUsuarios.getListaComprasxUsuario("0000");
             grdMenuUsuario.DataBind();

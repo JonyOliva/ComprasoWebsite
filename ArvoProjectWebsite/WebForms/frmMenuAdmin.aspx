@@ -7,9 +7,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <br />
+   
     <div class="bg-secondary">
-        <h4 class="text-light text-center">Menú Administrador</h4>
+        <h4 class="text-light text-center">MENÚ ADMINISTRADOR</h4>
     </div>
      <br />
     <p>

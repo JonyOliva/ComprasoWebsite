@@ -46,3 +46,8 @@ color: white;
     vertical-align: middle;
 }
 
+.tituloUsuario {
+    margin: auto;
+    max-width: 30%;
+    text-align: center;
+}
