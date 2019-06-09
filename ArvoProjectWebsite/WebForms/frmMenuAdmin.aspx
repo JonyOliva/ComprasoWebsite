@@ -23,7 +23,9 @@
     <div>
         <asp:MultiView ID="MultiViewAdmin" runat="server">
             <asp:View ID="ViewProductos" runat="server">
-                
+               
+                 <p>
+                     <asp:LinkButton ID="LinkButton1" runat="server"><i class="fas fa-plus-circle"></i> &nbsp Agregar producto</asp:LinkButton></p>
                 <div class="container-fluid mb-3">
                 <asp:GridView ID="GridProductos" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" CellPadding="3" CellSpacing="2" DataKeyNames="IDProducto" DataSourceID="SqlDataSource_Prod">
                     <Columns>
