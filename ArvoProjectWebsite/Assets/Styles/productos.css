@@ -48,6 +48,11 @@
     color: #888;
 }
 
+.miniatura {
+    max-height: 60px;
+    max-width: 60px;
+}
+
 @media {
 
 

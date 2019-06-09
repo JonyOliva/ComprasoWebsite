@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col">
                 
-                <asp:Image ID="imgPrincipal" runat="server" style="max-height:500px;max-width:600px;height:auto;width:auto;" />
+                <asp:Image ID="imgPrincipal" runat="server" style="max-height:500px;max-width:500px;height:auto;width:auto;" />
                 <br />
                 
             </div>

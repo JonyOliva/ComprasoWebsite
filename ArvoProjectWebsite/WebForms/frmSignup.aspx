@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmSignUp.aspx.cs" Inherits="ArvoProjectWebsite.WebForms.frmSignUp" %>
+﻿<%@ Page Title="Registrarse" Language="C#" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmSignUp.aspx.cs" Inherits="ArvoProjectWebsite.WebForms.frmSignUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
        <link href="../Assets/Styles/Main.css" rel="stylesheet" />
     <link href="/Assets/Styles/usuario.css" rel="stylesheet" />

@@ -13,5 +13,20 @@ namespace ArvoProjectWebsite
         {
 
         }
+
+        protected void btnProductos_Click(object sender, EventArgs e)
+        {
+            MultiViewAdmin.ActiveViewIndex = 0;
+        }
+
+        protected void btnMarcas_Click(object sender, EventArgs e)
+        {
+            MultiViewAdmin.ActiveViewIndex = 1;
+        }
+
+        protected void btnVentas_Click(object sender, EventArgs e)
+        {
+            MultiViewAdmin.ActiveViewIndex = 2;
+        }
     }
 }
