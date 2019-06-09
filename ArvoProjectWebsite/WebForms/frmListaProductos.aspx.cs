@@ -22,6 +22,22 @@ namespace ArvoProjectWebsite
 
                 llenarFiltroMarcas();
                 llenarFiltroSubCats();
+                llenarFiltroCats();
+                ddlCat.SelectedValue = Session["filtroCategoria"].ToString();
+            }
+            else
+            {
+                int opc = ddlOrdenar.SelectedIndex;
+                switch (opc)
+                {
+                    case 1:
+                        sqldataProductos.SelectCommand += "ORDER BY Precio_PROD ASC";
+                        break;
+                    case 2:
+                        sqldataProductos.SelectCommand += "ORDER BY Precio_PROD DESC";
+                        break;
+                }
+                lstViewProductos.DataBind();
             }
         }
 
@@ -52,7 +68,9 @@ namespace ArvoProjectWebsite
             ddlMarcas.DataValueField = "IDMarca";
             ddlMarcas.DataTextField = "Nombre_MARCA";
             ddlMarcas.DataSource = gp.getListaMarcas();
+            ddlMarcas.Items.Add(new ListItem("", "-1"));
             ddlMarcas.DataBind();
+            ddlMarcas.Items.Insert(0, new ListItem("", "-1"));
         }
 
         void llenarFiltroSubCats()
@@ -61,7 +79,19 @@ namespace ArvoProjectWebsite
             ddlSubCat.DataValueField = "IDSubCategoria";
             ddlSubCat.DataTextField = "Nombre_SUBCAT";
             ddlSubCat.DataSource = gp.getListaSubCategorias();
+            ddlSubCat.Items.Add(new ListItem("", "-1"));
             ddlSubCat.DataBind();
+            ddlSubCat.Items.Insert(0, new ListItem("", "-1"));
+        }
+
+        void llenarFiltroCats()
+        {
+            gestionProductos gp = new gestionProductos();
+            ddlCat.DataValueField = "IDCategoria";
+            ddlCat.DataTextField = "Nombre_CAT";
+            ddlCat.DataSource = gp.getListaCategorias();
+            ddlCat.DataBind();
+            ddlCat.Items.Insert(0, new ListItem("", "-1"));
         }
 
         protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)
@@ -87,5 +117,11 @@ namespace ArvoProjectWebsite
             Response.Redirect("frmProducto.aspx?IDProd=" + e.CommandArgument);
         }
 
+        protected void btnSinFiltro_Click(object sender, EventArgs e)
+        {
+            ddlCat.SelectedIndex = 0;
+            ddlSubCat.SelectedIndex = 0;
+            ddlMarcas.SelectedIndex = 0;
+        }
     }
 }

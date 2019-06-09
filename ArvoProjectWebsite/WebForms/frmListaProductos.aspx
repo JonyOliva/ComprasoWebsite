@@ -82,10 +82,9 @@
                 <div class="row text-center">
                     <div class="col-md-3">
                         <div class="row">
-                            <h6 class="col">Marcas</h6>
-                            <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="col">
+                            <h6 class="col">Categorias</h6>
+                            <asp:DropDownList ID="ddlCat" runat="server" CssClass="auto-style1">
                             </asp:DropDownList>
-
                         </div>
                         <br />
                         <div class="row">
@@ -93,10 +92,25 @@
                             <asp:DropDownList ID="ddlSubCat" runat="server" CssClass="col">
                             </asp:DropDownList>
                         </div>
-                        
+                        <br />
+                        <div class="row">
+                            <h6 class="col">Marcas</h6>
+                            <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="col">
+                            </asp:DropDownList>
+
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row justify-content-center">
+
+                        <asp:Button ID="btnFiltrar" CssClass="col-5" runat="server" Text="Filtrar" />
+                        <asp:Button ID="btnSinFiltro" CssClass="col-5 offset-1" runat="server" Text="Quitar Filtro" OnClick="btnSinFiltro_Click" />
+
+                        </div>
                     </div>
+
                     <div class="col-md-9">
-                        <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="5">
+                        <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="4">
                 <EmptyDataTemplate>
                     <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
                         <tr>
