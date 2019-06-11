@@ -8,7 +8,7 @@ CREATE PROCEDURE spFiltrarProductos
 )
 AS
 SELECT IDProducto, Nombre_PROD FROM PRODUCTOS WHERE
-((@Nombre is null) or (Nombre_PROD LIKE '%' + @Nombre + '%'))
+((@Nombre is null) or (Nombre_PROD LIKE '%' + rtrim(@Nombre) + '%'))
 AND
 ((@IDCategoria is null) or (@IDCategoria=IDCategoria_PROD))
 AND
