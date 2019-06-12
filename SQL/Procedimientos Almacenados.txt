@@ -1,0 +1,54 @@
+
+--PRODUCTOS
+
+CREATE PROCEDURE spObtenerMarcas
+(
+@IDSubCat char(4),
+@IDCat char(4)
+)
+AS
+SELECT DISTINCT IDMarca, Nombre_MARCA FROM PRODUCTOS INNER JOIN MARCAS
+ON IDMarca_PROD=IDMarca WHERE (IDCategoria_PROD=@IDCat AND IDSubCategoria_PROD=@IDSubCat)
+GO
+
+CREATE PROCEDURE spFiltrarProductos
+(
+@Nombre char(30),
+@IDCategoria char(4),
+@IDSubCategoria char(4),
+@IDMarca char(4),
+@Descuento float
+)
+AS
+SELECT IDProducto, Nombre_PROD FROM PRODUCTOS WHERE
+(ACTIVO = 1)
+AND
+((@Nombre is null) or (Nombre_PROD LIKE '%' + rtrim(@Nombre) + '%'))
+AND
+((@IDCategoria is null) or (@IDCategoria=IDCategoria_PROD))
+AND
+((@IDSubCategoria is null) or (@IDSubCategoria=IDSubCategoria_PROD))
+AND
+((@IDMarca is null) or (@IDMarca=IDMarca_PROD))
+AND 
+((@Descuento is null) or (@Descuento >= Descuento_PROD))
+GO
+
+--USUARIOS
+
+CREATE PROCEDURE spAgregarUsuario
+(
+	@IdUsuario char(12),
+	@NombreUsuario char(30),
+	@ApellidoUsuario char(40),
+	@Password char(15),
+	@DniUsuario char(9),
+	@EmailUsuario char(40),
+	@NroTelefono char(12),
+	@FechaNacUsuario date
+)
+	AS
+	
+	INSERT INTO USUARIOS(IDUsuario, Admin_USU, Apellido_USU, Nombre_USU, DNI_USU, Email_USU, nroCel_USU, Password_USU, FechaNac_USU)
+	SELECT @IdUsuario, 0, @ApellidoUsuario, @NombreUsuario, @DniUsuario, @EmailUsuario, @NroTelefono, @Password, @FechaNacUsuario
+GO

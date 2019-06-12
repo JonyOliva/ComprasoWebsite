@@ -35,34 +35,33 @@ namespace CapaLogicadeNegocio
         }
         public DataTable getListaProductos()
         {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
             return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
         }
-        public DataTable getListaMarcas()
+        public DataTable getListaMarcas(string Cat, string SubCat)
         {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
-            return bd.getTable("SELECT * FROM MARCAS", "marcas");
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Parameters.AddWithValue("@IDSubCat", SubCat);
+            sqlCommand.Parameters.AddWithValue("@IDCat", Cat);
+            DataTable marcas = new DataTable("marcas");
+            bd.ExecStoredProcedure(sqlCommand, "spObtenerMarcas", ref marcas);
+            return marcas;
         }
         public DataTable getListaCategorias()
         {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
             return bd.getTable("SELECT * FROM CATEGORIAS", "categorias");
         }
-        public DataTable getListaSubCategorias()
+        public DataTable getListaSubCategorias(string Cat)
         {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
-            return bd.getTable("SELECT * FROM SUBCATEGORIAS", "categorias");
+            return bd.getTable("SELECT * FROM SUBCATEGORIAS WHERE IDCategoria_SUBCAT='" + Cat + "'", "categorias");
         }
         public Producto getProducto(string IDProducto)
         {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
             DataTable data = bd.getTable("SELECT * FROM PRODUCTOS WHERE IDProducto='" + IDProducto + "'", "producto");
             return (Producto)data.Rows[0];
         }
 
         public DataTable busquedaProductos(string busqueda)
         {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
             DataTable tbl = bd.getTable("SELECT Nombre_PROD,Descripcion_PROD,Precio_PROD,Nombre_MARCA,RutaImagen " +
                 "FROM PRODUCTOS INNER JOIN MARCAS on IDMarca_prod = IDMarca " +
                 "WHERE Nombre_PROD LIKE '%" + busqueda + "%' " +

@@ -56,5 +56,24 @@ namespace CapaAccesoaDatos
                 throw;
             }
         }
+
+        public void ExecStoredProcedure(SqlCommand cmd, String spName, ref DataTable table)
+        {
+            cmd.Connection = connection;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = spName;
+            try
+            {
+                connection.Open();
+                SqlDataReader dataReader = cmd.ExecuteReader();
+                table.Load(dataReader);
+                connection.Close();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

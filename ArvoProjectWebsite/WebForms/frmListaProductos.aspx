@@ -67,11 +67,11 @@
          -->
         <div style=" background-color: whitesmoke;">
             <br />
-            <div class="container border border-secondary rounded bg-white">
+            <div class="container border rounded bg-white">
                 <div class="row justify-content-end"> 
                     <h6 class="col offset-8" >Ordenar por:</h6>
                     <div class="col">
-                        <asp:DropDownList ID="ddlOrdenar" runat="server">
+                        <asp:DropDownList ID="ddlOrdenar" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlOrdenar_SelectedIndexChanged">
                         <asp:ListItem></asp:ListItem>
                         <asp:ListItem Value="1">Menor precio</asp:ListItem>
                         <asp:ListItem Value="2">Mayor precio</asp:ListItem>
@@ -79,17 +79,17 @@
                     </div>
                     
                 </div>
-                <div class="row text-center">
+                <div class="row">
                     <div class="col-md-3">
                         <div class="row">
                             <h6 class="col">Categorias</h6>
-                            <asp:DropDownList ID="ddlCat" runat="server" CssClass="auto-style1">
+                            <asp:DropDownList ID="ddlCat" runat="server" CssClass="col" AutoPostBack="True" OnSelectedIndexChanged="ddlCat_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                         <br />
                         <div class="row">
                             <h6 class="col">Subcategorias</h6>
-                            <asp:DropDownList ID="ddlSubCat" runat="server" CssClass="col">
+                            <asp:DropDownList ID="ddlSubCat" runat="server" CssClass="col" AutoPostBack="True" OnSelectedIndexChanged="ddlSubCat_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                         <br />
@@ -103,14 +103,19 @@
                         <br />
                         <div class="row justify-content-center">
 
-                        <asp:Button ID="btnFiltrar" CssClass="col-5" runat="server" Text="Filtrar" />
-                        <asp:Button ID="btnSinFiltro" CssClass="col-5 offset-1" runat="server" Text="Quitar Filtro" OnClick="btnSinFiltro_Click" />
+                        <asp:Button ID="btnFiltrar" CssClass="col-4" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
+                        <asp:Button ID="btnSinFiltro" CssClass="col-5 offset-1" runat="server" Text="Quitar Filtro" OnClick="btnSinFiltro_Click" style="left: 0px; top: 0px" />
 
                         </div>
+                        <br />
+                        <div class="row justify-content-center">
+                            <asp:Label ID="lblCant" runat="server"></asp:Label>
+                        </div>
+                        <br />
                     </div>
 
                     <div class="col-md-9">
-                        <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="4">
+                        <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="4" OnDataBound="lstViewProductos_DataBound">
                 <EmptyDataTemplate>
                     <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
                         <tr>
@@ -127,22 +132,22 @@
                     <td runat="server" class="rounded border-primary" style="text-align: center !important">
                         <table class="altaclase">
                             <tr>
-                                <td>
+                                <td class="auto-style2">
                                     <asp:ImageButton ID="imgProducto" runat="server" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' OnCommand="imgProducto_Command" style="max-height:144px;max-width:200px;height:auto;width:auto;" />
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td class="auto-style1">
                                     <asp:Label ID="Nombre_PRODLabel" runat="server" CssClass="font-weight-bold" Text='<%# Eval("Nombre_PROD") %>'></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td class="auto-style1">
                                     <asp:Label ID="lblDescuento" runat="server" CssClass=" text-success border border-success " Text='<%# Eval("Descuento_PROD") + "% OFF" %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>'></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td class="auto-style1">
                                     <asp:Label ID="lblPrecioAnt" runat="server" Text='<%# "$" + Entidad.Utilidades.precioaMostar(Eval("Precio_PROD")) %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>' style="text-decoration:line-through; font-size: small; color: gray"></asp:Label>
                                     <asp:Label ID="Precio_PRODLabel" runat="server" CssClass="text-danger" Text='<%# "$" + Entidad.Utilidades.precioaMostar(Entidad.Utilidades.getPrecioConDescuento(Eval("Precio_PROD"), Eval("Descuento_PROD"))) %>' style="font-size: larger;"></asp:Label>                                    
                                 </td>
@@ -179,7 +184,7 @@
 
             </div>
 
-            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [Nombre_PROD], [Precio_PROD], [Descuento_PROD], [RutaImagen], [IDProducto] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([IDCategoria_PROD] = @IDCategoria_PROD))">
+            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [IDProducto], [Nombre_PROD], [RutaImagen], [Descuento_PROD], [Precio_PROD] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([IDCategoria_PROD] = @IDCategoria_PROD))" CancelSelectOnNullParameter="False">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="true" Name="ACTIVO" Type="Boolean" />
                     <asp:SessionParameter Name="IDCategoria_PROD" SessionField="filtroCategoria" Type="String" />

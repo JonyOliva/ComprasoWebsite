@@ -139,6 +139,15 @@ namespace ArvoProjectWebsite {
         protected global::System.Web.UI.WebControls.Button btnSinFiltro;
         
         /// <summary>
+        /// Control lblCant.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCant;
+        
+        /// <summary>
         /// Control lstViewProductos.
         /// </summary>
         /// <remarks>
