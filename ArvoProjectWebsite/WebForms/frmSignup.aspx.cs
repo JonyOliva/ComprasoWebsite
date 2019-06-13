@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidad;
+using CapaLogicadeNegocio;
 
 namespace ArvoProjectWebsite.WebForms
 {
@@ -24,7 +26,8 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void btnRegistrarSignUp_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(txtMailSignUp.Text) || string.IsNullOrEmpty(txtApellidoSignUp.Text) || string.IsNullOrEmpty(txtNombreSignUp.Text) || 
+            bool guardar = true;
+            if (string.IsNullOrEmpty(txtMailSignUp.Text) || string.IsNullOrEmpty(txtApellidoSignUp.Text) || string.IsNullOrEmpty(txtNombreSignUp.Text) || 
                 string.IsNullOrEmpty(txtContraSingUp.Text) || string.IsNullOrEmpty(txtRepContraSignUp.Text) || string.IsNullOrEmpty(txtCuit1SignUp.Text) ||
                 string.IsNullOrEmpty(txtCuit2SignUp.Text) || string.IsNullOrEmpty(txtDniSignUp.Text) || string.IsNullOrEmpty(txtTelefonoSignUp.Text) ||
                 string.IsNullOrEmpty(txtFechaSignUp.Text))
@@ -38,6 +41,8 @@ namespace ArvoProjectWebsite.WebForms
                     string.IsNullOrEmpty(txtDniSignUp.Text) || string.IsNullOrEmpty(txtCuit2SignUp.Text) )lblCuitSignUp.Text = "*El campo no puede estar vacío.";
                 if (string.IsNullOrEmpty(txtTelefonoSignUp.Text)) lblTelefonoSignUp.Text = "*El campo no puede estar vacío.";
                 if (string.IsNullOrEmpty(txtFechaSignUp.Text)) lblFechaSignUp.Text = "*El campo no puede estar vacío.";
+
+                guardar = false;
             }
 
             if(txtContraSingUp.Text != txtRepContraSignUp.Text)
@@ -47,47 +52,89 @@ namespace ArvoProjectWebsite.WebForms
                 if (string.IsNullOrEmpty(lblRepContraSignUp.Text)) lblRepContraSignUp.Text += "*Las contraseñas deben ser iguales.";
                 else lblRepContraSignUp.Text += " Las contraseñas deben ser iguales.";
 
+                guardar = false;
             }
 
             if(!string.IsNullOrEmpty(txtTelefonoSignUp.Text))
             {
-                for(int i = 0; i < txtTelefonoSignUp.Text.Length; i++)
-                {
-                    if(txtTelefonoSignUp.Text[i] > 57 || txtTelefonoSignUp.Text[i] < 48)
-                    {
-                        if (string.IsNullOrEmpty(lblTelefonoSignUp.Text)) lblTelefonoSignUp.Text = "*Solo se pueden ingresar números en este campo.";
+                //for(int i = 0; i < txtTelefonoSignUp.Text.Length; i++)
+                //{
+                //    if(txtTelefonoSignUp.Text[i] > 57 || txtTelefonoSignUp.Text[i] < 48)
+                //    {
+                //        if (string.IsNullOrEmpty(lblTelefonoSignUp.Text)) lblTelefonoSignUp.Text = "*Solo se pueden ingresar números en este campo.";
 
-                    }
+                //    }
+                //}
+                if (Utilidades.ContieneLetras(txtTelefonoSignUp.Text, txtTelefonoSignUp.Text.Length))
+                {
+                    lblTelefonoSignUp.Text = "*Solo se pueden ingresar números en este campo.";
+                    guardar = false;
                 }
             }
 
             if (!string.IsNullOrEmpty(txtDniSignUp.Text) && !string.IsNullOrEmpty(txtCuit1SignUp.Text) && !string.IsNullOrEmpty(txtCuit2SignUp.Text))
             {
-                for (int i = 0; i < txtDniSignUp.Text.Length; i++)
-                {
-                    if (txtDniSignUp.Text[i] > 57 || txtDniSignUp.Text[i] < 48)
-                    {
-                        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
+                //for (int i = 0; i < txtDniSignUp.Text.Length; i++)
+                //{
+                //    if (txtDniSignUp.Text[i] > 57 || txtDniSignUp.Text[i] < 48)
+                //    {
+                //        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
 
-                    }
+                //    }
+                //}
+                if(Utilidades.ContieneLetras(txtDniSignUp.Text, txtDniSignUp.Text.Length))
+                {
+                    if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
+                    guardar = false;
                 }
 
-                for (int i = 0; i < txtCuit1SignUp.Text.Length; i++)
-                {
-                    if (txtCuit1SignUp.Text[i] > 57 || txtCuit1SignUp.Text[i] < 48)
-                    {
-                        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
+                //for (int i = 0; i < txtCuit1SignUp.Text.Length; i++)
+                //{
+                //    if (txtCuit1SignUp.Text[i] > 57 || txtCuit1SignUp.Text[i] < 48)
+                //    {
+                //        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
 
-                    }
+                //    }
+                //}
+                if(Utilidades.ContieneLetras(txtCuit1SignUp.Text, txtCuit1SignUp.Text.Length))
+                {
+                    if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "Solo se pueden ingresar números en este campo.";
+                    guardar = false;
                 }
 
-                for (int i = 0; i < txtCuit2SignUp.Text.Length; i++)
-                {
-                    if (txtCuit2SignUp.Text[i] > 57 || txtCuit2SignUp.Text[i] < 48)
-                    {
-                        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
+                //for (int i = 0; i < txtCuit2SignUp.Text.Length; i++)
+                //{
+                //    if (txtCuit2SignUp.Text[i] > 57 || txtCuit2SignUp.Text[i] < 48)
+                //    {
+                //        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
 
-                    }
+                //    }
+                //}
+                if(Utilidades.ContieneLetras(txtCuit2SignUp.Text, txtCuit2SignUp.Text.Length))
+                {
+                    if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "Solo se pueden ingresar números en este campo.";
+                    guardar = false;
+                }
+            }
+
+            if(guardar)
+            {
+                gestionUsuarios gestionUsuarios = new gestionUsuarios();
+                Usuario usuario = new Usuario();
+                usuario.IDUsuario = txtCuit1SignUp.Text + txtDniSignUp.Text + txtCuit2SignUp.Text;
+                usuario.Admin = false;
+                usuario.Nombre = txtNombreSignUp.Text;
+                usuario.Apellido = txtApellidoSignUp.Text;
+                usuario.DNI = txtDniSignUp.Text;
+                usuario.Email = txtMailSignUp.Text;
+                usuario.Password = txtContraSingUp.Text;
+                usuario.nroCel = txtTelefonoSignUp.Text;
+                usuario.FechaNac = txtFechaSignUp.Text;
+
+                if(gestionUsuarios.AgregarUsuario(usuario))
+                else
+                {
+
                 }
             }
         }
