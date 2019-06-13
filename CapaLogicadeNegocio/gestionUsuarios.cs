@@ -56,7 +56,7 @@ namespace CapaLogicadeNegocio
             return false;
         }
 
-        public bool AgregarUsuario(Usuario usu)
+        public int AgregarUsuario(Usuario usu)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
@@ -69,7 +69,7 @@ namespace CapaLogicadeNegocio
             cmd.Parameters.AddWithValue("@FechaNacUsuario", usu.FechaNac);
 
             int resp = bd.ExecStoredProcedure(cmd, "spAgregarUsuario");
-            return Convert.ToBoolean(resp);
+            return resp;
         }
     }
 }

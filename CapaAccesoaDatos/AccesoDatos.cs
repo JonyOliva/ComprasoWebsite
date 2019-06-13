@@ -51,9 +51,10 @@ namespace CapaAccesoaDatos
                 connection.Close();
                 return Filas;
             }
-            catch (Exception)
+            catch (SqlException ex)
             {
-                throw;
+                connection.Close();
+                return ex.Number;
             }
         }
 
@@ -74,6 +75,14 @@ namespace CapaAccesoaDatos
             {
                 throw;
             }
+        }
+    }
+
+    public class ArvoExepcion: Exception
+    {
+        public ArvoExepcion(string mensaje) : base (mensaje)
+        {
+
         }
     }
 }

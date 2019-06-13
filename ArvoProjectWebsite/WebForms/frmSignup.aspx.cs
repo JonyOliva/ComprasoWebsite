@@ -131,7 +131,12 @@ namespace ArvoProjectWebsite.WebForms
                 usuario.nroCel = txtTelefonoSignUp.Text;
                 usuario.FechaNac = txtFechaSignUp.Text;
 
-                if(gestionUsuarios.AgregarUsuario(usuario))
+                
+                if (gestionUsuarios.AgregarUsuario(usuario).ToString() == "2627" )
+                {
+                    lblMailSignUp.Text = "El mail puede ya estar registrado.";
+                    lblCuitSignUp.Text = "El CUIT ya puede estar registrado";
+                }
                 else
                 {
 
