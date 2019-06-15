@@ -83,5 +83,10 @@ namespace Entidad
 
             return false;
         }
+
+        public static string ObtenerEstadoEnvio (Byte a)
+        {
+            return "jaja";
+        }
     }
 }

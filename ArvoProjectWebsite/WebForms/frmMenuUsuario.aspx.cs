@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaLogicadeNegocio;
 using Entidad;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace ArvoProjectWebsite.WebForms
 {
@@ -40,7 +42,17 @@ namespace ArvoProjectWebsite.WebForms
         {
             lblMenuUsuario.Text = "Compras";
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
-            grdMenuUsuario.DataSource = gestionUsuarios.getListaComprasxUsuario("0000");
+            DataTable Tabla = new DataTable();
+            Tabla = gestionUsuarios.getListaComprasxUsuario("0000");
+            Tabla.Columns[7].ColumnName = "Estado ";
+            Tabla.Columns.Add("Estado");
+            //Tabla.Columns[7].DataType = System.Type.GetType("System.String");
+            for (int i = 0; i < Tabla.Rows.Count; i++)
+            {
+                Tabla.Rows[i].SetField(8, Utilidades.ObtenerEstadoEnvio(Tabla.Rows[i].Field<Byte>(7)));
+            }
+            Tabla.Columns.RemoveAt(7);
+            grdMenuUsuario.DataSource = Tabla;
             grdMenuUsuario.DataBind();
         }
 
