@@ -52,3 +52,43 @@ CREATE PROCEDURE spAgregarUsuario
 	INSERT INTO USUARIOS(IDUsuario, Admin_USU, Apellido_USU, Nombre_USU, DNI_USU, Email_USU, nroCel_USU, Password_USU, FechaNac_USU)
 	SELECT @IdUsuario, 0, @ApellidoUsuario, @NombreUsuario, @DniUsuario, @EmailUsuario, @NroTelefono, @Password, @FechaNacUsuario
 GO
+
+--MENU USUARIO
+
+	-COMPRAS
+CREATE PROCEDURE spObtenerComprasUsuario
+(
+	@IdUsuario char(20)
+)
+AS
+SELECT * FROM VENTAS WHERE IDUsuario_VENTA = @IdUsuario
+GO
+
+	-Tarjetas_x_Usuario
+CREATE PROCEDURE spObtenerTarjetasUsuario
+(
+	@IdUsuario char(20)
+)
+AS
+SELECT * FROM TarjetasxUsuario WHERE IDUsuario_TxU = @IdUsuario
+GO
+
+	-Direcciones_x_Usuario
+CREATE PROCEDURE spObtenerDireccionesUsuario
+(
+	@IdUsuario char(20)
+)
+AS
+SELECT * FROM DirecxUsuario WHERE IDUsuario_DIR = @IdUsuario
+GO
+
+
+--CANCELAR COMPRA
+CREATE PROCEDURE spCancelarCompra
+(
+	@IdVenta int
+)
+AS
+UPDATE VENTAS
+SET Estado = 1 WHERE IDVenta = @IdVenta
+GO

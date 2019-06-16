@@ -26,17 +26,6 @@ namespace CapaLogicadeNegocio
             return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IdUsuario_DIR = "+ IdUsuario, "Direcciones");
         }
 
-        public DataTable getListaTarjetasxUsuario(string IdUsuario)
-        {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
-            return bd.getTable("SELECT * FROM TarjetasxUsuario where IDUsuario_TxU =" + IdUsuario, "TarjetasUsuario");
-        }
-
-        public DataTable getListaComprasxUsuario(string IdUsuario)
-        {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
-            return bd.getTable("SELECT * FROM VENTAS WHERE IDUsuario_VENTA = " + IdUsuario, "ComprasUsuario");
-        }
 
         public bool getUsuario(ref Usuario usuario)
         {
@@ -51,6 +40,7 @@ namespace CapaLogicadeNegocio
                 usuario.Apellido = data.Rows[0]["Apellido_USU"].ToString().Trim();
                 usuario.nroCel = data.Rows[0]["nroCel_USU"].ToString().Trim();
                 usuario.FechaNac = data.Rows[0]["FechaNac_USU"].ToString().Trim();
+                usuario.DNI = data.Rows[0]["DNI_Usu"].ToString().Trim();
                 return true;
             }
             return false;
@@ -70,6 +60,42 @@ namespace CapaLogicadeNegocio
 
             int resp = bd.ExecStoredProcedure(cmd, "spAgregarUsuario");
             return resp;
+        }
+
+        public DataTable Compras_x_Usuario(Usuario usu)
+        {
+            DataTable Tabla = new DataTable();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
+            bd.ExecStoredProcedure(cmd, "spObtenerComprasUsuario", ref Tabla);
+            return Tabla;
+        }
+
+        public DataTable Tarjetas_x_Usuario(Usuario usu)
+        {
+            DataTable Tabla = new DataTable();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
+            bd.ExecStoredProcedure(cmd, "spObtenerTarjetasUsuario", ref Tabla);
+            return Tabla;
+        }
+
+        public DataTable Direcciones_x_Usuario(Usuario usu)
+        {
+            DataTable Tabla = new DataTable();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("IdUsuario", usu.IDUsuario);
+            bd.ExecStoredProcedure(cmd, "spObtenerDireccionesUsuario", ref Tabla);
+            return Tabla;
+        }
+
+        public bool CancelarCompra(int IdVenta)
+        {
+            bool eliminada = false;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("IdVenta", IdVenta);
+            eliminada = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spCancelarCompra"));
+            return eliminada;
         }
     }
 }
