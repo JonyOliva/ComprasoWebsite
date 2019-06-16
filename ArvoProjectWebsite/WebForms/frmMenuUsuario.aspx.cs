@@ -71,17 +71,8 @@ namespace ArvoProjectWebsite.WebForms
 
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
             DataTable Tabla = new DataTable();
-            Tabla = gestionUsuarios.Compras_x_Usuario((Usuario)Application["Usuario"]);
-            
-            Tabla.Columns[7].ColumnName = "Estado ";
-            Tabla.Columns.Add("Estado");
-
-
-            for (int i = 0; i < Tabla.Rows.Count; i++)
-            {
-                Tabla.Rows[i].SetField(8,(EstadoCompra)Tabla.Rows[i].Field<Byte>(7));
-            }
-            Tabla.Columns.RemoveAt(7);
+            Tabla = gestionUsuarios.CargarTablaCompras(((Usuario)Application["Usuario"]));
+    
             Session["Compras"] = Tabla;
             grdMenuUsuario.DataSource = Session["Compras"];
             grdMenuUsuario.DataBind();
@@ -116,9 +107,15 @@ namespace ArvoProjectWebsite.WebForms
                     if (((DataTable)Session["Compras"]).Rows[e.RowIndex][7].ToString() == "Procesando")
                     {
                         gestionUsuarios.CancelarCompra((int)((DataTable)Session["Compras"]).Rows[e.RowIndex][0]);
-                        
+                        Session["Compras"] = gestionUsuarios.CargarTablaCompras((Usuario)Application["Usuario"]);
+                        grdMenuUsuario.DataSource = Session["Compras"];
+                        grdMenuUsuario.DataBind();
+
                     }
-                    else lblDniMenuUsuario.Text = ((DataTable)Session["Compras"]).Rows[e.RowIndex][7].ToString();
+                    else
+                    {
+                        lblDniMenuUsuario.Text = ((DataTable)Session["Compras"]).Rows[e.RowIndex][7].ToString();
+                    }
                     break;
                 case "Medios de Pago":
                     break;

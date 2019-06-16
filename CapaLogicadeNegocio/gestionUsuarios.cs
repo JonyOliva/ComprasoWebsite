@@ -97,5 +97,20 @@ namespace CapaLogicadeNegocio
             eliminada = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spCancelarCompra"));
             return eliminada;
         }
+
+        public DataTable CargarTablaCompras(Usuario usu)
+        {
+            DataTable Tabla;
+            Tabla = Compras_x_Usuario(usu);
+            Tabla.Columns[7].ColumnName = "Estado ";
+            Tabla.Columns.Add("Estado");
+
+            for (int i = 0; i < Tabla.Rows.Count; i++)
+            {
+                Tabla.Rows[i].SetField(8, (EstadoCompra)Tabla.Rows[i].Field<Byte>(7));
+            }
+            Tabla.Columns.RemoveAt(7);
+            return Tabla;
+        }
     }
 }
