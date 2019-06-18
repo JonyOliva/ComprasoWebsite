@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidad;
+using CapaLogicadeNegocio;
+using System.Data;
 
 namespace ArvoProjectWebsite.WebForms
 {
@@ -27,6 +30,13 @@ namespace ArvoProjectWebsite.WebForms
         protected void item_Command(object sender, CommandEventArgs e)
         {
             Session["filtroCategoria"] = e.CommandArgument;
+            Response.Redirect("/WebForms/frmListaProductos.aspx");
+        }
+
+        protected void ejecutarBuscador(object sender, EventArgs e)
+        {
+            string[] words = txtBuscador.Text.Split();
+            Session["Buscador"] = words;
             Response.Redirect("/WebForms/frmListaProductos.aspx");
         }
     }

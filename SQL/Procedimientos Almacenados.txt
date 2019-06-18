@@ -11,6 +11,16 @@ SELECT DISTINCT IDMarca, Nombre_MARCA FROM PRODUCTOS INNER JOIN MARCAS
 ON IDMarca_PROD=IDMarca WHERE (IDCategoria_PROD=@IDCat AND IDSubCategoria_PROD=@IDSubCat)
 GO
 
+CREATE PROCEDURE Buscador
+(
+@aBuscar char(15)
+)
+AS
+SELECT IDCategoria_PROD,IDSubCategoria_PROD FROM PRODUCTOS 
+WHERE (Nombre_PROD LIKE '%' + rtrim(@aBuscar) + '%') 
+OR (Descripcion_PROD LIKE '%' + rtrim(@aBuscar) + '%')
+GO
+
 CREATE PROCEDURE spFiltrarProductos
 (
 @Nombre char(30),

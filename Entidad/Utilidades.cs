@@ -88,5 +88,45 @@ namespace Entidad
         {
             return "jaja";
         }
+
+        public static string getMasRepetido(string[] strs)
+        {
+            List<int> count = new List<int>();
+            List<string> dat = new List<string>();
+            int c = 0;
+            for (int i = 0; i < strs.Length; i++)
+            {
+                if (!dat.Contains(strs[i]))
+                {
+                    for (int x = 0; x < strs.Length; x++)
+                    {
+                        if (strs[i] == strs[x] && i != x)
+                        {
+                            c++;
+                        }
+                    }
+                    dat.Add(strs[i]);
+                    count.Add(c);
+                    c = 0;
+                }
+            }
+
+            if(count.Count == 1)
+            {
+                return dat[0];
+            }
+            else
+            {
+                int max = 0;
+                for (int i = 1; i < count.Count; i++)
+                {
+                    if(count[i] > count[max])
+                    {
+                        max = i;
+                    }
+                }
+                return dat[max];
+            }
+        }
     }
 }

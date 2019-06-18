@@ -16,8 +16,8 @@
     
     <asp:ContentPlaceHolder ID="head" runat="server">
         <link href="/Assets/Styles/Main.css" rel="stylesheet" />
-      <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+        <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
     </asp:ContentPlaceHolder>
 
 </head>
@@ -30,10 +30,12 @@
             <div class="row align-items-center align-content-between">
                 <div class="col-3"><a href="/default.aspx" id="logo"><img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
                 <div class="col-6" style="margin-top:15px"><div class="input-group mb-3">
-            <input class="form-control py-2 border-right-0 border" type="text" placeholder="Buscar producto..." id="buscador" />
+                    
+            <asp:TextBox class="form-control py-2 border-right-0 border" type="text" placeholder="Buscar producto..." id="txtBuscador" runat="server"></asp:TextBox>
     
             <span class="input-group-append">
-                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                    <%-- <asp:Button ID="Button1" runat="server" Text="Button" />--%>
+               <button class="btn btn-outline-secondary border-left-0 border" type="button" runat="server" onserverclick="ejecutarBuscador">
                     <i class="fa fa-search"></i>
                 </button>
               </span></div>  
@@ -72,7 +74,7 @@
         </div>
 
 <footer class="footer align-bottom">
-            <div class="datos-footer">ARVO SRL | Todos los derechos reservados - 2019</div>
+            <div class="datos-footer">ARVO SRL | Todos los derechos reservados - 2019
             <!--ARVO SRL | Todos los derechos reservados-->
         </footer>
 
