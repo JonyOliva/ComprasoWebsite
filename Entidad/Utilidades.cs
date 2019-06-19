@@ -64,6 +64,30 @@ namespace Entidad
             return pMostrar;
         }
 
+        public static bool soloLetras(string str)
+        {
+            foreach (char ch in str)
+            {
+                if (!char.IsLetter(ch))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool validarString(string str, bool permitirNumeros, bool permitirLetras, bool permitirEspeciales) //si la cadena esta entre los parametros dados la func retorna true
+        {
+            foreach (char ch in str)
+            {
+                if (!((char.IsLetter(ch) && permitirLetras) || (char.IsNumber(ch) && permitirNumeros) || (char.IsSymbol(ch) && permitirEspeciales)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static bool ContieneNumeros(string cadena, int cantidad)
         {
             for(int i = 0; i < cantidad; i++)
