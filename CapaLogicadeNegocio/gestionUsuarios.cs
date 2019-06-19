@@ -22,14 +22,12 @@ namespace CapaLogicadeNegocio
 
         public DataTable getListaDirecxUsuario(string IdUsuario)
         {
-            BaseDeDatos bd = new BaseDeDatos(databasePath);
             return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IdUsuario_DIR = "+ IdUsuario, "Direcciones");
         }
 
 
         public bool getUsuario(ref Usuario usuario)
         {
-            BaseDeDatos bd = new BaseDeDatos(databasePath); 
             DataTable data = bd.getTable("SELECT * FROM USUARIOS WHERE Email_USU='" + usuario.Email + "'", "usuario");
             if(data.Rows.Count > 0)
             {

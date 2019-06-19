@@ -14,12 +14,36 @@ namespace ArvoProjectWebsite.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["user"] != null)
+                {
+                    string user = Request.Cookies["user"].Value;
+                    cargarUsuario(user);
+                }
+                if (Application["Usuario"] != null)
+                {
+                    Usuario user = (Usuario)Application["Usuario"];
+                    Cuenta.Text += user.Nombre;
+                    Cuenta.Visible = true;
+                    InicSec.Visible = false;
+                }
+                else
+                {
+                    InicSec.Visible = true;
+                    Cuenta.Visible = false;
+                }
+            }
         }
 
-        protected void InicSec_Click(object sender, EventArgs e)
+        void cargarUsuario(string strEmail)
         {
-            Response.Redirect("/WebForms/frmLogin.aspx");
+            gestionUsuarios gu = new gestionUsuarios();
+            Usuario us = new Usuario(strEmail);
+            if (gu.getUsuario(ref us))
+            {
+                Application["Usuario"] = us;
+            }
         }
 
         protected void Carrito_Click(object sender, EventArgs e)
@@ -38,6 +62,18 @@ namespace ArvoProjectWebsite.WebForms
             string[] words = txtBuscador.Text.Split();
             Session["Buscador"] = words;
             Response.Redirect("/WebForms/frmListaProductos.aspx");
+        }
+
+        protected void btnUser_Command(object sender, CommandEventArgs e)
+        {
+            if(e.CommandName == "init")
+            {
+                Response.Redirect("/WebForms/frmLogin.aspx");
+            }
+            else
+            {
+                Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+            }
         }
     }
 }

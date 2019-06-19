@@ -22,20 +22,26 @@ namespace ArvoProjectWebsite
             lblAst1.Visible = false;
             lblAst2.Visible = false;
 
-            Usuario user = new Usuario();
-            user.Email = txtUsuario.Text.Trim();
+            Usuario user = new Usuario(txtUsuario.Text.Trim());
             gestionUsuarios gu = new gestionUsuarios();
             if (!String.IsNullOrWhiteSpace(txtUsuario.Text))
             {
                 if (gu.getUsuario(ref user))
                 {
-                    //Response.Write(user.IDUsuario + user.Apellido);
                     if (!String.IsNullOrWhiteSpace(txtPass.Text))
                     {
                         if (txtPass.Text == user.Password)
                         {
                             Application["Usuario"] = user;
-                            Server.Transfer("/WebForms/default.aspx");
+                            if (chrRecordar.Checked)
+                            {         
+                                HttpCookie ck = new HttpCookie("user");
+                                ck.Value = user.Email;
+                                ck.Name = "user";
+                                ck.Expires = DateTime.Now.AddMinutes(2); //esto es por tema de debug
+                                Response.Cookies.Add(ck);
+                            }
+                            Server.Transfer("/default.aspx");
                         }
                         else
                         {
@@ -106,8 +112,7 @@ namespace ArvoProjectWebsite
             {
                 string cuit = txtCuit1SignUp.Text.Trim() + txtDniSignUp.Text.Trim() + txtCuit2SignUp.Text.Trim();
                 gestionUsuarios gu = new gestionUsuarios();
-                Usuario user = new Usuario();
-                user.Email = txtEmail.Text.Trim();
+                Usuario user = new Usuario(txtEmail.Text.Trim());
                 if (gu.getUsuario(ref user))
                 {
                     if(user.IDUsuario == cuit && DateTime.Compare(Convert.ToDateTime(txtFechaSignUp.Text), Convert.ToDateTime(user.FechaNac)) == 0 && user.Email == txtEmail.Text.Trim())

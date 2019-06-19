@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-5 text-right">Email:</div>
                             <div class="col">
-                                <asp:TextBox ID="txtUsuario" runat="server" Width="220px">
+                                <asp:TextBox ID="txtUsuario" runat="server" Width="220px" TextMode="Email" ToolTip="Ingrese un email válido. Formato aaa@bbb.ccc">
                                 </asp:TextBox>
                                 <asp:Label ID="lblAst1" runat="server" ForeColor="Red" Text="*" Visible="False"></asp:Label>
                             </div>

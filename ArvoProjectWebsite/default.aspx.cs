@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CapaLogicadeNegocio;
+using Entidad;
 
 namespace ArvoProjectWebsite
 {
@@ -14,7 +16,6 @@ namespace ArvoProjectWebsite
 
         }
 
-        
 
         protected void InicSec_Click(object sender, EventArgs e)
         {
@@ -27,5 +28,7 @@ namespace ArvoProjectWebsite
         {
             Response.Redirect("frmCarrito.aspx");
         }
+
+
     }
 }

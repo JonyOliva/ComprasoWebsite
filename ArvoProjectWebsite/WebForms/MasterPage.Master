@@ -42,7 +42,8 @@
   </div>
 
                 <div class="col-2 text-right">
-                         <asp:LinkButton class="text-dark" ID="InicSec" runat="server" OnClick="InicSec_Click"><i class="far fa-user fa-lg"></i> Iniciar sesión</asp:LinkButton>
+                         <asp:LinkButton class="text-dark" ID="InicSec" runat="server" Visible="False" CommandName="init" OnCommand="btnUser_Command"><i class="far fa-user fa-lg"></i> Iniciar sesión</asp:LinkButton>
+                         <asp:LinkButton class="text-dark" ID="Cuenta" runat="server" Visible="False" CommandName="acc" OnCommand="btnUser_Command"><i class="far fa-user-circle fa-lg"></i> </asp:LinkButton>
                 </div>
                 <div class="col-1"> 
                      <asp:LinkButton class="text-dark" ID="Carrito" runat="server" OnClick="Carrito_Click"><i class="fas fa-shopping-cart fa-lg"></i></asp:LinkButton>
