@@ -18,21 +18,6 @@ namespace CapaLogicadeNegocio
         {
             bd = new BaseDeDatos(databasePath);
         }
-        public bool eliminarProducto(Producto prod)
-        {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("@IDProducto", prod.IDProducto);
-            cmd.Parameters.AddWithValue("@Nombre", prod.Nombre);
-            cmd.Parameters.AddWithValue("@Cat", prod.Categoria);
-            cmd.Parameters.AddWithValue("@SubCat", prod.SubCategoria);
-            cmd.Parameters.AddWithValue("@Marca", prod.Marca);
-            cmd.Parameters.AddWithValue("@Descrip", prod.Descripcion);
-            cmd.Parameters.AddWithValue("@Stock", prod.Stock);
-            cmd.Parameters.AddWithValue("@Descuento", prod.Descuento);
-
-            int resp = bd.ExecStoredProcedure(cmd, "spEliminarProducto");
-            return Convert.ToBoolean(resp);
-        }
         public DataTable getListaProductos()
         {
             return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
@@ -60,14 +45,34 @@ namespace CapaLogicadeNegocio
             return (Producto)data.Rows[0];
         }
 
-        public DataTable busquedaProductos(string busqueda)
+        public DataSet busquedaProductos(string srtSearch)
         {
-            DataTable tbl = bd.getTable("SELECT Nombre_PROD,Descripcion_PROD,Precio_PROD,Nombre_MARCA,RutaImagen " +
-                "FROM PRODUCTOS INNER JOIN MARCAS on IDMarca_prod = IDMarca " +
-                "WHERE Nombre_PROD LIKE '%" + busqueda + "%' " +
-                "OR Descripcion_PROD LIKE '%" + busqueda + "%' " +
-                "OR Nombre_MARCA LIKE'%" + busqueda + "%'", "Productos");
-            return tbl;
+            DataSet busqueda = new DataSet();
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Parameters.AddWithValue("@aBuscar", srtSearch);
+            DataTable fromProds = new DataTable("productos");
+            bd.ExecStoredProcedure(sqlCommand, "Buscador", ref fromProds);
+            DataTable fromCats, fromSubCats;
+            fromCats = bd.getTable("SELECT IDCategoria FROM CATEGORIAS WHERE Nombre_CAT LIKE '%" + srtSearch + "%'", "categorias");
+            string selectSubCats = "SELECT IDSubCategoria FROM SUBCATEGORIAS WHERE (Nombre_SUBCAT LIKE '%" + srtSearch + "%')";
+            if (fromCats.Rows.Count > 0)
+            {
+                selectSubCats += " AND (";
+                for (int i = 0; i < fromCats.Rows.Count; i++)
+                {
+                    selectSubCats += "IDCategoria_SUBCAT='" + fromCats.Rows[i][0] + "'";
+                    if (!(i <= fromCats.Rows.Count - 1))
+                    {
+                        selectSubCats += " OR ";
+                    }
+                }
+                selectSubCats += ")";
+            }
+            fromSubCats = bd.getTable(selectSubCats, "subcategorias");
+            busqueda.Tables.Add(fromProds);
+            busqueda.Tables.Add(fromCats);
+            busqueda.Tables.Add(fromSubCats);
+            return busqueda;
         }
 
     }

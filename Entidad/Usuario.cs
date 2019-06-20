@@ -18,6 +18,16 @@ namespace Entidad
         private string nrocel;
         private string fechaNac;
 
+        public Usuario()
+        {
+
+        }
+
+        public Usuario(string _Email)
+        {
+            Email = _Email;
+        }
+
         public string IDUsuario
         {
             get { return idUsuario; }

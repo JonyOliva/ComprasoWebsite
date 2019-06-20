@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaLogicadeNegocio;
 using Entidad;
@@ -12,45 +9,83 @@ namespace ArvoProjectWebsite
 {
     public partial class frmListaProductos : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e) //ESTE FORM SE CONECTA CON LA BD DEL SERVIDOR
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                List<string> filtro = new List<string>();
                 if (Session["filtroCategoria"] == null)
                 {
-                    Server.Transfer("/default.aspx");
+                    if(Session["Buscador"] == null)
+                    {
+                        Server.Transfer("/default.aspx", false);
+                    }
+                    else
+                    {
+                        string[] tempStr = EmpezarBusqueda();
+                        if (tempStr != null)
+                        {
+                            filtro.AddRange(tempStr);
+                        }
+                        else
+                        {
+                            Server.Transfer("/default.aspx", false);
+                            //ERROR NO SE ENCONTRARON RESULTADOS
+                        }
+                    }                    
                 }
                 llenarFiltroCats();
-                ddlCat.SelectedValue = Session["filtroCategoria"].ToString();
+                if (filtro.Count == 0)
+                {
+                    ddlCat.SelectedValue = Session["filtroCategoria"].ToString();
+                }
+                else
+                {
+                    Session["filtroCategoria"] = ddlCat.SelectedValue = filtro[0];
+                }
                 llenarFiltroSubCats();
                 llenarFiltroMarcas();
+
                 if(this.Session["Carrito"] == null)
                 {
                     this.Session["Carrito"] = crearTablacarrito();
+
+
+                if(filtro.Count > 1)
+                {
+                    ddlSubCat.SelectedValue = filtro[1];
+                    btnFiltrar_Click(new object(), new EventArgs());
+
                 }
             }
 
         }
 
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            Session["filtroCategoria"] = null;
+            Session["Buscador"] = null;
+        }
+
         protected void InicSec_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/WebForms/frmLogin.aspx");
+            //Response.Redirect("/WebForms/frmLogin.aspx");
         }
 
         protected void Carrito_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/WebForms/frmCarrito.aspx");
+            //Response.Redirect("/WebForms/frmCarrito.aspx");
         }
 
         protected void item_Command(object sender, CommandEventArgs e)
         {
-            Session["filtroCategoria"] = e.CommandArgument;
-            Response.Redirect("/WebForms/frmListaProductos.aspx");
+            //Session["filtroCategoria"] = e.CommandArgument;
+            //Response.Redirect("/WebForms/frmListaProductos.aspx");
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmCarrito.aspx");
+            //Response.Redirect("frmCarrito.aspx");
 	    }
 
         void llenarFiltroMarcas()
@@ -137,11 +172,11 @@ namespace ArvoProjectWebsite
         protected void imgProducto_Command(object sender, CommandEventArgs e)
         {
             Response.Redirect("frmProducto.aspx?IDProd=" + e.CommandArgument);
+            //Server.Transfer("frmProducto.aspx?IDProd=" + e.CommandArgument, false);
         }
 
         protected void btnSinFiltro_Click(object sender, EventArgs e)
         {
-            Session["filtroCategoria"] = null;
             sqldataProductos.SelectCommand = "SELECT[IDProducto], [Nombre_PROD], [RutaImagen], [Descuento_PROD], [Precio_PROD] FROM[PRODUCTOS] WHERE([ACTIVO] = @ACTIVO)";
             ddlCat.SelectedIndex = 0;
             ddlSubCat.SelectedIndex = 0;
@@ -177,6 +212,7 @@ namespace ArvoProjectWebsite
             lblCant.Text = lstViewProductos.Items.Count + " resultados";
         }
 
+
         protected void ddlOrdenar_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ViewState["filtro"] != null)
@@ -186,6 +222,7 @@ namespace ArvoProjectWebsite
             OrdenarLista();
             lstViewProductos.DataBind();
         }
+
 
         public void añadirCarrito(DataTable tbl, Producto prod)
         {
@@ -207,6 +244,64 @@ namespace ArvoProjectWebsite
             tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
 
             return tbl;
+
+        string[] EmpezarBusqueda()
+        {
+            string[] words = (string[])Session["Buscador"];
+            gestionProductos gp = new gestionProductos();
+            DataSet[] datasets = new DataSet[words.Length];
+            for (int i = 0; i < datasets.Length; i++)
+            {
+                datasets[i] = gp.busquedaProductos(words[i]);
+            }
+            List<string> cats = new List<string>();
+            List<string> subcats = new List<string>();
+            for (int x = 0; x < datasets.Length; x++)
+            {
+                foreach (DataRow item in datasets[x].Tables["productos"].Rows)
+                {
+                    cats.Add(item[0].ToString());
+                    subcats.Add(item[1].ToString());
+                }
+                foreach (DataRow item in datasets[x].Tables["categorias"].Rows)
+                {
+                    cats.Add(item[0].ToString());
+                }
+                foreach (DataRow item in datasets[x].Tables["subcategorias"].Rows)
+                {
+                    subcats.Add(item[0].ToString());
+                }                
+            }
+
+            List<string> filtro = new List<string>();
+            if(cats.Count > 1)
+            {
+                filtro.Add(Utilidades.getMasRepetido(cats.ToArray()));
+            }
+            else if(cats.Count == 1)
+            {
+                filtro.Add(cats[0]);
+            }
+
+            if(subcats.Count > 1)
+            {
+                filtro.Add(Utilidades.getMasRepetido(subcats.ToArray()));
+            }
+            else if (subcats.Count == 1)
+            {
+                filtro.Add(subcats[0]);
+            }
+
+            if(filtro.Count != 0)
+            {
+                return filtro.ToArray();
+            }
+            else
+            {
+                return null;
+            }
+
+
         }
     }
 }

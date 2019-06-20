@@ -135,7 +135,7 @@ namespace ArvoProjectWebsite.WebForms
                 if (gestionUsuarios.AgregarUsuario(usuario).ToString() == "2627" )
                 {
                     lblMailSignUp.Text = "El mail puede ya estar registrado.";
-                    lblCuitSignUp.Text = "El CUIT ya puede estar registrado";
+                    lblCuitSignUp.Text = "El CUIT ya puede estar registrado"; //ya existe un usuario con los datos ingresados
                 }
                 else
                 {

@@ -8,9 +8,9 @@ namespace Entidad
 {
     public enum EstadoCompra
     {
-        Enproceso,
-        Cancelada,
-        Enviada,
+        Procesando,
+        Cancelado,
+        Enviado,
         Entregado
     }
 
@@ -64,6 +64,30 @@ namespace Entidad
             return pMostrar;
         }
 
+        public static bool soloLetras(string str)
+        {
+            foreach (char ch in str)
+            {
+                if (!char.IsLetter(ch))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool validarString(string str, bool permitirNumeros, bool permitirLetras, bool permitirEspeciales) //si la cadena esta entre los parametros dados la func retorna true
+        {
+            foreach (char ch in str)
+            {
+                if (!((char.IsLetter(ch) && permitirLetras) || (char.IsNumber(ch) && permitirNumeros) || (char.IsSymbol(ch) && permitirEspeciales)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static bool ContieneNumeros(string cadena, int cantidad)
         {
             for(int i = 0; i < cantidad; i++)
@@ -87,6 +111,46 @@ namespace Entidad
         public static string ObtenerEstadoEnvio (Byte a)
         {
             return "jaja";
+        }
+
+        public static string getMasRepetido(string[] strs)
+        {
+            List<int> count = new List<int>();
+            List<string> dat = new List<string>();
+            int c = 0;
+            for (int i = 0; i < strs.Length; i++)
+            {
+                if (!dat.Contains(strs[i]))
+                {
+                    for (int x = 0; x < strs.Length; x++)
+                    {
+                        if (strs[i] == strs[x] && i != x)
+                        {
+                            c++;
+                        }
+                    }
+                    dat.Add(strs[i]);
+                    count.Add(c);
+                    c = 0;
+                }
+            }
+
+            if(count.Count == 1)
+            {
+                return dat[0];
+            }
+            else
+            {
+                int max = 0;
+                for (int i = 1; i < count.Count; i++)
+                {
+                    if(count[i] > count[max])
+                    {
+                        max = i;
+                    }
+                }
+                return dat[max];
+            }
         }
     }
 }
