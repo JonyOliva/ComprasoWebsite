@@ -33,57 +33,34 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnDireccionesMenuUsuario_Click(object sender, EventArgs e)
         {
-            Usuario usu = new Usuario();
-            usu.IDUsuario = "0000";
-            Application["Usuario"] = usu;
-
             lblMenuUsuario.Text = "Direcciones";
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
-            DataTable Tabla = gestionUsuarios.Direcciones_x_Usuario((Usuario)Application["Usuario"]);
-            grdMenuUsuario.DataSource = Tabla;
-            Session["Direcciones"] = Tabla;
+            Session["Direcciones"] = gestionUsuarios.Direcciones_x_Usuario((Usuario)Application["Usuario"]);
+            grdMenuUsuario.DataSource = Session["Direcciones"];
             grdMenuUsuario.DataBind();
         }
 
         protected void lbtnMdPMenuUsuario_Click(object sender, EventArgs e)
         {
-            
-            Usuario usu = new Usuario();
-            usu.IDUsuario = "0000";
-            Application["Usuario"] = usu;
-
             lblMenuUsuario.Text = "Medios de Pago";
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
 
-            DataTable Tabla = gestionUsuarios.Tarjetas_x_Usuario((Usuario)Application["Usuario"]);
-            grdMenuUsuario.DataSource = Tabla;
-            Session["MdP"] = Tabla;
+            Session["MdP"] = gestionUsuarios.CargarMdPxUsu((Usuario)Application["Usuario"]);
+            grdMenuUsuario.DataSource = Session["MdP"];
             grdMenuUsuario.DataBind();
         }
 
         protected void lbtnComprasMenuUsuario_Click(object sender, EventArgs e)
         {
-            Usuario usu = new Usuario();
-            usu.IDUsuario = "0000";
-            Application["Usuario"] = usu;
-
             lblMenuUsuario.Text = "Compras";
 
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
-            DataTable Tabla = new DataTable();
-            Tabla = gestionUsuarios.CargarTablaCompras(((Usuario)Application["Usuario"]));
-    
-            Session["Compras"] = Tabla;
+            Session["Compras"] = gestionUsuarios.CargarTablaCompras(((Usuario)Application["Usuario"]));
             grdMenuUsuario.DataSource = Session["Compras"];
             grdMenuUsuario.DataBind();
         }
 
-        protected void grdMenuUsuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
 
-
-        }
 
         protected void grdMenuUsuario_RowDeleted(object sender, GridViewDeletedEventArgs e)
         {
@@ -92,10 +69,7 @@ namespace ArvoProjectWebsite.WebForms
             else lblDniMenuUsuario.Text = "jajaj";
         }
 
-        protected void grdMenuUsuario_RowEditing(object sender, GridViewEditEventArgs e)
-        {
 
-        }
 
         protected void grdMenuUsuario_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -117,9 +91,15 @@ namespace ArvoProjectWebsite.WebForms
                         lblDniMenuUsuario.Text = ((DataTable)Session["Compras"]).Rows[e.RowIndex][7].ToString();
                     }
                     break;
-                case "Medios de Pago":
+                case "Medios de Pago": gestionUsuarios.EliminarMediodePagoxUsu((Usuario)Application["Usuario"], ((DataTable)Session["MdP"]).Rows[e.RowIndex][1].ToString());
+                                       Session["MdP"] = gestionUsuarios.CargarMdPxUsu((Usuario)Application["Usuario"]);
+                                       grdMenuUsuario.DataSource = Session["MdP"];
+                                       grdMenuUsuario.DataBind();
                     break;
-                case "Direcciones":
+                case "Direcciones": gestionUsuarios.EliminarDireccion((Usuario)Application["Usuario"], (Convert.ToInt32(((DataTable)Session["Direcciones"]).Rows[e.RowIndex][1])));
+                                    Session["Direcciones"] = gestionUsuarios.CargarDirecciones((Usuario)Application["Usuario"]);
+                                    grdMenuUsuario.DataSource = Session["Direcciones"];
+                                    grdMenuUsuario.DataBind();
                     break;
             }
             

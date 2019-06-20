@@ -102,3 +102,27 @@ AS
 UPDATE VENTAS
 SET Estado = 1 WHERE IDVenta = @IdVenta
 GO
+
+
+-Eliminar MedioDePago
+create procedure spEliminarMdP
+(
+	@IdUsuario char(12),
+	@IdTarjxU char(4)
+)
+as
+begin
+Delete from TarjetasxUsuario where @IdTarjxU = IDTarjeta_TxU and @IdUsuario = IDUsuario_TxU
+end
+
+-Eliminar Direccion
+create procedure spEliminarDireccion
+(
+	@IdUsuario char(12),
+	@CodDireccion int
+)
+as
+begin
+Delete from DirecxUsuario where @CodDireccion = CodDirreccion and @IdUsuario = IDUsuario_DIR
+end
+Go

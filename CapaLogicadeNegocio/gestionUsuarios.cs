@@ -22,14 +22,14 @@ namespace CapaLogicadeNegocio
 
         public DataTable getListaDirecxUsuario(string IdUsuario)
         {
-            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IdUsuario_DIR = "+ IdUsuario, "Direcciones");
+            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IdUsuario_DIR = " + IdUsuario, "Direcciones");
         }
 
 
         public bool getUsuario(ref Usuario usuario)
         {
             DataTable data = bd.getTable("SELECT * FROM USUARIOS WHERE Email_USU='" + usuario.Email + "'", "usuario");
-            if(data.Rows.Count > 0)
+            if (data.Rows.Count > 0)
             {
                 usuario.IDUsuario = data.Rows[0]["IDUsuario"].ToString().Trim();
                 usuario.Password = data.Rows[0]["Password_USU"].ToString().Trim();
@@ -109,6 +109,42 @@ namespace CapaLogicadeNegocio
             }
             Tabla.Columns.RemoveAt(7);
             return Tabla;
+        }
+
+        public DataTable CargarMdPxUsu(Usuario usu)
+        {
+            DataTable Tabla;
+            Tabla = Tarjetas_x_Usuario(usu);
+            Tabla.Columns.RemoveAt(0);
+            return Tabla;
+        }
+
+        public DataTable CargarDirecciones(Usuario usu)
+        {
+            DataTable Tabla;
+            Tabla = Direcciones_x_Usuario(usu);
+            Tabla.Columns.RemoveAt(0);
+            return Tabla;
+        }
+
+        public bool EliminarMediodePagoxUsu(Usuario usu, string Id)
+        {
+            bool Eliminado = false;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("IdUsuario", usu.IDUsuario);
+            cmd.Parameters.AddWithValue("IdTarjxU", Id);
+            Eliminado = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spEliminarMdp"));
+            return Eliminado;
+        }
+
+        public bool EliminarDireccion (Usuario usu, int CodDireccion)
+        {
+            bool Eliminado = false;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("IdUsuario", usu.IDUsuario);
+            cmd.Parameters.AddWithValue("CodDireccion", CodDireccion);
+            Eliminado = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spEliminarDireccion"));
+            return Eliminado;
         }
     }
 }

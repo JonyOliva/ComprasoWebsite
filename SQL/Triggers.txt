@@ -1,0 +1,26 @@
+CREATE TRIGGER DevolverStock
+on Ventas
+after update
+as BEGIN
+set nocount on;
+
+if(1 = (select estado from inserted))
+BEGIN
+Declare @Cantidad int
+Declare @IdProd char(4)
+Declare FilaDet CURSOR FOR select Cantidad_DETV, IDProducto_DETV from DETVENTAS where IDVenta_DETV = (select IDVenta from inserted)
+Open FilaDet
+FETCH NEXT FROM FilaDet into @Cantidad, @IdProd
+WHILE @@FETCH_STATUS = 0
+
+BEGIN
+update PRODUCTOS
+set Stock_PROD = Stock_PROD + @Cantidad
+where IDProducto = @IdProd
+FETCH NEXT FROM FilaDet into @Cantidad, @IdProd
+END
+CLOSE FilaDet
+Deallocate FilaDet
+END
+
+END
