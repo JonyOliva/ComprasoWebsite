@@ -10,7 +10,7 @@
     <link href="/Assets/Styles/productos.css" rel="stylesheet" />
     <link href="/Assets/Styles/master.css" rel="stylesheet" />
     <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.cs
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.cs "/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -44,18 +44,12 @@
         <a class="navbar-item" href="#">Casa y Jardín</a>
        
     </nav>
-        <div style="margin-left: 240px">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <asp:Label ID="lblNocarrito" runat="server" Text="No posee ningún articulo en el carrito."></asp:Label>
-        </div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand" OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound">
+        <div>
+        &nbsp;&nbsp;&nbsp;
+        <asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand"  OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" HorizontalAlign="Center" OnSorting="grdCarrito_Sorting">
             <Columns>
                 <asp:ImageField DataImageUrlField="RutaImagen">
+                    <ControlStyle Height="100px" Width="150px" />
                 </asp:ImageField>
                 <asp:CommandField DeleteText="Quitar" ShowDeleteButton="True" />
                 <asp:TemplateField>
@@ -64,14 +58,29 @@
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
+            <FooterStyle BackColor="White" ForeColor="#333333" />
+            <HeaderStyle BackColor="#0033CC" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="White" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="Blue" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F7F7F7" />
+            <SortedAscendingHeaderStyle BackColor="#487575" />
+            <SortedDescendingCellStyle BackColor="#E5E5E5" />
+            <SortedDescendingHeaderStyle BackColor="#275353" />
         </asp:GridView>
-        <asp:LinkButton ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click">Seguir comprando</asp:LinkButton>
+            <asp:Label ID="lblNocarrito" runat="server" Text="No posee ningún articulo en el carrito." ></asp:Label>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:LinkButton ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" CssClass="align-self-center" Font-Underline="True" ForeColor="#3333CC">Seguir comprando</asp:LinkButton>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:LinkButton ID="lnkComprar" runat="server" OnClick="lnkComprar_Click">Proceder a la comprar</asp:LinkButton>
+        <asp:LinkButton ID="lnkComprar" runat="server" OnClick="lnkComprar_Click" CssClass="align-self-auto" Font-Underline="True" ForeColor="#3333CC">Realizar compra</asp:LinkButton>
     </form>
-
-    </form>
-
-
 </body>
 </html>

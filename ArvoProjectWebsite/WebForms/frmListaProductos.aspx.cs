@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaLogicadeNegocio;
 using Entidad;
+using System.Data;
 
 namespace ArvoProjectWebsite
 {
@@ -23,6 +24,10 @@ namespace ArvoProjectWebsite
                 ddlCat.SelectedValue = Session["filtroCategoria"].ToString();
                 llenarFiltroSubCats();
                 llenarFiltroMarcas();
+                if(this.Session["Carrito"] == null)
+                {
+                    this.Session["Carrito"] = crearTablacarrito();
+                }
             }
 
         }
@@ -124,20 +129,9 @@ namespace ArvoProjectWebsite
 
         protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)
         {
-            List<Producto> carrito = new List<Producto>();
             gestionProductos gp = new gestionProductos();
-            if (this.Session["Carrito"] != null)
-            {
-                carrito = (List<Producto>)this.Session["Carrito"];
-                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
-                this.Session["Carrito"] = carrito;
-            }
-            else
-            {
-                
-                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
-                this.Session["Carrito"] = carrito;
-            }
+            añadirCarrito((DataTable)this.Session["Carrito"]
+                , gp.getProducto(e.CommandArgument.ToString()));
         }
 
         protected void imgProducto_Command(object sender, CommandEventArgs e)
@@ -191,6 +185,28 @@ namespace ArvoProjectWebsite
             }
             OrdenarLista();
             lstViewProductos.DataBind();
+        }
+
+        public void añadirCarrito(DataTable tbl, Producto prod)
+        {
+                DataRow row = tbl.NewRow();
+                row["Producto"] = prod.Nombre;
+                row["Marca"] = prod.Marca;
+                row["Precio"] = prod.Precio;
+                row["RutaImagen"] = prod.RutaImagen.Trim();
+                tbl.Rows.Add(row);
+           
+        }
+
+        public DataTable crearTablacarrito()
+        {
+            DataTable tbl = new DataTable();
+            tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
+            tbl.Columns.Add(new DataColumn("Marca", System.Type.GetType("System.String")));
+            tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
+            tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
+
+            return tbl;
         }
     }
 }
