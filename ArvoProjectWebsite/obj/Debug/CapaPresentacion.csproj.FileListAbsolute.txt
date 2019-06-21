@@ -1,3 +1,186 @@
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll.config
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.exe
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.exe.config
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.rsp
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.exe
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.exe.config
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.rsp
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.AppContext.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Console.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Compression.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Claims.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.ValueTuple.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.exe
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.exe.config
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.rsp
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\VBCSCompiler.exe
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csprojAssemblyReference.cache
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CopyComplete
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\ArvoProjectWebsite.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\ArvoProjectWebsite.pdb
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll.config
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.pdb
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.exe
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.exe.config
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.rsp
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.exe
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.exe.config
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.rsp
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.AppContext.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Console.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Compression.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Pipes.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Claims.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.ValueTuple.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XPath.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.exe
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.exe.config
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.rsp
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\VBCSCompiler.exe
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.pdb
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.pdb
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.pdb
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csprojAssemblyReference.cache
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CopyComplete
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\ArvoProjectWebsite.dll
+C:\Users\julie\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\ArvoProjectWebsite.pdb
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.dll
+C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csprojAssemblyReference.cache
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\ArvoProjectWebsite.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\ArvoProjectWebsite.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll.config
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.exe
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.exe.config
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csc.rsp
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.exe
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.exe.config
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\csi.rsp
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.AppContext.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Collections.Immutable.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Console.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Compression.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.FileSystem.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.IO.Pipes.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Reflection.Metadata.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.AccessControl.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Claims.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.ValueTuple.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XPath.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.exe
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.exe.config
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\vbc.rsp
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\VBCSCompiler.exe
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\roslyn\VBCSCompiler.exe.config
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.dll
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.pdb
+E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CopyComplete
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll.config
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.pdb
@@ -52,9 +235,10 @@ C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\Enti
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.dll
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.pdb
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.pdb
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.pdb
+C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csprojAssemblyReference.cache
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CopyComplete
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\ArvoProjectWebsite.dll
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\ArvoProjectWebsite.pdb
-C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csprojAssemblyReference.cache

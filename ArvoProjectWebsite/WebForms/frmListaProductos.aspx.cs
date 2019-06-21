@@ -46,16 +46,10 @@ namespace ArvoProjectWebsite
                 llenarFiltroSubCats();
                 llenarFiltroMarcas();
 
-                if(this.Session["Carrito"] == null)
-                {
-                    this.Session["Carrito"] = crearTablacarrito();
-
-
                 if(filtro.Count > 1)
                 {
                     ddlSubCat.SelectedValue = filtro[1];
                     btnFiltrar_Click(new object(), new EventArgs());
-
                 }
             }
 
@@ -164,9 +158,20 @@ namespace ArvoProjectWebsite
 
         protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)
         {
+            List<Producto> carrito = new List<Producto>();
             gestionProductos gp = new gestionProductos();
-            añadirCarrito((DataTable)this.Session["Carrito"]
-                , gp.getProducto(e.CommandArgument.ToString()));
+            if (this.Session["Carrito"] != null)
+            {
+                carrito = (List<Producto>)this.Session["Carrito"];
+                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
+                this.Session["Carrito"] = carrito;
+            }
+            else
+            {
+                
+                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
+                this.Session["Carrito"] = carrito;
+            }
         }
 
         protected void imgProducto_Command(object sender, CommandEventArgs e)
@@ -223,28 +228,6 @@ namespace ArvoProjectWebsite
             lstViewProductos.DataBind();
         }
 
-
-        public void añadirCarrito(DataTable tbl, Producto prod)
-        {
-                DataRow row = tbl.NewRow();
-                row["Producto"] = prod.Nombre;
-                row["Marca"] = prod.Marca;
-                row["Precio"] = prod.Precio;
-                row["RutaImagen"] = prod.RutaImagen.Trim();
-                tbl.Rows.Add(row);
-           
-        }
-
-        public DataTable crearTablacarrito()
-        {
-            DataTable tbl = new DataTable();
-            tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Marca", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
-            tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
-
-            return tbl;
-
         string[] EmpezarBusqueda()
         {
             string[] words = (string[])Session["Buscador"];
@@ -300,7 +283,6 @@ namespace ArvoProjectWebsite
             {
                 return null;
             }
-
 
         }
     }
