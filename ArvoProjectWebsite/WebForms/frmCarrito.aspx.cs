@@ -27,7 +27,10 @@ namespace ArvoProjectWebsite
         protected void lnkComprar_Click(object sender, EventArgs e)
         {
             if (lblNocarrito.Visible == true)
+            { 
                 Response.Write("<script language=javascript>alert('No posee productos en el carrito');</script>");
+            }
+                
 
                 else if (int.Parse(((TextBox)grdCarrito.Rows[2].FindControl("txtCantidad")).Text) < 1)
                 {
@@ -35,6 +38,7 @@ namespace ArvoProjectWebsite
                 }
                 else
                 {
+                    this.Session.Abandon();
                     Response.Redirect("frmCompra.aspx");
                 }
             
@@ -42,36 +46,35 @@ namespace ArvoProjectWebsite
 
         protected void grdCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Delete")
-            {
-                int pos = int.Parse(e.CommandArgument.ToString());
-                eliminarprodCarrito(((List<Producto>)this.Session["Carrito"]), pos);
-                actualizarCarrito();
-            }
+           
         }
 
         protected void grdCarrito_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
+                int pos = e.RowIndex;
+                eliminarprodCarrito((DataTable)this.Session["Carrito"], pos);
+                actualizarCarrito();
         }
 
-        public void eliminarprodCarrito(List<Producto> prod, int pos)
+        public void eliminarprodCarrito(DataTable tbl, int pos)
         {
-            if(prod.Count > 0)
-                prod.RemoveAt(pos);
-            if (prod.Count == 0)
-                prod = null;
+            if(pos < tbl.Rows.Count && pos >= 0)
+                tbl.Rows.RemoveAt(pos);
+            if (tbl.Rows.Count == 0)
+                tbl = null;
         }
 
         public void actualizarCarrito()
         {
-            if (this.Session["Carrito"] == null || ((List<Producto>)this.Session["Carrito"]).Count == 0)
+            if (this.Session["Carrito"] == null || ((DataTable)this.Session["Carrito"]).Rows.Count == 0)
             {
                 lblNocarrito.Visible = true;
+                lnkComprar.Enabled = false;
             }
             else
             {
                 lblNocarrito.Visible = false;
+                lnkComprar.Enabled = true;
 
             }
             cargarCarrito();
@@ -90,32 +93,18 @@ namespace ArvoProjectWebsite
 
         public void cargarCarrito()
         {
-            if(this.Session["Carrito"]!= null)
-            { 
-                DataTable tbl = new DataTable();
-                tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
-                tbl.Columns.Add(new DataColumn("Marca", System.Type.GetType("System.String")));
-                tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
-                tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
-
-
-                foreach (Producto item in ((List<Producto>)this.Session["Carrito"]))
-                {
-                    DataRow row = tbl.NewRow();
-                    row["Producto"] = item.Nombre;
-                    row["Marca"] = item.Marca;
-                    row["Precio"] = item.Precio;
-                    row["RutaImagen"] = item.RutaImagen;
-                    tbl.Rows.Add(row);
-                }
-
-                grdCarrito.DataSource = tbl;
-            }
+            grdCarrito.DataSource = (DataTable)this.Session["Carrito"];
         }
 
         protected void grdCarrito_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[6].Visible = false;
         }
+
+        protected void grdCarrito_Sorting(object sender, GridViewSortEventArgs e)
+        {
+
+        }
+        
     }
 }

@@ -40,15 +40,6 @@ namespace ArvoProjectWebsite {
         protected global::System.Web.UI.WebControls.LinkButton Carrito;
         
         /// <summary>
-        /// Control lblNocarrito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNocarrito;
-        
-        /// <summary>
         /// Control grdCarrito.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,15 @@ namespace ArvoProjectWebsite {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdCarrito;
+        
+        /// <summary>
+        /// Control lblNocarrito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNocarrito;
         
         /// <summary>
         /// Control lnkSeguircom.

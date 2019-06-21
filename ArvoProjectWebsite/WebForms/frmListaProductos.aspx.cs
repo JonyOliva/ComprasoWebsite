@@ -16,7 +16,7 @@ namespace ArvoProjectWebsite
                 List<string> filtro = new List<string>();
                 if (Session["filtroCategoria"] == null)
                 {
-                    if(Session["Buscador"] == null)
+                    if (Session["Buscador"] == null)
                     {
                         Server.Transfer("/default.aspx", false);
                     }
@@ -32,7 +32,7 @@ namespace ArvoProjectWebsite
                             Server.Transfer("/default.aspx", false);
                             //ERROR NO SE ENCONTRARON RESULTADOS
                         }
-                    }                    
+                    }
                 }
                 llenarFiltroCats();
                 if (filtro.Count == 0)
@@ -46,13 +46,16 @@ namespace ArvoProjectWebsite
                 llenarFiltroSubCats();
                 llenarFiltroMarcas();
 
-                if(filtro.Count > 1)
+                if (filtro.Count > 1)
                 {
                     ddlSubCat.SelectedValue = filtro[1];
                     btnFiltrar_Click(new object(), new EventArgs());
                 }
+                if (this.Session["Carrito"] == null)
+                {
+                    this.Session["Carrito"] = crearTablacarrito();
+                }
             }
-
         }
 
         protected void Page_Unload(object sender, EventArgs e)
@@ -68,7 +71,7 @@ namespace ArvoProjectWebsite
 
         protected void Carrito_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("/WebForms/frmCarrito.aspx");
+            Response.Redirect("/WebForms/frmCarrito.aspx");
         }
 
         protected void item_Command(object sender, CommandEventArgs e)
@@ -80,11 +83,11 @@ namespace ArvoProjectWebsite
         protected void Button2_Click(object sender, EventArgs e)
         {
             //Response.Redirect("frmCarrito.aspx");
-	    }
+        }
 
         void llenarFiltroMarcas()
         {
-            if(ddlCat.SelectedValue != null && ddlSubCat.SelectedValue != null)
+            if (ddlCat.SelectedValue != null && ddlSubCat.SelectedValue != null)
             {
                 gestionProductos gp = new gestionProductos();
                 ddlMarcas.DataValueField = "IDMarca";
@@ -142,7 +145,7 @@ namespace ArvoProjectWebsite
 
         void filtrarxSubcategoria()
         {
-            if(!string.IsNullOrEmpty(ddlSubCat.SelectedValue))
+            if (!string.IsNullOrEmpty(ddlSubCat.SelectedValue))
             {
                 sqldataProductos.SelectCommand += " AND IDSubCategoria_PROD='" + ddlSubCat.SelectedValue + "'";
             }
@@ -158,20 +161,9 @@ namespace ArvoProjectWebsite
 
         protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)
         {
-            List<Producto> carrito = new List<Producto>();
             gestionProductos gp = new gestionProductos();
-            if (this.Session["Carrito"] != null)
-            {
-                carrito = (List<Producto>)this.Session["Carrito"];
-                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
-                this.Session["Carrito"] = carrito;
-            }
-            else
-            {
-                
-                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
-                this.Session["Carrito"] = carrito;
-            }
+            añadirCarrito((DataTable)this.Session["Carrito"]
+                , gp.getProducto(e.CommandArgument.ToString()));
         }
 
         protected void imgProducto_Command(object sender, CommandEventArgs e)
@@ -253,20 +245,20 @@ namespace ArvoProjectWebsite
                 foreach (DataRow item in datasets[x].Tables["subcategorias"].Rows)
                 {
                     subcats.Add(item[0].ToString());
-                }                
+                }
             }
 
             List<string> filtro = new List<string>();
-            if(cats.Count > 1)
+            if (cats.Count > 1)
             {
                 filtro.Add(Utilidades.getMasRepetido(cats.ToArray()));
             }
-            else if(cats.Count == 1)
+            else if (cats.Count == 1)
             {
                 filtro.Add(cats[0]);
             }
 
-            if(subcats.Count > 1)
+            if (subcats.Count > 1)
             {
                 filtro.Add(Utilidades.getMasRepetido(subcats.ToArray()));
             }
@@ -275,7 +267,7 @@ namespace ArvoProjectWebsite
                 filtro.Add(subcats[0]);
             }
 
-            if(filtro.Count != 0)
+            if (filtro.Count != 0)
             {
                 return filtro.ToArray();
             }
@@ -285,5 +277,27 @@ namespace ArvoProjectWebsite
             }
 
         }
+
+        public void añadirCarrito(DataTable tbl, Producto prod)
+        {
+            DataRow row = tbl.NewRow();
+            row["Producto"] = prod.Nombre;
+            row["Marca"] = prod.Marca;
+            row["Precio"] = prod.Precio;
+            row["RutaImagen"] = prod.RutaImagen.Trim();
+            tbl.Rows.Add(row);
+        }
+
+        public DataTable crearTablacarrito()
+        {
+            DataTable tbl = new DataTable();
+            tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
+            tbl.Columns.Add(new DataColumn("Marca", System.Type.GetType("System.String")));
+            tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
+            tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
+
+            return tbl;
+        }
+
     }
 }
