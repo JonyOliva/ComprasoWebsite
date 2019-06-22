@@ -178,7 +178,6 @@ E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.dll
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.dll
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.pdb
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.pdb
-E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.pdb
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CopyComplete
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll.config

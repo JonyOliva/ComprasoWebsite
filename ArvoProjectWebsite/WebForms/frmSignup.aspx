@@ -18,29 +18,29 @@
         </div>
         <div class="row mb-3">
             <div class="col-5 text-right"> Nombre:</div>
-            <div class="col"><asp:TextBox ID="txtNombreSignUp" runat="server" Width="280px" ToolTip="Ingrese su nombre."></asp:TextBox>
+            <div class="col"><asp:TextBox ID="txtNombreSignUp" runat="server" Width="280px" ToolTip="Ingrese su nombre." MaxLength="30"></asp:TextBox>
               <asp:Label ID="lblNombreSignUp" runat="server" CssClass="msjError"></asp:Label></div>
         </div>
           <div class="row mb-3">
             <div class="col-5 text-right"> Apellido:</div>
-            <div class="col"> <asp:TextBox ID="txtApellidoSignUp" runat="server" Width="280px" ToolTip="Ingrese su apellido."></asp:TextBox>
+            <div class="col"> <asp:TextBox ID="txtApellidoSignUp" runat="server" Width="280px" ToolTip="Ingrese su apellido." MaxLength="40"></asp:TextBox>
               <asp:Label ID="lblApellidoSignUp" runat="server" CssClass="msjError"></asp:Label></div>
         </div>
          <div class="row mb-3">
             <div class="col-5 text-right">   Contraseña:</div>
-            <div class="col"> <asp:TextBox ID="txtContraSingUp" runat="server" TextMode="Password" ToolTip="Ingrese su contraseña."></asp:TextBox>
+            <div class="col"> <asp:TextBox ID="txtContraSingUp" runat="server" TextMode="Password" ToolTip="Ingrese su contraseña." MaxLength="15"></asp:TextBox>
               <asp:Label ID="lblContraSignUp" runat="server" CssClass="msjError"></asp:Label></div>
         </div>
         <div class="row mb-3">
             <div class="col-5 text-right">   Repetir Contraseña:</div>
-            <div class="col"><asp:TextBox ID="txtRepContraSignUp" runat="server" TextMode="Password" ToolTip="Ingrese nuevamente su contraseña."></asp:TextBox>
+            <div class="col"><asp:TextBox ID="txtRepContraSignUp" runat="server" TextMode="Password" ToolTip="Ingrese nuevamente su contraseña." MaxLength="15"></asp:TextBox>
               <asp:Label ID="lblRepContraSignUp" runat="server" CssClass="msjError"></asp:Label></div>
         </div>
           <div class="row mb-3">
             <div class="col-5 text-right">  C.U.I.T/C.U.I.L:</div>
-            <div class="col"><asp:TextBox ID="txtCuit1SignUp" runat="server" Width="35px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
-              -<asp:TextBox ID="txtDniSignUp" runat="server" Width="135px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
-               -<asp:TextBox ID="txtCuit2SignUp" runat="server" Width="35px" ToolTip="No ingrese &quot;-&quot;."></asp:TextBox>
+            <div class="col"><asp:TextBox ID="txtCuit1SignUp" runat="server" Width="35px" ToolTip="No ingrese &quot;-&quot;." MaxLength="2"></asp:TextBox>
+              -<asp:TextBox ID="txtDniSignUp" runat="server" Width="135px" ToolTip="No ingrese &quot;-&quot;." MaxLength="9"></asp:TextBox>
+               -<asp:TextBox ID="txtCuit2SignUp" runat="server" Width="35px" ToolTip="No ingrese &quot;-&quot;." MaxLength="1"></asp:TextBox>
                 <asp:Label ID="lblCuitSignUp" runat="server" CssClass="msjError"></asp:Label></div>
         </div>
  <div class="row mb-3">
@@ -50,7 +50,7 @@
         </div>
         <div class="row mb-3">
             <div class="col-5 text-right">    Nro. Cel/Tel:</div>
-            <div class="col"> <asp:TextBox ID="txtTelefonoSignUp" runat="server" ></asp:TextBox>
+            <div class="col"> <asp:TextBox ID="txtTelefonoSignUp" runat="server" MaxLength="12" ></asp:TextBox>
               <asp:Label ID="lblTelefonoSignUp" runat="server" CssClass="msjError"></asp:Label></div>
         </div>
            <div class="row mt-2">

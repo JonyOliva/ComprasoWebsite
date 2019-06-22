@@ -20,9 +20,11 @@ namespace CapaLogicadeNegocio
             bd = new BaseDeDatos(databasePath);
         }
 
-        public DataTable getListaDirecxUsuario(string IdUsuario)
+        public DataTable getDropDrownUsuario(string a)
         {
-            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IdUsuario_DIR = " + IdUsuario, "Direcciones");
+           if(a == "Provincias") return bd.getTable("SELECT Provincia_ENVIO FROM ENVIOS", "Provincias");
+           else if (a == "Tarjetas") return bd.getTable("SELECT IDTarjeta_TARJ, Nombre_TARJ FROM TARJETAS", "Tarjetas");
+           return bd.getTable("SELECT Provincia_ENVIO FROM ENVIOS", "Provincias");
         }
 
 
@@ -146,5 +148,60 @@ namespace CapaLogicadeNegocio
             Eliminado = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spEliminarDireccion"));
             return Eliminado;
         }
+
+        public void AgregarDireccion(string id, string provincia, string direccion)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("IdUsuario", id);
+            cmd.Parameters.AddWithValue("Provincia", provincia);
+            cmd.Parameters.AddWithValue("Direccion", direccion);
+            bd.ExecStoredProcedure(cmd, "spAgregarDireccion");
+        }
+
+        public string AgregarMdP(string id, string tarjeta, string codtarj, string titular, string vencimiento)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("IdUsuario", id);
+            cmd.Parameters.AddWithValue("NroTarjeta", tarjeta);
+            cmd.Parameters.AddWithValue("IdTarj", codtarj);
+            cmd.Parameters.AddWithValue("Titular", titular);
+            cmd.Parameters.AddWithValue("Venc", vencimiento);
+            try
+            {
+               return bd.ExecStoredProcedure(cmd, "spAgregarMdP").ToString();
+            }
+            catch(Exception ex)
+            {
+                return ex.HelpLink;
+            }
+        }
+
+    
+
+        public int ValidarCUITyMail(string cuit, string mail)
+        {
+            DataTable Tabla = new DataTable();
+            cuit.Trim();
+            int respuesta = 0;
+            bool paso = false;
+            Tabla = bd.getTable("SELECT * FROM USUARIOS WHERE IDUsuario = '" + cuit+"'", "UsuarioCuit");
+            if (Tabla.Rows.Count >= 1)
+            {
+                respuesta = 2;
+                paso = true;
+            }
+            Tabla = bd.getTable("SELECT * FROM USUARIOS WHERE Email_USU = '" + mail+"'", "UsuarioMail");
+            if (Tabla.Rows.Count >= 1)
+            {
+                if(paso)
+                {
+                    respuesta = 3;
+                }
+                else respuesta = 1;
+            }
+            return respuesta;
+        }
+
+  
     }
 }
