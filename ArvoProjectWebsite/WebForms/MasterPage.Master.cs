@@ -12,40 +12,17 @@ namespace ArvoProjectWebsite.WebForms
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
+        gestorSesion sesion;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
             if (!IsPostBack)
             {
-                if (Request.Cookies["user"] != null)
-                {
-                    string user = Request.Cookies["user"].Value;
-                    cargarUsuario(user);
-                }
-                if (Application["Usuario"] != null)
-                {
-                    Usuario user = (Usuario)Application["Usuario"];
-                    Cuenta.Text += user.Nombre;
-                    Cuenta.Visible = true;
-                    InicSec.Visible = false;
-                }
-                else
-                {
-                    InicSec.Visible = true;
-                    Cuenta.Visible = false;
-                }
+                sesion.comprobarSesion();
             }
         }
-
-        void cargarUsuario(string strEmail)
-        {
-            gestionUsuarios gu = new gestionUsuarios();
-            Usuario us = new Usuario(strEmail);
-            if (gu.getUsuario(ref us))
-            {
-                Application["Usuario"] = us;
-            }
-        }
-
+        
         protected void Carrito_Click(object sender, EventArgs e)
         {
             Response.Redirect("/WebForms/frmCarrito.aspx");
@@ -66,13 +43,17 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void btnUser_Command(object sender, CommandEventArgs e)
         {
-            if(e.CommandName == "init")
+            switch (e.CommandName)
             {
-                Response.Redirect("/WebForms/frmLogin.aspx");
-            }
-            else
-            {
-                Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                case "init":
+                    Response.Redirect("/WebForms/frmLogin.aspx");
+                    break;
+                case "acc":
+                    Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    break;
+                case "close":
+                    sesion.cerrarSession();
+                    break;
             }
         }
     }

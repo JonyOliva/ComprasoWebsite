@@ -9,10 +9,16 @@ namespace ArvoProjectWebsite
 {
     public partial class frmListaProductos : System.Web.UI.Page
     {
+        gestorSesion sesion;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
+
             if (!IsPostBack)
             {
+                sesion.comprobarSesion();
+
                 List<string> filtro = new List<string>();
                 if (Session["filtroCategoria"] == null)
                 {
@@ -49,7 +55,7 @@ namespace ArvoProjectWebsite
                 if (filtro.Count > 1)
                 {
                     ddlSubCat.SelectedValue = filtro[1];
-                    btnFiltrar_Click(new object(), new EventArgs());
+                    btnFiltrar_Click();
                 }
                 if (this.Session["Carrito"] == null)
                 {
@@ -66,7 +72,7 @@ namespace ArvoProjectWebsite
 
         protected void InicSec_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("/WebForms/frmLogin.aspx");
+            Response.Redirect("/WebForms/frmLogin.aspx");
         }
 
         protected void Carrito_Click(object sender, EventArgs e)
@@ -76,13 +82,14 @@ namespace ArvoProjectWebsite
 
         protected void item_Command(object sender, CommandEventArgs e)
         {
-            //Session["filtroCategoria"] = e.CommandArgument;
-            //Response.Redirect("/WebForms/frmListaProductos.aspx");
+            Session["filtroCategoria"] = e.CommandArgument;
+            Session["Buscador"] = null;
+            Server.Transfer("/WebForms/frmListaProductos.aspx", false);
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("frmCarrito.aspx");
+            Response.Redirect("frmCarrito.aspx");
         }
 
         void llenarFiltroMarcas()
@@ -169,7 +176,6 @@ namespace ArvoProjectWebsite
         protected void imgProducto_Command(object sender, CommandEventArgs e)
         {
             Response.Redirect("frmProducto.aspx?IDProd=" + e.CommandArgument);
-            //Server.Transfer("frmProducto.aspx?IDProd=" + e.CommandArgument, false);
         }
 
         protected void btnSinFiltro_Click(object sender, EventArgs e)
@@ -182,10 +188,9 @@ namespace ArvoProjectWebsite
             lstViewProductos.DataBind();
         }
 
-        protected void btnFiltrar_Click(object sender, EventArgs e)
+        protected void btnFiltrar_Click()
         {
             sqldataProductos.SelectCommand = "SELECT[IDProducto], [Nombre_PROD], [RutaImagen], [Descuento_PROD], [Precio_PROD] FROM[PRODUCTOS] WHERE([ACTIVO] = @ACTIVO)";
-            ddlOrdenar.SelectedIndex = 0;
 
             filtrarxCategoria();
             filtrarxSubcategoria();
@@ -197,11 +202,21 @@ namespace ArvoProjectWebsite
         protected void ddlCat_SelectedIndexChanged(object sender, EventArgs e)
         {
             llenarFiltroSubCats();
+            ddlSubCat.SelectedIndex = 0;
+            ddlMarcas.SelectedIndex = 0;
+            btnFiltrar_Click();
         }
 
         protected void ddlSubCat_SelectedIndexChanged(object sender, EventArgs e)
         {
             llenarFiltroMarcas();
+            ddlMarcas.SelectedIndex = 0;
+            btnFiltrar_Click();
+        }
+
+        protected void ddlMarcas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnFiltrar_Click();
         }
 
         protected void lstViewProductos_DataBound(object sender, EventArgs e)
@@ -297,6 +312,30 @@ namespace ArvoProjectWebsite
             tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
 
             return tbl;
+        }
+
+        protected void btnUser_Command(object sender, CommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "init":
+                    Response.Redirect("/WebForms/frmLogin.aspx");
+                    break;
+                case "acc":
+                    Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    break;
+                case "close":
+                    sesion.cerrarSession();
+                    break;
+            }
+        }
+
+        protected void ejecutarBuscador(object sender, EventArgs e)
+        {
+            string[] words = txtBuscador.Text.Split();
+            Session["filtroCategoria"] = null;
+            Session["Buscador"] = words;
+            Server.Transfer("/WebForms/frmListaProductos.aspx", false);
         }
 
     }
