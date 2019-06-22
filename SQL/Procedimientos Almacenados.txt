@@ -65,7 +65,7 @@ GO
 
 --MENU USUARIO
 
-	-COMPRAS
+	--COMPRAS
 CREATE PROCEDURE spObtenerComprasUsuario
 (
 	@IdUsuario char(20)
@@ -74,7 +74,7 @@ AS
 SELECT * FROM VENTAS WHERE IDUsuario_VENTA = @IdUsuario
 GO
 
-	-Tarjetas_x_Usuario
+	--Tarjetas_x_Usuario
 CREATE PROCEDURE spObtenerTarjetasUsuario
 (
 	@IdUsuario char(20)
@@ -83,7 +83,7 @@ AS
 SELECT * FROM TarjetasxUsuario WHERE IDUsuario_TxU = @IdUsuario
 GO
 
-	-Direcciones_x_Usuario
+	--Direcciones_x_Usuario
 CREATE PROCEDURE spObtenerDireccionesUsuario
 (
 	@IdUsuario char(20)
@@ -104,7 +104,7 @@ SET Estado = 1 WHERE IDVenta = @IdVenta
 GO
 
 
--Eliminar MedioDePago
+--Eliminar MedioDePago
 create procedure spEliminarMdP
 (
 	@IdUsuario char(12),
@@ -114,8 +114,9 @@ as
 begin
 Delete from TarjetasxUsuario where @IdTarjxU = IDTarjeta_TxU and @IdUsuario = IDUsuario_TxU
 end
+GO
 
--Eliminar Direccion
+--Eliminar Direccion
 create procedure spEliminarDireccion
 (
 	@IdUsuario char(12),

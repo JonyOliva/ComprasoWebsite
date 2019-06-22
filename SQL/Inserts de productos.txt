@@ -1,0 +1,61 @@
+
+
+INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD, IDSubCategoria_PROD, IDMarca_PROD, Descripcion_PROD, Stock_PROD, Precio_PROD, Descuento_PROD, RutaImagen, ACTIVO)
+SELECT 'P001','Smart TV 32"','C002','S005','M001',
+'El TELEVISOR 32" SMART TV  de ARVO cuenta con una pantalla widescreen (16:9) con resolución HD (1366x768). La tecnología LED no sólo reduce el consumo de energía sino que aporta una gran calidad de imagen y contraste.
+Para poder disfrutar al máximo de la mejor calidad y definición de imagen se deben respetar las indicaciones recomendadas de distancia óptima desde el televisor al televidente.',
+3,8999,0,'~/Assets/Images/P001.jpg',1 UNION
+
+SELECT 'P002','Notebook 15.6" CORE I3','C001','S001','M005',
+'La notebook Bangho G5-i3 tiene un diseño muy sólido y por otro lado, cuenta con un práctico teclado numérico.
+Su pantalla LCD TFT de 15,6 pulgadas y resolución HD (1366 x 768 pixeles) te permitirá acceder a internet y disfrutar de películas y juegos con una gran definición.
+Su procesador Intel Core i3 7100U y su memoria RAM de 4GB se complementan para ofrecer el máximo rendimiento con un bajo consumo de energía.',
+6,34999,10,'~/Assets/Images/P002.jpg',1 UNION
+
+SELECT 'P003','Impresora Multifunción','C001','S003','M006',
+'Con la impresora multifunción Epson DCPT710W vas a poder imprimir, escanear y copiar, documentos y fotos en forma rápida con colores vibrantes y textos nítidos. Además vas a poder ahorrar espacio, gracias a su diseño ultra compacto que encaja prácticamente en cualquier espacio.',
+21,13499,5,'~/Assets/Images/P003.jpg',1 UNION
+
+SELECT 'P004','Samsung Galaxy J6 Plus','C004','S013','M002',
+'El celular Galaxy J6 Plus se caracteriza por un diseño robusto y estilizado, además de cómodo y atractivo. A través de su pantalla touch TFT LCD de 6 pulgadas de resolución HD (1480x720), vas a poder comunicarte y divertirte.
+ Su batería de 3300 mAh te garantiza muchas horas de uso: disfrutá alrededor de 23 horas de conversación.',
+9,14999,0,'~/Assets/Images/P004.jpg',1 UNION
+
+SELECT 'P005','Led 42" Full HD','C002','S005','M004',
+'El LED TV Philips 42 pulgadas cuenta con una pantalla de visualización LED de 106 cm, formato Widescreen (16:9) y una resolución de 1920 x 1080 píxeles. A diferencia del estándar HD, su alto nivel de detalle brinda colores más puros y nítidos.',
+10,13999,0,'~/Assets/Images/P005.jpg',1 UNION
+
+SELECT 'P006','Auriculares in ear negro','C002','S006','M007',
+'Los auriculares SHE1405BK/10 cuenta con un diseño compacto y moderno para que puedas llevarlos a donde quieras. A su vez, el ajuste perfecto que posee sella el canal instructivo para bloquear los ruidos externos. Más, 3 accesorios de goma intercambiables que se adaptan a todas las orejas. El protector de goma para el cable te asegura más durabilidad.',
+22,399,0,'~/Assets/Images/P006.jpg',1 UNION
+
+SELECT 'P007','Auriculares Bluetooth Pulse','C002','S006','M004',
+'Los auriculares inalámbricos Pulse Escape de Motorola poseen un diseño con orejeras plegables que facilitan su guardado y transporte. Cuentan con tecnología Bluetooth 4.1 para usarlos de forma inalámbrica o bien, del modo convencional con el cable plug-plug incluido en la caja.',
+13,3199,5,'~/Assets/Images/P007.jpg',1 UNION
+
+SELECT 'P008','Auriculares inalámbricos','C002','S006','M003',
+'Ligeros y ergonómicos, los auriculares Sony WH-CH500 pueden plegarse mientras no se usan. Cuando los lleves puestos, la comodidad de las almohadillas te permitirán usarlos todo el día sin detener tu ritmo de vida.',
+7,4999,0,'~/Assets/Images/P008.jpg',1 UNION
+
+SELECT 'P009','Consola PS4 Slim 1TB + juegos','C002','S007','M003',
+'Consola PS4 SLIM 1TB + DAYS GONE + DETROIT + RAINBOW SIX SIEGE
+La PS4 presenta un elegante diseño y cuenta con nuevos detalles como los botones táctiles de encendido o eject que no se ven a simple vista. Es más ligera y más delgada que el modelo original, y también puede colocarse en forma vertical, con un soporte que se vende por separado. Gracias a su disco rígido de 1TB, en la PS4 vas a poder guardar juegos, capturas de pantallas y videos.',
+5,29999,5,'~/Assets/Images/P009.jpg',1 UNION
+
+SELECT 'P010','Joystick Dualshock 4','C002','S008','M003',
+'El Dualshock 4 wireless presenta mejoras en cuanto a su capacidad de respuesta y la comodidad de sus componentes. Entre sus novedades, presenta un sensor de seis ejes a través del cual podrás tener experiencias de juego más realistas, mientras que el panel táctil ubicado en la parte superior del control ofrece nuevas formas de jugar e interactuar.',
+4,3799,10,'~/Assets/Images/P010.jpg',1 UNION
+
+SELECT 'P011','Lavarropas carga frontal 6 KG','C003','S012','M008',
+'El lavarropas de carga frontal Drean Next 6.06 está especialmente diseñado para mejorar toda la experiencia de lavado de ropa. Con una puerta de acceso frontal de tamaño extra grande, colocar las prendas es muy fácil.El Drean viene con 29 combinaciones de lavado para todo tipo de telas. Además, cuenta con función antiarrugas; lavado rápido y Hand Wash, que simula un lavado a mano cuidando especialmente la ropa con un sistema lento y suave.',
+14,19999,15,'~/Assets/Images/P011.jpg',1 UNION
+
+SELECT 'P012','Heladera no Frost Inverter','C003','S010','M002',
+'La heladera Samsung RT32K5930 tiene un diseño fino e innovador que combina en cualquier tipo de cocina. En su interior, cuenta con estantes de vidrio templado y un amplio cajón para frutas y verduras. Su capacidad de almacenamiento es de 321 litros y su clasificación de eficiencia energética es clase A+, lo que significa que su consumo de energía es restringido y ayuda en el cuidado del medio ambiente.',
+3,47499,20,'~/Assets/Images/P012.jpg',1 
+
+
+
+
+
+
