@@ -158,7 +158,7 @@ namespace CapaLogicadeNegocio
             bd.ExecStoredProcedure(cmd, "spAgregarDireccion");
         }
 
-        public int AgregarMdP(string id, string tarjeta, string codtarj, string titular, string vencimiento)
+        public string AgregarMdP(string id, string tarjeta, string codtarj, string titular, string vencimiento)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.AddWithValue("IdUsuario", id);
@@ -168,13 +168,15 @@ namespace CapaLogicadeNegocio
             cmd.Parameters.AddWithValue("Venc", vencimiento);
             try
             {
-               return bd.ExecStoredProcedure(cmd, "spAgregarMdP");
+               return bd.ExecStoredProcedure(cmd, "spAgregarMdP").ToString();
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                return ex.HelpLink;
             }
         }
+
+    
 
         public int ValidarCUITyMail(string cuit, string mail)
         {

@@ -41,9 +41,45 @@ namespace ArvoProjectWebsite.WebForms
             lblValidarUsuario.Visible = false;
             lblValidarVencimiento.Visible = false;
 
+            if (lblMenuUsuario.Text == "Direcciones")
+            {
+                DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Provincias");
+                //ddlCampo2.Visible = true;
+                ddlCampo2.DataSource = Tabla;
+                ddlCampo2.DataTextField = "Provincia_ENVIO";
+                ddlCampo2.DataValueField = null;
+                ddlCampo2.DataBind();
+            }
+
+            if (lblMenuUsuario.Text == "Medios de Pago")
+            {
+                DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Tarjetas");
+                ddlCampo2.DataSource = Tabla;
+                ddlCampo2.DataTextField = "Nombre_TARJ";
+                ddlCampo2.DataValueField = "IDTarjeta_TARJ";
+                ddlCampo2.DataBind();
+            }
+
             if (!IsPostBack)
             {
+                //if (lblMenuUsuario.Text == "Direcciones")
+                //{
+                //    DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Provincias");
+                //    //ddlCampo2.Visible = true;
+                //    ddlCampo2.DataSource = Tabla;
+                //    ddlCampo2.DataTextField = "Provincia_ENVIO";
+                //    ddlCampo2.DataValueField = null;
+                //    ddlCampo2.DataBind();
+                //}
 
+                //if (lblMenuUsuario.Text == "Medios de Pago")
+                //{
+                //    DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Tarjetas");
+                //    ddlCampo2.DataSource = Tabla;
+                //    ddlCampo2.DataTextField = "Nombre_TARJ";
+                //    ddlCampo2.DataValueField = "IDTarjeta_TARJ";
+
+                //}
             }
         }
 
@@ -142,12 +178,12 @@ namespace ArvoProjectWebsite.WebForms
                 txtCampo1.Visible = true;
                 txtCampo1.MaxLength = 30;
                 lblCampo2.Text = "Provincia: ";
-                DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Provincias");
+                //DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Provincias");
                 ddlCampo2.Visible = true;
-                ddlCampo2.DataSource = Tabla;
-                ddlCampo2.DataTextField = "Provincia_ENVIO";
-                ddlCampo2.DataValueField = null;
-                ddlCampo2.DataBind();
+                //ddlCampo2.DataSource = Tabla;
+                //ddlCampo2.DataTextField = "Provincia_ENVIO";
+                //ddlCampo2.DataValueField = null;
+                //ddlCampo2.DataBind();
                 lbtnAceptar.Visible = true;
                 
             }
@@ -166,11 +202,11 @@ namespace ArvoProjectWebsite.WebForms
                 txtCampo3.Visible = true;
                 lblCampo2.Text = "Tarjeta: ";
                 lblCampo3.Text = "Titular: ";
-                DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Tarjetas");
-                ddlCampo2.DataSource = Tabla;
-                ddlCampo2.DataTextField = "Nombre_TARJ";
-                ddlCampo2.DataValueField = "IDTarjeta_TARJ";
-                ddlCampo2.DataBind();
+                //DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Tarjetas");
+                //ddlCampo2.DataSource = Tabla;
+                //ddlCampo2.DataTextField = "Nombre_TARJ";
+                //ddlCampo2.DataValueField = "IDTarjeta_TARJ";
+                //ddlCampo2.DataBind();
                 lblSeparadorVenc.Visible = true;
                 lblCampo4.Text = "Vencimiento: ";
                 txtCampo4.Visible = true;
@@ -216,11 +252,14 @@ namespace ArvoProjectWebsite.WebForms
 
                 if (guardar)
                 {
-                    string vencimiento = "'01/" + txtCampo4.Text + "/" + txtCampo4b.Text + "'";
-                    int i = gestionUsuarios.AgregarMdP("'"+usu.IDUsuario+"'", "'"+txtCampo1.Text+"'", "'"+ddlCampo2.SelectedValue+"'", "'"+txtCampo3.Text+"'", vencimiento);
+                    string vencimiento = txtCampo4b.Text + txtCampo4.Text + "01";
+                    //DateTime fecha = Convert.ToDateTime(vencimiento);
+                    //vencimiento = fecha.ToString("yyyy-MM-dd");
+                    string error = gestionUsuarios.AgregarMdP(usu.IDUsuario, txtCampo1.Text, "T001", txtCampo3.Text, vencimiento);
                     Session["MdP"] = gestionUsuarios.CargarMdPxUsu(usu);
                     grdMenuUsuario.DataSource = Session["MdP"];
                     grdMenuUsuario.DataBind();
+                    lbtnAgregarMenuUsuario.Text = error;
                 }
             }
             lbtnAgregarMenuUsuario.Visible = true;
