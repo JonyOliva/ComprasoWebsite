@@ -126,3 +126,28 @@ begin
 Delete from DirecxUsuario where @CodDireccion = CodDirreccion and @IdUsuario = IDUsuario_DIR
 end
 Go
+
+
+-Agregad MedioDePago
+create procedure spAgregarMdP
+(
+	@IdUsuario char(12),
+	@NroTarjeta char(16),
+	@IdTarj char(4),
+	@Titular char(30),
+	@Venc date
+)
+as
+Insert into TarjetasxUsuario(IDUsuario_TxU,NroTarjeta,IDTarjeta_TxU,Titular,Vencimiento)
+select @IdUsuario,@NroTarjeta, @IdTarj, @Titular, @Venc
+
+-Agregar Direccion
+create procedure spAgregarDireccion
+(
+	@IdUsuario char(12),
+	@Provincia char(40),
+	@Direccion char(40)
+)
+as
+Insert into DirecxUsuario(IDUsuario_DIR,Provincia_DIR,Direccion_DIR)
+select @IdUsuario, @Provincia, @Direccion

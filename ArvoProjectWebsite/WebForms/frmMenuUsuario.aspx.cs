@@ -25,6 +25,20 @@ namespace ArvoProjectWebsite.WebForms
             lblMailMenuUsuario.Text = ((Usuario)Application["Usuario"]).Email;
             lblNombreMenuUsuario.Text = ((Usuario)Application["Usuario"]).Apellido + " " + ((Usuario)Application["Usuario"]).Nombre;
 
+            grdMenuUsuario.Visible = true;
+
+            ddlCampo2.Visible = false;
+            lblCampo2.Visible = false;
+            lblCampo1.Visible = false;
+            lblCampo3.Visible = false;
+            lblCampo4.Visible = false;
+            lblSeparadorVenc.Visible = false;
+            txtCampo1.Visible = false;
+            txtCampo3.Visible = false;
+            txtCampo4.Visible = false;;
+            txtCampo4b.Visible = false;
+            lbtnAceptar.Visible = false;
+
             if (!IsPostBack)
             {
 
@@ -34,7 +48,9 @@ namespace ArvoProjectWebsite.WebForms
         protected void lbtnDireccionesMenuUsuario_Click(object sender, EventArgs e)
         {
             lblMenuUsuario.Text = "Direcciones";
+            lbtnAgregarMenuUsuario.Visible = true;
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
+
             Session["Direcciones"] = gestionUsuarios.Direcciones_x_Usuario((Usuario)Application["Usuario"]);
             grdMenuUsuario.DataSource = Session["Direcciones"];
             grdMenuUsuario.DataBind();
@@ -43,6 +59,7 @@ namespace ArvoProjectWebsite.WebForms
         protected void lbtnMdPMenuUsuario_Click(object sender, EventArgs e)
         {
             lblMenuUsuario.Text = "Medios de Pago";
+            lbtnAgregarMenuUsuario.Visible = true;
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
 
             Session["MdP"] = gestionUsuarios.CargarMdPxUsu((Usuario)Application["Usuario"]);
@@ -53,6 +70,7 @@ namespace ArvoProjectWebsite.WebForms
         protected void lbtnComprasMenuUsuario_Click(object sender, EventArgs e)
         {
             lblMenuUsuario.Text = "Compras";
+            lbtnAgregarMenuUsuario.Visible = false;
 
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
             Session["Compras"] = gestionUsuarios.CargarTablaCompras(((Usuario)Application["Usuario"]));
@@ -103,6 +121,83 @@ namespace ArvoProjectWebsite.WebForms
                     break;
             }
             
+        }
+
+        protected void lbtnAgregarMenuUsuario_Click(object sender, EventArgs e)
+        {
+            gestionUsuarios gestionUsuarios = new gestionUsuarios();
+
+            if (lblMenuUsuario.Text == "Direcciones")
+            {
+                lbtnAgregarMenuUsuario.Visible = false;
+                lblCampo1.Visible = true;
+                lblCampo2.Visible = true;
+                grdMenuUsuario.Visible = false;
+                lblCampo1.Text = "Calle y Número: ";
+                txtCampo1.Visible = true;
+                lblCampo2.Text = "Provincia: ";
+                DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Provincias");
+                ddlCampo2.Visible = true;
+                ddlCampo2.DataSource = Tabla;
+                ddlCampo2.DataTextField = "Provincia_ENVIO";
+                ddlCampo2.DataValueField = null;
+                ddlCampo2.DataBind();
+                lbtnAceptar.Visible = true;
+                
+            }
+            else if(lblMenuUsuario.Text == "Medios de Pago")
+            {
+                lbtnAgregarMenuUsuario.Visible = false;
+                lblCampo1.Visible = true;
+                lblCampo2.Visible = true;
+                lblCampo3.Visible = true;
+                lblCampo4.Visible = true;
+                ddlCampo2.Visible = true;
+                grdMenuUsuario.Visible = false;
+                lblCampo1.Text = "Número de tarjeta: ";
+                txtCampo1.Visible = true;
+                txtCampo3.Visible = true;
+                lblCampo2.Text = "Tarjeta: ";
+                lblCampo3.Text = "Titular: ";
+                DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Tarjetas");
+                ddlCampo2.DataSource = Tabla;
+                ddlCampo2.DataTextField = "Nombre_TARJ";
+                ddlCampo2.DataValueField = "IDTarjeta_TARJ";
+                ddlCampo2.DataBind();
+                lblSeparadorVenc.Visible = true;
+                lblCampo4.Text = "Vencimiento: ";
+                txtCampo4.Visible = true;
+                txtCampo4b.Visible = true;
+                
+                lbtnAceptar.Visible = true; ;
+            }
+        }
+
+        protected void lbtnAceptar_Click(object sender, EventArgs e)
+        {
+            gestionUsuarios gestionUsuarios = new gestionUsuarios();
+            Usuario usu = (Usuario)Application["Usuario"];
+
+            if (lblMenuUsuario.Text == "Direcciones")
+            {
+                gestionUsuarios.AgregarDireccion(usu.IDUsuario, ddlCampo2.Text, txtCampo1.Text);
+                Session["Direcciones"] = gestionUsuarios.Direcciones_x_Usuario((Usuario)Application["Usuario"]);
+                grdMenuUsuario.DataSource = Session["Direcciones"];
+                grdMenuUsuario.DataBind();
+
+            }
+            else if (lblMenuUsuario.Text == "Medios de Pago")
+            {
+                gestionUsuarios.AgregarMdP(usu.IDUsuario, txtCampo1.Text, ddlCampo2.SelectedValue,txtCampo3.Text,"01/" + txtCampo4.Text + "/" +  txtCampo4b.Text);
+                Session["MdP"] = gestionUsuarios.CargarMdPxUsu((Usuario)Application["Usuario"]);
+                grdMenuUsuario.DataSource = Session["MdP"];
+                grdMenuUsuario.DataBind();
+            }
+
+            txtCampo1.Text = "";
+            txtCampo3.Text = "";
+            txtCampo4.Text = "";
+            txtCampo4b.Text = "";
         }
     }
 }
