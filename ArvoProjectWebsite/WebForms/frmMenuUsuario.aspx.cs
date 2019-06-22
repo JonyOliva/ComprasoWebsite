@@ -15,18 +15,17 @@ namespace ArvoProjectWebsite.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usu = new Usuario();
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
-            usu.Email = "CLAUDIO@ARVO.CF";
-            gestionUsuarios.getUsuario(ref usu);
-            Application["Usuario"] = usu;
+            //Usuario usu = new Usuario();
+            //usu.IDUsuario = "0000";
+            //Application["Usuario"] = usu;
 
             lblDniMenuUsuario.Text = ((Usuario)Application["Usuario"]).DNI;
             lblMailMenuUsuario.Text = ((Usuario)Application["Usuario"]).Email;
             lblNombreMenuUsuario.Text = ((Usuario)Application["Usuario"]).Apellido + " " + ((Usuario)Application["Usuario"]).Nombre;
 
             grdMenuUsuario.Visible = true;
-
+            
             ddlCampo2.Visible = false;
             lblCampo2.Visible = false;
             lblCampo1.Visible = false;
@@ -38,6 +37,9 @@ namespace ArvoProjectWebsite.WebForms
             txtCampo4.Visible = false;;
             txtCampo4b.Visible = false;
             lbtnAceptar.Visible = false;
+            lblValidarTarjeta.Visible = false;
+            lblValidarUsuario.Visible = false;
+            lblValidarVencimiento.Visible = false;
 
             if (!IsPostBack)
             {
@@ -126,7 +128,10 @@ namespace ArvoProjectWebsite.WebForms
         protected void lbtnAgregarMenuUsuario_Click(object sender, EventArgs e)
         {
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
-
+            txtCampo1.Text = "";
+            txtCampo3.Text = "";
+            txtCampo4.Text = "";
+            txtCampo4b.Text = "";
             if (lblMenuUsuario.Text == "Direcciones")
             {
                 lbtnAgregarMenuUsuario.Visible = false;
@@ -135,6 +140,7 @@ namespace ArvoProjectWebsite.WebForms
                 grdMenuUsuario.Visible = false;
                 lblCampo1.Text = "Calle y Número: ";
                 txtCampo1.Visible = true;
+                txtCampo1.MaxLength = 30;
                 lblCampo2.Text = "Provincia: ";
                 DataTable Tabla = gestionUsuarios.getDropDrownUsuario("Provincias");
                 ddlCampo2.Visible = true;
@@ -156,6 +162,7 @@ namespace ArvoProjectWebsite.WebForms
                 grdMenuUsuario.Visible = false;
                 lblCampo1.Text = "Número de tarjeta: ";
                 txtCampo1.Visible = true;
+                txtCampo1.MaxLength = 16;
                 txtCampo3.Visible = true;
                 lblCampo2.Text = "Tarjeta: ";
                 lblCampo3.Text = "Titular: ";
@@ -169,7 +176,7 @@ namespace ArvoProjectWebsite.WebForms
                 txtCampo4.Visible = true;
                 txtCampo4b.Visible = true;
                 
-                lbtnAceptar.Visible = true; ;
+                lbtnAceptar.Visible = true; 
             }
         }
 
@@ -177,27 +184,50 @@ namespace ArvoProjectWebsite.WebForms
         {
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
             Usuario usu = (Usuario)Application["Usuario"];
-
+            bool guardar = true;
             if (lblMenuUsuario.Text == "Direcciones")
             {
                 gestionUsuarios.AgregarDireccion(usu.IDUsuario, ddlCampo2.Text, txtCampo1.Text);
                 Session["Direcciones"] = gestionUsuarios.Direcciones_x_Usuario((Usuario)Application["Usuario"]);
                 grdMenuUsuario.DataSource = Session["Direcciones"];
                 grdMenuUsuario.DataBind();
-
             }
             else if (lblMenuUsuario.Text == "Medios de Pago")
             {
-                gestionUsuarios.AgregarMdP(usu.IDUsuario, txtCampo1.Text, ddlCampo2.SelectedValue,txtCampo3.Text,"01/" + txtCampo4.Text + "/" +  txtCampo4b.Text);
-                Session["MdP"] = gestionUsuarios.CargarMdPxUsu((Usuario)Application["Usuario"]);
-                grdMenuUsuario.DataSource = Session["MdP"];
-                grdMenuUsuario.DataBind();
-            }
+                if (Utilidades.ContieneLetras(txtCampo1.Text, txtCampo1.Text.Length))
+                {
+                    lblValidarTarjeta.Text = "No se pueden ingresar letras en el Número de Tarjeta.";
+                    lblValidarTarjeta.Visible = true;
+                    guardar = false;
+                }
 
-            txtCampo1.Text = "";
-            txtCampo3.Text = "";
-            txtCampo4.Text = "";
-            txtCampo4b.Text = "";
+                if (Utilidades.ContieneNumeros(txtCampo3.Text, txtCampo3.Text.Length))
+                {
+                    lblValidarUsuario.Text = "No se pueden ingresar números en el Titular";
+                    lblValidarUsuario.Visible = true;
+                    guardar = false;
+                }
+                if (Utilidades.ContieneLetras(txtCampo4.Text, txtCampo4.Text.Length) || Utilidades.ContieneLetras(txtCampo4b.Text, txtCampo4b.Text.Length))
+                {
+                    lblValidarVencimiento.Text = "No se pueden ingresar letras en la Fecha de Vencimiento";
+                    lblValidarVencimiento.Visible = true;
+                    guardar = false;
+                }
+
+                if (guardar)
+                {
+                    string vencimiento = "'01/" + txtCampo4.Text + "/" + txtCampo4b.Text + "'";
+                    int i = gestionUsuarios.AgregarMdP("'"+usu.IDUsuario+"'", "'"+txtCampo1.Text+"'", "'"+ddlCampo2.SelectedValue+"'", "'"+txtCampo3.Text+"'", vencimiento);
+                    Session["MdP"] = gestionUsuarios.CargarMdPxUsu(usu);
+                    grdMenuUsuario.DataSource = Session["MdP"];
+                    grdMenuUsuario.DataBind();
+                }
+            }
+            lbtnAgregarMenuUsuario.Visible = true;
+            //txtCampo1.Text = "";
+            //txtCampo3.Text = "";
+            //txtCampo4.Text = "";
+            //txtCampo4b.Text = "";
         }
     }
 }

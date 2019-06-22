@@ -112,6 +112,15 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtCampo1;
         
         /// <summary>
+        /// Control lblValidarTarjeta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValidarTarjeta;
+        
+        /// <summary>
         /// Control lblCampo2.
         /// </summary>
         /// <remarks>
@@ -148,6 +157,15 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtCampo3;
         
         /// <summary>
+        /// Control lblValidarUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValidarUsuario;
+        
+        /// <summary>
         /// Control lblCampo4.
         /// </summary>
         /// <remarks>
@@ -182,6 +200,15 @@ namespace ArvoProjectWebsite.WebForms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCampo4b;
+        
+        /// <summary>
+        /// Control lblValidarVencimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValidarVencimiento;
         
         /// <summary>
         /// Control lbtnAceptar.

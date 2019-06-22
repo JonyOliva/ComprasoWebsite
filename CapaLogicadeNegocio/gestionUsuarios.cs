@@ -158,7 +158,7 @@ namespace CapaLogicadeNegocio
             bd.ExecStoredProcedure(cmd, "spAgregarDireccion");
         }
 
-        public void AgregarMdP(string id, string tarjeta, string codtarj, string titular, string vencimiento)
+        public int AgregarMdP(string id, string tarjeta, string codtarj, string titular, string vencimiento)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.AddWithValue("IdUsuario", id);
@@ -166,7 +166,38 @@ namespace CapaLogicadeNegocio
             cmd.Parameters.AddWithValue("IdTarj", codtarj);
             cmd.Parameters.AddWithValue("Titular", titular);
             cmd.Parameters.AddWithValue("Venc", vencimiento);
-            bd.ExecStoredProcedure(cmd, "spAgregarMdP");
+            try
+            {
+               return bd.ExecStoredProcedure(cmd, "spAgregarMdP");
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public int ValidarCUITyMail(string cuit, string mail)
+        {
+            DataTable Tabla = new DataTable();
+            cuit.Trim();
+            int respuesta = 0;
+            bool paso = false;
+            Tabla = bd.getTable("SELECT * FROM USUARIOS WHERE IDUsuario = '" + cuit+"'", "UsuarioCuit");
+            if (Tabla.Rows.Count >= 1)
+            {
+                respuesta = 2;
+                paso = true;
+            }
+            Tabla = bd.getTable("SELECT * FROM USUARIOS WHERE Email_USU = '" + mail+"'", "UsuarioMail");
+            if (Tabla.Rows.Count >= 1)
+            {
+                if(paso)
+                {
+                    respuesta = 3;
+                }
+                else respuesta = 1;
+            }
+            return respuesta;
         }
 
   
