@@ -349,7 +349,7 @@ namespace ArvoProjectWebsite
                     break;
                 case "close":
                     sesion.cerrarSession();
-                    Server.Transfer("/Default.aspx", false);
+                    Server.Transfer("/default.aspx", false);
                     break;
             }
         }

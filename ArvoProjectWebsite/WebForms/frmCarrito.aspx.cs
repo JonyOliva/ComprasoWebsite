@@ -118,6 +118,7 @@ namespace ArvoProjectWebsite
                     break;
                 case "close":
                     sesion.cerrarSession();
+                    Server.Transfer("/default.aspx", false);
                     break;
             }
         }
