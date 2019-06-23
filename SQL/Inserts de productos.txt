@@ -54,8 +54,28 @@ SELECT 'P012','Heladera no Frost Inverter','C003','S010','M002',
 'La heladera Samsung RT32K5930 tiene un diseño fino e innovador que combina en cualquier tipo de cocina. En su interior, cuenta con estantes de vidrio templado y un amplio cajón para frutas y verduras. Su capacidad de almacenamiento es de 321 litros y su clasificación de eficiencia energética es clase A+, lo que significa que su consumo de energía es restringido y ayuda en el cuidado del medio ambiente.',
 3,47499,20,'~/Assets/Images/P012.jpg',1 
 
+SELECT 'P013','Juego de jardín puket','C005','S018','M009',
+'Juego de jardín puket, 2 sillas miame negras. Este juego de jardín está compuesto por dos sillas individuales Miami con respaldo ergonómico y una mesa auxiliar Puket.
+Ambos modelos tienen una textura simil madera y están elaborados en un plástico muy fácil de limpiar. Además, son resistentes a los rayos UV y están diseñados para no dañar el ambiente. Asimismo, la silla Miami soporta 120 kg.',
+8,4999,30,'~/Assets/Images/P013.jpg',1 
 
+SELECT 'P014','Parrilla a carbon metal','C005','S018','M010',
+'Parrilla a Carbón Modelo Algarrobo. Ventilación de acero inoxidable, resistente a la corrosión. Asa en la tapa. Patas reforzadas y con ruedas. Parrilla de cocción doble, con estante superior, brinda mayor superficie. Parrilla de acero niquelado con bisagra reforzada. Fácil de limpiar. Doble mesada de madera (frontal y lateral)',
+5,16559,20,'~/Assets/Images/P014.jpg',1 
 
+SELECT 'P015','Combo reposeras maceio','C005','S018','M009',
+'Las reposeras Maceio de Garden Life cuentan con 5 posiciones de reclinado, incluso hasta un ángulo de 180 grados (posición acostado). Están elaboradas en material plástico, resistente a los cambios climáticos y muy fáciles de limpiar. 
+Es el combo incluye 2 unidades y es ideal para disfrutar del sol este verano.
+Cada reposera soporta hasta 200 kg.',
+11,11199,10,'~/Assets/Images/P015.jpg',1 
+
+SELECT 'P016','Bicicleta Mountain bike 26"','C005','S017','M011',
+'La bicicleta Mountain Bike Vertical rodado 26" Philco viene con cuadro de acero, 21 velocidades Shimano, doble suspensión, freno tipo disco mecánico y llantas de doble pared.',
+3,16999,25,'~/Assets/Images/P016.jpg',1 
+
+SELECT 'P017','Skate eléctrico negro','C005','S017','M012',
+'El Skateboard ION fue diseñado con el estilo clásico y retro de los primeros skateboards de la década del 70, incluyendo la innovación tecnológica que necesitaba para convertirlo en la mejor patineta de todos los tiempos. Cuenta con batería de litio LG que le brinda hasta 10km de autonomía a una velocidad de 18km/h, y con un control remoto que permite direccionar el skate hacia donde quieras llevarlo.',
+7,10999,0,'~/Assets/Images/P017.jpg',1 
 
 
 
