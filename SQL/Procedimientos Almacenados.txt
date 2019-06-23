@@ -66,13 +66,17 @@ GO
 --MENU USUARIO
 
 	--COMPRAS
+
 CREATE PROCEDURE spObtenerComprasUsuario
 (
 	@IdUsuario char(20)
 )
 AS
-SELECT * FROM VENTAS WHERE IDUsuario_VENTA = @IdUsuario
+SELECT IDVenta as 'ID Venta', NroTarjeta_VENTA as 'Nro Tarjeta', IDUsuario_VENTA as 'Codigo de Usuario', Direccion_DIR as 'Direccion', Descuento_VENTA as 'Descuento',
+Total_VENTA as 'Total', Costo_ENVIO as 'Precio Envio', Estado   FROM VENTAS inner join DirecxUsuario on IDUsuario_VENTA = IDUsuario_DIR
+and CodDirreccion_VENTA = CodDirreccion inner join ENVIOS on IDEnvio = IDEnvio_VENTA  WHERE IDUsuario_VENTA = @IdUsuario
 GO
+
 
 	--Tarjetas_x_Usuario
 CREATE PROCEDURE spObtenerTarjetasUsuario
@@ -80,7 +84,7 @@ CREATE PROCEDURE spObtenerTarjetasUsuario
 	@IdUsuario char(20)
 )
 AS
-SELECT * FROM TarjetasxUsuario WHERE IDUsuario_TxU = @IdUsuario
+SELECT  IDUsuario_TxU ,NroTarjeta as 'Nro Tarjeta',IDTarjeta_TxU as 'Codigo', Titular,Vencimiento,TARJETAS.Nombre_TARJ as Tarjeta FROM TarjetasxUsuario inner join TARJETAS on TARJETAS.IDTarjeta_TARJ = TarjetasxUsuario.IDTarjeta_TxU WHERE IDUsuario_TxU = @IdUsuario
 GO
 
 	--Direcciones_x_Usuario
@@ -89,7 +93,7 @@ CREATE PROCEDURE spObtenerDireccionesUsuario
 	@IdUsuario char(20)
 )
 AS
-SELECT * FROM DirecxUsuario WHERE IDUsuario_DIR = @IdUsuario
+SELECT IDUsuario_DIR, CodDirreccion as 'Identificador', Provincia_DIR as 'Provincia', Direccion_DIR as 'Direccion' FROM DirecxUsuario WHERE IDUsuario_DIR = @IdUsuario
 GO
 
 
