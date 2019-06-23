@@ -35,7 +35,7 @@ namespace ArvoProjectWebsite
                         }
                         else
                         {
-                            Response.Write("<script language=javascript>alert('No se encontraron resultados');</script>");
+                            Session["buscadorState"] = "error";
                             Server.Transfer("/default.aspx", false);                            
                             //ERROR NO SE ENCONTRARON RESULTADOS
                         }
@@ -237,13 +237,22 @@ namespace ArvoProjectWebsite
             {
                 sqldataProductos.SelectCommand = ViewState["filtro"].ToString();
             }
+            btnFiltrar_Click();
             OrdenarLista();
-            lstViewProductos.DataBind();
         }
 
         string[] EmpezarBusqueda()
         {
-            string[] words = (string[])Session["Buscador"];
+            string[] strTemp = (string[])Session["Buscador"];
+            List<string> strs = new List<string>();
+            foreach (string str in strTemp)
+            {
+                if(str.Length > 1)
+                {
+                    strs.Add(str);
+                }
+            }
+            string[] words = strs.ToArray();
             gestionProductos gp = new gestionProductos();
             DataSet[] datasets = new DataSet[words.Length];
             for (int i = 0; i < datasets.Length; i++)
@@ -328,20 +337,32 @@ namespace ArvoProjectWebsite
                     Response.Redirect("/WebForms/frmLogin.aspx");
                     break;
                 case "acc":
-                    Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    Usuario user = (Usuario)Application["Usuario"];
+                    if (user.Admin)
+                    {
+                        Response.Redirect("/WebForms/frmMenuAdmin.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    }
                     break;
                 case "close":
                     sesion.cerrarSession();
+                    Server.Transfer("/Default.aspx", false);
                     break;
             }
         }
 
         protected void ejecutarBuscador(object sender, EventArgs e)
         {
-            string[] words = txtBuscador.Text.Split();
-            Session["filtroCategoria"] = null;
-            Session["Buscador"] = words;
-            Server.Transfer("/WebForms/frmListaProductos.aspx", false);
+            if (!string.IsNullOrWhiteSpace(txtBuscador.Text))
+            {
+                string[] words = txtBuscador.Text.Trim().Split();
+                Session["filtroCategoria"] = null;
+                Session["Buscador"] = words;
+                Server.Transfer("/WebForms/frmListaProductos.aspx", false);
+            }
         }
 
     }

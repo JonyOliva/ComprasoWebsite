@@ -106,7 +106,15 @@ namespace ArvoProjectWebsite
                     Response.Redirect("/WebForms/frmLogin.aspx");
                     break;
                 case "acc":
-                    Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    Usuario user = (Usuario)Application["Usuario"];
+                    if (user.Admin)
+                    {
+                        Response.Redirect("/WebForms/frmMenuAdmin.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    }
                     break;
                 case "close":
                     sesion.cerrarSession();
@@ -122,9 +130,12 @@ namespace ArvoProjectWebsite
 
         protected void ejecutarBuscador(object sender, EventArgs e)
         {
-            string[] words = txtBuscador.Text.Split();
-            Session["Buscador"] = words;
-            Response.Redirect("/WebForms/frmListaProductos.aspx");
+            if (!string.IsNullOrWhiteSpace(txtBuscador.Text))
+            {
+                string[] words = txtBuscador.Text.Trim().Split();
+                Session["Buscador"] = words;
+                Response.Redirect("/WebForms/frmListaProductos.aspx");
+            }
         }
 
         public void cargarCarrito()

@@ -17,9 +17,15 @@ namespace ArvoProjectWebsite.WebForms
         protected void Page_Load(object sender, EventArgs e)
         {
             sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
+            lblBuscador.Visible = false;
             if (!IsPostBack)
             {
                 sesion.comprobarSesion();
+                if (Session["buscadorState"] != null)
+                {
+                    lblBuscador.Visible = true;
+                    Session["buscadorState"] = null;
+                }
             }
         }
         
@@ -36,9 +42,12 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void ejecutarBuscador(object sender, EventArgs e)
         {
-            string[] words = txtBuscador.Text.Split();
-            Session["Buscador"] = words;
-            Response.Redirect("/WebForms/frmListaProductos.aspx");
+            if (!string.IsNullOrWhiteSpace(txtBuscador.Text))
+            {
+                string[] words = txtBuscador.Text.Trim().Split();
+                Session["Buscador"] = words;
+                Response.Redirect("/WebForms/frmListaProductos.aspx");
+            }
         }
 
         protected void btnUser_Command(object sender, CommandEventArgs e)
@@ -49,10 +58,19 @@ namespace ArvoProjectWebsite.WebForms
                     Response.Redirect("/WebForms/frmLogin.aspx");
                     break;
                 case "acc":
-                    Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    Usuario user = (Usuario)Application["Usuario"];
+                    if (user.Admin)
+                    {
+                        Response.Redirect("/WebForms/frmMenuAdmin.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    }
                     break;
                 case "close":
                     sesion.cerrarSession();
+                    Server.Transfer("/Default.aspx", false);
                     break;
             }
         }

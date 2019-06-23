@@ -31,7 +31,8 @@
                 <div class="col-3"><a href="/default.aspx" id="logo">
                     <img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
                 <div class="col-5" style="margin-top: 15px">
-                    <div class="input-group mb-3">
+                    <div class="row">
+                        <div class="input-group mb-3">
 
                         <asp:TextBox class="form-control py-2 border-right-0 border" type="text" placeholder="Buscar producto..." ID="txtBuscador" runat="server"></asp:TextBox>
 
@@ -42,6 +43,11 @@
                             </button>
                         </span>
                     </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <asp:Label ID="lblBuscador" runat="server" CssClass="text-danger" Text="No se encontraron resultados"></asp:Label>
+                    </div>
+                    
                 </div>
 
                 <div class="col-3 text-right">
@@ -57,7 +63,6 @@
 
             </div>
         </div>
-
 
 
         <!--BARRA MENU-->

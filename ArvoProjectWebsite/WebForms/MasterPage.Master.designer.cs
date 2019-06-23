@@ -40,6 +40,15 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtBuscador;
         
         /// <summary>
+        /// Control lblBuscador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBuscador;
+        
+        /// <summary>
         /// Control InicSec.
         /// </summary>
         /// <remarks>
