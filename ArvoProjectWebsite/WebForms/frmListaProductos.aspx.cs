@@ -172,6 +172,7 @@ namespace ArvoProjectWebsite
             gestionProductos gp = new gestionProductos();
             añadirCarrito((DataTable)this.Session["Carrito"]
                 , gp.getProducto(e.CommandArgument.ToString()));
+
             btnFiltrar_Click();
         }
 
@@ -206,6 +207,7 @@ namespace ArvoProjectWebsite
             llenarFiltroSubCats();
             ddlSubCat.SelectedIndex = 0;
             ddlMarcas.SelectedIndex = 0;
+            ddlOrdenar.SelectedIndex = 0;
             btnFiltrar_Click();
         }
 
@@ -213,11 +215,13 @@ namespace ArvoProjectWebsite
         {
             llenarFiltroMarcas();
             ddlMarcas.SelectedIndex = 0;
+            ddlOrdenar.SelectedIndex = 0;
             btnFiltrar_Click();
         }
 
         protected void ddlMarcas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlOrdenar.SelectedIndex = 0;
             btnFiltrar_Click();
         }
 
