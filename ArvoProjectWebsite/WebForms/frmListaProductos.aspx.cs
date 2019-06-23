@@ -35,7 +35,8 @@ namespace ArvoProjectWebsite
                         }
                         else
                         {
-                            Server.Transfer("/default.aspx", false);
+                            Response.Write("<script language=javascript>alert('No se encontraron resultados');</script>");
+                            Server.Transfer("/default.aspx", false);                            
                             //ERROR NO SE ENCONTRARON RESULTADOS
                         }
                     }
@@ -171,6 +172,7 @@ namespace ArvoProjectWebsite
             gestionProductos gp = new gestionProductos();
             añadirCarrito((DataTable)this.Session["Carrito"]
                 , gp.getProducto(e.CommandArgument.ToString()));
+            btnFiltrar_Click();
         }
 
         protected void imgProducto_Command(object sender, CommandEventArgs e)
