@@ -22,7 +22,7 @@ namespace CapaLogicadeNegocio
 
         public DataTable getListaDirecxUsuario(string IdUsuario)
         {
-            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IdUsuario_DIR = " + IdUsuario, "Direcciones");
+            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IdUsuario_DIR = '" + IdUsuario+"'", "Direcciones");
         }
 
 
@@ -145,6 +145,14 @@ namespace CapaLogicadeNegocio
             cmd.Parameters.AddWithValue("CodDireccion", CodDireccion);
             Eliminado = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spEliminarDireccion"));
             return Eliminado;
+        }
+
+        public DataRow idenvioxUsuario(string codDir)
+        {
+            DataTable tbl = new DataTable();
+            tbl = bd.getTable("SELECT IDEnvio,Costo_ENVIO FROM ENVIOS INNER JOIN DirecxUsuario ON Provincia_DIR =" +
+                " Provincia_ENVIO WHERE CodDirreccion = '" + codDir + "'", "Envio");
+            return tbl.Rows[0];
         }
     }
 }

@@ -45,16 +45,19 @@
        
     </nav>
         <div>
-        &nbsp;&nbsp;&nbsp;
-        <asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand"  OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" HorizontalAlign="Center" OnSorting="grdCarrito_Sorting">
+            <br />
+&nbsp;<asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand"  OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" HorizontalAlign="Center" OnSorting="grdCarrito_Sorting" CssClass="text-center" OnRowCancelingEdit="grdCarrito_RowCancelingEdit" OnRowEditing="grdCarrito_RowEditing" OnRowUpdating="grdCarrito_RowUpdating">
             <Columns>
                 <asp:ImageField DataImageUrlField="RutaImagen">
                     <ControlStyle Height="100px" Width="150px" />
                 </asp:ImageField>
                 <asp:CommandField DeleteText="Quitar" ShowDeleteButton="True" />
                 <asp:TemplateField>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Width="66px"></asp:TextBox>
+                    </EditItemTemplate>
                     <ItemTemplate>
-                        &nbsp;<asp:TextBox ID="txtCantidad" runat="server" Height="16px" style="margin-top: 0px" Width="50px">1</asp:TextBox>
+                        <asp:TextBox ID="txtCantidad" runat="server" Width="63px"  Columns="5" ></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

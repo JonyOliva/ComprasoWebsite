@@ -44,6 +44,7 @@
     <Compile Include="gestionMetodoPago.cs" />
     <Compile Include="gestionProductos.cs" />
     <Compile Include="gestionUsuarios.cs" />
+    <Compile Include="gestionVentas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

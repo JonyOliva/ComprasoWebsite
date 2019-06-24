@@ -40,6 +40,15 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.DropDownList ddlCuotas;
         
         /// <summary>
+        /// Control grdCompra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdCompra;
+        
+        /// <summary>
         /// Control lblNrotarjeta.
         /// </summary>
         /// <remarks>
@@ -94,15 +103,6 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.Label lblPrecioEnvio;
         
         /// <summary>
-        /// Control lbtnComprar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnComprar;
-        
-        /// <summary>
         /// Control lbtnCancelar.
         /// </summary>
         /// <remarks>
@@ -110,5 +110,14 @@ namespace ArvoProjectWebsite.WebForms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnCancelar;
+        
+        /// <summary>
+        /// Control lbtnComprar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnComprar;
     }
 }
