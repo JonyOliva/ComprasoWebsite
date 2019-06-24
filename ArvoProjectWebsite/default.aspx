@@ -12,7 +12,7 @@
 <div id="carouselOfertas" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="/Assets/Images/promo1_.png" alt="Promo 1"/>
+      <img class="d-block w-100" src="/Assets/Images/promo1.png" alt="Promo 1"/>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="/Assets/Images/promo2.png" alt="Promo 2"/>
@@ -34,11 +34,12 @@
 
 
     <!--SECCION PRODUCTOS DESTACADOS -->
+    <br />
     <div class="container">
 
-        <div class="text-primary" style="font-size: xx-large; font-weight: bold;">Destacados</div>
+        <div class="text-primary mb-3 text-center" style="font-size: xx-large; font-weight: bold;">Productos Destacados</div>
 
-        <asp:ListView ID="lstProductosDest" runat="server" DataKeyNames="IDProducto" DataSourceID="SqlDataSource1">
+        <asp:ListView ID="lstProductosDest" runat="server"  DataKeyNames="IDProducto" DataSourceID="SqlDataSource1">
             <EmptyDataTemplate>
                 <table style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
                     <tr>
@@ -46,12 +47,14 @@
                     </tr>
                 </table>
             </EmptyDataTemplate>
+            
             <ItemTemplate>
-                <td runat="server" class="rounded border-primary" style="text-align: center !important">
+                     <td runat="server" class="rounded border-light" style="text-align: center !important">
+
                         <table class="altaclase">
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="imgProducto" runat="server" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" OnCommand="imgProducto_Command" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' style="max-height:144px;max-width:200px;height:auto;width:auto;" />
+                                    <asp:ImageButton ID="imgProducto" runat="server" CssClass="miniatura" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" OnCommand="imgProducto_Command" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' style="max-height:144px;max-width:200px;height:auto;width:auto;" />
                                 </td>
                             </tr>
                             <tr>
@@ -61,7 +64,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="lblDescuento" runat="server" CssClass=" text-success border border-success " Text='<%# Eval("Descuento_PROD") + "% OFF" %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>'></asp:Label>
+                                    <asp:Label ID="lblDescuento" runat="server" CssClass="text-success border border-success p-1" Text='<%# Eval("Descuento_PROD") + "% OFF" %>' Visible='<%# Convert.ToSingle(Eval("Descuento_PROD"))>0 %>'></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -71,7 +74,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <asp:ImageButton ID="btnComprar" runat="server" ImageUrl="~/Assets/Images/btnComprar.png" Width="40%" ImageAlign="Middle"  />
+                     
                     </td>
 
                 <%--<td runat="server" style="background-color: #E0FFFF;color: #333333;">IDProducto:
@@ -91,6 +94,7 @@
                     <br />
                 </td>--%>
             </ItemTemplate>
+             
             <LayoutTemplate>
                 <table runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
                     <tr id="itemPlaceholderContainer" runat="server">
@@ -108,6 +112,34 @@
             </SelectParameters>
         </asp:SqlDataSource>
 
+
+
+    </div>
+
+        <!--SECCION CATEGORIAS -->
+
+    <div class="container-fluid">
+        <h1 class="mb-4 mt-4 text-center text-primary">Categorías Destacadas</h1>
+        <div class="row text-center ml-5">
+            <asp:LinkButton ID="item0" runat="server" CommandArgument="C001" CommandName="IDCat" OnCommand="item_Command" ToolTip="Informática">
+            <img src="Assets/Images/Cat1.jpg" class="categorias" alt="Informatica" /></asp:LinkButton>
+            <asp:LinkButton ID="item1" runat="server" CommandArgument="C002" CommandName="IDCat" OnCommand="item_Command" ToolTip="Tv, Audio y Video">
+                <img src="Assets/Images/Cat2.jpg" class="categorias" alt="Tv, Audio y Video" />
+            </asp:LinkButton>
+            <asp:LinkButton ID="item2" runat="server" CommandArgument="C003" CommandName="IDCat" OnCommand="item_Command" ToolTip="Electrodomésticos">
+                <img src="Assets/Images/Cat3.jpg" class="categorias" alt="Electrodomesticos" />
+            </asp:LinkButton>
+        </div>
+        <div class="row text-center ml-5">
+            <div class="col"></div>
+         <asp:LinkButton ID="item3" CssClass="" runat="server" CommandArgument="C004" CommandName="IDCat" OnCommand="item_Command" ToolTip="Celulares y Tablets"> <img src="Assets/Images/Cat4.jpg" class="categorias" alt="Celulares y Tablets" /></asp:LinkButton>
+        <asp:LinkButton ID="item4" CssClass="" runat="server" CommandArgument="C005" CommandName="IDCat" OnCommand="item_Command" ToolTip="Casa y Jardín"><img src="Assets/Images/Cat5.jpg" class="categorias" alt="Casa y Jardin" /></asp:LinkButton>
+            <div class="col"></div>
+        </div>
+            
+        
+           
+            
 
 
     </div>

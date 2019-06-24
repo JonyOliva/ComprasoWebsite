@@ -45,6 +45,40 @@ namespace CapaLogicadeNegocio
             return (Producto)data.Rows[0];
         }
 
+        private void ArmarParametrosProductos(ref SqlCommand Comando, Producto prod)
+        {
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = Comando.Parameters.Add("@IDProducto", SqlDbType.Char,4);
+            SqlParametros.Value = prod.IDProducto;
+            SqlParametros = Comando.Parameters.Add("@Nombre_PROD", SqlDbType.Char, 30);
+            SqlParametros.Value = prod.Nombre;
+            SqlParametros = Comando.Parameters.Add("@Descripcion_PROD", SqlDbType.Char, 1000);
+            SqlParametros.Value = prod.Descripcion;
+            SqlParametros = Comando.Parameters.Add("@Stock_PROD", SqlDbType.Int);
+            SqlParametros.Value = prod.Stock;
+            SqlParametros = Comando.Parameters.Add("@Precio_PROD", SqlDbType.Money);
+            SqlParametros.Value = prod.Precio;
+            SqlParametros = Comando.Parameters.Add("@Descuento_PROD", SqlDbType.Float);
+            SqlParametros.Value = prod.Descuento;
+            SqlParametros = Comando.Parameters.Add("@ACTIVO", SqlDbType.Bit);
+            SqlParametros.Value = prod.Activo;
+
+            
+        }
+
+
+        public bool ActualizarProducto(Producto prod)
+        {
+            SqlCommand Comando = new SqlCommand();
+            ArmarParametrosProductos(ref Comando, prod);
+            BaseDeDatos bd = bd = new BaseDeDatos(databasePath);
+            int FilasInsertadas = bd.ExecStoredProcedure(Comando, "ActualizarProd");
+            if (FilasInsertadas == 1)
+                return true;
+            else
+                return false;
+        }
+
         public DataSet busquedaProductos(string srtSearch)
         {
             DataSet busqueda = new DataSet();
@@ -76,4 +110,6 @@ namespace CapaLogicadeNegocio
         }
 
     }
+
+    
 }

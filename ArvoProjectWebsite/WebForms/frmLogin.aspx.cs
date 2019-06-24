@@ -41,7 +41,8 @@ namespace ArvoProjectWebsite
                                 ck.Expires = DateTime.Now.AddMinutes(2); //esto es por tema de debug
                                 Response.Cookies.Add(ck);
                             }
-                            Server.Transfer("/default.aspx");
+                            Response.Redirect("/default.aspx");
+                            //Server.Transfer("/default.aspx");
                         }
                         else
                         {

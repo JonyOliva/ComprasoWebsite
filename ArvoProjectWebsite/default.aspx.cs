@@ -34,5 +34,11 @@ namespace ArvoProjectWebsite
             Response.Redirect("WebForms/frmProducto.aspx?IDProd=" + e.CommandArgument);
         }
 
+        protected void item_Command(object sender, CommandEventArgs e)
+        {
+            Session["filtroCategoria"] = e.CommandArgument;
+            Response.Redirect("/WebForms/frmListaProductos.aspx");
+        }
+
     }
 }
