@@ -71,7 +71,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <asp:ImageButton ID="btnComprar" runat="server" ImageUrl="~/Assets/Images/btnComprar.png" Width="40%" ImageAlign="Middle" />
+                        <asp:ImageButton ID="btnComprar" runat="server" ImageUrl="~/Assets/Images/btnComprar.png" Width="40%" ImageAlign="Middle"  />
                     </td>
 
                 <%--<td runat="server" style="background-color: #E0FFFF;color: #333333;">IDProducto:

@@ -43,17 +43,17 @@ namespace ArvoProjectWebsite
             //for (int i = 0; i < grdCarrito.Rows.Count; i++)
             //{
             //    ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).DataBind();
-            //    if(((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != null &&
+            //    if (((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != null &&
             //        ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != string.Empty)
             //    {
             //        string prueba = ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text;
             //        int cant = int.Parse(prueba);
-            //        if (cant < 1 || Utilidades.validarString(prueba,false,true,true))
+            //        if (cant < 1 || Utilidades.validarString(prueba, false, true, true))
             //            pos++;
-                
+
             //        ((DataTable)this.Session["Carrito"]).Rows[i][4] = cant;
             //    }
-                
+
             //}
             if (grdCarrito == null)
             {
@@ -91,7 +91,8 @@ namespace ArvoProjectWebsite
             if (pos < tbl.Rows.Count && pos >= 0)
             {
                 tbl.Rows.RemoveAt(pos);
-                tblcompras.Rows.RemoveAt(pos);
+                if(this.Session["Compras"] != null)
+                    tblcompras.Rows.RemoveAt(pos);
             }
 
             if (tbl.Rows.Count == 0)

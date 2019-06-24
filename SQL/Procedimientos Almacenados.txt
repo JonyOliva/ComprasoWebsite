@@ -156,3 +156,38 @@ create procedure spAgregarDireccion
 as
 Insert into DirecxUsuario(IDUsuario_DIR,Provincia_DIR,Direccion_DIR)
 select @IdUsuario, @Provincia, @Direccion
+
+CREATE PROCEDURE spAgregarVenta
+(
+	@NroTarjeta char(16), 
+	@IDUsuario char(12),
+	@CodDireccion smallint,
+	@Descuento float,
+	@Total money,
+	@IDEnvio char(2),
+	@Estado tinyint 
+)
+
+AS 
+INSERT INTO VENTAS (NroTarjeta_VENTA,IDUsuario_VENTA,CodDirreccion_VENTA,
+		Descuento_VENTA,Total_VENTA,IDEnvio_VENTA,Estado)
+SELECT @NroTarjeta,@IDusuario,@CodDireccion,@Descuento,@Total,@IDEnvio,@Estado
+
+GO
+
+
+
+CREATE PROCEDURE spAgregarDetVenta
+(
+	@IDVenta char(4),
+	@IDProducto char(4),
+	@Descuento float,
+	@Cantidad int,
+	@PrecioUni money
+)
+AS 
+INSERT INTO DETVENTAS (IDVenta_DETV,IDProducto_DETV,Descuento_DETV,Cantidad_DETV,PrecioUnitario_DETV)
+SELECT @IDVenta,@IDProducto,@Descuento,@Cantidad,@PrecioUni
+
+GO
+
