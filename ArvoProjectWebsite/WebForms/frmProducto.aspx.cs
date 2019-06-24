@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidad;
 using CapaLogicadeNegocio;
+using System.Data;
 
 namespace ArvoProjectWebsite.WebForms
 {
@@ -41,26 +42,50 @@ namespace ArvoProjectWebsite.WebForms
                 {
                     Server.Transfer("/default.aspx");
                 }
-                
+                if (this.Session["Carrito"] == null)
+                {
+                    this.Session["Carrito"] = crearTablacarrito();
+                }
+
             }
         }
 
         protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)
         {
-            List<Producto> carrito = new List<Producto>();
             gestionProductos gp = new gestionProductos();
-            if (this.Session["Carrito"] != null)
-            {
-                carrito = (List<Producto>)this.Session["Carrito"];
-                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
-                this.Session["Carrito"] = carrito;
-            }
-            else
-            {
+            añadirCarrito((DataTable)this.Session["Carrito"]
+                , gp.getProducto(e.CommandArgument.ToString()));
+        }
 
-                carrito.Add(gp.getProducto(e.CommandArgument.ToString()));
-                this.Session["Carrito"] = carrito;
-            }
+        public void añadirCarrito(DataTable tbl, Producto prod)
+        {
+            DataRow row = tbl.NewRow();
+            row["Producto"] = prod.Nombre;
+            row["Marca"] = prod.Marca;
+            row["Precio"] = prod.Precio;
+            row["RutaImagen"] = prod.RutaImagen.Trim();
+            row["IDProducto"] = prod.IDProducto;
+            row["Cantidad"] = 1;
+
+            if (!tbl.Rows.Contains(prod.IDProducto))
+                tbl.Rows.Add(row);
+        }
+
+        public DataTable crearTablacarrito()
+        {
+            DataTable tbl = new DataTable();
+            DataColumn[] clave = new DataColumn[1];
+            DataColumn columna;
+            tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
+            tbl.Columns.Add(new DataColumn("Marca", System.Type.GetType("System.String")));
+            tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
+            tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
+            tbl.Columns.Add(new DataColumn("Cantidad", System.Type.GetType("System.Int32")));
+            columna = new DataColumn("IDProducto", System.Type.GetType("System.String"));
+            tbl.Columns.Add(columna);
+            clave[0] = columna;
+            tbl.PrimaryKey = clave;
+            return tbl;
         }
     }
 }
