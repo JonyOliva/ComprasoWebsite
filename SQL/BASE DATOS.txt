@@ -6,7 +6,7 @@ GO
 CREATE DATABASE BD_COMPRASO
 GO
 
-USE ComprasoBD
+USE BD_COMPRASO
 GO
 
 CREATE TABLE USUARIOS
@@ -126,7 +126,7 @@ CREATE TABLE TARJETAS
 (
 IDTarjeta_TARJ char(4),
 Nombre_TARJ char(20) NOT NULL,
---IDCuotas_TARJ char(4),
+IDCuotas_TARJ char(4),
 CONSTRAINT PK_Tarjetas PRIMARY KEY (IDTarjeta_TARJ),
 )
 GO
@@ -136,7 +136,6 @@ CREATE TABLE CuotasxTarjetas
 IDTarjeta_CxT char(4),
 IDCuota_CxT char(4),
 CONSTRAINT PK_CxT PRIMARY KEY (IDTarjeta_CxT, IDCuota_CxT),
---CONSTRAINT FK_CxT FOREIGN KEY(IDTARJETA_CxT) REFERENCES TARJETAS(IDTarjeta_TARJ),
 CONSTRAINT FK_CuotasxT FOREIGN KEY (IDCuota_CxT) REFERENCES CUOTAS (IDCuota_CUO)
 )
 GO
@@ -153,10 +152,8 @@ CONSTRAINT FK_TxU FOREIGN KEY (IDTarjeta_TxU) REFERENCES TARJETAS (IDTarjeta_TAR
 )
 GO
 
-
 alter table CuotasxTarjetas
 add CONSTRAINT FK_CxTarj FOREIGN KEY(IDTARJETA_CxT) REFERENCES TARJETAS(IDTarjeta_TARJ)
-
 
 
 --   FIN TABLAS --
@@ -169,8 +166,17 @@ add CONSTRAINT FK_CxTarj FOREIGN KEY(IDTARJETA_CxT) REFERENCES TARJETAS(IDTarjet
 
 INSERT INTO MARCAS(IDMarca, Nombre_MARCA)
 SELECT 'M001', 'ARVO' UNION
-SELECT 'M002', 'SAMSUNG' UNION
-SELECT 'M003','SONY'
+SELECT 'M002', 'Samsung' UNION
+SELECT 'M003','Sony' UNION
+SELECT 'M004','Philips' UNION
+SELECT 'M005','Bangho' UNION
+SELECT 'M006','Epson' UNION
+SELECT 'M007','Motorola' UNION
+SELECT 'M008','Drean' UNION
+SELECT 'M009','Garden Life' UNION
+SELECT 'M010','Bram-Metal' UNION
+SELECT 'M011','Philco' UNION
+SELECT 'M012','ION' 
 
 INSERT INTO CATEGORIAS(IDCategoria, Nombre_CAT)
 SELECT 'C001','Informatica' UNION
@@ -180,29 +186,32 @@ SELECT 'C004', 'Celulares y Tablets' UNION
 SELECT 'C005', 'Casa y Jardin'
 
 INSERT INTO SUBCATEGORIAS(IDSubCategoria, IDCategoria_SUBCAT,Nombre_SUBCAT)
-SELECT 'S001','C002','Led y Smart TV' UNION
-SELECT 'S002','C001','Notebooks' UNION
+SELECT 'S001','C001','Notebooks' UNION
+SELECT 'S002','C001','PCs' UNION
 SELECT 'S003','C001','Impresoras y Cartuchos' UNION
-SELECT 'S004','C004','Celulares'
+SELECT 'S004','C001','Accesorios' UNION	
+
+SELECT 'S005','C002','Televisores' UNION
+SELECT 'S006','C002','Audio' UNION
+SELECT 'S007','C002','Consolas' UNION
+SELECT 'S008','C002','Accesorios' UNION
+
+SELECT 'S009','C003','Pequeño electro' UNION 
+SELECT 'S010','C003','Heladeras' UNION
+SELECT 'S011','C003','Cocinas' UNION
+SELECT 'S012','C003','Lavarropas' UNION
+
+SELECT 'S013','C004','Celulares' UNION
+SELECT 'S014','C004','Tablets' UNION
+SELECT 'S015','C004','Accesorios' UNION
+
+SELECT 'S016','C005','Máquinas de jardín' UNION
+SELECT 'S017','C005','Deportes' UNION 
+SELECT 'S018','C005','Muebles'
 
 
-INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD, IDSubCategoria_PROD, IDMarca_PROD, Descripcion_PROD, Stock_PROD, Precio_PROD, Descuento_PROD, RutaImagen, ACTIVO)
-SELECT 'P001','SMART TV 32" ARVO','C002','S001','M001',
-'El TELEVISOR 32" SMART TV  de ARVO cuenta con una pantalla widescreen (16:9) con resolución HD (1366x768). La tecnología LED no sólo reduce el consumo de energía sino que aporta una gran calidad de imagen y contraste.
-Para poder disfrutar al máximo de la mejor calidad y definición de imagen se deben respetar las indicaciones recomendadas de distancia óptima desde el televisor al televidente.',
-3,8999,0,'~/Assets/Images/P001.png',1 UNION
-SELECT 'P002','NOTEBOOK 15.6" CORE I3','C001','S002','M003',
-'La notebook Bangho G5-i3 tiene un diseño muy sólido y por otro lado, cuenta con un práctico teclado numérico.
-Su pantalla LCD TFT de 15,6 pulgadas y resolución HD (1366 x 768 pixeles) te permitirá acceder a internet y disfrutar de películas y juegos con una gran definición.
-Su procesador Intel Core i3 7100U y su memoria RAM de 4GB se complementan para ofrecer el máximo rendimiento con un bajo consumo de energía.',
-6,34999,10,'~/Assets/Images/P002.png',1 UNION
-SELECT 'P003','IMPRESORA MULTIFUNCIÓN','C001','S003','M002',
-'Con la impresora multifunción Brother DCPT710W vas a poder imprimir, escanear y copiar, documentos y fotos en forma rápida con colores vibrantes y textos nítidos. Además vas a poder ahorrar espacio, gracias a su diseño ultra compacto que encaja prácticamente en cualquier espacio.',
-21,13499,5,'~/Assets/Images/P003.png',1 UNION
-SELECT 'P004','SAMSUNG GALAXY J6 PLUS','C004','S004','M002',
-'El celular Galaxy J6 Plus se caracteriza por un diseño robusto y estilizado, además de cómodo y atractivo. A través de su pantalla touch TFT LCD de 6 pulgadas de resolución HD (1480x720), vas a poder comunicarte y divertirte.
- Su batería de 3300 mAh te garantiza muchas horas de uso: disfrutá alrededor de 23 horas de conversación.',
-9,14999,0,'~/Assets/Images/P004.png',1
+--INSERTS DE PRODUCTOS EN OTRO TXT
+
 
 INSERT INTO CUOTAS(IDCuota_CUO, Cantidad_CUO, Interes_CUO)
 SELECT '001C',1,0 UNION

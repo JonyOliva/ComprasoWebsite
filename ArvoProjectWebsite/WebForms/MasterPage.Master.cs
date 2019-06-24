@@ -12,40 +12,23 @@ namespace ArvoProjectWebsite.WebForms
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
+        gestorSesion sesion;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
+            lblBuscador.Visible = false;
             if (!IsPostBack)
             {
-                if (Request.Cookies["user"] != null)
+                sesion.comprobarSesion();
+                if (Session["buscadorState"] != null)
                 {
-                    string user = Request.Cookies["user"].Value;
-                    cargarUsuario(user);
-                }
-                if (Application["Usuario"] != null)
-                {
-                    Usuario user = (Usuario)Application["Usuario"];
-                    Cuenta.Text += user.Nombre;
-                    Cuenta.Visible = true;
-                    InicSec.Visible = false;
-                }
-                else
-                {
-                    InicSec.Visible = true;
-                    Cuenta.Visible = false;
+                    lblBuscador.Visible = true;
+                    Session["buscadorState"] = null;
                 }
             }
         }
-
-        void cargarUsuario(string strEmail)
-        {
-            gestionUsuarios gu = new gestionUsuarios();
-            Usuario us = new Usuario(strEmail);
-            if (gu.getUsuario(ref us))
-            {
-                Application["Usuario"] = us;
-            }
-        }
-
+        
         protected void Carrito_Click(object sender, EventArgs e)
         {
             Response.Redirect("/WebForms/frmCarrito.aspx");
@@ -59,20 +42,36 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void ejecutarBuscador(object sender, EventArgs e)
         {
-            string[] words = txtBuscador.Text.Split();
-            Session["Buscador"] = words;
-            Response.Redirect("/WebForms/frmListaProductos.aspx");
+            if (!string.IsNullOrWhiteSpace(txtBuscador.Text))
+            {
+                string[] words = txtBuscador.Text.Trim().Split();
+                Session["Buscador"] = words;
+                Response.Redirect("/WebForms/frmListaProductos.aspx");
+            }
         }
 
         protected void btnUser_Command(object sender, CommandEventArgs e)
         {
-            if(e.CommandName == "init")
+            switch (e.CommandName)
             {
-                Response.Redirect("/WebForms/frmLogin.aspx");
-            }
-            else
-            {
-                Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                case "init":
+                    Response.Redirect("/WebForms/frmLogin.aspx");
+                    break;
+                case "acc":
+                    Usuario user = (Usuario)Application["Usuario"];
+                    if (user.Admin)
+                    {
+                        Response.Redirect("/WebForms/frmMenuAdmin.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    }
+                    break;
+                case "close":
+                    sesion.cerrarSession();
+                    Server.Transfer("/default.aspx", false);
+                    break;
             }
         }
     }

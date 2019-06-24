@@ -27,6 +27,9 @@ namespace ArvoProjectWebsite.WebForms
         protected void btnRegistrarSignUp_Click(object sender, EventArgs e)
         {
             bool guardar = true;
+            gestionUsuarios gu = new gestionUsuarios();
+
+            ///VALIDAR VACIOS
             if (string.IsNullOrEmpty(txtMailSignUp.Text) || string.IsNullOrEmpty(txtApellidoSignUp.Text) || string.IsNullOrEmpty(txtNombreSignUp.Text) || 
                 string.IsNullOrEmpty(txtContraSingUp.Text) || string.IsNullOrEmpty(txtRepContraSignUp.Text) || string.IsNullOrEmpty(txtCuit1SignUp.Text) ||
                 string.IsNullOrEmpty(txtCuit2SignUp.Text) || string.IsNullOrEmpty(txtDniSignUp.Text) || string.IsNullOrEmpty(txtTelefonoSignUp.Text) ||
@@ -45,6 +48,26 @@ namespace ArvoProjectWebsite.WebForms
                 guardar = false;
             }
 
+            ///VALIDAR NOMBRE Y APELLIDO
+            if(!string.IsNullOrEmpty(txtApellidoSignUp.Text))
+            {
+                if(Utilidades.ContieneNumeros(txtApellidoSignUp.Text, txtApellidoSignUp.Text.Length))
+                {
+                    lblApellidoSignUp.Text = "*Solo se pueden ingresar letras en este campo.";
+                    guardar = false;
+                }
+            }
+
+            if(!string.IsNullOrEmpty(txtNombreSignUp.Text))
+            {
+                if(Utilidades.ContieneNumeros(txtNombreSignUp.Text, txtNombreSignUp.Text.Length))
+                {
+                    lblNombreSignUp.Text = "*Solo se pueden ingresar letras en este campo.";
+                    guardar = false;
+                }
+            }
+
+            ///VALIDAR CONTRASEÑA
             if(txtContraSingUp.Text != txtRepContraSignUp.Text)
             {
                 if (string.IsNullOrEmpty(lblContraSignUp.Text)) lblContraSignUp.Text += "*Las contraseñas deben ser iguales.";
@@ -55,16 +78,21 @@ namespace ArvoProjectWebsite.WebForms
                 guardar = false;
             }
 
+            if(txtContraSingUp.Text.Length < 6)
+            {
+                if (!string.IsNullOrEmpty(txtContraSingUp.Text)) lblContraSignUp.Text += " La contraseña debe tener un largo mínimo de 6 carácteres.";
+                guardar = false;
+            }
+            if(txtRepContraSignUp.Text.Length < 6)
+            {
+                if(!string.IsNullOrEmpty(txtRepContraSignUp.Text)) lblRepContraSignUp.Text += " La contraseña debe tener un largo mínimo de 6 carácteres.";
+                guardar = false;
+            }
+
+            ///VALIDAR TELEFONO
             if(!string.IsNullOrEmpty(txtTelefonoSignUp.Text))
             {
-                //for(int i = 0; i < txtTelefonoSignUp.Text.Length; i++)
-                //{
-                //    if(txtTelefonoSignUp.Text[i] > 57 || txtTelefonoSignUp.Text[i] < 48)
-                //    {
-                //        if (string.IsNullOrEmpty(lblTelefonoSignUp.Text)) lblTelefonoSignUp.Text = "*Solo se pueden ingresar números en este campo.";
-
-                //    }
-                //}
+               
                 if (Utilidades.ContieneLetras(txtTelefonoSignUp.Text, txtTelefonoSignUp.Text.Length))
                 {
                     lblTelefonoSignUp.Text = "*Solo se pueden ingresar números en este campo.";
@@ -72,44 +100,23 @@ namespace ArvoProjectWebsite.WebForms
                 }
             }
 
+            ///VALIDAR DNI Y CUIT
             if (!string.IsNullOrEmpty(txtDniSignUp.Text) && !string.IsNullOrEmpty(txtCuit1SignUp.Text) && !string.IsNullOrEmpty(txtCuit2SignUp.Text))
             {
-                //for (int i = 0; i < txtDniSignUp.Text.Length; i++)
-                //{
-                //    if (txtDniSignUp.Text[i] > 57 || txtDniSignUp.Text[i] < 48)
-                //    {
-                //        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
-
-                //    }
-                //}
+               
                 if(Utilidades.ContieneLetras(txtDniSignUp.Text, txtDniSignUp.Text.Length))
                 {
                     if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
                     guardar = false;
                 }
 
-                //for (int i = 0; i < txtCuit1SignUp.Text.Length; i++)
-                //{
-                //    if (txtCuit1SignUp.Text[i] > 57 || txtCuit1SignUp.Text[i] < 48)
-                //    {
-                //        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
-
-                //    }
-                //}
+                
                 if(Utilidades.ContieneLetras(txtCuit1SignUp.Text, txtCuit1SignUp.Text.Length))
                 {
                     if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "Solo se pueden ingresar números en este campo.";
                     guardar = false;
                 }
 
-                //for (int i = 0; i < txtCuit2SignUp.Text.Length; i++)
-                //{
-                //    if (txtCuit2SignUp.Text[i] > 57 || txtCuit2SignUp.Text[i] < 48)
-                //    {
-                //        if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "*Solo se pueden ingresar números en este campo.";
-
-                //    }
-                //}
                 if(Utilidades.ContieneLetras(txtCuit2SignUp.Text, txtCuit2SignUp.Text.Length))
                 {
                     if (string.IsNullOrEmpty(lblCuitSignUp.Text)) lblCuitSignUp.Text = "Solo se pueden ingresar números en este campo.";
@@ -117,7 +124,26 @@ namespace ArvoProjectWebsite.WebForms
                 }
             }
 
-            if(guardar)
+            ///VALIDAR CUIT Y MAIL EXISTENTE
+            switch (gu.ValidarCUITyMail(txtCuit1SignUp.Text + txtDniSignUp.Text + txtCuit2SignUp.Text, txtMailSignUp.Text))
+            {
+                case 1:
+                    lblMailSignUp.Text = "El mail  ya está registrado.";
+                    break;
+                case 2:
+                    lblCuitSignUp.Text = "El CUIT ya está registrado";
+                    break;
+                case 3:
+                    lblMailSignUp.Text = "El mail  ya está registrado.";
+                    lblCuitSignUp.Text = "El CUIT ya está registrado";
+                    break;
+                default:
+                    break;
+            }
+
+
+
+            if (guardar)
             {
                 gestionUsuarios gestionUsuarios = new gestionUsuarios();
                 Usuario usuario = new Usuario();
@@ -131,16 +157,16 @@ namespace ArvoProjectWebsite.WebForms
                 usuario.nroCel = txtTelefonoSignUp.Text;
                 usuario.FechaNac = txtFechaSignUp.Text;
 
-                
-                if (gestionUsuarios.AgregarUsuario(usuario).ToString() == "2627" )
-                {
-                    lblMailSignUp.Text = "El mail puede ya estar registrado.";
-                    lblCuitSignUp.Text = "El CUIT ya puede estar registrado"; //ya existe un usuario con los datos ingresados
-                }
-                else
-                {
+                gestionUsuarios.AgregarUsuario(usuario);
 
-                }
+                Response.Redirect("frmLogin.aspx");
+                
+                //if (gestionUsuarios.AgregarUsuario(usuario).ToString() == "2627" )
+                //{
+                //    lblMailSignUp.Text = "El mail puede ya estar registrado.";
+                //    lblCuitSignUp.Text = "El CUIT ya puede estar registrado"; //ya existe un usuario con los datos ingresados
+                //}
+                
             }
         }
     }

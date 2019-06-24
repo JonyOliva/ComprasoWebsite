@@ -29,6 +29,10 @@ namespace ArvoProjectWebsite
             Response.Redirect("frmCarrito.aspx");
         }
 
+        protected void imgProducto_Command(object sender, CommandEventArgs e)
+        {
+            Response.Redirect("WebForms/frmProducto.aspx?IDProd=" + e.CommandArgument);
+        }
 
     }
 }

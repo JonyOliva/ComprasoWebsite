@@ -51,7 +51,6 @@ C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicad
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.dll
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.pdb
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.pdb
-C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csprojAssemblyReference.cache
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
 C:\Users\Jony\source\repos\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CopyComplete
@@ -178,7 +177,6 @@ E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.dll
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.dll
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaLogicadeNegocio.pdb
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Entidad.pdb
-E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\bin\CapaAccesoaDatos.pdb
 E:\Mis Documentos\UTN\ArvoProjectWebsite\ArvoProjectWebsite\obj\Debug\CapaPresentacion.csproj.CopyComplete
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\ArvoProjectWebsite\bin\ArvoProjectWebsite.dll.config

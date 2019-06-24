@@ -8,7 +8,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-   <%--CARROUSEL--%>
+    <%--CARROUSEL--%>
 <div id="carouselOfertas" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -51,7 +51,7 @@
                         <table class="altaclase">
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="imgProducto" runat="server" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' style="max-height:144px;max-width:200px;height:auto;width:auto;" />
+                                    <asp:ImageButton ID="imgProducto" runat="server" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" OnCommand="imgProducto_Command" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' style="max-height:144px;max-width:200px;height:auto;width:auto;" />
                                 </td>
                             </tr>
                             <tr>

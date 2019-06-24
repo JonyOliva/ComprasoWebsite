@@ -65,31 +65,35 @@ GO
 
 --MENU USUARIO
 
-	-COMPRAS
+	--COMPRAS
+
 CREATE PROCEDURE spObtenerComprasUsuario
 (
 	@IdUsuario char(20)
 )
 AS
-SELECT * FROM VENTAS WHERE IDUsuario_VENTA = @IdUsuario
+SELECT IDVenta as 'ID Venta', NroTarjeta_VENTA as 'Nro Tarjeta', IDUsuario_VENTA as 'Codigo de Usuario', Direccion_DIR as 'Direccion', Descuento_VENTA as 'Descuento',
+Total_VENTA as 'Total', Costo_ENVIO as 'Precio Envio', Estado   FROM VENTAS inner join DirecxUsuario on IDUsuario_VENTA = IDUsuario_DIR
+and CodDirreccion_VENTA = CodDirreccion inner join ENVIOS on IDEnvio = IDEnvio_VENTA  WHERE IDUsuario_VENTA = @IdUsuario
 GO
 
-	-Tarjetas_x_Usuario
+
+	--Tarjetas_x_Usuario
 CREATE PROCEDURE spObtenerTarjetasUsuario
 (
 	@IdUsuario char(20)
 )
 AS
-SELECT * FROM TarjetasxUsuario WHERE IDUsuario_TxU = @IdUsuario
+SELECT  IDUsuario_TxU ,NroTarjeta as 'Nro Tarjeta',IDTarjeta_TxU as 'Codigo', Titular,Vencimiento,TARJETAS.Nombre_TARJ as Tarjeta FROM TarjetasxUsuario inner join TARJETAS on TARJETAS.IDTarjeta_TARJ = TarjetasxUsuario.IDTarjeta_TxU WHERE IDUsuario_TxU = @IdUsuario
 GO
 
-	-Direcciones_x_Usuario
+	--Direcciones_x_Usuario
 CREATE PROCEDURE spObtenerDireccionesUsuario
 (
 	@IdUsuario char(20)
 )
 AS
-SELECT * FROM DirecxUsuario WHERE IDUsuario_DIR = @IdUsuario
+SELECT IDUsuario_DIR, CodDirreccion as 'Identificador', Provincia_DIR as 'Provincia', Direccion_DIR as 'Direccion' FROM DirecxUsuario WHERE IDUsuario_DIR = @IdUsuario
 GO
 
 
@@ -104,7 +108,7 @@ SET Estado = 1 WHERE IDVenta = @IdVenta
 GO
 
 
--Eliminar MedioDePago
+--Eliminar MedioDePago
 create procedure spEliminarMdP
 (
 	@IdUsuario char(12),
@@ -114,8 +118,9 @@ as
 begin
 Delete from TarjetasxUsuario where @IdTarjxU = IDTarjeta_TxU and @IdUsuario = IDUsuario_TxU
 end
+GO
 
--Eliminar Direccion
+--Eliminar Direccion
 create procedure spEliminarDireccion
 (
 	@IdUsuario char(12),
@@ -126,3 +131,28 @@ begin
 Delete from DirecxUsuario where @CodDireccion = CodDirreccion and @IdUsuario = IDUsuario_DIR
 end
 Go
+
+
+-Agregad MedioDePago
+create procedure spAgregarMdP
+(
+	@IdUsuario char(12),
+	@NroTarjeta char(16),
+	@IdTarj char(4),
+	@Titular char(30),
+	@Venc date
+)
+as
+Insert into TarjetasxUsuario(IDUsuario_TxU,NroTarjeta,IDTarjeta_TxU,Titular,Vencimiento)
+select @IdUsuario,@NroTarjeta, @IdTarj, @Titular, @Venc
+
+-Agregar Direccion
+create procedure spAgregarDireccion
+(
+	@IdUsuario char(12),
+	@Provincia char(40),
+	@Direccion char(40)
+)
+as
+Insert into DirecxUsuario(IDUsuario_DIR,Provincia_DIR,Direccion_DIR)
+select @IdUsuario, @Provincia, @Direccion

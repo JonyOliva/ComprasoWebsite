@@ -13,6 +13,7 @@ namespace ArvoProjectWebsite
 {
     public partial class frmCarrito : System.Web.UI.Page
     {
+        gestorSesion sesion;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -22,6 +23,13 @@ namespace ArvoProjectWebsite
             {
                 this.Session["Compras"] = crearCompra();
             }
+
+            sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
+            if (!IsPostBack)
+            {
+                sesion.comprobarSesion();
+            }
+
         }
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
@@ -117,6 +125,47 @@ namespace ArvoProjectWebsite
         protected void Carrito_Click(object sender, EventArgs e)
         {
             Response.Redirect("frmCarrito.aspx");
+        }
+
+        protected void btnUser_Command(object sender, CommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "init":
+                    Response.Redirect("/WebForms/frmLogin.aspx");
+                    break;
+                case "acc":
+                    Usuario user = (Usuario)Application["Usuario"];
+                    if (user.Admin)
+                    {
+                        Response.Redirect("/WebForms/frmMenuAdmin.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/WebForms/frmMenuUsuario.aspx");
+                    }
+                    break;
+                case "close":
+                    sesion.cerrarSession();
+                    Server.Transfer("/default.aspx", false);
+                    break;
+            }
+        }
+
+        protected void item_Command(object sender, CommandEventArgs e)
+        {
+            Session["filtroCategoria"] = e.CommandArgument;
+            Response.Redirect("/WebForms/frmListaProductos.aspx");
+        }
+
+        protected void ejecutarBuscador(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtBuscador.Text))
+            {
+                string[] words = txtBuscador.Text.Trim().Split();
+                Session["Buscador"] = words;
+                Response.Redirect("/WebForms/frmListaProductos.aspx");
+            }
         }
 
         public void cargarCarrito()
