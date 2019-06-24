@@ -27,6 +27,10 @@ namespace CapaLogicadeNegocio
            return bd.getTable("SELECT Provincia_ENVIO FROM ENVIOS", "Provincias");
         }
 
+        public DataTable getListaDirecxUsuario(string id)
+        {
+            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IDUsuario_DIR = " + id, "Direcxusuario");
+        }
 
         public bool getUsuario(ref Usuario usuario)
         {
