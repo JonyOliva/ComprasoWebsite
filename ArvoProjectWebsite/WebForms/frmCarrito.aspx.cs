@@ -91,7 +91,7 @@ namespace ArvoProjectWebsite
             if (pos < tbl.Rows.Count && pos >= 0)
             {
                 tbl.Rows.RemoveAt(pos);
-                if(this.Session["Compras"] != null)
+                if(tbl.Rows.Count != 0)
                     tblcompras.Rows.RemoveAt(pos);
             }
 
@@ -108,10 +108,12 @@ namespace ArvoProjectWebsite
             if (this.Session["Carrito"] == null || ((DataTable)this.Session["Carrito"]).Rows.Count == 0)
             {
                 lnkComprar.Enabled = false;
+                lblNocarrito.Visible = true;
             }
             else
             {
                 lnkComprar.Enabled = true;
+                lblNocarrito.Visible = false;
 
             }
             cargarCarrito();
