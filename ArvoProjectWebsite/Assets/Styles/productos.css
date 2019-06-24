@@ -53,6 +53,18 @@
     max-width: 60px;
 }
 
+.listaDestacados {
+    border: none;
+
+
+}
+
+.campo {
+    width: 20px;
+}
+.categorias {
+    width: 60%;
+}
 @media {
 
 
