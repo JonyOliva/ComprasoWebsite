@@ -28,10 +28,13 @@
                      <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"><i class="fas fa-plus-circle"></i> &nbsp Agregar producto</asp:LinkButton></p>
                 <div class="container-fluid mb-3">
 
- <asp:Table ID="AgregarProducto" runat="server" Width="80%" Visible="False" CssClass="mb-3">
+ <asp:Table ID="AgregarProducto" runat="server" Width="77%" Visible="False" CssClass="mb-3">
      <asp:TableRow runat="server" TableSection="TableHeader" BackColor="#3366FF" Font-Bold="True" ForeColor="White" CssClass="text-center">
          <asp:TableCell runat="server">Id Producto</asp:TableCell>
          <asp:TableCell runat="server">Nombre</asp:TableCell>
+         <asp:TableCell runat="server">Categoria</asp:TableCell>
+         <asp:TableCell runat="server">Subcategoria</asp:TableCell>
+         <asp:TableCell runat="server">Marca</asp:TableCell>
          <asp:TableCell runat="server">Stock</asp:TableCell>
          <asp:TableCell runat="server">Precio</asp:TableCell>
          <asp:TableCell runat="server">Descuento</asp:TableCell>
@@ -46,9 +49,20 @@
                             <asp:TableCell runat="server">
                                 <asp:TextBox ID="txtNombreProd" runat="server"></asp:TextBox>
 </asp:TableCell>
+
+<asp:TableCell runat="server">
+    <asp:DropDownList ID="ddlCategorias" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged"></asp:DropDownList>
+</asp:TableCell>
+                            <asp:TableCell runat="server">
+    <asp:DropDownList ID="ddlSubcat" runat="server" AutoPostBack="true"></asp:DropDownList>
+</asp:TableCell>
+                            <asp:TableCell runat="server">
+    <asp:DropDownList ID="ddlMarcas" runat="server"></asp:DropDownList>
+</asp:TableCell>
                             <asp:TableCell runat="server">
                                 <asp:TextBox ID="txtStock" runat="server"></asp:TextBox>
 </asp:TableCell>
+
                             <asp:TableCell runat="server">
                                 <asp:TextBox ID="txtPrecio" runat="server"></asp:TextBox>
 </asp:TableCell>
@@ -64,114 +78,14 @@
 
 </asp:TableCell>
                             <asp:TableCell runat="server">
-                                <asp:Button ID="btnAgregar" runat="server" Text="Agregar" />
+                                <asp:Button ID="btnAgregar" runat="server" Text="Agregar"  OnClick="btnAgregar_Click1" />
                             
 
 </asp:TableCell>
                             
                         </asp:TableRow>
                     </asp:Table>
-               <%-- <asp:GridView ID="GridProductos" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" CellPadding="3" CellSpacing="2" DataKeyNames="IDProducto" DataSourceID="SqlDataSource_Prod" OnRowEditing="GridProductos_RowEditing" OnRowUpdating="GridProductos_RowUpdating" AutoGenerateEditButton="True" Visible="false">
-                    <Columns>
-                        <asp:TemplateField HeaderText="ID Producto" SortExpression="IDProducto">
-                            <EditItemTemplate>
-                                <asp:Label ID="lblID2" runat="server" Text='<%# Eval("IDProducto") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblID" runat="server" Text='<%# Bind("IDProducto") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Nombre" SortExpression="Nombre_PROD">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="txtNombre" runat="server" Text='<%# Bind("Nombre_PROD") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblNombre" runat="server" Text='<%# Bind("Nombre_PROD") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Stock" SortExpression="Stock_PROD">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="txtStock" runat="server" Text='<%# Bind("Stock_PROD") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblStock" runat="server" Text='<%# Bind("Stock_PROD") %>'></asp:Label>
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Precio" SortExpression="Precio_PROD">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="txtPrecio" runat="server" Text='<%# Bind("Precio_PROD") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblPrecio" runat="server" Text='<%# Bind("Precio_PROD", "{0:C}") %>'></asp:Label>
-                            </ItemTemplate>
-                            <ControlStyle Width="80px" />
-                            <HeaderStyle Width="90px" />
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Descuento" SortExpression="Descuento_PROD">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="txtDescuento" runat="server" Text='<%# Bind("Descuento_PROD") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblDescuento" runat="server" Text='<%# Bind("Descuento_PROD", "{0}%") %>'></asp:Label>
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ACTIVO" SortExpression="ACTIVO">
-                            <EditItemTemplate>
-                                <asp:CheckBox ID="chkActivo" runat="server" Checked='<%# Bind("ACTIVO") %>' />
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:CheckBox ID="chkActivo" runat="server" Checked='<%# Bind("ACTIVO") %>' Enabled="false" />
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Descripción" SortExpression="Descripcion_PROD">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="txtDescrip" runat="server" Text='<%# Bind("Descripcion_PROD") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblDescrip" runat="server" Text='<%# Bind("Descripcion_PROD") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="RutaImagen" SortExpression="RutaImagen" Visible="False">
-                            <EditItemTemplate>
-                                <asp:Label ID="lblRuta2" runat="server" Text='<%# Bind("RutaImagen") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblRuta" runat="server" Text='<%# Bind("RutaImagen") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:ImageField DataImageUrlField="RutaImagen" HeaderText="Imagen">
-                            <ControlStyle CssClass="miniatura" />
-                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                        </asp:ImageField>
-                    </Columns>
-                    <FooterStyle BackColor="Navy" ForeColor="MidnightBlue" />
-                    <HeaderStyle BackColor="SteelBlue" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle ForeColor="AliceBlue" HorizontalAlign="Center" />
-                    <RowStyle BackColor="WhiteSmoke" ForeColor="Black" />
-                    <SelectedRowStyle BackColor="Turquoise" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="CadetBlue" />
-                    <SortedAscendingHeaderStyle BackColor="CadetBlue" />
-                    <SortedDescendingCellStyle BackColor="CadetBlue" />
-                    <SortedDescendingHeaderStyle BackColor="CadetBlue" />
-                </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource_Prod" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [IDProducto], [Nombre_PROD], [Stock_PROD], [Precio_PROD], [Descuento_PROD], [ACTIVO], [Descripcion_PROD], [RutaImagen] FROM [PRODUCTOS]" 
-                    UpdateCommand="UPDATE [Productos] SET [Nombre_PROD] =  @NombreProd, [Descripcion_PROD] = @Descripcion, 
-[Stock_PROD] = @Stock, [Precio_PROD] = @Precio, [Descuento_PROD] = @Descuento_PROD,[ACTIVO] = @Activo
-WHERE [IDProducto] = @IdProd" >
-                    <UpdateParameters>
-    <asp:Parameter Name="NombreProd" Type="String" />
-    <asp:Parameter Name="Descripcion" Type="String" />
-    <asp:Parameter Name="Stock" Type="Int32" />
-    <asp:Parameter Name="Precio" Type="Decimal" />
-    <asp:Parameter Name="Descuento" Type="Decimal" />
-    <asp:Parameter Name="Activo" Type="Boolean" />
-<asp:Parameter Name="IdProd" Type="String" />
-</UpdateParameters>
-                </asp:SqlDataSource>--%>
+                   
                     <asp:GridView ID="grdProd" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AutoGenerateColumns="False" AutoGenerateEditButton="True" OnRowCancelingEdit="grdProd_RowCancelingEdit" OnRowEditing="grdProd_RowEditing" OnRowUpdating="grdProd_RowUpdating">
                         <Columns>
                         <asp:TemplateField HeaderText="ID Producto" SortExpression="IDProducto">
@@ -295,7 +209,7 @@ WHERE [IDProducto] = @IdProd" >
             </asp:View>
 
             <asp:View ID="ViewVentas" runat="server">
-                 <div class="container-fluid mb-3">
+                 <div class="container-fluid mb-3 text-center align-items-center">
                 <asp:GridView ID="GridVentas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IDVenta" DataSourceID="SqlDataSource_Ventas" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
@@ -315,7 +229,7 @@ WHERE [IDProducto] = @IdProd" >
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowEditButton="True" />
+                        <asp:CommandField ShowEditButton="True" Visible="False" />
                        
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
