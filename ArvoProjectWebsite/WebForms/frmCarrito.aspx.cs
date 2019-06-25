@@ -18,12 +18,6 @@ namespace ArvoProjectWebsite
         {
             if (!IsPostBack)
                 actualizarCarrito();
-
-            if (this.Session["Compras"] == null)
-            {
-                this.Session["Compras"] = crearCompra();
-            }
-
             sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
             if (!IsPostBack)
             {
@@ -40,21 +34,6 @@ namespace ArvoProjectWebsite
         protected void lnkComprar_Click(object sender, EventArgs e)
         {
             int pos = actualizarCantidades();
-            //for (int i = 0; i < grdCarrito.Rows.Count; i++)
-            //{
-            //    ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).DataBind();
-            //    if (((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != null &&
-            //        ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != string.Empty)
-            //    {
-            //        string prueba = ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text;
-            //        int cant = int.Parse(prueba);
-            //        if (cant < 1 || Utilidades.validarString(prueba, false, true, true))
-            //            pos++;
-
-            //        ((DataTable)this.Session["Carrito"]).Rows[i][4] = cant;
-            //    }
-
-            //}
             if (grdCarrito == null)
             {
                 Response.Write("<script language=javascript>alert('No posee productos en el carrito');</script>");
@@ -65,6 +44,12 @@ namespace ArvoProjectWebsite
             }
             else
             {
+                
+                this.Session["Compras"] = null;
+                if (this.Session["Compras"] == null)
+                {
+                    this.Session["Compras"] = crearCompra();
+                }
                 cargarCompras((DataTable)this.Session["Compras"]
                         , (DataTable)this.Session["Carrito"]);
                 Response.Redirect("frmCompra.aspx");
@@ -181,6 +166,17 @@ namespace ArvoProjectWebsite
             e.Row.Cells[6].Visible = false;
             e.Row.Cells[7].Visible = false;
             e.Row.Cells[8].Visible = false;
+            string prueba = e.Row.Cells[7].Text;
+            if(e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if(prueba != null && prueba != "&nbsp")
+                {
+                    ((TextBox)e.Row.FindControl("txtCantidad")).Text = 
+                        e.Row.Cells[7].Text;
+                }
+            }
+            
+
         }
 
         protected void grdCarrito_Sorting(object sender, GridViewSortEventArgs e)
@@ -241,20 +237,23 @@ namespace ArvoProjectWebsite
             for (int i = 0; i < grdCarrito.Rows.Count; i++)
             {
                 ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).DataBind();
-                if (((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != null &&
-                    ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != string.Empty)
+                string texto = ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text;
+                if (texto == null || Utilidades.validarString(texto, false, true, true))
                 {
-                    string prueba = ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text;
-                    int cant = int.Parse(prueba);
-                    if (cant < 1 || Utilidades.validarString(prueba, false, true, true))
-                        pos++;
-
-                    ((DataTable)this.Session["Carrito"]).Rows[i][4] = cant;
+                    pos++;
+                }
+                else
+                {
+                    ((DataTable)this.Session["Carrito"]).Rows[i][4] = int.Parse(texto);
                 }
 
             }
             return pos;
         }
-        
+
+        protected void grdCarrito_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+
+        }
     }
 }

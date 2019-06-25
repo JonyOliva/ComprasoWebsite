@@ -67,6 +67,15 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtNrotarjeta;
         
         /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+        
+        /// <summary>
         /// Control lblDireccion.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace ArvoProjectWebsite.WebForms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPrecioEnvio;
+        
+        /// <summary>
+        /// Control lblCostoTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCostoTotal;
         
         /// <summary>
         /// Control lbtnCancelar.

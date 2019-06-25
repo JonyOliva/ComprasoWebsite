@@ -22,3 +22,9 @@ C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.csproj.CoreCompileInputs.cache
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.dll
 C:\Users\Facundo\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.pdb
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\bin\Debug\CapaAccesoaDatos.dll
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\bin\Debug\CapaAccesoaDatos.pdb
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.csprojAssemblyReference.cache
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.dll
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\CapaAccesoaDatos\obj\Debug\CapaAccesoaDatos.pdb

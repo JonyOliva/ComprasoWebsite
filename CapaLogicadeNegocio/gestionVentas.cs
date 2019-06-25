@@ -19,7 +19,7 @@ namespace CapaLogicadeNegocio
             bd = new BaseDeDatos(databasePath);
         }
 
-        public void insertarVenta(Ventas venta)
+        public bool insertarVenta(Ventas venta)
         {
             SqlCommand cm = new SqlCommand();
             cm.Parameters.AddWithValue("@NroTarjeta", venta.NroTarjeta);
@@ -29,11 +29,17 @@ namespace CapaLogicadeNegocio
             cm.Parameters.AddWithValue("@Total", venta.Total);
             cm.Parameters.AddWithValue("@IDEnvio", venta.IdEnvio);
             cm.Parameters.AddWithValue("@Estado", venta.EstadoEnvio);
-            bd.ExecStoredProcedure(cm, "spAgregarVenta");
+
+            if (bd.ExecStoredProcedure(cm, "spAgregarVenta") != 0)
+            {
+                return true;
+            }
+            else return false;
+                
 
         }
 
-        public void insertarDetalleventas(DetalleVentas detVenta)
+        public bool insertarDetalleventas(DetalleVentas detVenta)
         {
             SqlCommand cm = new SqlCommand();
             cm.Parameters.AddWithValue("@IDProducto", detVenta.IDProducto1);
@@ -41,7 +47,12 @@ namespace CapaLogicadeNegocio
             cm.Parameters.AddWithValue("@Cantidad", detVenta.Cantidad);
             cm.Parameters.AddWithValue("@Descuento",detVenta.Descuento);
             cm.Parameters.AddWithValue("@PrecioUni", detVenta.PrecioUnitario);
-            bd.ExecStoredProcedure(cm, "spAgregarDetVenta");
+            if (bd.ExecStoredProcedure(cm, "spAgregarDetVenta") != 0)
+            {
+                return true;
+            }
+            else return false;
+           
         }
 
         public int recuperarIdventa()

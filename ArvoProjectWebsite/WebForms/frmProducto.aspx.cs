@@ -67,8 +67,22 @@ namespace ArvoProjectWebsite.WebForms
             row["IDProducto"] = prod.IDProducto;
             row["Cantidad"] = 1;
 
-            if (!tbl.Rows.Contains(prod.IDProducto))
+            if (tbl.Rows.Contains(prod.IDProducto))
+            {
+                foreach (DataRow item in tbl.Rows)
+                {
+                    if (item[5].ToString() == prod.IDProducto)
+                    {
+                        int cant = int.Parse(item[4].ToString());
+                        cant += 1;
+                        item[4] = cant;
+                    }
+                }
+            }
+            else
+            {
                 tbl.Rows.Add(row);
+            }
         }
 
         public DataTable crearTablacarrito()

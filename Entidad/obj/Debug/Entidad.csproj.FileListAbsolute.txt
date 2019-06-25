@@ -22,3 +22,9 @@ E:\Mis Documentos\UTN\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csprojAssembl
 E:\Mis Documentos\UTN\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
 E:\Mis Documentos\UTN\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.dll
 E:\Mis Documentos\UTN\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.pdb
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\Entidad\bin\Debug\Entidad.dll
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\Entidad\bin\Debug\Entidad.pdb
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csprojAssemblyReference.cache
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.dll
+C:\Users\Alba\Documents\GitHub\ArvoProjectWebsite\Entidad\obj\Debug\Entidad.pdb

@@ -22,6 +22,14 @@ namespace CapaLogicadeNegocio
             return tbl;
         }
 
+        public DataRow getInteres(string id)
+        {
+            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
+            DataTable tbl = new DataTable();
+            tbl = bd.getTable("SELECT INTERES_CUO FROM CUOTAS WHERE IDCuota_CUO = '" + id + "'", "Interes");
+            return tbl.Rows[0];
+        }
+
         public DataTable getTarjetas()
         {
             BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());

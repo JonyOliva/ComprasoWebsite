@@ -46,6 +46,7 @@
     <Compile Include="gestionProductos.cs" />
     <Compile Include="gestionUsuarios.cs" />
     <Compile Include="gestionVentas.cs" />
+    <Compile Include="LogicaCompra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session.cs" />
   </ItemGroup>
