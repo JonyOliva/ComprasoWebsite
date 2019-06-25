@@ -31,6 +31,13 @@ namespace CapaLogicadeNegocio
             bd.ExecStoredProcedure(sqlCommand, "spObtenerMarcas", ref marcas);
             return marcas;
         }
+
+
+        public DataTable getListaMarcas()
+        {
+            return bd.getTable("SELECT * FROM MARCAS", "marcas");
+        }
+
         public DataTable getListaCategorias()
         {
             return bd.getTable("SELECT * FROM CATEGORIAS", "categorias");
@@ -39,6 +46,8 @@ namespace CapaLogicadeNegocio
         {
             return bd.getTable("SELECT * FROM SUBCATEGORIAS WHERE IDCategoria_SUBCAT='" + Cat + "'", "categorias");
         }
+        
+
         public Producto getProducto(string IDProducto)
         {
             DataTable data = bd.getTable("SELECT * FROM PRODUCTOS WHERE IDProducto='" + IDProducto + "'", "producto");
@@ -48,22 +57,39 @@ namespace CapaLogicadeNegocio
         private void ArmarParametrosProductos(ref SqlCommand Comando, Producto prod)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = Comando.Parameters.Add("@IDProducto", SqlDbType.Char,4);
+            SqlParametros = Comando.Parameters.Add("@IdProd", SqlDbType.Char,4);
             SqlParametros.Value = prod.IDProducto;
-            SqlParametros = Comando.Parameters.Add("@Nombre_PROD", SqlDbType.Char, 30);
+            SqlParametros = Comando.Parameters.Add("@NombreProd", SqlDbType.Char, 30);
             SqlParametros.Value = prod.Nombre;
-            SqlParametros = Comando.Parameters.Add("@Descripcion_PROD", SqlDbType.Char, 1000);
+            SqlParametros = Comando.Parameters.Add("@Descripcion", SqlDbType.Char, 1000);
             SqlParametros.Value = prod.Descripcion;
-            SqlParametros = Comando.Parameters.Add("@Stock_PROD", SqlDbType.Int);
+            SqlParametros = Comando.Parameters.Add("@Stock", SqlDbType.Int);
             SqlParametros.Value = prod.Stock;
-            SqlParametros = Comando.Parameters.Add("@Precio_PROD", SqlDbType.Money);
+            SqlParametros = Comando.Parameters.Add("@Precio", SqlDbType.Money);
             SqlParametros.Value = prod.Precio;
-            SqlParametros = Comando.Parameters.Add("@Descuento_PROD", SqlDbType.Float);
+            SqlParametros = Comando.Parameters.Add("@Descuento", SqlDbType.Float);
             SqlParametros.Value = prod.Descuento;
             SqlParametros = Comando.Parameters.Add("@ACTIVO", SqlDbType.Bit);
             SqlParametros.Value = prod.Activo;
 
             
+        }
+
+        public void insertarProducto(Producto prod)
+        {
+            SqlCommand cm = new SqlCommand();
+            cm.Parameters.AddWithValue("@IDProducto", prod.IDProducto);
+            cm.Parameters.AddWithValue("@Nombre_PROD", prod.Nombre);
+            cm.Parameters.AddWithValue("@Descripcion_PROD", prod.Descripcion);
+            cm.Parameters.AddWithValue("@IdCategoria_PROD", prod.Categoria);
+            cm.Parameters.AddWithValue("@IdSubCategoria_PROD", prod.SubCategoria);
+            cm.Parameters.AddWithValue("@IDMarca_PROD", prod.Marca);
+            cm.Parameters.AddWithValue("@Stock_PROD", prod.Stock);
+            cm.Parameters.AddWithValue("@Precio_PROD", prod.Precio);
+            cm.Parameters.AddWithValue("@Descuento_PROD", prod.Descuento);
+            cm.Parameters.AddWithValue("@ACTIVO", prod.Activo);
+            bd.ExecStoredProcedure(cm, "spAgregarProducto");
+
         }
 
 
