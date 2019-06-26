@@ -38,6 +38,13 @@ namespace CapaLogicadeNegocio
             return tbl;
         }
 
+        public DataTable getTipotarjeta(string idus)
+        {
+            DataTable tbl = new DataTable();
+            BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
+            tbl = bd.getTable("SELECT * FROM TarjetasxUsuario WHERE IDUsuario_TxU = '" + idus + "'", "Tarjeta");
+            return tbl;
+        }
         
     }
 }

@@ -48,9 +48,9 @@ namespace ArvoProjectWebsite
                 this.Session["Compras"] = null;
                 if (this.Session["Compras"] == null)
                 {
-                    this.Session["Compras"] = crearCompra();
+                    this.Session["Compras"] = LogicaCarrito.crearCompra();
                 }
-                cargarCompras((DataTable)this.Session["Compras"]
+                LogicaCarrito.cargarCompras((DataTable)this.Session["Compras"]
                         , (DataTable)this.Session["Carrito"]);
                 Response.Redirect("frmCompra.aspx");
             }
@@ -175,8 +175,6 @@ namespace ArvoProjectWebsite
                         e.Row.Cells[7].Text;
                 }
             }
-            
-
         }
 
         protected void grdCarrito_Sorting(object sender, GridViewSortEventArgs e)
@@ -184,37 +182,9 @@ namespace ArvoProjectWebsite
 
         }
 
-        protected void cargarCompras(DataTable tblcompras, DataTable tblcarrito)
-        {
-            for (int i = 0; i < grdCarrito.Rows.Count; i++)
-            {
-                DataRow row = tblcompras.NewRow();
-                string prueba = tblcarrito.Rows[i][4].ToString();
-                row["Cantidad"] = int.Parse(prueba);
-                row["Producto"] = tblcarrito.Rows[i][0].ToString();
-                row["RutaImagen"] = tblcarrito.Rows[i][3].ToString();
-                row["IDProducto"] = tblcarrito.Rows[i][5].ToString();
-                row["Precio"] = decimal.Parse(tblcarrito.Rows[i][2].ToString());
-                row["Subtotal"] = 
-                    int.Parse(prueba) * decimal.Parse(tblcarrito.Rows[i][2].ToString());
+        
 
-
-                tblcompras.Rows.Add(row);
-            }
-
-        }
-
-        protected DataTable crearCompra()
-        {
-            DataTable tbl = new DataTable();
-            tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Cantidad", System.Type.GetType("System.Int32")));
-            tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
-            tbl.Columns.Add(new DataColumn("IDProducto", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Subtotal", System.Type.GetType("System.Decimal")));
-            return tbl;
-        }
+        
 
         protected void grdCarrito_RowEditing(object sender, GridViewEditEventArgs e)
         {
