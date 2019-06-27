@@ -105,34 +105,69 @@ namespace CapaLogicadeNegocio
                 return false;
         }
 
-        public DataSet busquedaProductos(string srtSearch)
+        public string[] Buscar(string[] search)
         {
-            DataSet busqueda = new DataSet();
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.Parameters.AddWithValue("@aBuscar", srtSearch);
-            DataTable fromProds = new DataTable("productos");
-            bd.ExecStoredProcedure(sqlCommand, "Buscador", ref fromProds);
-            DataTable fromCats, fromSubCats;
-            fromCats = bd.getTable("SELECT IDCategoria FROM CATEGORIAS WHERE Nombre_CAT LIKE '%" + srtSearch + "%'", "categorias");
-            string selectSubCats = "SELECT IDSubCategoria FROM SUBCATEGORIAS WHERE (Nombre_SUBCAT LIKE '%" + srtSearch + "%')";
-            if (fromCats.Rows.Count > 0)
+            List<string> strs = new List<string>();
+            foreach (string str in search)
             {
-                selectSubCats += " AND (";
-                for (int i = 0; i < fromCats.Rows.Count; i++)
+                if (str.Length > 1)
                 {
-                    selectSubCats += "IDCategoria_SUBCAT='" + fromCats.Rows[i][0] + "'";
-                    if (!(i <= fromCats.Rows.Count - 1))
-                    {
-                        selectSubCats += " OR ";
-                    }
+                    strs.Add(str);
                 }
-                selectSubCats += ")";
             }
-            fromSubCats = bd.getTable(selectSubCats, "subcategorias");
-            busqueda.Tables.Add(fromProds);
-            busqueda.Tables.Add(fromCats);
-            busqueda.Tables.Add(fromSubCats);
-            return busqueda;
+            string[] words = strs.ToArray();
+            CADProductos gp = new CADProductos();
+            DataSet[] datasets = new DataSet[words.Length];
+            for (int i = 0; i < datasets.Length; i++)
+            {
+                datasets[i] = gp.busquedaProductos(words[i]);
+            }
+            List<string> cats = new List<string>();
+            List<string> subcats = new List<string>();
+            for (int x = 0; x < datasets.Length; x++)
+            {
+                foreach (DataRow item in datasets[x].Tables["productos"].Rows)
+                {
+                    cats.Add(item[0].ToString());
+                    subcats.Add(item[1].ToString());
+                }
+                foreach (DataRow item in datasets[x].Tables["categorias"].Rows)
+                {
+                    cats.Add(item[0].ToString());
+                }
+                foreach (DataRow item in datasets[x].Tables["subcategorias"].Rows)
+                {
+                    subcats.Add(item[0].ToString());
+                }
+            }
+
+            List<string> filtro = new List<string>();
+            if (cats.Count > 1)
+            {
+                filtro.Add(Utilidades.getMasRepetido(cats.ToArray()));
+            }
+            else if (cats.Count == 1)
+            {
+                filtro.Add(cats[0]);
+            }
+
+            if (subcats.Count > 1)
+            {
+                filtro.Add(Utilidades.getMasRepetido(subcats.ToArray()));
+            }
+            else if (subcats.Count == 1)
+            {
+                filtro.Add(subcats[0]);
+            }
+
+            if (filtro.Count != 0)
+            {
+                return filtro.ToArray();
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

@@ -193,6 +193,7 @@
     <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\VBCSCompiler.exe" />
     <Content Include="obj\Release\_WPPLastBuildInfo.txt" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\Reportes\default.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WebForms\default.aspx.designer.cs" />
@@ -272,6 +273,13 @@
     </Compile>
     <Compile Include="WebForms\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Reportes\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Reportes\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
