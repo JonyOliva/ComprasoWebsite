@@ -347,10 +347,12 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
-.vs/config/applicationhost.config
-.vs/ArvoProjectWebsite/v15/.suo
-.vs/ArvoProjectWebsite/v15/Server/sqlite3/storage.ide
-.vs/ArvoProjectWebsite/v15/Server/sqlite3/storage.ide-shm
-.vs/ArvoProjectWebsite/v15/Server/sqlite3/storage.ide-wal
-.vs/config/applicationhost.config
-Entidad/obj/Debug/Entidad.csproj.FileListAbsolute.txt
+.vs/
+ArvoProjectWebsite/bin/
+ArvoProjectWebsite/obj/
+CapaAccesoaDatos/bin/
+CapaAccesoaDatos/obj/
+CapaLogicadeNegocio/obj/
+CapaLogicadeNegocio/bin/
+Entidad/bin/
+Entidad/obj/
