@@ -156,7 +156,7 @@ namespace ArvoProjectWebsite
         {
 
             gestionProductos gp = new gestionProductos();
-            añadirCarrito((DataTable)this.Session["Carrito"]
+            LogicaCarrito.añadirCarrito((DataTable)this.Session["Carrito"]
                 , gp.getProducto(e.CommandArgument.ToString()));
 
             btnFiltrar_Click();
@@ -255,34 +255,7 @@ namespace ArvoProjectWebsite
             }
         }
 
-        public void añadirCarrito(DataTable tbl, Producto prod)
-        {
-            DataRow row = tbl.NewRow();
-            row["Producto"] = prod.Nombre;
-            row["Marca"] = prod.Marca;
-            row["Precio"] = prod.Precio;
-            row["RutaImagen"] = prod.RutaImagen.Trim();
-            row["IDProducto"] = prod.IDProducto;
-            row["Cantidad"] = 1;
-            
-            if(tbl.Rows.Contains(prod.IDProducto))
-            {
-                foreach (DataRow item in tbl.Rows)
-                {
-                    if(item[5].ToString() == prod.IDProducto)
-                    {
-                        int cant = int.Parse(item[4].ToString());
-                        cant += 1;
-                        item[4] = cant;
-                    }
-                }
-            }
-            else
-            {
-                tbl.Rows.Add(row);
-            }
-                    
-        }
+        
 
         public DataTable crearTablacarrito()
         {

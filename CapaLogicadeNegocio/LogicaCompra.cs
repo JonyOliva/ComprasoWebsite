@@ -10,9 +10,9 @@ using CapaAccesoaDatos;
 
 namespace CapaLogicadeNegocio
 {
-    public class LogicaCompra
+    public static class LogicaCompra
     {
-        public bool verificarTexto(string txt)
+        public static bool verificarTexto(string txt)
         {
             bool bandera = true;
             if(!Utilidades.validarString(txt,true,false,false))
@@ -22,7 +22,7 @@ namespace CapaLogicadeNegocio
             return bandera;
         }
 
-        public bool verificarTarjeta(string txt)
+        public static bool verificarTarjeta(string txt)
         {
             if (Utilidades.validarString(txt, true, false, false) && 
                             txt.Length == 16 && txt != string.Empty)
@@ -30,7 +30,7 @@ namespace CapaLogicadeNegocio
             else return false;
         }
 
-        public DataTable rellenarMetodos()
+        public static DataTable rellenarMetodos()
         {
             gestionMetodoPago mp = new gestionMetodoPago();
             DataTable tbl = new DataTable();
@@ -38,7 +38,7 @@ namespace CapaLogicadeNegocio
             return tbl;
         }
 
-        public DataTable rellenarCuotas(string index)
+        public static DataTable rellenarCuotas(string index)
         {
             gestionMetodoPago mp = new gestionMetodoPago();
             DataTable tbl = new DataTable();
@@ -46,7 +46,7 @@ namespace CapaLogicadeNegocio
             return tbl;
         }
 
-        public DataTable rellenarDirecciones(string id)
+        public static DataTable rellenarDirecciones(string id)
         {
             gestionUsuarios gu = new gestionUsuarios();
             DataTable tbl = new DataTable();
@@ -54,7 +54,7 @@ namespace CapaLogicadeNegocio
             return tbl;
         }
 
-        public bool insertarDetVenta(DataRow row)
+        public static bool insertarDetVenta(DataRow row)
         {
             DetalleVentas detVenta = new DetalleVentas();
             gestionVentas gv = new gestionVentas();
@@ -70,20 +70,20 @@ namespace CapaLogicadeNegocio
             return inserto;
         }
 
-        public bool insertarVenta(Ventas vent)
+        public static bool insertarVenta(Ventas vent)
         {
             gestionVentas gv = new gestionVentas();
             bool inserto = gv.insertarVenta(vent);
             return inserto;
         }
 
-        public DataRow recuperarEnvio(string iddir)
+        public static DataRow recuperarEnvio(string iddir)
         {
             gestionUsuarios gu = new gestionUsuarios();
             return gu.idenvioxUsuario(iddir);
         }
 
-        public float costoTotal(float totalProd, float interes, float costoEnvio)
+        public static float costoTotal(float totalProd, float interes, float costoEnvio)
         {
             float suma = 0;
             suma += totalProd;
@@ -93,11 +93,25 @@ namespace CapaLogicadeNegocio
             return suma;
         }
 
-        public float getInteres(string id)
+        public static float getInteres(string id)
         {
             gestionMetodoPago gmp = new gestionMetodoPago();
             float interes = float.Parse(gmp.getInteres(id)[0].ToString());
             return interes;
+        }
+
+        public static DataTable rellenarxNrotarjeta(Usuario us)
+        {
+            gestionUsuarios gu = new gestionUsuarios();
+            DataTable tbl = new DataTable();
+            tbl = gu.Tarjetas_x_Usuario(us);
+            return tbl;
+        }
+
+        public static DataTable tarjxUsu(Usuario usu)
+        {
+            gestionUsuarios gu = new gestionUsuarios();
+            return gu.Tarjetas_x_Usuario(usu);
         }
     }
 }

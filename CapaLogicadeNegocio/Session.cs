@@ -63,6 +63,7 @@ namespace CapaLogicadeNegocio
                 HttpContext.Current.Response.Cookies.Add(ck);
             }
             HttpContext.Current.Application["Usuario"] = null;
+            HttpContext.Current.Session.Abandon();
             lkCniciar.Visible = true;
             lkCuenta.Visible = false;
             lkCerrar.Visible = false;
