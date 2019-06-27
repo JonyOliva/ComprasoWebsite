@@ -28,7 +28,17 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmListaProductos.aspx");
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "fecha", "fechavto();", true);
+            if (LogicaCompra.verificarstringFecha(vencimiento.Value) && vencimiento.Value == "dd/mm/aaaa")
+            {
+                Response.Write("<script language=javascript>alert('Tarjeta guardada con éxito.');</script>");
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('Formato de texto incorrecto.');</script>");
+            
+            }
+            //Response.Redirect("frmListaProductos.aspx");
         }
 
         protected void lnkComprar_Click(object sender, EventArgs e)
@@ -224,6 +234,10 @@ namespace ArvoProjectWebsite
         protected void grdCarrito_RowCreated(object sender, GridViewRowEventArgs e)
         {
 
+        }
+
+        protected void lnkSeguircom_PreRender(object sender, EventArgs e)
+        {
         }
     }
 }

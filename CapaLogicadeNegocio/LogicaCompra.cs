@@ -7,6 +7,7 @@ using Entidad;
 using System.Data;
 using System.Data.SqlClient;
 using CapaAccesoaDatos;
+using System.Globalization;
 
 namespace CapaLogicadeNegocio
 {
@@ -112,6 +113,16 @@ namespace CapaLogicadeNegocio
         {
             gestionUsuarios gu = new gestionUsuarios();
             return gu.Tarjetas_x_Usuario(usu);
+        }
+
+        public static bool verificarstringFecha(string txt)
+        {
+            DateTime dt;
+            if(DateTime.TryParseExact(txt,"d/M/yyyy",CultureInfo.InvariantCulture,DateTimeStyles.None,out dt))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

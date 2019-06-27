@@ -19,8 +19,26 @@
 </head>
 <html>
 <body>
+     <script type="text/javascript">
+        function fechavto()
+        {
+            var mensaje = confirm("¿Desea agregar esta tarjeta?");
+            if (mensaje)
+            {
+                var vto = prompt("Ingrese Fecha de vencimiento:", "dd/mm/aaaa");
+                if (vto != "dd/mm/aaaa") {
+                    document.getElementById("<%=vencimiento.ClientID%>").value = vto;
+                }
+                else
+                {
+                    alert('Formato de texto incorrecto.');
+                }
+            }
+        }
+     </script>
     <!--ENCABEZADO-->
     <form id="form2" runat="server">
+            <asp:HiddenField ID="vencimiento" runat="server" />
 
         <div class="container-fluid mt-2 mb-2">
             <div class="row align-items-center align-content-between">
@@ -69,7 +87,8 @@
         <div>
 
             <br />
-&nbsp;<asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand"  OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" HorizontalAlign="Center" OnSorting="grdCarrito_Sorting" CssClass="text-center" OnRowCancelingEdit="grdCarrito_RowCancelingEdit" OnRowEditing="grdCarrito_RowEditing" OnRowUpdating="grdCarrito_RowUpdating" OnRowCreated="grdCarrito_RowCreated">
+&nbsp;<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand"  OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" HorizontalAlign="Center" OnSorting="grdCarrito_Sorting" CssClass="text-center" OnRowCancelingEdit="grdCarrito_RowCancelingEdit" OnRowEditing="grdCarrito_RowEditing" OnRowUpdating="grdCarrito_RowUpdating" OnRowCreated="grdCarrito_RowCreated">
             <Columns>
                 <asp:ImageField DataImageUrlField="RutaImagen">
                     <ControlStyle Height="100px" Width="150px" />
@@ -106,7 +125,7 @@
         </div>
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:LinkButton ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" CssClass="align-self-center" Font-Underline="True" ForeColor="#3333CC">Seguir comprando</asp:LinkButton>
+        <asp:LinkButton ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" CssClass="align-self-center" Font-Underline="True" ForeColor="#3333CC" OnClientClick="lnkSeguircom_Click" OnPreRender="lnkSeguircom_PreRender">Seguir comprando</asp:LinkButton>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:LinkButton ID="lnkComprar" runat="server" OnClick="lnkComprar_Click" CssClass="align-self-auto" Font-Underline="True" ForeColor="#3333CC">Realizar compra</asp:LinkButton>
     </form>

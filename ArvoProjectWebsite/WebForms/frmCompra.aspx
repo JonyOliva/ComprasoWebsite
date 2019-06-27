@@ -9,8 +9,22 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-
+    <asp:HiddenField ID="vencimiento" runat="server" />
+    <script type="text/javascript">
+        function ConfirmDemo()
+        {
+            var mensaje = confirm("¿Desea agregar esta tarjeta?");
+            if (mensaje)
+            {
+                var vto = prompt("Ingrese Fecha de vencimiento:", "dd/mm/aaaa");
+                document.getElementById("<%=vencimiento.ClientID%>").value = vto;
+            }
+            else
+            {
+                alert("¡Haz denegado el mensaje!");
+            }
+        }
+        </script>
     <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblMetodo" runat="server" Text="Seleccione metodo de pago"></asp:Label>
     &nbsp;&nbsp;<asp:DropDownList ID="ddlMetodopago" runat="server" DataTextField="Nombre_TARJ" DataValueField="IDTarjeta_TARJ" OnSelectedIndexChanged="ddlMetodopago_SelectedIndexChanged" AutoPostBack="True">
@@ -55,7 +69,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click">Cancelar compra</asp:LinkButton>
     
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:LinkButton ID="lbtnComprar" runat="server" OnClick="lbtnComprar_Click">Confirmar compra</asp:LinkButton>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:LinkButton ID="lbtnComprar" runat="server" OnClick="lbtnComprar_Click" OnClientClick="" OnPreRender="lbtnComprar_PreRender">Confirmar compra</asp:LinkButton>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
 

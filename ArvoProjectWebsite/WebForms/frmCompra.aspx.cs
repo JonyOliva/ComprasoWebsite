@@ -55,16 +55,6 @@ namespace ArvoProjectWebsite.WebForms
             ddlMetodopago.DataValueField = "IDTarjeta_TARJ";
             ddlMetodopago.DataBind();
             ddlMetodopago.SelectedIndex = 0;
-            if(ddlIndextarxus())
-            {
-                ddlMetodopago.SelectedValue = ddlTarxu.SelectedValue;
-                ddlMetodopago.Enabled = false;
-            }
-            else
-            {
-                ddlMetodopago.Enabled = true;
-            }
-
         }
 
         public void llenarCuotas()
@@ -135,7 +125,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprar_Click(object sender, EventArgs e)
         {
-            if(validacionesBtnCompras())
+            if (validacionesBtnCompras())
             {
                 registroVenta();
                 detalleVenta();
@@ -258,15 +248,15 @@ namespace ArvoProjectWebsite.WebForms
                 lblErrorDire.Visible = true;
             }
             else lblErrorDire.Visible = false;
-            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text))
+            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus())
             {
                 lblErrorntar.Visible = false;
             }
             else lblErrorntar.Visible = true;
-            if(ddlIndextarxus() && txtNrotarjeta.Text == string.Empty)
+            if(ddlIndextarxus())
             {
                 lblErrorntar.Visible = false;
-            }else lblErrorntar.Visible = true;
+            }
             
             return bandera;
         }
@@ -282,7 +272,17 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void ddlTarxu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlMetodopago.SelectedValue = ddlTarxu.SelectedValue;
+            if (ddlIndextarxus())
+            {
+                ddlMetodopago.SelectedValue = ddlTarxu.SelectedValue;
+                lblErrormetodo.Visible = false;
+                ddlMetodopago.Enabled = false;
+            }
+            else
+            {
+                ddlMetodopago.Enabled = true;
+            }
+
             llenarCuotas();
             ddlMetodopago.DataBind();
         }
@@ -329,6 +329,13 @@ namespace ArvoProjectWebsite.WebForms
                 lblPrecioEnvio.DataBind();
             }
         }
-    
+
+        protected void lbtnComprar_PreRender(object sender, EventArgs e)
+        {
+            if (!ddlIndextarxus())
+            {
+                lbtnComprar.OnClientClick = ("ConfirmDemo();");
+            }
+        }
     }
 }
