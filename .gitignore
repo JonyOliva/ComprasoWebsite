@@ -353,3 +353,4 @@ MigrationBackup/
 .vs/ArvoProjectWebsite/v15/Server/sqlite3/storage.ide-shm
 .vs/ArvoProjectWebsite/v15/Server/sqlite3/storage.ide-wal
 .vs/config/applicationhost.config
+Entidad/obj/Debug/Entidad.csproj.FileListAbsolute.txt

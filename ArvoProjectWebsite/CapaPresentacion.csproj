@@ -89,109 +89,12 @@
     <Content Include="Assets\Styles\master.css" />
     <Content Include="Assets\Styles\productos.css" />
     <Content Include="Assets\Styles\usuario.css" />
-    <Content Include="bin\ArvoProjectWebsite.dll" />
-    <Content Include="bin\ArvoProjectWebsite.pdb" />
-    <Content Include="bin\CapaAccesoaDatos.dll" />
-    <Content Include="bin\CapaAccesoaDatos.pdb" />
-    <Content Include="bin\CapaLogicadeNegocio.dll" />
-    <Content Include="bin\CapaLogicadeNegocio.pdb" />
-    <Content Include="bin\Entidad.dll" />
-    <Content Include="bin\Entidad.pdb" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
-    <Content Include="bin\roslyn\csc.exe" />
-    <Content Include="bin\roslyn\csi.exe" />
-    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
-    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
-    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
-    <Content Include="bin\roslyn\System.AppContext.dll" />
-    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
-    <Content Include="bin\roslyn\System.Console.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
-    <Content Include="bin\roslyn\System.IO.Compression.dll" />
-    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
-    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
-    <Content Include="bin\roslyn\System.IO.Pipes.AccessControl.dll" />
-    <Content Include="bin\roslyn\System.IO.Pipes.dll" />
-    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
-    <Content Include="bin\roslyn\System.Security.AccessControl.dll" />
-    <Content Include="bin\roslyn\System.Security.Claims.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
-    <Content Include="bin\roslyn\System.Security.Principal.Windows.dll" />
-    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
-    <Content Include="bin\roslyn\System.ValueTuple.dll" />
-    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
-    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
-    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
-    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
-    <Content Include="bin\roslyn\vbc.exe" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="WebForms\frmCarrito.aspx" />
     <Content Include="WebForms\frmCompra.aspx" />
     <Content Include="WebForms\frmListaProductos.aspx" />
     <Content Include="WebForms\frmLogin.aspx" />
     <Content Include="WebForms\frmMenuAdmin.aspx" />
     <Content Include="default.aspx" />
-    <Content Include="obj\Debug\ArvoProjectWebsite.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\ArvoProjectWebsite.dll" />
-    <Content Include="obj\Debug\ArvoProjectWebsite.pdb" />
-    <Content Include="obj\Debug\CapaPresentacion.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Release\ArvoProjectWebsite.dll" />
-    <Content Include="obj\Release\ArvoProjectWebsite.pdb" />
-    <Content Include="obj\Release\CapaPresentacion.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\ArvoProjectWebsite.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\ArvoProjectWebsite.pdb" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\CapaLogicadeNegocio.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\CapaLogicadeNegocio.pdb" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\Entidad.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\Entidad.pdb" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csc.exe" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csi.exe" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.AppContext.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Collections.Immutable.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Console.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Diagnostics.StackTrace.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.Compression.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.FileSystem.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.FileSystem.Primitives.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.Pipes.AccessControl.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.Pipes.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Reflection.Metadata.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.AccessControl.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Claims.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Cryptography.Encoding.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Cryptography.Primitives.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Principal.Windows.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Text.Encoding.CodePages.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.ValueTuple.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.ReaderWriter.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.XmlDocument.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.XPath.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.XPath.XDocument.dll" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\vbc.exe" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\VBCSCompiler.exe" />
-    <Content Include="obj\Release\_WPPLastBuildInfo.txt" />
     <Content Include="Web.config" />
     <Content Include="WebForms\Reportes\default.aspx" />
   </ItemGroup>
@@ -239,12 +142,6 @@
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebForms\frmMenuUsuario.aspx.cs">
       <DependentUpon>frmMenuUsuario.aspx</DependentUpon>
@@ -293,42 +190,6 @@
     <Content Include="Assets\Styles\bootstrap\bootstrap-reboot.min.css.map" />
     <Content Include="Assets\Styles\bootstrap\bootstrap.css.map" />
     <Content Include="Assets\Styles\bootstrap\bootstrap.min.css.map" />
-    <Content Include="bin\ArvoProjectWebsite.dll.config" />
-    <Content Include="bin\roslyn\csc.exe.config" />
-    <Content Include="bin\roslyn\csc.rsp" />
-    <Content Include="bin\roslyn\csi.exe.config" />
-    <Content Include="bin\roslyn\csi.rsp" />
-    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
-    <Content Include="bin\roslyn\vbc.exe.config" />
-    <Content Include="bin\roslyn\vbc.rsp" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
-    <Content Include="obj\Debug\ArvoProjectWebsite.csproj.CopyComplete" />
-    <Content Include="obj\Debug\ArvoProjectWebsite.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Debug\ArvoProjectWebsite.csprojAssemblyReference.cache" />
-    <Content Include="obj\Debug\CapaPresentacion.csproj.CopyComplete" />
-    <Content Include="obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Debug\CapaPresentacion.csprojAssemblyReference.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Release\CapaPresentacion.csproj.CopyComplete" />
-    <Content Include="obj\Release\CapaPresentacion.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Release\CapaPresentacion.csprojAssemblyReference.cache" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csc.exe.config" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csc.rsp" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csi.exe.config" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csi.rsp" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CSharp.Core.targets" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.Managed.Core.targets" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.VisualBasic.Core.targets" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\vbc.exe.config" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\vbc.rsp" />
-    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\VBCSCompiler.exe.config" />
-    <Content Include="obj\Release\Package\PackageTmp\Web.config" />
-    <Content Include="obj\Release\TransformWebConfig\assist\Web.config" />
-    <Content Include="obj\Release\TransformWebConfig\original\Web.config" />
-    <Content Include="obj\Release\TransformWebConfig\transformed\Web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -351,10 +212,7 @@
       <Name>Entidad</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="obj\Release\Package\PackageTmp\Styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
