@@ -1,6 +1,0 @@
-C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\bin\Release\CapaAccesoaDatos.dll
-C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\bin\Release\CapaAccesoaDatos.pdb
-C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\obj\Release\CapaAccesoaDatos.csprojAssemblyReference.cache
-C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\obj\Release\CapaAccesoaDatos.csproj.CoreCompileInputs.cache
-C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\obj\Release\CapaAccesoaDatos.dll
-C:\Users\Jony\source\repos\ArvoProjectWebsite\CapaAccesoaDatos\obj\Release\CapaAccesoaDatos.pdb

@@ -18,8 +18,6 @@ namespace ArvoProjectWebsite
             if (!IsPostBack)
             {
                 sesion.comprobarSesion();
-
-                List<string> filtro = new List<string>();
                 if (Session["filtroCategoria"] == null)
                 {
                     if (Session["Buscador"] == null)
@@ -28,12 +26,7 @@ namespace ArvoProjectWebsite
                     }
                     else
                     {
-                        string[] tempStr = EmpezarBusqueda();
-                        if (tempStr != null)
-                        {
-                            filtro.AddRange(tempStr);
-                        }
-                        else
+                        if (!EmpezarBusqueda())
                         {
                             Session["buscadorState"] = "error";
                             Server.Transfer("/default.aspx", false);                            
@@ -41,23 +34,15 @@ namespace ArvoProjectWebsite
                         }
                     }
                 }
-                llenarFiltroCats();
-                if (filtro.Count == 0)
-                {
-                    ddlCat.SelectedValue = Session["filtroCategoria"].ToString();
-                }
                 else
                 {
-                    Session["filtroCategoria"] = ddlCat.SelectedValue = filtro[0];
-                }
-                llenarFiltroSubCats();
-                llenarFiltroMarcas();
-
-                if (filtro.Count > 1)
-                {
-                    ddlSubCat.SelectedValue = filtro[1];
+                    llenarFiltroCats();
+                    ddlCat.SelectedValue = Session["filtroCategoria"].ToString();
+                    llenarFiltroSubCats();
+                    llenarFiltroMarcas();
                     btnFiltrar_Click();
                 }
+               
                 if (this.Session["Carrito"] == null)
                 {
                     this.Session["Carrito"] = crearTablacarrito();
@@ -242,71 +227,32 @@ namespace ArvoProjectWebsite
             OrdenarLista();
         }
 
-        string[] EmpezarBusqueda()
+        bool EmpezarBusqueda()
         {
             string[] strTemp = (string[])Session["Buscador"];
-            List<string> strs = new List<string>();
-            foreach (string str in strTemp)
-            {
-                if(str.Length > 1)
-                {
-                    strs.Add(str);
-                }
-            }
-            string[] words = strs.ToArray();
             gestionProductos gp = new gestionProductos();
-            DataSet[] datasets = new DataSet[words.Length];
-            for (int i = 0; i < datasets.Length; i++)
+            string[] searchResult = gp.Buscar((string[])Session["Buscador"]);
+            if (searchResult != null)
             {
-                datasets[i] = gp.busquedaProductos(words[i]);
-            }
-            List<string> cats = new List<string>();
-            List<string> subcats = new List<string>();
-            for (int x = 0; x < datasets.Length; x++)
-            {
-                foreach (DataRow item in datasets[x].Tables["productos"].Rows)
+                llenarFiltroCats();
+                if (searchResult.Length > 1)
                 {
-                    cats.Add(item[0].ToString());
-                    subcats.Add(item[1].ToString());
+                    Session["filtroCategoria"] = ddlCat.SelectedValue = searchResult[0];
+                    llenarFiltroSubCats();
+                    ddlSubCat.SelectedValue = searchResult[1];
+                    llenarFiltroMarcas();
                 }
-                foreach (DataRow item in datasets[x].Tables["categorias"].Rows)
+                else
                 {
-                    cats.Add(item[0].ToString());
+                    Session["filtroCategoria"] = ddlCat.SelectedValue = searchResult[0];
                 }
-                foreach (DataRow item in datasets[x].Tables["subcategorias"].Rows)
-                {
-                    subcats.Add(item[0].ToString());
-                }
-            }
-
-            List<string> filtro = new List<string>();
-            if (cats.Count > 1)
-            {
-                filtro.Add(Utilidades.getMasRepetido(cats.ToArray()));
-            }
-            else if (cats.Count == 1)
-            {
-                filtro.Add(cats[0]);
-            }
-
-            if (subcats.Count > 1)
-            {
-                filtro.Add(Utilidades.getMasRepetido(subcats.ToArray()));
-            }
-            else if (subcats.Count == 1)
-            {
-                filtro.Add(subcats[0]);
-            }
-
-            if (filtro.Count != 0)
-            {
-                return filtro.ToArray();
+                btnFiltrar_Click();
+                return true;
             }
             else
             {
-                return null;
+                return false;
             }
-
         }
 
         
