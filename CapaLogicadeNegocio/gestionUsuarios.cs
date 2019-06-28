@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using CapaAccesoaDatos;
 using Entidad;
+using CapaAccesoaDatos;
 
 namespace CapaLogicadeNegocio
 {
@@ -15,22 +15,22 @@ namespace CapaLogicadeNegocio
 
         string databasePath = Utilidades.GetStringConectionLocal();
         BaseDeDatos bd;
+        CADUsuarios cadu;
         public gestionUsuarios()
         {
             bd = new BaseDeDatos(databasePath);
+            cadu = new CADUsuarios();
         }
 
         public DataTable getDropDrownUsuario(string a)
         {
-           if(a == "Provincias") return bd.getTable("SELECT Provincia_ENVIO FROM ENVIOS", "Provincias");
-           else if (a == "Tarjetas") return bd.getTable("SELECT IDTarjeta_TARJ, Nombre_TARJ FROM TARJETAS", "Tarjetas");
-           return bd.getTable("SELECT Provincia_ENVIO FROM ENVIOS", "Provincias");
+             return cadu.getDropDrownUsuarioCAD(a);
         }
 
-        public DataTable getListaDirecxUsuario(string id)
-        {
-            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IDUsuario_DIR = " + id, "Direcxusuario");
-        }
+        //public DataTable getListaDirecxUsuario(string id)
+        //{
+        //    return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IDUsuario_DIR = " + id, "Direcxusuario");
+        //}
 
         public bool getUsuario(ref Usuario usuario)
         {
@@ -52,60 +52,41 @@ namespace CapaLogicadeNegocio
 
         public int AgregarUsuario(Usuario usu)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
-            cmd.Parameters.AddWithValue("@NombreUsuario", usu.Nombre);
-            cmd.Parameters.AddWithValue("@ApellidoUsuario", usu.Apellido);
-            cmd.Parameters.AddWithValue("@Password", usu.Password);
-            cmd.Parameters.AddWithValue("@DniUsuario", usu.DNI);
-            cmd.Parameters.AddWithValue("EmailUsuario", usu.Email);
-            cmd.Parameters.AddWithValue("@NroTelefono", usu.nroCel);
-            cmd.Parameters.AddWithValue("@FechaNacUsuario", usu.FechaNac);
-
-            int resp = bd.ExecStoredProcedure(cmd, "spAgregarUsuario");
-            return resp;
+            return cadu.AgregarUsuarioCAD(usu);
         }
 
-        public DataTable Compras_x_Usuario(Usuario usu)
-        {
-            DataTable Tabla = new DataTable();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
-            bd.ExecStoredProcedure(cmd, "spObtenerComprasUsuario", ref Tabla);
-            return Tabla;
-        }
+        //public DataTable Compras_x_Usuario(Usuario usu)
+        //{
+        //    DataTable Tabla = new DataTable();
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
+        //    bd.ExecStoredProcedure(cmd, "spObtenerComprasUsuario", ref Tabla);
+        //    return Tabla;
+        //}
 
-        public DataTable Tarjetas_x_Usuario(Usuario usu)
-        {
-            DataTable Tabla = new DataTable();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
-            bd.ExecStoredProcedure(cmd, "spObtenerTarjetasUsuario", ref Tabla);
-            return Tabla;
-        }
+        //public DataTable Tarjetas_x_Usuario(Usuario usu)
+        //{
+        //    DataTable Tabla = new DataTable();
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Parameters.AddWithValue("@IdUsuario", usu.IDUsuario);
+        //    bd.ExecStoredProcedure(cmd, "spObtenerTarjetasUsuario", ref Tabla);
+        //    return Tabla;
+        //}
 
         public DataTable Direcciones_x_Usuario(Usuario usu)
         {
-            DataTable Tabla = new DataTable();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("IdUsuario", usu.IDUsuario);
-            bd.ExecStoredProcedure(cmd, "spObtenerDireccionesUsuario", ref Tabla);
-            return Tabla;
+            return cadu.Direcciones_x_UsuarioCAD(usu);
         }
 
         public bool CancelarCompra(int IdVenta)
         {
-            bool eliminada = false;
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("IdVenta", IdVenta);
-            eliminada = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spCancelarCompra"));
-            return eliminada;
+            return cadu.CancelarCompraCAD(IdVenta);
         }
 
         public DataTable CargarTablaCompras(Usuario usu)
         {
             DataTable Tabla;
-            Tabla = Compras_x_Usuario(usu);
+            Tabla = cadu.Compras_x_UsuarioCAD(usu);
             Tabla.Columns[7].ColumnName = "Estado ";
             Tabla.Columns.Add("Estado");
 
@@ -120,7 +101,7 @@ namespace CapaLogicadeNegocio
         public DataTable CargarMdPxUsu(Usuario usu)
         {
             DataTable Tabla;
-            Tabla = Tarjetas_x_Usuario(usu);
+            Tabla = cadu.Tarjetas_x_UsuarioCAD(usu);
             Tabla.Columns.RemoveAt(0);
             return Tabla;
         }
@@ -128,94 +109,47 @@ namespace CapaLogicadeNegocio
         public DataTable CargarDirecciones(Usuario usu)
         {
             DataTable Tabla;
-            Tabla = Direcciones_x_Usuario(usu);
+            Tabla = cadu.Direcciones_x_UsuarioCAD(usu);
+            //Tabla = Direcciones_x_Usuario(usu);
             Tabla.Columns.RemoveAt(0);
             return Tabla;
         }
 
         public bool EliminarMediodePagoxUsu(Usuario usu, string Id)
         {
-            bool Eliminado = false;
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("IdUsuario", usu.IDUsuario);
-            cmd.Parameters.AddWithValue("IdTarjxU", Id);
-            Eliminado = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spEliminarMdp"));
-            return Eliminado;
+            return cadu.EliminarMediodePagoxUsuCAD(usu, Id);
         }
 
-        public bool EliminarDireccion (Usuario usu, int CodDireccion)
+        public bool EliminarDireccion(Usuario usu, int CodDireccion)
         {
-            bool Eliminado = false;
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("IdUsuario", usu.IDUsuario);
-            cmd.Parameters.AddWithValue("CodDireccion", CodDireccion);
-            Eliminado = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spEliminarDireccion"));
-            return Eliminado;
+            return cadu.EliminarDireccionCAD(usu, CodDireccion);
         }
 
 
         public DataRow idenvioxUsuario(string codDir)
         {
-            DataTable tbl = new DataTable();
-            tbl = bd.getTable("SELECT IDEnvio,Costo_ENVIO FROM ENVIOS INNER JOIN DirecxUsuario ON Provincia_DIR =" +
-                " Provincia_ENVIO WHERE CodDirreccion = '" + codDir + "'", "Envio");
-            return tbl.Rows[0];
+            return cadu.idenvioxUsuarioCAD(codDir);
         }
 
         public void AgregarDireccion(string id, string provincia, string direccion)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("IdUsuario", id);
-            cmd.Parameters.AddWithValue("Provincia", provincia);
-            cmd.Parameters.AddWithValue("Direccion", direccion);
-            bd.ExecStoredProcedure(cmd, "spAgregarDireccion");
+            cadu.AgregarDireccionCAD(id, provincia, direccion);
         }
 
         public string AgregarMdP(string id, string tarjeta, string codtarj, string titular, string vencimiento)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("IdUsuario", id);
-            cmd.Parameters.AddWithValue("NroTarjeta", tarjeta);
-            cmd.Parameters.AddWithValue("IdTarj", codtarj);
-            cmd.Parameters.AddWithValue("Titular", titular);
-            cmd.Parameters.AddWithValue("Venc", vencimiento);
-            try
-            {
-               return bd.ExecStoredProcedure(cmd, "spAgregarMdP").ToString();
-            }
-            catch(Exception ex)
-            {
-                return ex.HelpLink;
-            }
+            return cadu.AgregarMdPCAD(id, tarjeta, codtarj, titular, vencimiento);
         }
 
-    
+
 
         public int ValidarCUITyMail(string cuit, string mail)
         {
-            DataTable Tabla = new DataTable();
             cuit.Trim();
-            int respuesta = 0;
-            bool paso = false;
-            Tabla = bd.getTable("SELECT * FROM USUARIOS WHERE IDUsuario = '" + cuit+"'", "UsuarioCuit");
-            if (Tabla.Rows.Count >= 1)
-            {
-                respuesta = 2;
-                paso = true;
-            }
-            Tabla = bd.getTable("SELECT * FROM USUARIOS WHERE Email_USU = '" + mail+"'", "UsuarioMail");
-            if (Tabla.Rows.Count >= 1)
-            {
-                if(paso)
-                {
-                    respuesta = 3;
-                }
-                else respuesta = 1;
-            }
-            return respuesta;
+            return cadu.ValidarCUITyMailCAD(cuit, mail);
         }
 
-  
+
 
     }
 }
