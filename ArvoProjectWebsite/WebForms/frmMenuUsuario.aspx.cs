@@ -25,7 +25,6 @@ namespace ArvoProjectWebsite.WebForms
             lblNombreMenuUsuario.Text = ((Usuario)Application["Usuario"]).Apellido + " " + ((Usuario)Application["Usuario"]).Nombre;
 
             grdMenuUsuario.Visible = true;
-            
             ddlCampo2.Visible = false;
             lblCampo2.Visible = false;
             lblCampo1.Visible = false;
@@ -96,16 +95,6 @@ namespace ArvoProjectWebsite.WebForms
             grdMenuUsuario.DataSource = Session["Compras"];
             grdMenuUsuario.DataBind();
         }
-
-
-
-        protected void grdMenuUsuario_RowDeleted(object sender, GridViewDeletedEventArgs e)
-        {
-            DataRow row = (DataRow)grdMenuUsuario.SelectedValue;
-            if (row[7].ToString() == "Procesando") { }
-            else lblDniMenuUsuario.Text = "jajaj";
-        }
-
 
 
         protected void grdMenuUsuario_RowDeleting(object sender, GridViewDeleteEventArgs e)
