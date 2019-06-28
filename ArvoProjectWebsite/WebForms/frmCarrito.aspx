@@ -26,12 +26,14 @@
             if (mensaje)
             {
                 var vto = prompt("Ingrese Fecha de vencimiento:", "dd/mm/aaaa");
-                if (vto != "dd/mm/aaaa") {
-                    document.getElementById("<%=vencimiento.ClientID%>").value = vto;
+                document.getElementById("<%=vencimiento.ClientID%>").value = vto;
+                if (vto != "dd/mm/aaaa" && <%= verificarstringFecha(vencimiento.Value)%>)
+                {
+                    return true;
                 }
                 else
                 {
-                    alert('Formato de texto incorrecto.');
+                    return false;
                 }
             }
         }

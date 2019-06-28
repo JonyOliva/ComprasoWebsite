@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Entidad;
 using CapaLogicadeNegocio;
+using System.Globalization;
 
 namespace ArvoProjectWebsite
 {
@@ -28,15 +29,17 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "fecha", "fechavto();", true);
-            if (LogicaCompra.verificarstringFecha(vencimiento.Value) && vencimiento.Value == "dd/mm/aaaa")
+            /// ver que siempre queda con el ultimo valor valor 
+            if (LogicaCompra.verificarstringFecha(vencimiento.Value) && vencimiento.Value != "dd/mm/aaaa")
             {
-                Response.Write("<script language=javascript>alert('Tarjeta guardada con éxito.');</script>");
+                ClientScript.RegisterClientScriptBlock(this.GetType(),
+                    "bien","alert('Tarjeta guardada con éxito.');",true);
             }
-            else
+            else if(vencimiento.Value != "dd/mm/aaaa" && vencimiento.Value != string.Empty)
             {
-                Response.Write("<script language=javascript>alert('Formato de texto incorrecto.');</script>");
-            
+                ClientScript.RegisterClientScriptBlock(this.GetType(),
+                    "error", "alert('Formato incorrecto.');", true);
+
             }
             //Response.Redirect("frmListaProductos.aspx");
         }
@@ -44,22 +47,15 @@ namespace ArvoProjectWebsite
         protected void lnkComprar_Click(object sender, EventArgs e)
         {
             int pos = actualizarCantidades();
-            if (grdCarrito == null)
-            {
-                Response.Write("<script language=javascript>alert('No posee productos en el carrito');</script>");
-            }
-            else if (pos != 0)
+
+            if (pos != 0)
             {
                 Response.Write("<script language=javascript>alert('Valor incorrecto en campo cantidad');</script>");
             }
             else
             {
-                
                 this.Session["Compras"] = null;
-                if (this.Session["Compras"] == null)
-                {
-                    this.Session["Compras"] = LogicaCarrito.crearCompra();
-                }
+                this.Session["Compras"] = LogicaCarrito.crearCompra();
                 LogicaCarrito.cargarCompras((DataTable)this.Session["Compras"]
                         , (DataTable)this.Session["Carrito"]);
                 Response.Redirect("frmCompra.aspx");
@@ -238,6 +234,18 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_PreRender(object sender, EventArgs e)
         {
+        //    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "fecha", "fechavto();", true);
+            lnkSeguircom.OnClientClick = "fechavto();";
+        }
+
+        public bool verificarstringFecha(string txt)
+        {
+            DateTime dt;
+            if (DateTime.TryParseExact(txt, "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
