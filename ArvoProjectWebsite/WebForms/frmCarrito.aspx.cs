@@ -22,6 +22,7 @@ namespace ArvoProjectWebsite
             sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
             if (!IsPostBack)
             {
+                //    lnkSeguircom.Attributes.Add("OnClick", "javascript: return fechavto()");
                 sesion.comprobarSesion();
             }
 
@@ -29,6 +30,7 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "hola", "javascript: return fechavto();",true);
             if (LogicaCompra.verificarstringFecha(vencimiento.Value) && vencimiento.Value != "dd/mm/aaaa")
             {
                 LogicaCompra.agregarMetodopago("asd","asd","asd","asd","asd");
@@ -235,7 +237,7 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_PreRender(object sender, EventArgs e)
         {
-            lnkSeguircom.OnClientClick = "fechavto();";
+            
         }
     }
 }
