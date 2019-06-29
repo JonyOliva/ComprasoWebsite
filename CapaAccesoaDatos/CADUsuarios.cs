@@ -160,5 +160,10 @@ namespace CapaAccesoaDatos
                 " Provincia_ENVIO WHERE CodDirreccion = '" + codDir + "'", "Envio");
             return tbl.Rows[0];
         }
+
+        public DataTable ObtenerDetalleVentaCAD(int id)
+        {
+            return bd.getTable("SELECT IDVENTA_DETV, IDPRODUCTO_DETV, NOMBRE_PROD, DESCUENTO_DETV, CANTIDAD_DETV, PRECIOUNITARIO_DETV FROM DETVENTAS INNER JOIN PRODUCTOS ON IDPRODUCTO_DETV = IDPRODUCTO WHERE IDVENTA_DETV = " + id, "DetalleVentas");
+        }
     }
 }

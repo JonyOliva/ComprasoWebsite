@@ -149,6 +149,11 @@ namespace CapaLogicadeNegocio
             return cadu.ValidarCUITyMailCAD(cuit, mail);
         }
 
+        public DataTable ObtenerDetalleVenta(int id)
+        {
+            return cadu.ObtenerDetalleVentaCAD(id);
+        }
+
 
 
     }
