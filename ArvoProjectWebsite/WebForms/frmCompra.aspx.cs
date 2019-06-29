@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using CapaLogicadeNegocio;
 using Entidad;
+using System.Globalization;
 
 namespace ArvoProjectWebsite.WebForms
 {
@@ -19,13 +20,14 @@ namespace ArvoProjectWebsite.WebForms
             suma = 0;
             grdCompra.DataSource = (DataTable)this.Session["Compras"];
             grdCompra.DataBind();
-            if(this.Application["Usuario"] == null)
+            if (this.Application["Usuario"] == null)
             {
                 Response.Redirect("frmLogin.aspx");
             }
-            
-            if(!IsPostBack)
+
+            if (!IsPostBack)
             {
+                lbtnComprar.Attributes.Add("OnClick", "javascript: return fechavto()");
                 iniciarMensajeserror();
                 rellenarTarxusu();
                 llenarTarjetas();
@@ -125,6 +127,30 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprar_Click(object sender, EventArgs e)
         {
+            if(ddlTarxu.Enabled == false)
+            {
+                if (LogicaCompra.verificarstringFecha(vencimiento.Value) && vencimiento.Value != "dd/mm/aaaa")
+                {
+                    
+                    ClientScript.RegisterStartupScript(this.GetType(),
+                        "bien", "alert('Tarjeta guardada con éxito.');", true);
+                    LogicaCompra.agregarMetodopago(((Usuario)this.Application["Usuario"]).IDUsuario,
+                                    txtNrotarjeta.Text,
+                                    ddlMetodopago.SelectedValue, ((Usuario)this.Application["Usuario"]).Nombre,
+                                    vencimiento.Value);
+                }
+                else if (vencimiento.Value != "dd/mm/aaaa" && vencimiento.Value != string.Empty)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(),
+                        "error", "alert('Formato incorrecto.');", true);
+                    return;
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(),
+                        "error2", "alert('No se agrego la tarjeta.');", true);
+                }
+            }
             if (validacionesBtnCompras())
             {
                 registroVenta();
@@ -155,7 +181,7 @@ namespace ArvoProjectWebsite.WebForms
                 venta.EstadoEnvio = 0;
                 venta.Descuento = 0;
                 if (ddlIndextarxus())
-                    venta.NroTarjeta = ddlTarxu.Text;
+                    venta.NroTarjeta = ddlTarxu.SelectedItem.Text;
                 else if (txtNrotarjeta.Text != string.Empty)
                     venta.NroTarjeta = txtNrotarjeta.Text;
 
@@ -187,7 +213,6 @@ namespace ArvoProjectWebsite.WebForms
                 ddlTarxu.AppendDataBoundItems = true;
                 ddlTarxu.DataSource = tbl;
                 ddlTarxu.DataTextField = "Nro Tarjeta";
-                ddlTarxu.DataValueField = "Codigo";
                 ddlTarxu.SelectedIndex = 0;
                 ddlTarxu.DataBind();
                 return true;
@@ -274,7 +299,7 @@ namespace ArvoProjectWebsite.WebForms
         {
             if (ddlIndextarxus())
             {
-                ddlMetodopago.SelectedValue = ddlTarxu.SelectedValue;
+                ddlMetodopago.SelectedValue = LogicaCompra.tipoTarjeta(ddlTarxu.SelectedItem.Text);
                 lblErrormetodo.Visible = false;
                 ddlMetodopago.Enabled = false;
             }
@@ -332,10 +357,30 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprar_PreRender(object sender, EventArgs e)
         {
-            if (!ddlIndextarxus())
+            //if (!ddlIndextarxus() && txtNrotarjeta.Text != string.Empty)
+            //{
+            //    lbtnComprar.OnClientClick = "fechavto();";
+            //}
+        }
+
+        public bool verificarstringFecha(string txt)
+        {
+            DateTime dt;
+            if (DateTime.TryParseExact(txt, "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
             {
-                lbtnComprar.OnClientClick = ("ConfirmDemo();");
+                if (dt > DateTime.Today)
+                    return true;
             }
+            return false;
+        }
+
+        protected void ddlTarxu_Load(object sender, EventArgs e)
+        {
+        }
+
+        protected void ddlTarxu_PreRender(object sender, EventArgs e)
+        {
+
         }
     }
 }

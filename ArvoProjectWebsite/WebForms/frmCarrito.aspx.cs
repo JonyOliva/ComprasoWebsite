@@ -29,17 +29,22 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
         {
-            /// ver que siempre queda con el ultimo valor valor 
             if (LogicaCompra.verificarstringFecha(vencimiento.Value) && vencimiento.Value != "dd/mm/aaaa")
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(),
-                    "bien","alert('Tarjeta guardada con éxito.');",true);
+                LogicaCompra.agregarMetodopago("asd","asd","asd","asd","asd");
+                ClientScript.RegisterStartupScript(this.GetType(),
+                    "bien", "alert('Tarjeta guardada con éxito.');", true);
             }
-            else if(vencimiento.Value != "dd/mm/aaaa" && vencimiento.Value != string.Empty)
+            else if (vencimiento.Value != "dd/mm/aaaa" && vencimiento.Value != string.Empty)
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(),
+                ClientScript.RegisterStartupScript(this.GetType(),
                     "error", "alert('Formato incorrecto.');", true);
-
+                return;
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(),
+                    "error2", "alert('No se agrego la tarjeta.');", true);
             }
             //Response.Redirect("frmListaProductos.aspx");
         }
@@ -188,10 +193,6 @@ namespace ArvoProjectWebsite
 
         }
 
-        
-
-        
-
         protected void grdCarrito_RowEditing(object sender, GridViewEditEventArgs e)
         {
 
@@ -234,18 +235,7 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_PreRender(object sender, EventArgs e)
         {
-        //    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "fecha", "fechavto();", true);
             lnkSeguircom.OnClientClick = "fechavto();";
-        }
-
-        public bool verificarstringFecha(string txt)
-        {
-            DateTime dt;
-            if (DateTime.TryParseExact(txt, "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
-            {
-                return true;
-            }
-            return false;
         }
     }
 }

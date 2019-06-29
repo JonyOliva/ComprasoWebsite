@@ -10,21 +10,29 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="vencimiento" runat="server" />
-    <script type="text/javascript">
-        function ConfirmDemo()
+     <script type="text/javascript">
+        function fechavto()
         {
-            var mensaje = confirm("¿Desea agregar esta tarjeta?");
-            if (mensaje)
+            var x = <%=!ddlIndextarxus()%>;
+            if(x)
             {
-                var vto = prompt("Ingrese Fecha de vencimiento:", "dd/mm/aaaa");
+                var mensaje = confirm("¿Desea agregar esta tarjeta?");
+                if (mensaje)
+                {
+                    var vto = prompt("Ingrese Fecha de vencimiento:", "dd/mm/aaaa");
+                    if (vto == "dd/mm/aaaa")
+                        vto = "asd";
+                }
+                else
+                {
+                    vto = "dd/mm/aaaa";
+                }
                 document.getElementById("<%=vencimiento.ClientID%>").value = vto;
             }
-            else
-            {
-                alert("¡Haz denegado el mensaje!");
-            }
+                
+           
         }
-        </script>
+      </script>
     <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblMetodo" runat="server" Text="Seleccione metodo de pago"></asp:Label>
     &nbsp;&nbsp;<asp:DropDownList ID="ddlMetodopago" runat="server" DataTextField="Nombre_TARJ" DataValueField="IDTarjeta_TARJ" OnSelectedIndexChanged="ddlMetodopago_SelectedIndexChanged" AutoPostBack="True">
@@ -45,7 +53,7 @@
     <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblNrotarjeta" runat="server" Text="Nro Tarjeta"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtNrotarjeta" runat="server" OnTextChanged="txtNrotarjeta_TextChanged" ToolTip="Solo números, no puede quedar vacío" AutoPostBack="True" Width="148px" OnLoad="txtNrotarjeta_Load"></asp:TextBox>
-    &nbsp;<asp:DropDownList ID="ddlTarxu" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTarxu_SelectedIndexChanged">
+    &nbsp;<asp:DropDownList ID="ddlTarxu" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTarxu_SelectedIndexChanged" OnLoad="ddlTarxu_Load" OnPreRender="ddlTarxu_PreRender">
     </asp:DropDownList>
     &nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="lblErrorntar" runat="server" Font-Names="Britannic Bold" Font-Size="Medium" Font-Strikeout="False" ForeColor="Red" Text="*Valor erróneo."></asp:Label>

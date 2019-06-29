@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmCarrito.aspx.cs" Inherits="ArvoProjectWebsite.frmCarrito" %>
 
 <!DOCTYPE html>
-
+<html>
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Compraso</title>
@@ -17,8 +17,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
 
 </head>
-<html>
-<body>
      <script type="text/javascript">
         function fechavto()
         {
@@ -26,22 +24,21 @@
             if (mensaje)
             {
                 var vto = prompt("Ingrese Fecha de vencimiento:", "dd/mm/aaaa");
-                document.getElementById("<%=vencimiento.ClientID%>").value = vto;
-                if (vto != "dd/mm/aaaa" && <%= verificarstringFecha(vencimiento.Value)%>)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                if (vto == "dd/mm/aaaa")
+                    vto = "asd";
             }
+            else
+            {
+                vto = "dd/mm/aaaa"
+            }
+            document.getElementById("<%=vencimiento.ClientID%>").value = vto;
         }
-     </script>
+      </script>
+
+<body>
     <!--ENCABEZADO-->
     <form id="form2" runat="server">
-            <asp:HiddenField ID="vencimiento" runat="server" />
-
+        <asp:HiddenField ID="vencimiento" runat="server" />
         <div class="container-fluid mt-2 mb-2">
             <div class="row align-items-center align-content-between">
                 <div class="col-3">

@@ -33,7 +33,7 @@ namespace CapaLogicadeNegocio
 
         public static DataTable rellenarMetodos()
         {
-            gestionMetodoPago mp = new gestionMetodoPago();
+            CADMetodopago mp = new CADMetodopago();
             DataTable tbl = new DataTable();
             tbl = mp.getTarjetas();
             return tbl;
@@ -41,7 +41,7 @@ namespace CapaLogicadeNegocio
 
         public static DataTable rellenarCuotas(string index)
         {
-            gestionMetodoPago mp = new gestionMetodoPago();
+            CADMetodopago mp = new CADMetodopago();
             DataTable tbl = new DataTable();
             tbl = mp.getMetodosdepago(index);
             return tbl;
@@ -49,16 +49,16 @@ namespace CapaLogicadeNegocio
 
         public static DataTable rellenarDirecciones(string id)
         {
-            gestionUsuarios gu = new gestionUsuarios();
+            CADUsuarios gu = new CADUsuarios();
             DataTable tbl = new DataTable();
-            tbl = gu.getListaDirecxUsuario(id);
+            tbl = gu.getListaDirecxUsuarioCAD(id);
             return tbl;
         }
 
         public static bool insertarDetVenta(DataRow row)
         {
             DetalleVentas detVenta = new DetalleVentas();
-            gestionVentas gv = new gestionVentas();
+            CADVentas gv = new CADVentas();
             gestionProductos gp = new gestionProductos();
             detVenta.Cantidad = int.Parse(row[1].ToString());
             detVenta.IDProducto1 = row[3].ToString();
@@ -73,15 +73,15 @@ namespace CapaLogicadeNegocio
 
         public static bool insertarVenta(Ventas vent)
         {
-            gestionVentas gv = new gestionVentas();
+            CADVentas gv = new CADVentas();
             bool inserto = gv.insertarVenta(vent);
             return inserto;
         }
 
         public static DataRow recuperarEnvio(string iddir)
         {
-            gestionUsuarios gu = new gestionUsuarios();
-            return gu.idenvioxUsuario(iddir);
+            CADUsuarios gu = new CADUsuarios();
+            return gu.idenvioxUsuarioCAD(iddir);
         }
 
         public static float costoTotal(float totalProd, float interes, float costoEnvio)
@@ -96,23 +96,23 @@ namespace CapaLogicadeNegocio
 
         public static float getInteres(string id)
         {
-            gestionMetodoPago gmp = new gestionMetodoPago();
+            CADMetodopago gmp = new CADMetodopago();
             float interes = float.Parse(gmp.getInteres(id)[0].ToString());
             return interes;
         }
 
         public static DataTable rellenarxNrotarjeta(Usuario us)
         {
-            gestionUsuarios gu = new gestionUsuarios();
+            CADUsuarios gu = new CADUsuarios();
             DataTable tbl = new DataTable();
-            tbl = gu.Tarjetas_x_Usuario(us);
+            tbl = gu.Tarjetas_x_UsuarioCAD(us);
             return tbl;
         }
 
         public static DataTable tarjxUsu(Usuario usu)
         {
-            gestionUsuarios gu = new gestionUsuarios();
-            return gu.Tarjetas_x_Usuario(usu);
+            CADUsuarios gu = new CADUsuarios();
+            return gu.Tarjetas_x_UsuarioCAD(usu);
         }
 
         public static bool verificarstringFecha(string txt)
@@ -123,6 +123,20 @@ namespace CapaLogicadeNegocio
                 return true;
             }
             return false;
+        }
+
+        public static bool agregarMetodopago(string idusuario,string nrotar, string idtar, string titular, string vencimiento)
+        {
+            CADUsuarios gu = new CADUsuarios();
+            gu.AgregarMdPCAD(idusuario,nrotar,idtar,titular,vencimiento);
+            return true;
+        }
+
+        public static string tipoTarjeta(string numero)
+        {
+            CADMetodopago gmp = new CADMetodopago();
+            string idtar = gmp.getTipotarjeta(numero).Rows[0]["IDTarjeta_TxU"].ToString();
+            return idtar;
         }
     }
 }

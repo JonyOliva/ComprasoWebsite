@@ -44,6 +44,8 @@
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="CADProductos.cs" />
     <Compile Include="CADUsuarios.cs" />
+    <Compile Include="CADVentas.cs" />
+    <Compile Include="CADMetodopago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
