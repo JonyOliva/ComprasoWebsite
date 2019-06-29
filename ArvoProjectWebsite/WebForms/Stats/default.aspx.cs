@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CapaLogicadeNegocio;
 
 namespace ArvoProjectWebsite.WebForms.Reportes
 {
@@ -11,6 +12,14 @@ namespace ArvoProjectWebsite.WebForms.Reportes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        protected void btnProductos_Click(object sender, EventArgs e)
+        {
+            MultiViewStats.ActiveViewIndex = 0;
+            gestionProductos gp = new gestionProductos();
+            gp.statsCantidadProdVendidos(StatsProdVentas.Series[0]);
 
         }
     }

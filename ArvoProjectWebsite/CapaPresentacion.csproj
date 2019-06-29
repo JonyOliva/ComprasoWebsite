@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -96,7 +97,7 @@
     <Content Include="WebForms\frmMenuAdmin.aspx" />
     <Content Include="default.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForms\Reportes\default.aspx" />
+    <Content Include="WebForms\Stats\default.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WebForms\default.aspx.designer.cs" />
@@ -171,11 +172,11 @@
     <Compile Include="WebForms\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\Reportes\default.aspx.cs">
+    <Compile Include="WebForms\Stats\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Reportes\default.aspx.designer.cs">
+    <Compile Include="WebForms\Stats\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
