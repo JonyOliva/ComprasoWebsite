@@ -27,17 +27,24 @@ namespace ArvoProjectWebsite.WebForms
 
             if (!IsPostBack)
             {
-                lbtnComprar.Attributes.Add("OnClick", "javascript: return fechavto()");
                 iniciarMensajeserror();
                 rellenarTarxusu();
                 llenarTarjetas();
                 llenarCuotas();
                 llenarDirecciones();
+                txtVencimiento.Visible = false;
+                lblVto.Visible = false;
+                rbGuardartarj.Visible = false;
             }
             if(IsPostBack)
             {
                 habilitarTxttarjeta();
                 validacionesBtnCompras();
+                if (rbGuardartarj.Checked == true)
+                {
+                    txtVencimiento.Visible = true;
+                    lblVto.Visible = true;
+                }
             }
             mostrarPrecioenvio();
             mostrarCostototal();
@@ -127,30 +134,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprar_Click(object sender, EventArgs e)
         {
-            if(ddlTarxu.Enabled == false)
-            {
-                if (LogicaCompra.verificarstringFecha(vencimiento.Value) && vencimiento.Value != "dd/mm/aaaa")
-                {
-                    
-                    ClientScript.RegisterStartupScript(this.GetType(),
-                        "bien", "alert('Tarjeta guardada con éxito.');", true);
-                    LogicaCompra.agregarMetodopago(((Usuario)this.Application["Usuario"]).IDUsuario,
-                                    txtNrotarjeta.Text,
-                                    ddlMetodopago.SelectedValue, ((Usuario)this.Application["Usuario"]).Nombre,
-                                    vencimiento.Value);
-                }
-                else if (vencimiento.Value != "dd/mm/aaaa" && vencimiento.Value != string.Empty)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(),
-                        "error", "alert('Formato incorrecto.');", true);
-                    return;
-                }
-                else
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(),
-                        "error2", "alert('No se agrego la tarjeta.');", true);
-                }
-            }
+            
             if (validacionesBtnCompras())
             {
                 registroVenta();
@@ -282,6 +266,27 @@ namespace ArvoProjectWebsite.WebForms
             {
                 lblErrorntar.Visible = false;
             }
+            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus())
+            {
+                rbGuardartarj.Visible = true;
+                if(rbGuardartarj.Checked)
+                {
+                    txtVencimiento.Visible = true;
+                    lblVto.Visible = true;
+                }
+            }
+            if (txtVencimiento.Visible)
+            {
+                if(LogicaCompra.verificarstringFecha(txtVencimiento.Text))
+                {
+                    lblErrorfecha.Visible = false;
+                }
+                else
+                {
+                    lblErrorfecha.Visible = true;
+                }
+            }
+                
             
             return bandera;
         }
@@ -293,6 +298,7 @@ namespace ArvoProjectWebsite.WebForms
             lblErrorntar.Visible = false;
             lblErrorDire.Visible = false;
             lblErrormetodo.Visible = false;
+            lblErrorfecha.Visible = false;
         }
 
         protected void ddlTarxu_SelectedIndexChanged(object sender, EventArgs e)
@@ -357,10 +363,6 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprar_PreRender(object sender, EventArgs e)
         {
-            //if (!ddlIndextarxus() && txtNrotarjeta.Text != string.Empty)
-            //{
-            //    lbtnComprar.OnClientClick = "fechavto();";
-            //}
         }
 
         public bool verificarstringFecha(string txt)
