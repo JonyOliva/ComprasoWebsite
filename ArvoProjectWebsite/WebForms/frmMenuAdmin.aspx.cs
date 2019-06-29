@@ -17,7 +17,6 @@ namespace ArvoProjectWebsite
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
             if (!IsPostBack)
             {
                 if (!((Usuario)Application["Usuario"]).Admin)
@@ -146,7 +145,7 @@ namespace ArvoProjectWebsite
             prod.Activo = s_Activo;
 
             gestionProductos gp = new gestionProductos();
-            gp.ActualizarProducto(prod);
+            gp.actualizarProducto(prod);
 
 
 
@@ -194,10 +193,7 @@ namespace ArvoProjectWebsite
             prod.Activo = s_Activo;
 
             gestionProductos gp = new gestionProductos();
-            gp.ActualizarProducto(prod);
-
-
-
+            gp.actualizarProducto(prod);
             grdProd.EditIndex = -1;
             cargarGridViewProd();
         }
@@ -230,7 +226,7 @@ namespace ArvoProjectWebsite
 
         protected void btnStats_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/WebForms/Reportes");
+            Response.Redirect("/WebForms/Stats");
         }
     }
 
