@@ -13,7 +13,7 @@ namespace ArvoProjectWebsite
 {
     public partial class frmMenuAdmin : System.Web.UI.Page
     {
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,7 +26,6 @@ namespace ArvoProjectWebsite
                     Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
 
                 }
-
 
             }
 
@@ -42,7 +41,7 @@ namespace ArvoProjectWebsite
         {
             MultiViewAdmin.ActiveViewIndex = 0;
             cargarGridViewProd();
-           
+
 
         }
 
@@ -55,31 +54,28 @@ namespace ArvoProjectWebsite
                 ddlSubcat.DataTextField = "Nombre_SUBCAT";
                 ddlSubcat.DataSource = gp.getListaSubCategorias(ddlCategorias.SelectedValue);
                 ddlSubcat.DataBind();
-                           }
+            }
         }
 
         public void llenarddl2()
         {
             gestionProductos gp = new gestionProductos();
 
-               
-       
             ddlCategorias.DataValueField = "IDCategoria";
             ddlCategorias.DataTextField = "Nombre_CAT";
             ddlCategorias.DataSource = gp.getListaCategorias();
             ddlCategorias.DataBind();
-            
+
 
         }
 
         public void llenarddlMarcas()
         {
             gestionProductos gp = new gestionProductos();
-             ddlMarcas.DataValueField = "IDMarca";
+            ddlMarcas.DataValueField = "IDMarca";
             ddlMarcas.DataTextField = "Nombre_MARCA";
             ddlMarcas.DataSource = gp.getListaMarcas();
             ddlMarcas.DataBind();
-
 
         }
 
@@ -92,9 +88,9 @@ namespace ArvoProjectWebsite
 
         protected void btnVentas_Click(object sender, EventArgs e)
         {
-            
+
             MultiViewAdmin.ActiveViewIndex = 2;
-            
+
         }
         public void cargarGridViewProd()
         {
@@ -105,9 +101,9 @@ namespace ArvoProjectWebsite
 
         private void Estados()
         {
-            
-           Enum.GetNames(typeof(EstadoCompra));
-                      
+
+            Enum.GetNames(typeof(EstadoCompra));
+
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -206,9 +202,9 @@ namespace ArvoProjectWebsite
             cargarGridViewProd();
         }
 
-        
 
-               protected void btnAgregar_Click1(object sender, EventArgs e)
+
+        protected void btnAgregar_Click1(object sender, EventArgs e)
         {
             Producto prod = new Producto();
             gestionProductos gp = new gestionProductos();
@@ -222,18 +218,23 @@ namespace ArvoProjectWebsite
             prod.Marca = ddlMarcas.SelectedValue;
             prod.Descripcion = txtDescripcion.Text.Trim();
             gp.insertarProducto(prod);
-            
-            
+
+
             Server.Transfer("/WebForms/frmMenuAdmin.aspx", false);
-                    }
+        }
 
         protected void ddlCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
             llenarFiltroSubCats();
         }
+
+        protected void btnStats_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebForms/Reportes");
+        }
     }
 
-   
+
 
 }
-    
+

@@ -6,12 +6,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="bg-secondary">
-        <h4 class="text-light text-center">MENÚ REPORTES</h4>
+        <h4 class="text-light text-center">ESTADÍSTICAS</h4>
     </div>
     <br />
     <p>
         <asp:Button ID="btnProductos" runat="server" Text="Productos" CssClass="btn btn-primary ml-3" Font-Bold="True" />
-        <asp:Button ID="btnMarcas" runat="server" Text="Usuarios" CssClass="btn btn-success ml-3" Font-Bold="True" />
-        <asp:Button ID="btnVentas" runat="server" Text="Estadísticas" CssClass="btn btn-danger ml-3" Font-Bold="True" />
+        <asp:Button ID="btnVentas" runat="server" Text="Ventas" CssClass="btn btn-danger ml-3" Font-Bold="True" />
     </p>
+
+    <asp:MultiView ID="MultiViewStats" runat="server">
+
+        <asp:View ID="ViewProductos" runat="server">
+
+        </asp:View>
+
+        <asp:View ID="ViewVentas" runat="server">
+
+        </asp:View>
+
+    </asp:MultiView>
+
 </asp:Content>

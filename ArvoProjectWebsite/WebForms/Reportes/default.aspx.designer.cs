@@ -22,15 +22,6 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
         protected global::System.Web.UI.WebControls.Button btnProductos;
         
         /// <summary>
-        /// Control btnMarcas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMarcas;
-        
-        /// <summary>
         /// Control btnVentas.
         /// </summary>
         /// <remarks>
@@ -38,5 +29,32 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVentas;
+        
+        /// <summary>
+        /// Control MultiViewStats.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView MultiViewStats;
+        
+        /// <summary>
+        /// Control ViewProductos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View ViewProductos;
+        
+        /// <summary>
+        /// Control ViewVentas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View ViewVentas;
     }
 }
