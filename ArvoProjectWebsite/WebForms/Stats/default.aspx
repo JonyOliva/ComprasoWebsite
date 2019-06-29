@@ -15,9 +15,8 @@
         <asp:Button ID="btnProductos" runat="server" Text="Productos" CssClass="btn btn-primary ml-3" Font-Bold="True" OnClick="btnProductos_Click" />
         <asp:Button ID="btnVentas" runat="server" Text="Ventas" CssClass="btn btn-danger ml-3" Font-Bold="True" />
     </p>
-
+    <asp:DropDownList ID="ddlFecha" runat="server"></asp:DropDownList>
     <asp:MultiView ID="MultiViewStats" runat="server">
-
         <asp:View ID="ViewProductos" runat="server">
             <div class ="text-center">
             <br />

@@ -14,9 +14,11 @@ namespace CapaLogicadeNegocio
     {
         string databasePath = Utilidades.GetStringConectionLocal();
         BaseDeDatos bd;
+        CADVentas cv;
         public gestionVentas()
         {
             bd = new BaseDeDatos(databasePath);
+            cv = new CADVentas();
         }
 
         public bool insertarVenta(Ventas venta)
@@ -60,6 +62,11 @@ namespace CapaLogicadeNegocio
             DataTable tbl = new DataTable();
             tbl = bd.getTable("SELECT * FROM VENTAS","Ventas");
             return tbl.Rows.Count;
+        }
+
+        public DataTable getFechasVentas()
+        {
+            return cv.getFechasVentas();
         }
     }
 }

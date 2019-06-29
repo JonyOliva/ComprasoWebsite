@@ -12,7 +12,13 @@ namespace ArvoProjectWebsite.WebForms.Reportes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                gestionVentas gv = new gestionVentas();
+                ddlFecha.DataValueField = "Fecha_Venta";
+                ddlFecha.DataSource = gv.getFechasVentas();
+                ddlFecha.DataBind();
+            }
         }
 
         protected void btnProductos_Click(object sender, EventArgs e)

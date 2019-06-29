@@ -61,5 +61,11 @@ namespace CapaLogicadeNegocio
             tbl = bd.getTable("SELECT * FROM VENTAS","Ventas");
             return tbl.Rows.Count;
         }
+
+        public DataTable getFechasVentas()
+        {
+            return bd.getTable("SELECT DISTINCT Fecha_VENTA FROM VENTAS", "fechas");
+        }
+        
     }
 }
