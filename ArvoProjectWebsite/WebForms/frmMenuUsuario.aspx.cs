@@ -16,9 +16,9 @@ namespace ArvoProjectWebsite.WebForms
         protected void Page_Load(object sender, EventArgs e)
         {
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
-            //Usuario usu = new Usuario();
-            //usu.IDUsuario = "0000";
-            //Application["Usuario"] = usu;
+            Usuario usu = new Usuario();
+            usu.IDUsuario = "0000";
+            Application["Usuario"] = usu;
 
             lblDniMenuUsuario.Text = ((Usuario)Application["Usuario"]).DNI;
             lblMailMenuUsuario.Text = ((Usuario)Application["Usuario"]).Email;
