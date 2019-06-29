@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using CapaAccesoaDatos;
 using Entidad;
+using System.Web.UI.DataVisualization.Charting;
 
 namespace CapaLogicadeNegocio
 {
@@ -117,6 +118,15 @@ namespace CapaLogicadeNegocio
             else
             {
                 return null;
+            }
+        }
+
+        public void statsCantidadProdVendidos(Series serie)
+        {
+            DataTable data = cp.getProductosVendidos();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                serie.Points.AddXY(data.Rows[i][0], data.Rows[i][1]);
             }
         }
 
