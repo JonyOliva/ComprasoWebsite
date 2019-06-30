@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Entidad;
 using CapaAccesoaDatos;
+using System.Web.UI.DataVisualization.Charting;
 
 namespace CapaLogicadeNegocio
 {
@@ -74,5 +75,46 @@ namespace CapaLogicadeNegocio
             }
             return dates;
         }
+
+        public void statsCantidadProdVendidos(Series serie, string fecha)
+        {
+            DateTime date = DateTime.Parse(fecha);
+            DataTable data = cv.getProductosVendidos(date.Month, date.Year);
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                serie.Points.AddXY(data.Rows[i][0], data.Rows[i][1]);
+            }
+        }
+
+        public float statsTotalEnVentas(string fecha)
+        {
+            DateTime date = DateTime.Parse(fecha);
+            DataRow dr = cv.getTotalVentas(date.Month, date.Year);
+            return Convert.ToSingle(dr[0]);
+        }
+
+        public float statsTotalEnVentas(int anio)
+        {
+            float totalAnio = 0;
+            for (int i = 1; i <= 12; i++)
+            {
+                object obj = cv.getTotalVentas(i, anio)[0];
+                if (obj != DBNull.Value)
+                {
+                    totalAnio += Convert.ToSingle(obj);
+                }
+            }
+            return totalAnio;
+        }
+
+        public void statsIngresos(Series serie, string anio)
+        {
+            int year = Convert.ToInt32(anio);
+            for (int i = 1; i <= 12; i++)
+            {
+                serie.Points.AddXY(Utilidades.obtenerNombreMesNumero(i), cv.getTotalVentas(i, year)[0]);
+            }
+        }
+        
     }
 }

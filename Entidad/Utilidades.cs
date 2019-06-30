@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,20 @@ namespace Entidad
                 pMostrar += precio[i];
             }
             return pMostrar;
+        }
+
+        public static string obtenerNombreMesNumero(int nroMes)
+        {
+            try
+            {
+                DateTimeFormatInfo formatoFecha = CultureInfo.CurrentCulture.DateTimeFormat;
+                string nombreMes = formatoFecha.GetMonthName(nroMes);
+                return nombreMes;
+            }
+            catch
+            {
+                return "Desconocido";
+            }
         }
 
         public static bool soloLetras(string str)

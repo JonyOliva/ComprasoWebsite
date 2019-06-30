@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaLogicadeNegocio;
+using Entidad;
 
 namespace ArvoProjectWebsite.WebForms.Reportes
 {
@@ -15,6 +16,8 @@ namespace ArvoProjectWebsite.WebForms.Reportes
             if (!IsPostBack)
             {
                 rellenarFechas();
+                rellenarIngresosPorAnio();
+                rellenarVentasPorMes();
             }
         }
 
@@ -24,15 +27,43 @@ namespace ArvoProjectWebsite.WebForms.Reportes
             foreach (DateTime item in gv.getFechasVentas())
             {
                 ddlFecha.Items.Add(item.Month + "/" + item.Year);
+                if (ddlAnio.Items.FindByValue(item.Year.ToString()) == null)
+                {
+                    ddlAnio.Items.Add(item.Year.ToString());
+                }
             }
             ddlFecha.DataBind();
+
+
+        }
+                            
+        void rellenarVentasPorMes()
+        {
+            string fecha = ddlFecha.SelectedValue;
+            gestionVentas gp = new gestionVentas();
+            gp.statsCantidadProdVendidos(StatsProdVentas.Series[0], fecha);
+
+            float Total = gp.statsTotalEnVentas(fecha);
+            lblTotalMes.Text = "El total de ventas del " + fecha + " es de $" + Utilidades.precioaMostar(Total);
         }
 
-        protected void btnProductos_Click(object sender, EventArgs e)
+        void rellenarIngresosPorAnio()
         {
-            MultiViewStats.ActiveViewIndex = 0;
-            gestionProductos gp = new gestionProductos();
-            gp.statsCantidadProdVendidos(StatsProdVentas.Series[0]);
+            int anio = Convert.ToInt32(ddlAnio.SelectedValue);
+            gestionVentas gv = new gestionVentas();
+            gv.statsIngresos(StatsVentasAnio.Series[0], anio.ToString());
+
+            lblTotalAnio.Text = "El total de ingresos del " + anio + " es de $" + Utilidades.precioaMostar(gv.statsTotalEnVentas(anio));
+        }
+
+        protected void ddlFecha_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            rellenarVentasPorMes();
+        }
+
+        protected void ddlAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            rellenarIngresosPorAnio();
         }
     }
 }

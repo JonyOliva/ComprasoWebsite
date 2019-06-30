@@ -66,6 +66,22 @@ namespace CapaLogicadeNegocio
         {
             return bd.getTable("SELECT DISTINCT DATEPART(MONTH, Fecha_VENTA) AS MES, DATEPART(YEAR, Fecha_VENTA) AS ANIO FROM VENTAS", "fechas");
         }
-        
+
+        public DataTable getProductosVendidos(int mes, int anio)
+        {
+            return bd.getTable("SELECT Nombre_PROD, SUM(Cantidad_DETV) AS CantidadVendida FROM PRODUCTOS " +
+                                "INNER JOIN DETVENTAS ON(IDProducto = IDProducto_DETV) " +
+                                "INNER JOIN VENTAS ON(IDVenta_DETV = IDVenta) " +
+                                "WHERE(MONTH(Fecha_VENTA) = '" + mes + "' AND YEAR(Fecha_VENTA) = '" + anio + "') GROUP BY Nombre_PROD", "productosVendidos");
+        }
+
+        public DataRow getTotalVentas(int mes, int anio)
+        {
+            DataTable table = bd.getTable("SELECT SUM(PrecioUnitario_DETV*Cantidad_DETV) AS TOTAL FROM DETVENTAS " +
+                                          "INNER JOIN VENTAS ON(IDVenta_DETV = IDVenta) " +
+                                          "WHERE(MONTH(Fecha_VENTA) ='" + mes + "' AND YEAR(Fecha_VENTA) = '" + anio + "')", "Total");
+            return table.Rows[0];
+        }
+
     }
 }

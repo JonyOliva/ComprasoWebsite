@@ -13,24 +13,6 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
     public partial class _default {
         
         /// <summary>
-        /// Control btnProductos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnProductos;
-        
-        /// <summary>
-        /// Control btnVentas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVentas;
-        
-        /// <summary>
         /// Control ddlFecha.
         /// </summary>
         /// <remarks>
@@ -40,22 +22,13 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
         protected global::System.Web.UI.WebControls.DropDownList ddlFecha;
         
         /// <summary>
-        /// Control MultiViewStats.
+        /// Control lblTotalMes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MultiViewStats;
-        
-        /// <summary>
-        /// Control ViewProductos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View ViewProductos;
+        protected global::System.Web.UI.WebControls.Label lblTotalMes;
         
         /// <summary>
         /// Control StatsProdVentas.
@@ -67,12 +40,30 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
         protected global::System.Web.UI.DataVisualization.Charting.Chart StatsProdVentas;
         
         /// <summary>
-        /// Control ViewVentas.
+        /// Control ddlAnio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View ViewVentas;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAnio;
+        
+        /// <summary>
+        /// Control lblTotalAnio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalAnio;
+        
+        /// <summary>
+        /// Control StatsVentasAnio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart StatsVentasAnio;
     }
 }
