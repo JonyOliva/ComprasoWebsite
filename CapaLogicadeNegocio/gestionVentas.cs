@@ -64,9 +64,15 @@ namespace CapaLogicadeNegocio
             return tbl.Rows.Count;
         }
 
-        public DataTable getFechasVentas()
+        public DateTime[] getFechasVentas()
         {
-            return cv.getFechasVentas();
+            DataTable data = cv.getFechasVentas();
+            DateTime[] dates = new DateTime[data.Rows.Count];
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                dates[i] = new DateTime(Convert.ToInt32(data.Rows[i][1]), Convert.ToInt32(data.Rows[i][0]), 1);
+            }
+            return dates;
         }
     }
 }

@@ -14,11 +14,18 @@ namespace ArvoProjectWebsite.WebForms.Reportes
         {
             if (!IsPostBack)
             {
-                gestionVentas gv = new gestionVentas();
-                ddlFecha.DataValueField = "Fecha_Venta";
-                ddlFecha.DataSource = gv.getFechasVentas();
-                ddlFecha.DataBind();
+                rellenarFechas();
             }
+        }
+
+        void rellenarFechas()
+        {
+            gestionVentas gv = new gestionVentas();
+            foreach (DateTime item in gv.getFechasVentas())
+            {
+                ddlFecha.Items.Add(item.Month + "/" + item.Year);
+            }
+            ddlFecha.DataBind();
         }
 
         protected void btnProductos_Click(object sender, EventArgs e)
@@ -26,7 +33,6 @@ namespace ArvoProjectWebsite.WebForms.Reportes
             MultiViewStats.ActiveViewIndex = 0;
             gestionProductos gp = new gestionProductos();
             gp.statsCantidadProdVendidos(StatsProdVentas.Series[0]);
-
         }
     }
 }

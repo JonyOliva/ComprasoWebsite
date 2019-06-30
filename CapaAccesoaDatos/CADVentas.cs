@@ -64,7 +64,7 @@ namespace CapaLogicadeNegocio
 
         public DataTable getFechasVentas()
         {
-            return bd.getTable("SELECT DISTINCT Fecha_VENTA FROM VENTAS", "fechas");
+            return bd.getTable("SELECT DISTINCT DATEPART(MONTH, Fecha_VENTA) AS MES, DATEPART(YEAR, Fecha_VENTA) AS ANIO FROM VENTAS", "fechas");
         }
         
     }
