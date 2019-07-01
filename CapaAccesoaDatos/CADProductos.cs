@@ -19,6 +19,12 @@ namespace CapaAccesoaDatos
             return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
         }
 
+        public DataTable getProductosVendidos()
+        {
+            return bd.getTable("SELECT Nombre_PROD, SUM(Cantidad_DETV) AS CantidadVendida FROM PRODUCTOS " +
+                "INNER JOIN DETVENTAS ON(IDProducto = IDProducto_DETV) GROUP BY Nombre_PROD", "productosVendidos");
+        }
+
         public DataTable getListaMarcas(string Cat, string SubCat)
         {
             SqlCommand sqlCommand = new SqlCommand();
@@ -111,6 +117,12 @@ namespace CapaAccesoaDatos
             ArmarParametrosProductos(ref Comando, prod);
             int afectadas = bd.ExecStoredProcedure(Comando, "ActualizarProd");
             return Convert.ToBoolean(afectadas);
+        }
+
+        public DataTable getMarca(string IDMarca)
+        {
+            return bd.getTable("SELECT Nombre_MARCA FROM MARCAS WHERE IDMarca = '"+IDMarca+"'"
+                ,"Marca");
         }
 
     }

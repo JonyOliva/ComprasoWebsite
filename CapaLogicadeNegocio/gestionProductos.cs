@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using CapaAccesoaDatos;
 using Entidad;
+using System.Web.UI.DataVisualization.Charting;
 
 namespace CapaLogicadeNegocio
 {
@@ -120,7 +121,20 @@ namespace CapaLogicadeNegocio
             }
         }
 
-    }
+        public void statsCantidadProdVendidos(Series serie)
+        {
+            DataTable data = cp.getProductosVendidos();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                serie.Points.AddXY(data.Rows[i][0], data.Rows[i][1]);
+            }
+        }
 
-    
+        public string getMarca(string idmarca)
+        {
+            CADProductos cp = new CADProductos();
+            DataTable tbl = cp.getMarca(idmarca);
+            return tbl.Rows[0]["Nombre_MARCA"].ToString();
+        }
+    }
 }

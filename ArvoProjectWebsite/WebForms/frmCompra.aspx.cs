@@ -14,7 +14,7 @@ namespace ArvoProjectWebsite.WebForms
 {
     public partial class frmCompra : System.Web.UI.Page
     {
-        float suma=0;
+        float suma = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             suma = 0;
@@ -34,13 +34,13 @@ namespace ArvoProjectWebsite.WebForms
                 llenarDirecciones();
                 txtVencimiento.Visible = false;
                 lblVto.Visible = false;
-                rbGuardartarj.Visible = false;
+                chbGuardartarj.Visible = false;
             }
-            if(IsPostBack)
+            if (IsPostBack)
             {
                 habilitarTxttarjeta();
-                validacionesBtnCompras();
-                if (rbGuardartarj.Checked == true)
+                quitaErrores();
+                if (chbGuardartarj.Checked == true)
                 {
                     txtVencimiento.Visible = true;
                     lblVto.Visible = true;
@@ -68,7 +68,7 @@ namespace ArvoProjectWebsite.WebForms
 
         public void llenarCuotas()
         {
-            if(ddlIndexmetodos())
+            if (ddlIndexmetodos())
             {
                 string index = ddlMetodopago.SelectedValue.ToString();
                 ddlCuotas.Items.Clear();
@@ -80,9 +80,9 @@ namespace ArvoProjectWebsite.WebForms
                 ddlCuotas.DataBind();
             }
         }
-         protected void llenarDirecciones()
+        protected void llenarDirecciones()
         {
-            if(this.Application["Usuario"] != null)
+            if (this.Application["Usuario"] != null)
             {
                 string id = ((Usuario)this.Application["Usuario"]).IDUsuario;
                 ddlDireccion.DataSource = LogicaCompra.rellenarDirecciones(id);
@@ -105,7 +105,7 @@ namespace ArvoProjectWebsite.WebForms
                 string prueba = e.Row.Cells[1].Text;
                 suma += float.Parse(e.Row.Cells[1].Text);
             }
-                
+
             grdCompra.Columns[1].FooterText = "Total: $" + suma.ToString();
         }
 
@@ -121,7 +121,7 @@ namespace ArvoProjectWebsite.WebForms
             }
         }
 
-        protected float sumaTotal ()
+        protected float sumaTotal()
         {
             float suma = 0;
             foreach (GridViewRow item in grdCompra.Rows)
@@ -134,7 +134,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprar_Click(object sender, EventArgs e)
         {
-            
+
             if (validacionesBtnCompras())
             {
                 registroVenta();
@@ -154,7 +154,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void registroVenta()
         {
-            if(ddlIndexdireccion() && ddlIndexcuotas())
+            if (ddlIndexdireccion() && ddlIndexcuotas())
             {
                 Ventas venta = new Ventas();
                 venta.IDUsuario1 = ((Usuario)this.Application["Usuario"]).IDUsuario;
@@ -187,6 +187,7 @@ namespace ArvoProjectWebsite.WebForms
         {
 
         }
+
         protected bool rellenarTarxusu()
         {
             DataTable tbl = new DataTable();
@@ -210,7 +211,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void habilitarTxttarjeta()
         {
-            if(ddlTarxu.SelectedIndex == 0 )
+            if (ddlTarxu.SelectedIndex == 0)
             {
                 txtNrotarjeta.Enabled = true;
             }
@@ -225,6 +226,53 @@ namespace ArvoProjectWebsite.WebForms
 
         }
 
+        protected void quitaErrores()
+        {
+            if (ddlIndexmetodos())
+            {
+
+                lblErrormetodo.Visible = false;
+            }
+            if (ddlIndexcuotas())
+            {
+                lblErrorncuota.Visible = false;
+            }
+            if (!(!ddlIndextarxus() && txtNrotarjeta.Text == string.Empty))
+            {
+                lblErrorntar.Visible = false;
+                lblErrorntartarus.Visible = false;
+            }
+            if (ddlIndexdireccion())
+            {
+                lblErrorDire.Visible = false;
+            }
+            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus())
+            {
+                lblErrorntar.Visible = false;
+            }
+            if (ddlIndextarxus())
+            {
+                lblErrorntar.Visible = false;
+            }
+            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus())
+            {
+                chbGuardartarj.Visible = true;
+                if (chbGuardartarj.Checked)
+                {
+                    txtVencimiento.Visible = true;
+                    lblVto.Visible = true;
+                }
+            }
+            if (txtVencimiento.Visible)
+            {
+                if (LogicaCompra.verificarstringFecha(txtVencimiento.Text))
+                {
+                    lblErrorfecha.Visible = false;
+                }
+            }
+
+        }
+
         protected bool validacionesBtnCompras()
         {
             bool bandera = true;
@@ -233,61 +281,37 @@ namespace ArvoProjectWebsite.WebForms
                 bandera = false;
                 lblErrormetodo.Visible = true;
             }
-            else lblErrormetodo.Visible = false;
             if (!ddlIndexcuotas())
             {
                 bandera = false;
                 lblErrorncuota.Visible = true;
             }
-            else lblErrorncuota.Visible = false;
-            if(!ddlIndextarxus() && txtNrotarjeta.Text == string.Empty)
+            if (!ddlIndextarxus() && txtNrotarjeta.Text == string.Empty)
             {
                 bandera = false;
                 lblErrorntartarus.Visible = true;
                 lblErrorntar.Visible = true;
             }
-            else
-            {
-                lblErrorntar.Visible = false;
-                lblErrorntartarus.Visible = false;
-            }
-            if(!ddlIndexdireccion())
+            if (!ddlIndexdireccion())
             {
                 bandera = false;
                 lblErrorDire.Visible = true;
             }
-            else lblErrorDire.Visible = false;
-            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus())
+            if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus()))
+            {
+                lblErrorntar.Visible = true;
+            }
+            if (ddlIndextarxus())
             {
                 lblErrorntar.Visible = false;
-            }
-            else lblErrorntar.Visible = true;
-            if(ddlIndextarxus())
-            {
-                lblErrorntar.Visible = false;
-            }
-            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus())
-            {
-                rbGuardartarj.Visible = true;
-                if(rbGuardartarj.Checked)
-                {
-                    txtVencimiento.Visible = true;
-                    lblVto.Visible = true;
-                }
             }
             if (txtVencimiento.Visible)
             {
-                if(LogicaCompra.verificarstringFecha(txtVencimiento.Text))
-                {
-                    lblErrorfecha.Visible = false;
-                }
-                else
+                if (!(LogicaCompra.verificarstringFecha(txtVencimiento.Text)))
                 {
                     lblErrorfecha.Visible = true;
                 }
             }
-                
-            
             return bandera;
         }
 
@@ -307,13 +331,14 @@ namespace ArvoProjectWebsite.WebForms
             {
                 ddlMetodopago.SelectedValue = LogicaCompra.tipoTarjeta(ddlTarxu.SelectedItem.Text);
                 lblErrormetodo.Visible = false;
+                chbGuardartarj.Visible = false;
+                chbGuardartarj.Checked = false;
                 ddlMetodopago.Enabled = false;
             }
             else
             {
                 ddlMetodopago.Enabled = true;
             }
-
             llenarCuotas();
             ddlMetodopago.DataBind();
         }
@@ -324,18 +349,21 @@ namespace ArvoProjectWebsite.WebForms
                 return true;
             else return false;
         }
+
         protected bool ddlIndexmetodos()
         {
             if (ddlMetodopago.SelectedIndex != 0)
                 return true;
             else return false;
         }
+
         protected bool ddlIndextarxus()
         {
             if (ddlTarxu.SelectedIndex != 0)
                 return true;
             else return false;
         }
+
         protected bool ddlIndexdireccion()
         {
             if (ddlDireccion.SelectedIndex != 0)
@@ -345,7 +373,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void mostrarCostototal()
         {
-            if (ddlIndexcuotas() && ddlIndexdireccion())
+            if (ddlIndexcuotas() && ddlIndexdireccion() && ddlCuotas.Text != string.Empty)
             {
                 lblCostoTotal.Text = "$ " + LogicaCompra.costoTotal(suma, LogicaCompra.getInteres(ddlCuotas.SelectedValue)
                     , float.Parse(LogicaCompra.recuperarEnvio(ddlDireccion.SelectedValue)[1].ToString())).ToString();
@@ -354,7 +382,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void mostrarPrecioenvio()
         {
-            if (ddlIndexcuotas() && ddlIndexdireccion())
+            if (ddlIndexcuotas() && ddlIndexdireccion() && ddlCuotas.Text != string.Empty)
             {
                 lblPrecioEnvio.Text = "$ " + LogicaCompra.recuperarEnvio(ddlDireccion.SelectedValue)[1].ToString();
                 lblPrecioEnvio.DataBind();
@@ -363,6 +391,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprar_PreRender(object sender, EventArgs e)
         {
+
         }
 
         public bool verificarstringFecha(string txt)
@@ -378,6 +407,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void ddlTarxu_Load(object sender, EventArgs e)
         {
+
         }
 
         protected void ddlTarxu_PreRender(object sender, EventArgs e)
