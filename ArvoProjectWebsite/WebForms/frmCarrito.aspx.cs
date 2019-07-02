@@ -18,43 +18,20 @@ namespace ArvoProjectWebsite
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-                actualizarCarrito();
-            sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
-            if (!IsPostBack)
             {
-                //    lnkSeguircom.Attributes.Add("OnClick", "javascript: return fechavto()");
-                sesion.comprobarSesion();
+                actualizarCarrito();
+                
             }
-
         }
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "hola", "javascript: return fechavto();",true);
-            if (LogicaCompra.verificarstringFecha(vencimiento.Value) && vencimiento.Value != "dd/mm/aaaa")
-            {
-                LogicaCompra.agregarMetodopago("asd","asd","asd","asd","asd");
-                ClientScript.RegisterStartupScript(this.GetType(),
-                    "bien", "alert('Tarjeta guardada con éxito.');", true);
-            }
-            else if (vencimiento.Value != "dd/mm/aaaa" && vencimiento.Value != string.Empty)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(),
-                    "error", "alert('Formato incorrecto.');", true);
-                return;
-            }
-            else
-            {
-                ClientScript.RegisterStartupScript(this.GetType(),
-                    "error2", "alert('No se agrego la tarjeta.');", true);
-            }
-            //Response.Redirect("frmListaProductos.aspx");
+            Response.Redirect("frmListaProductos.aspx");
         }
 
         protected void lnkComprar_Click(object sender, EventArgs e)
         {
             int pos = actualizarCantidades();
-
             if (pos != 0)
             {
                 Response.Write("<script language=javascript>alert('Valor incorrecto en campo cantidad');</script>");
@@ -89,10 +66,9 @@ namespace ArvoProjectWebsite
             if (pos < tbl.Rows.Count && pos >= 0)
             {
                 tbl.Rows.RemoveAt(pos);
-                if(tbl.Rows.Count != 0)
+                if(this.Session["Compras"]!=null)
                     tblcompras.Rows.RemoveAt(pos);
             }
-
             if (tbl.Rows.Count == 0)
             {
                 tbl = null;
@@ -118,55 +94,10 @@ namespace ArvoProjectWebsite
             grdCarrito.DataBind();
         }
 
-        protected void InicSec_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frmLogin.aspx");
-        }
-
-        protected void Carrito_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frmCarrito.aspx");
-        }
-
-        protected void btnUser_Command(object sender, CommandEventArgs e)
-        {
-            switch (e.CommandName)
-            {
-                case "init":
-                    Response.Redirect("/WebForms/frmLogin.aspx");
-                    break;
-                case "acc":
-                    Usuario user = (Usuario)Application["Usuario"];
-                    if (user.Admin)
-                    {
-                        Response.Redirect("/WebForms/frmMenuAdmin.aspx");
-                    }
-                    else
-                    {
-                        Response.Redirect("/WebForms/frmMenuUsuario.aspx");
-                    }
-                    break;
-                case "close":
-                    sesion.cerrarSession();
-                    Server.Transfer("/default.aspx", false);
-                    break;
-            }
-        }
-
         protected void item_Command(object sender, CommandEventArgs e)
         {
             Session["filtroCategoria"] = e.CommandArgument;
             Response.Redirect("/WebForms/frmListaProductos.aspx");
-        }
-
-        protected void ejecutarBuscador(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(txtBuscador.Text))
-            {
-                string[] words = txtBuscador.Text.Trim().Split();
-                Session["Buscador"] = words;
-                Response.Redirect("/WebForms/frmListaProductos.aspx");
-            }
         }
 
         public void cargarCarrito()
@@ -194,7 +125,7 @@ namespace ArvoProjectWebsite
         {
 
         }
-
+          
         protected void grdCarrito_RowEditing(object sender, GridViewEditEventArgs e)
         {
 

@@ -134,7 +134,12 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void lbtnComprar_Click(object sender, EventArgs e)
         {
-
+            Usuario us = (Usuario)this.Application["Usuario"];
+            if (chbGuardartarj.Checked && LogicaCompra.verificarTarjeta(txtNrotarjeta.Text))
+            {
+                LogicaCompra.agregarMetodopago(us.IDUsuario, txtNrotarjeta.Text
+                    , ddlMetodopago.SelectedValue, us.Nombre + us.Apellido, txtVencimiento.Text);
+            }
             if (validacionesBtnCompras())
             {
                 registroVenta();
