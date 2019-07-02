@@ -114,52 +114,12 @@ namespace ArvoProjectWebsite
             ddlCat.Items.Insert(0, new ListItem("", null));
         }
 
-        void OrdenarLista()
-        {
-            int opc = ddlOrdenar.SelectedIndex;
-            switch (opc)
-            {
-                case 1:
-                    sqldataProductos.SelectCommand += " ORDER BY Precio_PROD ASC";
-                    break;
-                case 2:
-                    sqldataProductos.SelectCommand += " ORDER BY Precio_PROD DESC";
-                    break;
-            }
-        }
-
-        void filtrarxCategoria()
-        {
-            if (!string.IsNullOrEmpty(ddlCat.SelectedValue))
-            {
-                sqldataProductos.SelectCommand += " AND IDCategoria_PROD='" + ddlCat.SelectedValue + "'";
-            }
-        }
-
-        void filtrarxSubcategoria()
-        {
-            if (!string.IsNullOrEmpty(ddlSubCat.SelectedValue))
-            {
-                sqldataProductos.SelectCommand += " AND IDSubCategoria_PROD='" + ddlSubCat.SelectedValue + "'";
-            }
-        }
-
-        void filtrarxMarca()
-        {
-            if (!string.IsNullOrEmpty(ddlMarcas.SelectedValue))
-            {
-                sqldataProductos.SelectCommand += " AND IDMarca_PROD='" + ddlMarcas.SelectedValue + "'";
-            }
-        }
-
         protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)
         {
 
             gestionProductos gp = new gestionProductos();
             LogicaCarrito.añadirCarrito((DataTable)this.Session["Carrito"]
                 , gp.getProducto(e.CommandArgument.ToString()));
-
-            btnFiltrar_Click();
         }
 
         protected void imgProducto_Command(object sender, CommandEventArgs e)
@@ -167,24 +127,10 @@ namespace ArvoProjectWebsite
             Response.Redirect("frmProducto.aspx?IDProd=" + e.CommandArgument);
         }
 
-        protected void btnSinFiltro_Click(object sender, EventArgs e)
-        {
-            sqldataProductos.SelectCommand = "SELECT[IDProducto], [Nombre_PROD], [RutaImagen], [Descuento_PROD], [Precio_PROD] FROM[PRODUCTOS] WHERE([ACTIVO] = @ACTIVO)";
-            ddlCat.SelectedIndex = 0;
-            ddlSubCat.SelectedIndex = 0;
-            ddlMarcas.SelectedIndex = 0;
-            ddlOrdenar.SelectedIndex = 0;
-            lstViewProductos.DataBind();
-        }
-
         protected void btnFiltrar_Click()
         {
-            sqldataProductos.SelectCommand = "SELECT[IDProducto], [Nombre_PROD], [RutaImagen], [Descuento_PROD], [Precio_PROD] FROM[PRODUCTOS] WHERE([ACTIVO] = @ACTIVO)";
-
-            filtrarxCategoria();
-            filtrarxSubcategoria();
-            filtrarxMarca();
-            ViewState["filtro"] = sqldataProductos.SelectCommand;
+            gestionProductos gp = new gestionProductos();
+            lstViewProductos.DataSource = gp.getProductos("", ddlCat.SelectedValue, ddlSubCat.SelectedValue, ddlMarcas.SelectedValue, ddlOrdenar.SelectedValue);
             lstViewProductos.DataBind();
         }
 
@@ -219,12 +165,7 @@ namespace ArvoProjectWebsite
 
         protected void ddlOrdenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ViewState["filtro"] != null)
-            {
-                sqldataProductos.SelectCommand = ViewState["filtro"].ToString();
-            }
             btnFiltrar_Click();
-            OrdenarLista();
         }
 
         bool EmpezarBusqueda()

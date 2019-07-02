@@ -76,8 +76,8 @@
                     <div class="col">
                         <asp:DropDownList ID="ddlOrdenar" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlOrdenar_SelectedIndexChanged">
                             <asp:ListItem></asp:ListItem>
-                            <asp:ListItem Value="1">Menor precio</asp:ListItem>
-                            <asp:ListItem Value="2">Mayor precio</asp:ListItem>
+                            <asp:ListItem Value="Precio_PROD ASC">Menor precio</asp:ListItem>
+                            <asp:ListItem Value="Precio_PROD DESC">Mayor precio</asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="col-md-9">
-                        <asp:ListView ID="lstViewProductos" runat="server" DataSourceID="sqldataProductos" GroupItemCount="4" OnDataBound="lstViewProductos_DataBound">
+                        <asp:ListView ID="lstViewProductos" runat="server" GroupItemCount="4" OnDataBound="lstViewProductos_DataBound">
                             <EmptyDataTemplate>
                                 <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
                                     <tr>
@@ -180,12 +180,6 @@
 
             </div>
 
-            <asp:SqlDataSource ID="sqldataProductos" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [IDProducto], [Nombre_PROD], [RutaImagen], [Descuento_PROD], [Precio_PROD] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([IDCategoria_PROD] = @IDCategoria_PROD))" CancelSelectOnNullParameter="False">
-                <SelectParameters>
-                    <asp:Parameter DefaultValue="true" Name="ACTIVO" Type="Boolean" />
-                    <asp:SessionParameter Name="IDCategoria_PROD" SessionField="filtroCategoria" Type="String" />
-                </SelectParameters>
-            </asp:SqlDataSource>
             <br />
         </div>
 

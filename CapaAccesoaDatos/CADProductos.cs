@@ -19,6 +19,32 @@ namespace CapaAccesoaDatos
             return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
         }
 
+        public DataTable getDataTable(string nombre = "", string idCategoria = "", string idSubCat = "", string idMarca = "", string ordenarPor = "Precio_PROD ASC")
+        {
+            string selectCommand = "SELECT * FROM PRODUCTOS WHERE (ACTIVO = 1)";
+            if (!string.IsNullOrEmpty(nombre))
+            {
+                selectCommand += " AND Nombre_PROD LIKE '%" + nombre + "%'";
+            }
+            if (!string.IsNullOrEmpty(idCategoria))
+            {
+                selectCommand += " AND IDCategoria_PROD='" + idCategoria + "'";
+            }
+            if (!string.IsNullOrEmpty(idSubCat))
+            {
+                selectCommand += " AND IDSubCategoria_PROD='" + idSubCat + "'";
+            }
+            if (!string.IsNullOrEmpty(idMarca))
+            {
+                selectCommand += " AND IDMarca_PROD='" + idMarca + "'";
+            }
+            if (!string.IsNullOrEmpty(ordenarPor))
+            {
+                selectCommand += " ORDER BY "+ordenarPor;
+            }
+            return bd.getTable(selectCommand, "productosFiltrados");
+        }
+
         public DataTable getProductosVendidos()
         {
             return bd.getTable("SELECT Nombre_PROD, SUM(Cantidad_DETV) AS CantidadVendida FROM PRODUCTOS " +
