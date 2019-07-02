@@ -14,13 +14,12 @@ namespace ArvoProjectWebsite
 {
     public partial class frmCarrito : System.Web.UI.Page
     {
-        gestorSesion sesion;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 actualizarCarrito();
-                
+
             }
         }
 
@@ -66,7 +65,7 @@ namespace ArvoProjectWebsite
             if (pos < tbl.Rows.Count && pos >= 0)
             {
                 tbl.Rows.RemoveAt(pos);
-                if(this.Session["Compras"]!=null)
+                if (this.Session["Compras"] != null)
                     tblcompras.Rows.RemoveAt(pos);
             }
             if (tbl.Rows.Count == 0)
@@ -94,12 +93,6 @@ namespace ArvoProjectWebsite
             grdCarrito.DataBind();
         }
 
-        protected void item_Command(object sender, CommandEventArgs e)
-        {
-            Session["filtroCategoria"] = e.CommandArgument;
-            Response.Redirect("/WebForms/frmListaProductos.aspx");
-        }
-
         public void cargarCarrito()
         {
             grdCarrito.DataSource = (DataTable)this.Session["Carrito"];
@@ -111,11 +104,11 @@ namespace ArvoProjectWebsite
             e.Row.Cells[7].Visible = false;
             e.Row.Cells[8].Visible = false;
             string prueba = e.Row.Cells[7].Text;
-            if(e.Row.RowType == DataControlRowType.DataRow)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                if(prueba != null && prueba != "&nbsp")
+                if (prueba != null && prueba != "&nbsp")
                 {
-                    ((TextBox)e.Row.FindControl("txtCantidad")).Text = 
+                    ((TextBox)e.Row.FindControl("txtCantidad")).Text =
                         e.Row.Cells[7].Text;
                 }
             }
@@ -125,7 +118,7 @@ namespace ArvoProjectWebsite
         {
 
         }
-          
+
         protected void grdCarrito_RowEditing(object sender, GridViewEditEventArgs e)
         {
 
@@ -146,17 +139,19 @@ namespace ArvoProjectWebsite
             int pos = 0;
             for (int i = 0; i < grdCarrito.Rows.Count; i++)
             {
-                ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).DataBind();
-                string texto = ((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text;
-                if (texto == null || Utilidades.validarString(texto, false, true, true))
+                if (((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != string.Empty)
                 {
-                    pos++;
+                    int valor = int.Parse(((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text);
+                    if (valor < 0 )
+                    {
+                        pos++;
+                    }
+                    else
+                    {
+                        ((DataTable)this.Session["Carrito"]).Rows[i][4] = valor;
+                    }
                 }
-                else
-                {
-                    ((DataTable)this.Session["Carrito"]).Rows[i][4] = int.Parse(texto);
-                }
-
+                else pos++;
             }
             return pos;
         }

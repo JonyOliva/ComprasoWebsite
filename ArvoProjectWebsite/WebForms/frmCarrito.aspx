@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmCarrito.aspx.cs" Inherits="ArvoProjectWebsite.frmCarrito" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="/Assets/Styles/Compras.css" rel="stylesheet" />
 </asp:Content>
      
