@@ -31,24 +31,6 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.DropDownList ddlMetodopago;
         
         /// <summary>
-        /// Control ddlCuotas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCuotas;
-        
-        /// <summary>
-        /// Control grdCompra.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdCompra;
-        
-        /// <summary>
         /// Control lblErrormetodo.
         /// </summary>
         /// <remarks>
@@ -56,6 +38,24 @@ namespace ArvoProjectWebsite.WebForms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrormetodo;
+        
+        /// <summary>
+        /// Control llblCuotas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label llblCuotas;
+        
+        /// <summary>
+        /// Control ddlCuotas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCuotas;
         
         /// <summary>
         /// Control lblErrorncuota.
@@ -67,13 +67,13 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.Label lblErrorncuota;
         
         /// <summary>
-        /// Control lblVto.
+        /// Control grdCompra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVto;
+        protected global::System.Web.UI.WebControls.GridView grdCompra;
         
         /// <summary>
         /// Control lblNrotarjeta.
@@ -94,13 +94,31 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtNrotarjeta;
         
         /// <summary>
-        /// Control rbGuardartarj.
+        /// Control lblErrorntar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbGuardartarj;
+        protected global::System.Web.UI.WebControls.Label lblErrorntar;
+        
+        /// <summary>
+        /// Control chbGuardartarj.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chbGuardartarj;
+        
+        /// <summary>
+        /// Control lblVto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVto;
         
         /// <summary>
         /// Control txtVencimiento.
@@ -110,15 +128,6 @@ namespace ArvoProjectWebsite.WebForms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtVencimiento;
-        
-        /// <summary>
-        /// Control lblErrorntar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorntar;
         
         /// <summary>
         /// Control lblErrorfecha.

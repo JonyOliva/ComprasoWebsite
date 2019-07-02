@@ -62,8 +62,8 @@ namespace ArvoProjectWebsite
             else
             {
                 this.Session["Compras"] = null;
-                this.Session["Compras"] = LogicaCarrito.crearCompra();
-                LogicaCarrito.cargarCompras((DataTable)this.Session["Compras"]
+                this.Session["Compras"] = LogicaCompra.crearCompra();
+                LogicaCompra.cargarCompras((DataTable)this.Session["Compras"]
                         , (DataTable)this.Session["Carrito"]);
                 Response.Redirect("frmCompra.aspx");
             }
