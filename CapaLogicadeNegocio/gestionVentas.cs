@@ -85,6 +85,27 @@ namespace CapaLogicadeNegocio
                 serie.Points.AddXY(data.Rows[i][0], data.Rows[i][1]);
             }
         }
+        public void statsEnvios(Series serie, string fecha)
+        {
+            DateTime date = DateTime.Parse(fecha);
+            DataTable data = cv.getEnviosProvs(date.Month, date.Year);
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                serie.Points.AddXY(data.Rows[i][0], data.Rows[i][1]);
+            }
+        }
+
+        public DataTable statsCategorias(string fecha)
+        {
+            DateTime date = DateTime.Parse(fecha);
+            return cv.getCantVentasPorCategorias(date.Month, date.Year);
+        }
+
+        public DataTable statsSubcategorias(string fecha, string categoria)
+        {
+            DateTime date = DateTime.Parse(fecha);
+            return cv.getCantVentasPorSubcategoria(date.Month, date.Year, categoria);
+        }
 
         public float statsTotalEnVentas(string fecha)
         {

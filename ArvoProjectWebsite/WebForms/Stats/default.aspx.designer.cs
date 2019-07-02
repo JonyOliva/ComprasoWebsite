@@ -13,33 +13,6 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
     public partial class _default {
         
         /// <summary>
-        /// Control ddlFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFecha;
-        
-        /// <summary>
-        /// Control lblTotalMes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalMes;
-        
-        /// <summary>
-        /// Control StatsProdVentas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart StatsProdVentas;
-        
-        /// <summary>
         /// Control ddlAnio.
         /// </summary>
         /// <remarks>
@@ -58,12 +31,75 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
         protected global::System.Web.UI.WebControls.Label lblTotalAnio;
         
         /// <summary>
-        /// Control StatsVentasAnio.
+        /// Control ChVentasAnio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart StatsVentasAnio;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart ChVentasAnio;
+        
+        /// <summary>
+        /// Control ddlFechaVent.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFechaVent;
+        
+        /// <summary>
+        /// Control lblTotalMes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalMes;
+        
+        /// <summary>
+        /// Control ChProdVentas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart ChProdVentas;
+        
+        /// <summary>
+        /// Control ChCategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart ChCategorias;
+        
+        /// <summary>
+        /// Control ChSubcategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart ChSubcategorias;
+        
+        /// <summary>
+        /// Control ddlFechaEnv.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFechaEnv;
+        
+        /// <summary>
+        /// Control ChEnvios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart ChEnvios;
     }
 }
