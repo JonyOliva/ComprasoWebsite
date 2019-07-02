@@ -9,15 +9,11 @@ namespace ArvoProjectWebsite
 {
     public partial class frmListaProductos : System.Web.UI.Page
     {
-        gestorSesion sesion;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            sesion = new gestorSesion(InicSec, Cuenta, CerrSec);
 
             if (!IsPostBack)
             {
-                sesion.comprobarSesion();
                 if (Session["filtroCategoria"] == null)
                 {
                     if (Session["Buscador"] == null)
@@ -45,7 +41,7 @@ namespace ArvoProjectWebsite
                
                 if (this.Session["Carrito"] == null)
                 {
-                    this.Session["Carrito"] = crearTablacarrito();
+                    this.Session["Carrito"] = LogicaCarrito.crearTablacarrito();
                 }
             }
         }
@@ -64,13 +60,6 @@ namespace ArvoProjectWebsite
         protected void Carrito_Click(object sender, EventArgs e)
         {
             Response.Redirect("/WebForms/frmCarrito.aspx");
-        }
-
-        protected void item_Command(object sender, CommandEventArgs e)
-        {
-            Session["filtroCategoria"] = e.CommandArgument;
-            Session["Buscador"] = null;
-            Server.Transfer("/WebForms/frmListaProductos.aspx", false);
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -195,61 +184,6 @@ namespace ArvoProjectWebsite
                 return false;
             }
         }
-
         
-
-        public DataTable crearTablacarrito()
-        {
-            DataTable tbl = new DataTable();
-            DataColumn[] clave= new DataColumn[1];
-            DataColumn columna;
-            tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Marca", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
-            tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Cantidad", System.Type.GetType("System.Int32")));
-            columna = new DataColumn("IDProducto", System.Type.GetType("System.String"));
-            tbl.Columns.Add(columna);
-            clave[0] = columna;
-            tbl.PrimaryKey = clave;
-            return tbl;
-        }
-
-        protected void btnUser_Command(object sender, CommandEventArgs e)
-        {
-            switch (e.CommandName)
-            {
-                case "init":
-                    Response.Redirect("/WebForms/frmLogin.aspx");
-                    break;
-                case "acc":
-                    Usuario user = (Usuario)Application["Usuario"];
-                    if (user.Admin)
-                    {
-                        Response.Redirect("/WebForms/frmMenuAdmin.aspx");
-                    }
-                    else
-                    {
-                        Response.Redirect("/WebForms/frmMenuUsuario.aspx");
-                    }
-                    break;
-                case "close":
-                    sesion.cerrarSession();
-                    Server.Transfer("/default.aspx", false);
-                    break;
-            }
-        }
-
-        protected void ejecutarBuscador(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(txtBuscador.Text))
-            {
-                string[] words = txtBuscador.Text.Trim().Split();
-                Session["filtroCategoria"] = null;
-                Session["Buscador"] = words;
-                Server.Transfer("/WebForms/frmListaProductos.aspx", false);
-            }
-        }
-
     }
 }

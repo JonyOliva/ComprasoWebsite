@@ -1,72 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmListaProductos.aspx.cs" Inherits="ArvoProjectWebsite.frmListaProductos" %>
-
-<!DOCTYPE html>
-
-<html>
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Compraso</title>
-
-    <link href="/Assets/Styles/Main.css" rel="stylesheet" />
-    <link href="/Assets/Styles/productos.css" rel="stylesheet" />
-    <link href="/Assets/Styles/master.css" rel="stylesheet" />
-    <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
-
-        <link href="/Assets/Styles/Main.css" rel="stylesheet" />
-        <link href="/Assets/Styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
-
-</head>
-
-<body>
-    <!--ENCABEZADO-->
-    <form id="form2" runat="server">
-
-        <div class="container-fluid mt-2 mb-2">
-            <div class="row align-items-center align-content-between">
-                <div class="col-3"><a href="/default.aspx" id="logo">
-                    <img src="/Assets/Images/compraso_l2.png" alt="Compraso" /></a></div>
-                <div class="col-5" style="margin-top: 15px">
-                    <div class="input-group mb-3">
-
-                        <asp:TextBox class="form-control py-2 border-right-0 border" type="text" placeholder="Buscar producto..." ID="txtBuscador" runat="server"></asp:TextBox>
-
-                        <span class="input-group-append">
-                            <%-- <asp:Button ID="Button1" runat="server" Text="Button" />--%>
-                            <button class="btn btn-outline-secondary border-left-0 border" type="button" runat="server" onserverclick="ejecutarBuscador">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-3 text-right">
-                    <asp:LinkButton class="text-dark" ID="InicSec" runat="server" Visible="False" CommandName="init" OnCommand="btnUser_Command"><i class="far fa-user fa-lg"></i> Iniciar sesión</asp:LinkButton>
-                    <asp:LinkButton class="text-dark" ID="Cuenta" runat="server" Visible="False" CommandName="acc" OnCommand="btnUser_Command" ToolTip="Mi perfil"><i class="far fa-user-circle fa-lg"></i> </asp:LinkButton>
-                    <asp:LinkButton class="text-dark" ID="CerrSec" runat="server" CommandName="close" OnCommand="btnUser_Command" Visible="False"><i class="fas fa-times-circle"></i> Cerrar sesión </asp:LinkButton>
-                </div>
-                <div class="col-1">
-                    <asp:LinkButton class="text-dark" ID="Carrito" runat="server" OnClick="Carrito_Click"><i class="fas fa-shopping-cart fa-lg"></i></asp:LinkButton>
-
-                </div>
+﻿<%@ Page Language="C#" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmListaProductos.aspx.cs" Inherits="ArvoProjectWebsite.frmListaProductos" %>
 
 
-            </div>
-        </div>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="/Assets/Styles/Compras.css" rel="stylesheet" />
+    <!--
+        ESTE FORM ES PARA FINALIZAR LA COMPRA DE TODOS LOS PRODUCTOS, OSEA EL FORM SIGUIENTE AL DEL CARRITO
+-->
+</asp:Content>
 
-
-
-        <!--BARRA MENU-->
-        <nav class="flex">
-
-            <asp:LinkButton ID="item0" CssClass="navbar-item" runat="server" CommandArgument="C001" CommandName="IDCat" OnCommand="item_Command">Informática</asp:LinkButton>
-            <asp:LinkButton ID="item1" CssClass="navbar-item" runat="server" CommandArgument="C002" CommandName="IDCat" OnCommand="item_Command">TV, Audio y Video</asp:LinkButton>
-            <asp:LinkButton ID="item2" CssClass="navbar-item" runat="server" CommandArgument="C003" CommandName="IDCat" OnCommand="item_Command">Electrodomésticos</asp:LinkButton>
-            <asp:LinkButton ID="item3" CssClass="navbar-item" runat="server" CommandArgument="C004" CommandName="IDCat" OnCommand="item_Command">Celulares y Tablets</asp:LinkButton>
-            <asp:LinkButton ID="item4" CssClass="navbar-item" runat="server" CommandArgument="C005" CommandName="IDCat" OnCommand="item_Command">Casa y Jardín</asp:LinkButton>
-
-        </nav>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
 
         <div style="background-color: whitesmoke;">
             <br />
@@ -183,13 +126,7 @@
             <br />
         </div>
 
-        <footer>
-            <!--ARVO SRL | Todos los derechos reservados-->
-        </footer>
-
-    </form>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-</body>
-</html>
+</asp:content>

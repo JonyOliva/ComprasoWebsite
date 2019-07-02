@@ -37,7 +37,8 @@ namespace ArvoProjectWebsite.WebForms
         protected void item_Command(object sender, CommandEventArgs e)
         {
             Session["filtroCategoria"] = e.CommandArgument;
-            Response.Redirect("/WebForms/frmListaProductos.aspx");
+            Session["Buscador"] = null;
+            Server.Transfer("/WebForms/frmListaProductos.aspx", false);
         }
 
         protected void ejecutarBuscador(object sender, EventArgs e)

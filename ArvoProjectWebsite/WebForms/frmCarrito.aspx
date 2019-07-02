@@ -22,7 +22,7 @@
                     </EditItemTemplate>
                     <ItemTemplate>
 
-                        &nbsp;<asp:TextBox ID="txtCantidad" runat="server" Height="16px" Style="margin-top: 0px" Width="50px"></asp:TextBox>
+                        &nbsp;<asp:TextBox ID="txtCantidad" runat="server" Height="16px" Style="margin-top: 0px" Width="50px" TextMode="Number"></asp:TextBox>
 
                     </ItemTemplate>
                 </asp:TemplateField>
