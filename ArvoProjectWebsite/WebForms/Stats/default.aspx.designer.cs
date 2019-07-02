@@ -40,13 +40,22 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
         protected global::System.Web.UI.DataVisualization.Charting.Chart ChVentasAnio;
         
         /// <summary>
-        /// Control ddlFechaVent.
+        /// Control ddlVentMes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFechaVent;
+        protected global::System.Web.UI.WebControls.DropDownList ddlVentMes;
+        
+        /// <summary>
+        /// Control ddlVentAnio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlVentAnio;
         
         /// <summary>
         /// Control lblTotalMes.
@@ -85,13 +94,22 @@ namespace ArvoProjectWebsite.WebForms.Reportes {
         protected global::System.Web.UI.DataVisualization.Charting.Chart ChSubcategorias;
         
         /// <summary>
-        /// Control ddlFechaEnv.
+        /// Control ddlEnviosMes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFechaEnv;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEnviosMes;
+        
+        /// <summary>
+        /// Control ddlEnviosAnio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEnviosAnio;
         
         /// <summary>
         /// Control ChEnvios.

@@ -29,21 +29,42 @@ namespace ArvoProjectWebsite.WebForms.Reportes
             gestionVentas gv = new gestionVentas();
             foreach (DateTime item in gv.getFechasVentas())
             {
-                ddlFechaVent.Items.Add(item.ToString("MM/yyyy")); //item.Month + "/" + item.Year
-                ddlFechaEnv.Items.Add(item.ToString("MM/yyyy"));
+                //ddlFechaVent.Items.Add(item.ToString("MM/yyyy")); //item.Month + "/" + item.Year
+                //ddlFechaEnv.Items.Add(item.ToString("MM/yyyy"));
                 if (ddlAnio.Items.FindByValue(item.Year.ToString()) == null)
                 {
                     ddlAnio.Items.Add(item.Year.ToString());
                 }
+                if (ddlEnviosAnio.Items.FindByValue(item.Year.ToString()) == null)
+                {
+                    ddlEnviosAnio.Items.Add(item.Year.ToString());
+                }
+                if (ddlVentAnio.Items.FindByValue(item.Year.ToString()) == null)
+                {
+                    ddlVentAnio.Items.Add(item.Year.ToString());
+                }
             }
-            ddlFechaVent.DataBind();
-            ddlFechaEnv.DataBind();
-            ddlAnio.DataBind();
+            cargarFechaMeses(ddlEnviosMes.Items, ddlEnviosAnio.SelectedValue);
+            cargarFechaMeses(ddlVentMes.Items, ddlVentAnio.SelectedValue);
         }
-                            
+
+        void cargarFechaMeses(ListItemCollection items, string _anio)
+        {
+            items.Clear();
+            int anio = Convert.ToInt32(_anio);
+            gestionVentas gv = new gestionVentas();
+            foreach (DateTime item in gv.getFechasVentas())
+            {
+                if(item.Year == anio)
+                {
+                    items.Add(item.Month.ToString());
+                }
+            }
+        }
+
         void rellenarVentasPorMes()
         {
-            string fecha = ddlFechaVent.SelectedValue;
+            string fecha = ddlVentMes.SelectedValue + "/" + ddlVentAnio.SelectedValue;
             gestionVentas gp = new gestionVentas();
             gp.statsCantidadProdVendidos(ChProdVentas.Series[0], fecha);
 
@@ -62,14 +83,18 @@ namespace ArvoProjectWebsite.WebForms.Reportes
 
         void rellenarEnvios()
         {
-            string fecha = ddlFechaEnv.SelectedValue;
+            if(ddlEnviosMes.SelectedValue == null)
+            {
+                cargarFechaMeses(ddlEnviosMes.Items, ddlEnviosAnio.SelectedValue);
+            }
+            string fecha = ddlEnviosMes.SelectedValue + "/" + ddlVentAnio.SelectedValue;
             gestionVentas gv = new gestionVentas();
             gv.statsEnvios(ChEnvios.Series[0], fecha);
         }
 
         void rellenarCategorias()
         {
-            string fecha = ddlFechaVent.SelectedValue;
+            string fecha = ddlVentMes.SelectedValue + "/" + ddlVentAnio.SelectedValue;
             gestionVentas gp = new gestionVentas();
             DataTable data = gp.statsCategorias(fecha);
             List<int> cantCats = new List<int>();
@@ -88,7 +113,7 @@ namespace ArvoProjectWebsite.WebForms.Reportes
 
         void rellenarSubcategorias(string idcat)
         {
-            string fecha = ddlFechaVent.SelectedValue;
+            string fecha = ddlVentMes.SelectedValue + "/" + ddlVentAnio.SelectedValue;
             gestionVentas gp = new gestionVentas();
             foreach (DataRow item in gp.statsSubcategorias(fecha, idcat).Rows)
             {
@@ -96,12 +121,10 @@ namespace ArvoProjectWebsite.WebForms.Reportes
             }
         }
 
-        protected void ddlFecha_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlFechaEnv_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChProdVentas.Series[0].Points.Clear();
-            ChCategorias.Series[0].Points.Clear();
-            rellenarVentasPorMes();
-            rellenarCategorias();
+            ChEnvios.Series[0].Points.Clear();
+            rellenarEnvios();
         }
 
         protected void ddlAnio_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,10 +133,24 @@ namespace ArvoProjectWebsite.WebForms.Reportes
             rellenarIngresosPorAnio();
         }
 
-        protected void ddlFechaEnv_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlVentMes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChEnvios.Series[0].Points.Clear();
-            rellenarEnvios();
+            ChProdVentas.Series[0].Points.Clear();
+            ChCategorias.Series[0].Points.Clear();
+            rellenarVentasPorMes();
+            rellenarCategorias();
+        }
+
+        protected void ddlVentAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarFechaMeses(ddlVentMes.Items, ddlVentAnio.SelectedValue);
+            ddlVentMes_SelectedIndexChanged(new object(), new EventArgs());
+        }
+
+        protected void ddlEnviosAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarFechaMeses(ddlEnviosMes.Items, ddlEnviosAnio.SelectedValue);
+            ddlFechaEnv_SelectedIndexChanged(new object(), new EventArgs());
         }
     }
 }

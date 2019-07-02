@@ -47,7 +47,8 @@
             <div class="row">
                 <div class="col-3"></div>
                 <h5 class="col-3">Organizar por fecha: </h5>
-                <asp:DropDownList CssClass="col-2" ID="ddlFechaVent" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlFecha_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList CssClass="col-1" ID="ddlVentMes" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlVentMes_SelectedIndexChanged" ToolTip="Mes"></asp:DropDownList>
+                <asp:DropDownList CssClass="col-1" ID="ddlVentAnio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlVentAnio_SelectedIndexChanged" ToolTip="Año"></asp:DropDownList>
                 <div class="col-4"></div>
             </div>
             <br />
@@ -106,7 +107,8 @@
             <div class="row">
                 <div class="col-3"></div>
                 <h5 class="col-3">Organizar por fecha: </h5>
-                <asp:DropDownList CssClass="col-2" ID="ddlFechaEnv" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlFechaEnv_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList CssClass="col-1" ID="ddlEnviosMes" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlFechaEnv_SelectedIndexChanged" ToolTip="Mes"></asp:DropDownList>
+                <asp:DropDownList CssClass="col-1" ID="ddlEnviosAnio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEnviosAnio_SelectedIndexChanged" ToolTip="Año"></asp:DropDownList>
                 <div class="col-4"></div>
             </div>
             <br />
