@@ -82,12 +82,13 @@ namespace CapaAccesoaDatos
             return eliminada;
         }
 
-        public bool EliminarMediodePagoxUsuCAD(Usuario usu, string Id)
+        public bool EliminarMediodePagoxUsuCAD(Usuario usu, string Id, string NumTarj)
         {
             bool Eliminado = false;
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.AddWithValue("IdUsuario", usu.IDUsuario);
             cmd.Parameters.AddWithValue("IdTarjxU", Id);
+            cmd.Parameters.AddWithValue("NroTarjeta", NumTarj);
             Eliminado = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spEliminarMdp"));
             return Eliminado;
         }
@@ -163,7 +164,9 @@ namespace CapaAccesoaDatos
 
         public DataTable ObtenerDetalleVentaCAD(int id)
         {
-            return bd.getTable("SELECT IDVENTA_DETV, IDPRODUCTO_DETV, NOMBRE_PROD, DESCUENTO_DETV, CANTIDAD_DETV, PRECIOUNITARIO_DETV FROM DETVENTAS INNER JOIN PRODUCTOS ON IDPRODUCTO_DETV = IDPRODUCTO WHERE IDVENTA_DETV = " + id, "DetalleVentas");
+            return bd.getTable("SELECT IDVENTA_DETV as 'ID Venta', IDPRODUCTO_DETV as 'Cod.Producto', NOMBRE_PROD as 'Producto'," +
+                " DESCUENTO_DETV as 'Descuento', CANTIDAD_DETV as 'Cantidad', PRECIOUNITARIO_DETV as 'Precio Unitario'" +
+                " FROM DETVENTAS INNER JOIN PRODUCTOS ON IDPRODUCTO_DETV = IDPRODUCTO WHERE IDVENTA_DETV = " + id, "DetalleVentas");
         }
     }
 }

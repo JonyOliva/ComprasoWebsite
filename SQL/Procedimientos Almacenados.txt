@@ -73,7 +73,7 @@ CREATE PROCEDURE spObtenerComprasUsuario
 )
 AS
 SELECT IDVenta as 'ID Venta', NroTarjeta_VENTA as 'Nro Tarjeta', IDUsuario_VENTA as 'Codigo de Usuario', Direccion_DIR as 'Direccion', Descuento_VENTA as 'Descuento',
-Total_VENTA as 'Total', Costo_ENVIO as 'Precio Envio', Estado   FROM VENTAS inner join DirecxUsuario on IDUsuario_VENTA = IDUsuario_DIR
+Total_VENTA as 'Total', Costo_ENVIO as 'Precio Envio',Fecha_VENTA as 'Fecha', Estado   FROM VENTAS inner join DirecxUsuario on IDUsuario_VENTA = IDUsuario_DIR
 and CodDirreccion_VENTA = CodDirreccion inner join ENVIOS on IDEnvio = IDEnvio_VENTA  WHERE IDUsuario_VENTA = @IdUsuario
 GO
 
@@ -84,7 +84,7 @@ CREATE PROCEDURE spObtenerTarjetasUsuario
 	@IdUsuario char(20)
 )
 AS
-SELECT  IDUsuario_TxU ,NroTarjeta as 'Nro Tarjeta',IDTarjeta_TxU as 'Codigo', Titular,Vencimiento,TARJETAS.Nombre_TARJ as Tarjeta FROM TarjetasxUsuario inner join TARJETAS on TARJETAS.IDTarjeta_TARJ = TarjetasxUsuario.IDTarjeta_TxU WHERE IDUsuario_TxU = @IdUsuario
+SELECT  IDUsuario_TxU ,NroTarjeta as 'Nro Tarjeta',IDTarjeta_TxU as 'Codigo', Titular,Vencimiento,TARJETAS.Nombre_TARJ as Tarjeta FROM TarjetasxUsuario inner join TARJETAS on TARJETAS.IDTarjeta_TARJ = TarjetasxUsuario.IDTarjeta_TxU WHERE IDUsuario_TxU = @IdUsuario AND Activo_TxU = 1
 GO
 
 	--Direcciones_x_Usuario
@@ -93,7 +93,7 @@ CREATE PROCEDURE spObtenerDireccionesUsuario
 	@IdUsuario char(20)
 )
 AS
-SELECT IDUsuario_DIR, CodDirreccion as 'Identificador', Provincia_DIR as 'Provincia', Direccion_DIR as 'Direccion' FROM DirecxUsuario WHERE IDUsuario_DIR = @IdUsuario
+SELECT IDUsuario_DIR, CodDirreccion as 'Identificador', Provincia_DIR as 'Provincia', Direccion_DIR as 'Direccion' FROM DirecxUsuario WHERE IDUsuario_DIR = @IdUsuario AND Activo_Dir = 1
 GO
 
 
@@ -112,11 +112,13 @@ GO
 create procedure spEliminarMdP
 (
 	@IdUsuario char(12),
-	@IdTarjxU char(4)
+	@IdTarjxU char(4),
+	@NroTarjeta char(16)
 )
 as
 begin
-Delete from TarjetasxUsuario where @IdTarjxU = IDTarjeta_TxU and @IdUsuario = IDUsuario_TxU
+UPDATE TarjetasxUsuario
+SET Activo_TxU = 0 WHERE IDUsuario_TxU = @IdUsuario AND IDTarjeta_TxU = @IdTarjxU AND NroTarjeta = @NroTarjeta
 end
 GO
 
@@ -128,7 +130,7 @@ create procedure spEliminarDireccion
 )
 as
 begin
-Delete from DirecxUsuario where @CodDireccion = CodDirreccion and @IdUsuario = IDUsuario_DIR
+UPDATE DirecxUsuario SET Activo_DIR = 0 WHERE IDUsuario_DIR = @IdUsuario AND CodDirreccion = @CodDireccion
 end
 Go
 

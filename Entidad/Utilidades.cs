@@ -122,11 +122,7 @@ namespace Entidad
 
             return false;
         }
-
-        public static string ObtenerEstadoEnvio (Byte a)
-        {
-            return "jaja";
-        }
+        
 
         public static string getMasRepetido(string[] strs)
         {

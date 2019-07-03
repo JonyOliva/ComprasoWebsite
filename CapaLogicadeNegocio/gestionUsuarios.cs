@@ -87,14 +87,14 @@ namespace CapaLogicadeNegocio
         {
             DataTable Tabla;
             Tabla = cadu.Compras_x_UsuarioCAD(usu);
-            Tabla.Columns[7].ColumnName = "Estado ";
+            Tabla.Columns[8].ColumnName = "Estado ";
             Tabla.Columns.Add("Estado");
 
             for (int i = 0; i < Tabla.Rows.Count; i++)
             {
-                Tabla.Rows[i].SetField(8, (EstadoCompra)Tabla.Rows[i].Field<Byte>(7));
+                Tabla.Rows[i].SetField(9, (EstadoCompra)Tabla.Rows[i].Field<Byte>(8));
             }
-            Tabla.Columns.RemoveAt(7);
+            Tabla.Columns.RemoveAt(8);
             return Tabla;
         }
 
@@ -115,9 +115,9 @@ namespace CapaLogicadeNegocio
             return Tabla;
         }
 
-        public bool EliminarMediodePagoxUsu(Usuario usu, string Id)
+        public bool EliminarMediodePagoxUsu(Usuario usu, string Id, string NumTarj)
         {
-            return cadu.EliminarMediodePagoxUsuCAD(usu, Id);
+            return cadu.EliminarMediodePagoxUsuCAD(usu, Id, NumTarj);
         }
 
         public bool EliminarDireccion(Usuario usu, int CodDireccion)

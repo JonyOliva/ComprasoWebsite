@@ -30,6 +30,7 @@ IDUsuario_DIR char(12) NOT NULL,
 CodDirreccion smallint IDENTITY(1,1),
 Provincia_DIR char(40) NOT NULL,
 Direccion_DIR char(40),
+Activo_DIR bit NOT NULL,
 CONSTRAINT PK_DirxUs PRIMARY KEY (IDUsuario_DIR, CodDirreccion),
 CONSTRAINT FK_DirxUs FOREIGN KEY (IDUsuario_DIR) REFERENCES USUARIOS (IDUsuario)
 )
@@ -148,6 +149,7 @@ NroTarjeta char(16) NOT NULL,
 IDTarjeta_TxU char(4) NOT NULL,
 Titular char(30) NOT NULL,
 Vencimiento date NOT NULL,
+Activo_TxU bit NOT NULL,
 CONSTRAINT PK_TxU PRIMARY KEY (NroTarjeta),
 CONSTRAINT FK_TxU FOREIGN KEY (IDTarjeta_TxU) REFERENCES TARJETAS (IDTarjeta_TARJ)
 )
