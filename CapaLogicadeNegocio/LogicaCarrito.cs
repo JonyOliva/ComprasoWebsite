@@ -22,6 +22,7 @@ namespace CapaLogicadeNegocio
             row["RutaImagen"] = prod.RutaImagen.Trim();
             row["IDProducto"] = prod.IDProducto;
             row["Cantidad"] = 1;
+            row["Stock"] = prod.Stock;
 
             if (tbl.Rows.Contains(prod.IDProducto))
             {
@@ -53,6 +54,7 @@ namespace CapaLogicadeNegocio
             tbl.Columns.Add(new DataColumn("Cantidad", System.Type.GetType("System.Int32")));
             columna = new DataColumn("IDProducto", System.Type.GetType("System.String"));
             tbl.Columns.Add(columna);
+            tbl.Columns.Add(new DataColumn("Stock", System.Type.GetType("System.Int32")));
             clave[0] = columna;
             tbl.PrimaryKey = clave;
             return tbl;

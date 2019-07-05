@@ -43,7 +43,7 @@
 
 <asp:Label ID="lblNrotarjeta" runat="server" Text="Nro Tarjeta"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<asp:TextBox ID="txtNrotarjeta" runat="server" OnTextChanged="txtNrotarjeta_TextChanged" ToolTip="Solo números, no puede quedar vacío" AutoPostBack="True" Width="148px" OnLoad="txtNrotarjeta_Load" TextMode="Number"></asp:TextBox>
+<asp:TextBox ID="txtNrotarjeta" runat="server" OnTextChanged="txtNrotarjeta_TextChanged" ToolTip="Solo números, no puede quedar vacío" AutoPostBack="True" Width="148px" OnLoad="txtNrotarjeta_Load"></asp:TextBox>
 <asp:Label ID="lblErrorntar" runat="server" Font-Names="Britannic Bold" Font-Size="Medium" Font-Strikeout="False" ForeColor="Red" Text="*Valor erróneo."></asp:Label>
 
 
@@ -56,7 +56,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:Label ID="lblVto" runat="server" Text="Ingrese vencimiento" ></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:TextBox ID="txtVencimiento" runat="server" Width="94px" AutoPostBack="True" TextMode="Date" ToolTip="Fecha de vencimiento">dd/mm/aaaa</asp:TextBox>
+    <asp:TextBox ID="txtVencimiento" runat="server" Width="138px" AutoPostBack="True" TextMode="Date" ToolTip="Fecha de vencimiento">dd/mm/aaaa</asp:TextBox>
  <asp:Label ID="lblErrorfecha" runat="server" Font-Names="Britannic Bold" Font-Size="Medium" Font-Strikeout="False" ForeColor="Red" Text="*Valor erróneo."></asp:Label>
      <br />
      <br />

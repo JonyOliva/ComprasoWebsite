@@ -111,6 +111,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void txtNrotarjeta_TextChanged(object sender, EventArgs e)
         {
+            tarjetaIngresada();
             if (txtNrotarjeta.Text == string.Empty)
             {
                 ddlTarxu.Enabled = true;
@@ -418,6 +419,23 @@ namespace ArvoProjectWebsite.WebForms
         protected void ddlTarxu_PreRender(object sender, EventArgs e)
         {
 
+        }
+
+        protected void tarjetaIngresada()
+        {
+            foreach (ListItem item in ddlTarxu.Items)
+            {
+                if(txtNrotarjeta.Text == item.Text)
+                {
+                    ddlTarxu.SelectedValue = item.Value;
+                    ddlMetodopago.SelectedValue = LogicaCompra.tipoTarjeta(ddlTarxu.SelectedItem.Text);
+                    txtNrotarjeta.Text = string.Empty;
+                    chbGuardartarj.Visible = false;
+                    chbGuardartarj.Checked = false;
+                    ddlMetodopago.Enabled = false;
+                    txtNrotarjeta.Enabled = false;
+                }
+            }
         }
     }
 }

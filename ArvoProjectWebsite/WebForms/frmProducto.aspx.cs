@@ -37,6 +37,7 @@ namespace ArvoProjectWebsite.WebForms
                         lblDesc.Visible = true;
                         lblDesc.Text = prodActual.Descuento + " %OFF!";
                     }
+                    
                 }
                 else
                 {
@@ -44,7 +45,7 @@ namespace ArvoProjectWebsite.WebForms
                 }
                 if (this.Session["Carrito"] == null)
                 {
-                    this.Session["Carrito"] = crearTablacarrito();
+                    this.Session["Carrito"] = LogicaCarrito.crearTablacarrito();
                 }
 
             }
@@ -53,53 +54,8 @@ namespace ArvoProjectWebsite.WebForms
         protected void lbtnAñadircarr_Command(object sender, CommandEventArgs e)
         {
             gestionProductos gp = new gestionProductos();
-            añadirCarrito((DataTable)this.Session["Carrito"]
+            LogicaCarrito.añadirCarrito((DataTable)this.Session["Carrito"]
                 , gp.getProducto(e.CommandArgument.ToString()));
-        }
-
-        public void añadirCarrito(DataTable tbl, Producto prod)
-        {
-            DataRow row = tbl.NewRow();
-            row["Producto"] = prod.Nombre;
-            row["Marca"] = prod.Marca;
-            row["Precio"] = prod.Precio;
-            row["RutaImagen"] = prod.RutaImagen.Trim();
-            row["IDProducto"] = prod.IDProducto;
-            row["Cantidad"] = 1;
-
-            if (tbl.Rows.Contains(prod.IDProducto))
-            {
-                foreach (DataRow item in tbl.Rows)
-                {
-                    if (item[5].ToString() == prod.IDProducto)
-                    {
-                        int cant = int.Parse(item[4].ToString());
-                        cant += 1;
-                        item[4] = cant;
-                    }
-                }
-            }
-            else
-            {
-                tbl.Rows.Add(row);
-            }
-        }
-
-        public DataTable crearTablacarrito()
-        {
-            DataTable tbl = new DataTable();
-            DataColumn[] clave = new DataColumn[1];
-            DataColumn columna;
-            tbl.Columns.Add(new DataColumn("Producto", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Marca", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Precio", System.Type.GetType("System.Decimal")));
-            tbl.Columns.Add(new DataColumn("RutaImagen", System.Type.GetType("System.String")));
-            tbl.Columns.Add(new DataColumn("Cantidad", System.Type.GetType("System.Int32")));
-            columna = new DataColumn("IDProducto", System.Type.GetType("System.String"));
-            tbl.Columns.Add(columna);
-            clave[0] = columna;
-            tbl.PrimaryKey = clave;
-            return tbl;
         }
     }
 }

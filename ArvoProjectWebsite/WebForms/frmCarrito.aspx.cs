@@ -31,19 +31,23 @@ namespace ArvoProjectWebsite
         protected void lnkComprar_Click(object sender, EventArgs e)
         {
             int pos = actualizarCantidades();
-            if (pos != 0)
+            switch (pos)
             {
-                Response.Write("<script language=javascript>alert('Valor incorrecto en campo cantidad');</script>");
-            }
-            else
-            {
-                this.Session["Compras"] = null;
-                this.Session["Compras"] = LogicaCompra.crearCompra();
-                LogicaCompra.cargarCompras((DataTable)this.Session["Compras"]
-                        , (DataTable)this.Session["Carrito"]);
-                Response.Redirect("frmCompra.aspx");
-            }
+                case -1:
+                    Response.Write("<script language=javascript>alert('Stock insuficiente');</script>");
 
+                    break;
+                case 0:
+                    this.Session["Compras"] = null;
+                    this.Session["Compras"] = LogicaCompra.crearCompra();
+                    LogicaCompra.cargarCompras((DataTable)this.Session["Compras"]
+                            , (DataTable)this.Session["Carrito"]);
+                    Response.Redirect("frmCompra.aspx");
+                    break;
+                default:
+                        Response.Write("<script language=javascript>alert('Valor incorrecto en campo cantidad');</script>");
+                    break;
+            }
         }
 
         protected void grdCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -142,9 +146,13 @@ namespace ArvoProjectWebsite
                 if (((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text != string.Empty)
                 {
                     int valor = int.Parse(((TextBox)grdCarrito.Rows[i].FindControl("txtCantidad")).Text);
-                    if (valor < 0 )
+                    if (valor < 0)
                     {
                         pos++;
+                    }
+                    else if (valor > int.Parse(grdCarrito.Rows[i].Cells[9].Text))
+                    {
+                        pos=-1;
                     }
                     else
                     {
