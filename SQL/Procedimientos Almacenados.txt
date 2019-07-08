@@ -174,8 +174,8 @@ CREATE PROCEDURE spAgregarVenta
 
 AS 
 INSERT INTO VENTAS (NroTarjeta_VENTA,IDUsuario_VENTA,CodDirreccion_VENTA,
-		Descuento_VENTA,Total_VENTA,IDEnvio_VENTA,Estado)
-SELECT @NroTarjeta,@IDusuario,@CodDireccion,@Descuento,@Total,@IDEnvio,@Estado
+		Descuento_VENTA,Total_VENTA,IDEnvio_VENTA,Estado,Fecha_VENTA)
+SELECT @NroTarjeta,@IDusuario,@CodDireccion,@Descuento,@Total,@IDEnvio,@Estado,getdate()
 
 GO
 

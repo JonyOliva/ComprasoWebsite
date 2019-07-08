@@ -172,7 +172,7 @@ namespace ArvoProjectWebsite.WebForms
                 venta.Descuento = 0;
                 if (ddlIndextarxus())
                     venta.NroTarjeta = ddlTarxu.SelectedItem.Text;
-                else if (txtNrotarjeta.Text != string.Empty)
+                else if (txtNrotarjeta.Enabled ==true)
                     venta.NroTarjeta = txtNrotarjeta.Text;
 
                 LogicaCompra.insertarVenta(venta);
