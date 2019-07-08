@@ -145,8 +145,8 @@ create procedure spAgregarMdP
 	@Venc date
 )
 as
-Insert into TarjetasxUsuario(IDUsuario_TxU,NroTarjeta,IDTarjeta_TxU,Titular,Vencimiento)
-select @IdUsuario,@NroTarjeta, @IdTarj, @Titular, @Venc
+Insert into TarjetasxUsuario(IDUsuario_TxU,NroTarjeta,IDTarjeta_TxU,Titular,Vencimiento, Activo_TxU)
+select @IdUsuario,@NroTarjeta, @IdTarj, @Titular, @Venc, 1
 GO
 
 --Agregar Direccion
@@ -157,8 +157,8 @@ create procedure spAgregarDireccion
 	@Direccion char(40)
 )
 as
-Insert into DirecxUsuario(IDUsuario_DIR,Provincia_DIR,Direccion_DIR)
-select @IdUsuario, @Provincia, @Direccion
+Insert into DirecxUsuario(IDUsuario_DIR,Provincia_DIR,Direccion_DIR, Activo_DIR)
+select @IdUsuario, @Provincia, @Direccion, 1
 GO
 
 CREATE PROCEDURE spAgregarVenta
