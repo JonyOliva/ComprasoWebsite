@@ -298,11 +298,11 @@ SELECT '24', '300', 48, 'TUCUMAN'
 INSERT INTO USUARIOS(IDUsuario,Password_USU, Admin_USU,Nombre_USU,Apellido_USU,DNI_USU,Email_USU,nroCel_USU,FechaNac_USU)
 SELECT '0000','123456', 1,'CLAUDIO','CLAUDIO','000000001','CLAUDIO@ARVO.CF','111111111','01/01/1000'
 
-INSERT INTO DirecxUsuario(IDUsuario_DIR,Provincia_DIR,Direccion_DIR)
-SELECT '0000','CABA','9 DE JULIO 123'
+INSERT INTO DirecxUsuario(IDUsuario_DIR,Provincia_DIR,Direccion_DIR, Activo_DIR)
+SELECT '0000','CABA','9 DE JULIO 123',1
 
-INSERT INTO TarjetasxUsuario(IDUsuario_TxU,NroTarjeta,IDTarjeta_TxU,Titular,Vencimiento)
-SELECT '0000','0000000000000000','T001','CLAUDIO','01/01/2020'
+INSERT INTO TarjetasxUsuario(IDUsuario_TxU,NroTarjeta,IDTarjeta_TxU,Titular,Vencimiento, Activo_TxU)
+SELECT '0000','0000000000000000','T001','CLAUDIO','01/01/2020',1
 
 
 INSERT INTO VENTAS(NroTarjeta_VENTA, IDUsuario_VENTA, CodDirreccion_VENTA, Descuento_VENTA, Total_VENTA, IDEnvio_VENTA, Fecha_VENTA, Estado)
