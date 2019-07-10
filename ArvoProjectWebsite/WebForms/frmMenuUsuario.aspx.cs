@@ -335,6 +335,19 @@ namespace ArvoProjectWebsite.WebForms
                     if (txtCampo4.Text.Length == 1) txtCampo4.Text = "0" + txtCampo4.Text;
                 }
 
+                //VALIDA VENCIMIENTO
+                DateTime FechaAct = new DateTime();
+                FechaAct = DateTime.Now;
+                if (txtCampo4.Text.Length > 0 && !Utilidades.ContieneLetras(txtCampo4.Text, txtCampo4.Text.Length) && !Utilidades.ContieneLetras(txtCampo4b.Text, txtCampo4b.Text.Length))
+                {
+                    if (int.Parse(txtCampo4b.Text) < FechaAct.Year ||  (int.Parse(txtCampo4.Text) <= FechaAct.Month && int.Parse(txtCampo4b.Text) == FechaAct.Year))
+                    {
+                        lblValidarVencimiento.Text = "La tarjeta está vencida.";
+                        lblValidarVencimiento.Visible = true;
+                        guardar = false;
+                    }
+                }
+
                 //VALIDA QUE EL AÑO NO SEA SUPERIOR A 2030
                 if (txtCampo4b.Text.Length > 0 && !Utilidades.ContieneLetras(txtCampo4b.Text,txtCampo4b.Text.Length))
                 {
