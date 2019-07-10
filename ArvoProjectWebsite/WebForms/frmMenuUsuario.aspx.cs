@@ -104,7 +104,7 @@ namespace ArvoProjectWebsite.WebForms
             switch (lblMenuUsuario.Text)
             {
                 case "Compras":
-                    if (((DataTable)Session["Compras"]).Rows[e.RowIndex][7].ToString() == "Procesando")
+                    if (((DataTable)Session["Compras"]).Rows[e.RowIndex][8].ToString() == "Procesando")
                     {
                         gestionUsuarios.CancelarCompra((int)((DataTable)Session["Compras"]).Rows[e.RowIndex][0]);
                         Session["Compras"] = gestionUsuarios.CargarTablaCompras((Usuario)Application["Usuario"]);
@@ -114,7 +114,8 @@ namespace ArvoProjectWebsite.WebForms
                     }
                     else
                     {
-                        lblDniMenuUsuario.Text = ((DataTable)Session["Compras"]).Rows[e.RowIndex][7].ToString();
+                        //lblDniMenuUsuario.Text = ((DataTable)Session["Compras"]).Rows[e.RowIndex][8].ToString();
+                        Response.Write("<script language=javascript>alert('La compra ya esta cancelada.');</script>");
                     }
                     break;
                 case "Medios de Pago":
