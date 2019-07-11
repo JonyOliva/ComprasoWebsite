@@ -107,5 +107,15 @@ namespace CapaLogicadeNegocio
                                "INNER JOIN SUBCATEGORIAS ON(IDSubCategoria_PROD = IDSubCategoria) " +
                                "WHERE(MONTH(Fecha_Venta) = '" + mes + "' AND YEAR(Fecha_Venta) = '" + anio + "') AND (IDCategoria_PROD = '" + categoria + "') GROUP BY Nombre_SUBCAT", "pffqueweapesada");
         }
+
+        public DataTable getEnvios()
+        {
+            return bd.getTable("SELECT * FROM ENVIOS", "ENVIOS");
+        }
+
+        public DataTable getEnvio(string idenvio)
+        {
+            return bd.getTable("SELECT * FROM ENVIOS WHERE IDEnvio = '"+idenvio+"'", "ENVIOS");
+        }
     }
 }

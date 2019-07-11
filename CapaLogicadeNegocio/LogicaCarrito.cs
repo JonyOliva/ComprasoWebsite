@@ -23,6 +23,7 @@ namespace CapaLogicadeNegocio
             row["IDProducto"] = prod.IDProducto;
             row["Cantidad"] = 1;
             row["Stock"] = prod.Stock;
+            row["Descuento"] = prod.Descuento;
 
             if (tbl.Rows.Contains(prod.IDProducto))
             {
@@ -55,9 +56,26 @@ namespace CapaLogicadeNegocio
             columna = new DataColumn("IDProducto", System.Type.GetType("System.String"));
             tbl.Columns.Add(columna);
             tbl.Columns.Add(new DataColumn("Stock", System.Type.GetType("System.Int32")));
+            tbl.Columns.Add(new DataColumn("Descuento", System.Type.GetType("System.Decimal")));
             clave[0] = columna;
             tbl.PrimaryKey = clave;
             return tbl;
+        }
+
+        public static DataTable getEnvios()
+        {
+            DataTable tbl = new DataTable();
+            CADVentas cv = new CADVentas();
+            tbl = cv.getEnvios();
+            return tbl;
+        }
+
+        public static float getPrecioenvio(string idenvio)
+        {
+            float precio;
+            CADVentas cv = new CADVentas();
+            precio = float.Parse(cv.getEnvio(idenvio).Rows[0]["Costo_ENVIO"].ToString());
+            return precio;
         }
     }
 }

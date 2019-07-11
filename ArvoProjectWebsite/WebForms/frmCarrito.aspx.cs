@@ -19,7 +19,7 @@ namespace ArvoProjectWebsite
             if (!IsPostBack)
             {
                 actualizarCarrito();
-
+                cargarEnvios();
             }
         }
 
@@ -104,9 +104,15 @@ namespace ArvoProjectWebsite
 
         protected void grdCarrito_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.Cells[5].Text != string.Empty && e.Row.Cells[5].Text != "&nbsp;" && e.Row.Cells[5].Text != "Precio")
+            {
+                e.Row.Cells[5].Text =
+                Utilidades.getPrecioConDescuento(e.Row.Cells[5].Text, e.Row.Cells[10].Text).ToString();
+            }
             e.Row.Cells[6].Visible = false;
             e.Row.Cells[7].Visible = false;
             e.Row.Cells[8].Visible = false;
+            e.Row.Cells[10].Visible = false;
             string prueba = e.Row.Cells[7].Text;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -172,6 +178,22 @@ namespace ArvoProjectWebsite
         protected void lnkSeguircom_PreRender(object sender, EventArgs e)
         {
             
+        }
+
+        protected void cargarEnvios()
+        {
+            ddlprecioEnvio.DataSource = LogicaCarrito.getEnvios();
+            ddlprecioEnvio.DataTextField = "Provincia_ENVIO";
+            ddlprecioEnvio.DataValueField = "IDEnvio";
+            ddlprecioEnvio.Items.Insert(0, "<Seleccione Provincia>");
+            ddlprecioEnvio.AppendDataBoundItems = true;
+            ddlprecioEnvio.DataBind();
+        }
+
+        protected void ddlprecioEnvio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlprecioEnvio.SelectedIndex !=0)
+                lblPrecio.Text = "$" + LogicaCarrito.getPrecioenvio(ddlprecioEnvio.SelectedValue);
         }
     }
 }

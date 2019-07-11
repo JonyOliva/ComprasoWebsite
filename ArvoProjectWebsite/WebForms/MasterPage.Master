@@ -83,10 +83,11 @@
 
         </div>
 
-        <footer class="footer align-bottom">
+        <footer class="footer datos-footer">
             <div class="datos-footer">
                 ARVO SRL | Todos los derechos reservados - 2019
             <!--ARVO SRL | Todos los derechos reservados-->
+            </div>
         </footer>
 
 

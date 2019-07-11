@@ -434,6 +434,7 @@ namespace ArvoProjectWebsite.WebForms
                     chbGuardartarj.Checked = false;
                     ddlMetodopago.Enabled = false;
                     txtNrotarjeta.Enabled = false;
+                    llenarCuotas();
                 }
             }
         }

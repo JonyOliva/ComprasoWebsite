@@ -1,15 +1,19 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmCarrito.aspx.cs" Inherits="ArvoProjectWebsite.frmCarrito" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmCarrito.aspx.cs" Inherits="ArvoProjectWebsite.frmCarrito" ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="/Assets/Styles/Compras.css" rel="stylesheet" />
 </asp:Content>
      
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >  
        
         <div align="center" class="align-content-center">
+            <div style="background-color: #6666FF">
+                <asp:Label ID="Label1" runat="server" Text="MI CARRITO" Font-Bold="True" Font-Size="XX-Large" ForeColor="White"></asp:Label>
+            </div>
 
             <br />
+
             <asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand"  OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" HorizontalAlign="Center" OnSorting="grdCarrito_Sorting" CssClass="text-center" OnRowCancelingEdit="grdCarrito_RowCancelingEdit" OnRowEditing="grdCarrito_RowEditing" OnRowUpdating="grdCarrito_RowUpdating" OnRowCreated="grdCarrito_RowCreated">
             <Columns>
                 <asp:ImageField DataImageUrlField="RutaImagen">
@@ -39,30 +43,18 @@
         </asp:GridView>
             <asp:Label ID="lblNocarrito" runat="server" Text="No posee ningún articulo en el carrito." Font-Names="Arial Black" ForeColor="Blue"></asp:Label>
             <br />
+            <asp:Label ID="Label2" runat="server" Font-Bold="True" Text="Calcular envio:"></asp:Label>
             <br />
+            <asp:DropDownList ID="ddlprecioEnvio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlprecioEnvio_SelectedIndexChanged">
+            </asp:DropDownList>
             <br />
-            <br />
-            
+            <asp:Label ID="Label3" runat="server" Font-Bold="True" Text="Costo: "></asp:Label>
+            <asp:Label ID="lblPrecio" runat="server"></asp:Label>
+            </div>
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            
-
+        <div align="Center" class="aling-content-center" >
         <asp:LinkButton ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" Font-Underline="False" ForeColor="#3333CC" OnClientClick="lnkSeguircom_Click" OnPreRender="lnkSeguircom_PreRender" Font-Names="Arial">Seguir comprando</asp:LinkButton>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:LinkButton ID="lnkComprar" runat="server" OnClick="lnkComprar_Click" Font-Underline="False" ForeColor="#3333CC" Font-Names="Arial">Realizar compra</asp:LinkButton>
         </div>
-
-    </form>
 </asp:content>
