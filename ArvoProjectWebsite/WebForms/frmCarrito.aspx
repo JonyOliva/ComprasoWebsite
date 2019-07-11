@@ -5,6 +5,7 @@
     <link href="/Assets/Styles/Compras.css" rel="stylesheet" />
 </asp:Content>
      
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >  
        
         <div align="center" class="align-content-center">
@@ -53,8 +54,12 @@
             </div>
 
         <div align="Center" class="aling-content-center" >
-        <asp:LinkButton ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" Font-Underline="False" ForeColor="#3333CC" OnClientClick="lnkSeguircom_Click" OnPreRender="lnkSeguircom_PreRender" Font-Names="Arial">Seguir comprando</asp:LinkButton>
+
+
+        <asp:LinkButton CssClass="btn btn-primary" ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" Font-Underline="False" OnClientClick="lnkSeguircom_Click" OnPreRender="lnkSeguircom_PreRender" Font-Names="Arial">Seguir comprando</asp:LinkButton>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:LinkButton ID="lnkComprar" runat="server" OnClick="lnkComprar_Click" Font-Underline="False" ForeColor="#3333CC" Font-Names="Arial">Realizar compra</asp:LinkButton>
+        <asp:LinkButton CssClass="btn btn-success" ID="lnkComprar" runat="server" OnClick="lnkComprar_Click" Font-Underline="False" Font-Names="Arial">Realizar compra</asp:LinkButton>
+            <br />
+            <br />
         </div>
 </asp:content>

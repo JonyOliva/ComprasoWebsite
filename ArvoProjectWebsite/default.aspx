@@ -105,7 +105,7 @@
                 </div>
             </LayoutTemplate>
         </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [IDProducto], [Nombre_PROD], [Precio_PROD], [RutaImagen], [Descuento_PROD] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([Descuento_PROD] &gt; @Descuento_PROD)) ORDER BY [Descuento_PROD] DESC">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT TOP 6 [IDProducto], [Nombre_PROD], [Precio_PROD], [RutaImagen], [Descuento_PROD] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([Descuento_PROD] &gt; @Descuento_PROD)) ORDER BY [Descuento_PROD] DESC">
             <SelectParameters>
                 <asp:Parameter DefaultValue="true" Name="ACTIVO" Type="Boolean" />
                 <asp:Parameter DefaultValue="0" Name="Descuento_PROD" Type="Double" />

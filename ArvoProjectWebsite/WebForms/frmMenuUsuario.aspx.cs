@@ -104,7 +104,7 @@ namespace ArvoProjectWebsite.WebForms
             switch (lblMenuUsuario.Text)
             {
                 case "Compras":
-                    if (((DataTable)Session["Compras"]).Rows[e.RowIndex][7].ToString() == "Procesando")
+                    if (((DataTable)Session["Compras"]).Rows[e.RowIndex][8].ToString() == "Procesando")
                     {
                         gestionUsuarios.CancelarCompra((int)((DataTable)Session["Compras"]).Rows[e.RowIndex][0]);
                         Session["Compras"] = gestionUsuarios.CargarTablaCompras((Usuario)Application["Usuario"]);
@@ -114,7 +114,8 @@ namespace ArvoProjectWebsite.WebForms
                     }
                     else
                     {
-                        lblDniMenuUsuario.Text = ((DataTable)Session["Compras"]).Rows[e.RowIndex][7].ToString();
+                        //lblDniMenuUsuario.Text = ((DataTable)Session["Compras"]).Rows[e.RowIndex][8].ToString();
+                        Response.Write("<script language=javascript>alert('La compra ya esta cancelada.');</script>");
                     }
                     break;
                 case "Medios de Pago":
@@ -332,6 +333,19 @@ namespace ArvoProjectWebsite.WebForms
                 if (!Utilidades.ContieneLetras(txtCampo4.Text, txtCampo4.Text.Length))
                 {
                     if (txtCampo4.Text.Length == 1) txtCampo4.Text = "0" + txtCampo4.Text;
+                }
+
+                //VALIDA VENCIMIENTO
+                DateTime FechaAct = new DateTime();
+                FechaAct = DateTime.Now;
+                if (txtCampo4.Text.Length > 0 && !Utilidades.ContieneLetras(txtCampo4.Text, txtCampo4.Text.Length) && !Utilidades.ContieneLetras(txtCampo4b.Text, txtCampo4b.Text.Length))
+                {
+                    if (int.Parse(txtCampo4b.Text) < FechaAct.Year ||  (int.Parse(txtCampo4.Text) <= FechaAct.Month && int.Parse(txtCampo4b.Text) == FechaAct.Year))
+                    {
+                        lblValidarVencimiento.Text = "La tarjeta está vencida.";
+                        lblValidarVencimiento.Visible = true;
+                        guardar = false;
+                    }
                 }
 
                 //VALIDA QUE EL AÑO NO SEA SUPERIOR A 2030
