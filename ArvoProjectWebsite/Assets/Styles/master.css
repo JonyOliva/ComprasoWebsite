@@ -77,6 +77,7 @@ nav {
 .datos-footer {
     width: 100%;
     bottom:0;
+    position:relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
