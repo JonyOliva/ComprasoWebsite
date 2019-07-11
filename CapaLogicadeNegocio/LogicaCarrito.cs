@@ -18,13 +18,11 @@ namespace CapaLogicadeNegocio
             DataRow row = tbl.NewRow();
             row["Producto"] = prod.Nombre;
             row["Marca"] = gp.getMarca(prod.Marca);
-            row["Precio"] = prod.Precio;
             row["RutaImagen"] = prod.RutaImagen.Trim();
             row["IDProducto"] = prod.IDProducto;
             row["Cantidad"] = 1;
             row["Stock"] = prod.Stock;
-            row["Descuento"] = prod.Descuento;
-
+            row["Precio"] =Utilidades.getPrecioConDescuento(prod.Precio,prod.Descuento);
             if (tbl.Rows.Contains(prod.IDProducto))
             {
                 foreach (DataRow item in tbl.Rows)
@@ -56,7 +54,6 @@ namespace CapaLogicadeNegocio
             columna = new DataColumn("IDProducto", System.Type.GetType("System.String"));
             tbl.Columns.Add(columna);
             tbl.Columns.Add(new DataColumn("Stock", System.Type.GetType("System.Int32")));
-            tbl.Columns.Add(new DataColumn("Descuento", System.Type.GetType("System.Decimal")));
             clave[0] = columna;
             tbl.PrimaryKey = clave;
             return tbl;

@@ -79,6 +79,10 @@ namespace ArvoProjectWebsite.WebForms
                 ddlCuotas.DataValueField = "IDCuota_CUO";
                 ddlCuotas.DataBind();
             }
+            else
+            {
+                ddlCuotas.Items.Insert(0, "<Seleccione cuotas>");
+            }
         }
         protected void llenarDirecciones()
         {
