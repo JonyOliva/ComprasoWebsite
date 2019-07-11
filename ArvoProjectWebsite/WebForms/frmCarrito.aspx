@@ -39,7 +39,7 @@
             <SortedDescendingCellStyle BackColor="#E5E5E5" />
             <SortedDescendingHeaderStyle BackColor="#275353" />
         </asp:GridView>
-            <asp:Label ID="lblNocarrito" runat="server" Text="No posee ningún articulo en el carrito." Font-Names="Arial Black" ForeColor="Blue"></asp:Label>
+            <asp:Label ID="lblNocarrito" runat="server" Text="No posee ningún articulo en el carrito." Font-Names="Arial Black" ForeColor="Red"></asp:Label>
             <br />
             <br />
 

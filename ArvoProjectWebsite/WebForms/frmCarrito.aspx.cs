@@ -25,7 +25,7 @@ namespace ArvoProjectWebsite
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmListaProductos.aspx");
+            Response.Redirect("/default.aspx");
         }
 
         protected void lnkComprar_Click(object sender, EventArgs e)
@@ -84,12 +84,12 @@ namespace ArvoProjectWebsite
         {
             if (this.Session["Carrito"] == null || ((DataTable)this.Session["Carrito"]).Rows.Count == 0)
             {
-                lnkComprar.Enabled = false;
+                lnkComprar.Visible = false;
                 lblNocarrito.Visible = true;
             }
             else
             {
-                lnkComprar.Enabled = true;
+                lnkComprar.Visible = true;
                 lblNocarrito.Visible = false;
 
             }
