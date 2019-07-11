@@ -8,7 +8,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >  
        
-        <div align="center" class="align-content-center">
+        <div align="center" class="align-content-center" style="min-height:300px">
             <div style="background-color: #6666FF">
                 <asp:Label ID="Label1" runat="server" Text="MI CARRITO" Font-Bold="True" Font-Size="XX-Large" ForeColor="White"></asp:Label>
             </div>
@@ -49,17 +49,13 @@
             <asp:DropDownList ID="ddlprecioEnvio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlprecioEnvio_SelectedIndexChanged">
             </asp:DropDownList>
             <br />
-            <asp:Label ID="Label3" runat="server" Font-Bold="True" Text="Costo: "></asp:Label>
+            <asp:Label ID="lblMicarrito" runat="server" Font-Bold="True" Text="Costo: "></asp:Label>
             <asp:Label ID="lblPrecio" runat="server"></asp:Label>
             </div>
-
-        <div align="Center" class="aling-content-center" >
-
-
+        <div align="Center" class="aling-content-center" style="position:relative; top:auto;" >
         <asp:LinkButton CssClass="btn btn-primary" ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" Font-Underline="False" OnClientClick="lnkSeguircom_Click" OnPreRender="lnkSeguircom_PreRender" Font-Names="Arial">Seguir comprando</asp:LinkButton>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:LinkButton CssClass="btn btn-success" ID="lnkComprar" runat="server" OnClick="lnkComprar_Click" Font-Underline="False" Font-Names="Arial">Realizar compra</asp:LinkButton>
-            <br />
-            <br />
         </div>
+        <br />
 </asp:content>

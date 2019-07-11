@@ -58,13 +58,13 @@ namespace ArvoProjectWebsite {
         protected global::System.Web.UI.WebControls.DropDownList ddlprecioEnvio;
         
         /// <summary>
-        /// Control Label3.
+        /// Control lblMicarrito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblMicarrito;
         
         /// <summary>
         /// Control lblPrecio.
