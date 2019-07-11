@@ -109,6 +109,8 @@ namespace ArvoProjectWebsite
             gestionProductos gp = new gestionProductos();
             LogicaCarrito.añadirCarrito((DataTable)this.Session["Carrito"]
                 , gp.getProducto(e.CommandArgument.ToString()));
+
+            Server.Transfer("/WebForms/frmCarrito.aspx", false);
         }
 
         protected void imgProducto_Command(object sender, CommandEventArgs e)

@@ -6,9 +6,11 @@
 </asp:Content>
      
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
-       
+           <div class="bg-secondary">
+        <h4 class="text-light text-center">CARRITO DE COMPRAS</h4>
+            </div>
         <div align="center" class="align-content-center">
-
+            
             <br />
             <asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand"  OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" HorizontalAlign="Center" OnSorting="grdCarrito_Sorting" CssClass="text-center" OnRowCancelingEdit="grdCarrito_RowCancelingEdit" OnRowEditing="grdCarrito_RowEditing" OnRowUpdating="grdCarrito_RowUpdating" OnRowCreated="grdCarrito_RowCreated">
             <Columns>
@@ -40,28 +42,12 @@
             <asp:Label ID="lblNocarrito" runat="server" Text="No posee ningún articulo en el carrito." Font-Names="Arial Black" ForeColor="Blue"></asp:Label>
             <br />
             <br />
-            <br />
-            <br />
-            
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            
-
-        <asp:LinkButton ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" Font-Underline="False" ForeColor="#3333CC" OnClientClick="lnkSeguircom_Click" OnPreRender="lnkSeguircom_PreRender" Font-Names="Arial">Seguir comprando</asp:LinkButton>
+        <asp:LinkButton CssClass="btn btn-primary" ID="lnkSeguircom" runat="server" OnClick="lnkSeguircom_Click" Font-Underline="False" OnClientClick="lnkSeguircom_Click" OnPreRender="lnkSeguircom_PreRender" Font-Names="Arial">Seguir comprando</asp:LinkButton>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:LinkButton ID="lnkComprar" runat="server" OnClick="lnkComprar_Click" Font-Underline="False" ForeColor="#3333CC" Font-Names="Arial">Realizar compra</asp:LinkButton>
+        <asp:LinkButton CssClass="btn btn-success" ID="lnkComprar" runat="server" OnClick="lnkComprar_Click" Font-Underline="False" Font-Names="Arial">Realizar compra</asp:LinkButton>
+            <br />
+            <br />
         </div>
 
     </form>
