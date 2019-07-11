@@ -129,13 +129,16 @@ namespace ArvoProjectWebsite.WebForms
             {
                 case 1:
                     lblMailSignUp.Text = "El mail  ya está registrado.";
+                    guardar = false;
                     break;
                 case 2:
                     lblCuitSignUp.Text = "El CUIT ya está registrado";
+                    guardar = false;
                     break;
                 case 3:
                     lblMailSignUp.Text = "El mail  ya está registrado.";
                     lblCuitSignUp.Text = "El CUIT ya está registrado";
+                    guardar = false;
                     break;
                 default:
                     break;
