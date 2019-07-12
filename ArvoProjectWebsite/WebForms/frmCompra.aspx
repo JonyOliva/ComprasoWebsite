@@ -56,7 +56,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:Label ID="lblVto" runat="server" Text="Ingrese vencimiento" ></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:TextBox ID="txtVencimiento" runat="server" Width="138px" AutoPostBack="True" TextMode="Date" ToolTip="Fecha de vencimiento">dd/mm/aaaa</asp:TextBox>
+    <asp:TextBox ID="txtVencimiento" runat="server" Width="105px" AutoPostBack="True" TextMode="DateTime" ToolTip="Fecha de vencimiento">dd/mm/aaaa</asp:TextBox>
  <asp:Label ID="lblErrorfecha" runat="server" Font-Names="Britannic Bold" Font-Size="Medium" Font-Strikeout="False" ForeColor="Red" Text="*Valor erróneo."></asp:Label>
      <br />
      <br />

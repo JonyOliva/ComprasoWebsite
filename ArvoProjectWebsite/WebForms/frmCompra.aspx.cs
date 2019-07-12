@@ -124,6 +124,11 @@ namespace ArvoProjectWebsite.WebForms
             {
                 ddlTarxu.Enabled = false;
             }
+            if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus()))
+            {
+                chbGuardartarj.Visible = false;
+                lblErrorntar.Visible = true;
+            }
         }
 
         protected float sumaTotal()
@@ -240,18 +245,17 @@ namespace ArvoProjectWebsite.WebForms
         {
             if (ddlIndexmetodos())
             {
-
                 lblErrormetodo.Visible = false;
             }
             if (ddlIndexcuotas())
             {
                 lblErrorncuota.Visible = false;
             }
-            if (!(!ddlIndextarxus() && txtNrotarjeta.Text == string.Empty))
-            {
-                lblErrorntar.Visible = false;
-                lblErrorntartarus.Visible = false;
-            }
+            //if (!(!ddlIndextarxus() && txtNrotarjeta.Text == string.Empty))
+            //{
+            //    lblErrorntar.Visible = false;
+            //    lblErrorntartarus.Visible = false;
+            //}
             if (ddlIndexdireccion())
             {
                 lblErrorDire.Visible = false;
@@ -309,6 +313,7 @@ namespace ArvoProjectWebsite.WebForms
             }
             if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus()))
             {
+                bandera = false;
                 lblErrorntar.Visible = true;
             }
             if (ddlIndextarxus())
@@ -319,6 +324,7 @@ namespace ArvoProjectWebsite.WebForms
             {
                 if (!(LogicaCompra.verificarstringFecha(txtVencimiento.Text)))
                 {
+                    bandera = false;
                     lblErrorfecha.Visible = true;
                 }
             }

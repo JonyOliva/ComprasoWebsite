@@ -120,7 +120,8 @@ namespace CapaLogicadeNegocio
             DateTime dt;
             if(DateTime.TryParseExact(txt,"d/M/yyyy",CultureInfo.InvariantCulture,DateTimeStyles.None,out dt))
             {
-                return true;
+                if(dt> DateTime.Today)
+                   return true;
             }
             return false;
         }
