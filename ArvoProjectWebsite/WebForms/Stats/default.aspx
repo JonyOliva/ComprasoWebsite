@@ -27,14 +27,14 @@
             <br />
             <h5 class="text-info">Ingresos por mes</h5>
             <br />
-            <asp:Chart ID="ChVentasAnio" runat="server" EnableViewState="True" Height="400px" Width="500px" Palette="None" PaletteCustomColors="4, 49, 180">
+            <asp:Chart ID="ChVentasAnio" runat="server" EnableViewState="True" Height="400px" Width="800px" Palette="None" PaletteCustomColors="4, 49, 180">
                 <Series>
                     <asp:Series Name="Series1" ChartType="Bar" XValueType="String"></asp:Series>
                 </Series>
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1">
                         <AxisX Title="Mes" Interval="1"></AxisX>
-                        <AxisY Title="Total"></AxisY>
+                        <AxisY Title="Total" IntervalType="Number" Interval="5000"></AxisY>
                     </asp:ChartArea>
                 </ChartAreas>
             </asp:Chart>
