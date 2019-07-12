@@ -16,20 +16,17 @@ namespace ArvoProjectWebsite
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
-                if (!((Usuario)Application["Usuario"]).Admin)
+                if (Application["Usuario"] == null)
                 {
-
                     Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
-
+                }
+                else if (!((Usuario)Application["Usuario"]).Admin)
+                {
+                    Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
                 }
 
-            }
-
-            if (!IsPostBack)
-            {
                 llenarddl2();
                 llenarFiltroSubCats();
             }

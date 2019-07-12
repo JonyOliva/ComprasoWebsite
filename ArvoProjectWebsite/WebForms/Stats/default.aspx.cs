@@ -16,6 +16,13 @@ namespace ArvoProjectWebsite.WebForms.Reportes
         {
             if (!IsPostBack)
             {
+                if(Application["Usuario"] == null)
+                {
+                    Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
+                }else if (!((Usuario)Application["Usuario"]).Admin)
+                {
+                    Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
+                }
                 rellenarFechas();
                 rellenarIngresosPorAnio();
                 rellenarVentasPorMes();

@@ -77,9 +77,7 @@ namespace CapaLogicadeNegocio
 
         public DataRow getTotalVentas(int mes, int anio)
         {
-            DataTable table = bd.getTable("SELECT SUM(PrecioUnitario_DETV*Cantidad_DETV) AS TOTAL FROM DETVENTAS " +
-                                          "INNER JOIN VENTAS ON(IDVenta_DETV = IDVenta) " +
-                                          "WHERE(MONTH(Fecha_VENTA) ='" + mes + "' AND YEAR(Fecha_VENTA) = '" + anio + "')", "Total");
+            DataTable table = bd.getTable($"SELECT SUM(Total_VENTA) AS TOTAL FROM VENTAS WHERE(MONTH(Fecha_VENTA) = '{mes}' AND YEAR(Fecha_VENTA) = '{anio}') AND (Estado = 1)", "Total");
             return table.Rows[0];
         }
 

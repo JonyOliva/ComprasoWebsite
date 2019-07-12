@@ -15,6 +15,17 @@ namespace ArvoProjectWebsite.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Application["Usuario"] == null)
+                {
+                    Response.Write("<script language='javascript'>window.alert('ERROR');window.location='/default.aspx';</script>");
+                }
+                else if (((Usuario)Application["Usuario"]).Admin)
+                {
+                    Response.Write("<script language='javascript'>window.alert('ERROR');window.location='/default.aspx';</script>");
+                }
+            }
             gestionUsuarios gestionUsuarios = new gestionUsuarios();
             //Usuario usu = new Usuario();
             //usu.IDUsuario = "0000";
@@ -42,11 +53,6 @@ namespace ArvoProjectWebsite.WebForms
             lblValidarUsuario.Visible = false;
             lblValidarVencimiento.Visible = false;
             //lbtnAgregarMenuUsuario.Visible = true;
-
-            if (!IsPostBack)
-            {
-                
-            }
         }
 
         protected void lbtnDireccionesMenuUsuario_Click(object sender, EventArgs e)
