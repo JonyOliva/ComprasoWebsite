@@ -258,11 +258,6 @@ namespace ArvoProjectWebsite.WebForms
             {
                 lblErrorncuota.Visible = false;
             }
-            //if (!(!ddlIndextarxus() && txtNrotarjeta.Text == string.Empty))
-            //{
-            //    lblErrorntar.Visible = false;
-            //    lblErrorntartarus.Visible = false;
-            //}
             if (ddlIndexdireccion())
             {
                 lblErrorDire.Visible = false;
