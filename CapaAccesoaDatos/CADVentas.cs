@@ -64,7 +64,7 @@ namespace CapaLogicadeNegocio
 
         public DataTable getFechasVentas()
         {
-            return bd.getTable("SELECT DISTINCT DATEPART(MONTH, Fecha_VENTA) AS MES, DATEPART(YEAR, Fecha_VENTA) AS ANIO FROM VENTAS", "fechas");
+            return bd.getTable("SELECT DISTINCT DATEPART(MONTH, Fecha_VENTA) AS MES, DATEPART(YEAR, Fecha_VENTA) AS ANIO FROM VENTAS WHERE (Estado != 1)", "fechas");
         }
 
         public DataTable getProductosVendidos(int mes, int anio)
@@ -72,20 +72,18 @@ namespace CapaLogicadeNegocio
             return bd.getTable("SELECT Nombre_PROD, SUM(Cantidad_DETV) AS CantidadVendida FROM PRODUCTOS " +
                                 "INNER JOIN DETVENTAS ON(IDProducto = IDProducto_DETV) " +
                                 "INNER JOIN VENTAS ON(IDVenta_DETV = IDVenta) " +
-                                "WHERE(MONTH(Fecha_VENTA) = '" + mes + "' AND YEAR(Fecha_VENTA) = '" + anio + "') GROUP BY Nombre_PROD", "productosVendidos");
+                                "WHERE(MONTH(Fecha_VENTA) = '" + mes + "' AND YEAR(Fecha_VENTA) = '" + anio + "') AND (Estado != 1) GROUP BY Nombre_PROD", "productosVendidos");
         }
 
         public DataRow getTotalVentas(int mes, int anio)
         {
-            DataTable table = bd.getTable($"SELECT SUM(Total_VENTA) AS TOTAL FROM VENTAS WHERE(MONTH(Fecha_VENTA) = '{mes}' AND YEAR(Fecha_VENTA) = '{anio}') AND (Estado = 1)", "Total");
+            DataTable table = bd.getTable($"SELECT SUM(Total_VENTA) AS TOTAL FROM VENTAS WHERE(MONTH(Fecha_VENTA) = '{mes}' AND YEAR(Fecha_VENTA) = '{anio}') AND (Estado != 1)", "Total");
             return table.Rows[0];
         }
 
         public DataTable getEnviosProvs(int mes, int anio)
         {
-            return bd.getTable("SELECT Provincia_ENVIO, COUNT(IDEnvio_VENTA) FROM VENTAS "+
-                               "INNER JOIN ENVIOS ON(IDEnvio_VENTA = IDEnvio) "+
-                               "WHERE(MONTH(Fecha_Venta) = '" + mes + "' AND YEAR(Fecha_Venta) = '" + anio + "') GROUP BY Provincia_ENVIO", "enviosxmes");
+            return bd.getTable($"SELECT Provincia_ENVIO, COUNT(IDEnvio_VENTA) FROM VENTAS INNER JOIN ENVIOS ON(IDEnvio_VENTA = IDEnvio) WHERE(MONTH(Fecha_Venta) = '{mes}' AND YEAR(Fecha_Venta) = '{anio}') AND (Estado != 1) GROUP BY Provincia_ENVIO", "enviosxmes");
         }
 
         public DataTable getCantVentasPorCategorias(int mes, int anio)
@@ -94,7 +92,7 @@ namespace CapaLogicadeNegocio
                                "INNER JOIN PRODUCTOS ON(IDProducto_DETV = IDProducto) "+
                                "INNER JOIN VENTAS ON(IDVenta_DETV = IDVenta) " +
                                "INNER JOIN CATEGORIAS ON(IDCategoria_PROD = IDCategoria) " +
-                               "WHERE(MONTH(Fecha_Venta) = '" + mes + "' AND YEAR(Fecha_Venta) = '" + anio + "') GROUP BY Nombre_CAT, IDCategoria", "CantProdsxCats");
+                               "WHERE(MONTH(Fecha_Venta) = '" + mes + "' AND YEAR(Fecha_Venta) = '" + anio + "') AND (Estado != 1) GROUP BY Nombre_CAT, IDCategoria", "CantProdsxCats");
         }
 
         public DataTable getCantVentasPorSubcategoria(int mes, int anio, string categoria)
@@ -103,7 +101,7 @@ namespace CapaLogicadeNegocio
                                "INNER JOIN PRODUCTOS ON(IDProducto_DETV = IDProducto) " +
                                "INNER JOIN VENTAS ON(IDVenta_DETV = IDVenta) " +
                                "INNER JOIN SUBCATEGORIAS ON(IDSubCategoria_PROD = IDSubCategoria) " +
-                               "WHERE(MONTH(Fecha_Venta) = '" + mes + "' AND YEAR(Fecha_Venta) = '" + anio + "') AND (IDCategoria_PROD = '" + categoria + "') GROUP BY Nombre_SUBCAT", "pffqueweapesada");
+                               "WHERE(MONTH(Fecha_Venta) = '" + mes + "' AND YEAR(Fecha_Venta) = '" + anio + "') AND (IDCategoria_PROD = '" + categoria + "') AND (Estado != 1) GROUP BY Nombre_SUBCAT", "pffqueweapesada");
         }
 
         public DataTable getEnvios()
