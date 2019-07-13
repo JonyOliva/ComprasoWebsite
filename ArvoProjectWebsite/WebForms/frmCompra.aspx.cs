@@ -320,6 +320,7 @@ namespace ArvoProjectWebsite.WebForms
             }
             if (ddlIndextarxus())
             {
+                bandera = true;
                 lblErrorntar.Visible = false;
             }
             if (txtVencimiento.Visible)
