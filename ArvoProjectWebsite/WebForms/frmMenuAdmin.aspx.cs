@@ -17,7 +17,7 @@ namespace ArvoProjectWebsite
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
 
             //if (!IsPostBack)
             //{
@@ -36,6 +36,7 @@ namespace ArvoProjectWebsite
                 llenarddlCategorias(ref ddlCategorias);
                 llenarFiltroSubCats(ref ddlSubcat);
                 llenarddlMarcas(ref ddlMarcas);
+
             }
             
 

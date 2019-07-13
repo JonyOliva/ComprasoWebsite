@@ -19,13 +19,13 @@ namespace ArvoProjectWebsite
             if (!IsPostBack)
             {
                 actualizarCarrito();
-
+                cargarEnvios();
             }
         }
 
         protected void lnkSeguircom_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmListaProductos.aspx");
+            Response.Redirect("/default.aspx");
         }
 
         protected void lnkComprar_Click(object sender, EventArgs e)
@@ -84,12 +84,12 @@ namespace ArvoProjectWebsite
         {
             if (this.Session["Carrito"] == null || ((DataTable)this.Session["Carrito"]).Rows.Count == 0)
             {
-                lnkComprar.Enabled = false;
+                lnkComprar.Visible = false;
                 lblNocarrito.Visible = true;
             }
             else
             {
-                lnkComprar.Enabled = true;
+                lnkComprar.Visible = true;
                 lblNocarrito.Visible = false;
 
             }
@@ -172,6 +172,22 @@ namespace ArvoProjectWebsite
         protected void lnkSeguircom_PreRender(object sender, EventArgs e)
         {
             
+        }
+
+        protected void cargarEnvios()
+        {
+            ddlprecioEnvio.DataSource = LogicaCarrito.getEnvios();
+            ddlprecioEnvio.DataTextField = "Provincia_ENVIO";
+            ddlprecioEnvio.DataValueField = "IDEnvio";
+            ddlprecioEnvio.Items.Insert(0, "<Seleccione Provincia>");
+            ddlprecioEnvio.AppendDataBoundItems = true;
+            ddlprecioEnvio.DataBind();
+        }
+
+        protected void ddlprecioEnvio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlprecioEnvio.SelectedIndex !=0)
+                lblPrecio.Text = "$" + LogicaCarrito.getPrecioenvio(ddlprecioEnvio.SelectedValue);
         }
     }
 }

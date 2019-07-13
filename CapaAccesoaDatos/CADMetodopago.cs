@@ -15,10 +15,14 @@ namespace CapaLogicadeNegocio
         {
             BaseDeDatos bd = new BaseDeDatos(Utilidades.GetStringConectionLocal());
             DataTable tbl = new DataTable();
-            tbl = bd.getTable("select IDCuota_CUO,RTRIM(CONVERT(char,Cantidad_CUO))+'  Cuotas, Interes ' +" +
-                " CONVERT(char,Interes_CUO) as 'Metodo' from TARJETAS inner join CuotasxTarjetas on" +
-                " IDTarjeta_TARJ = IDTarjeta_CxT inner join" +
-                " CUOTAS ON IDCuota_CUO = IDCuota_CxT WHERE IDTarjeta_TARJ = '" + id + "'", "MetodosDePago");
+            tbl = bd.getTable( "SELECT IDCuota_CUO,"+
+            "case "+
+           "WHEN Interes_CUO = 0 THEN RTRIM(CONVERT(char, Cantidad_CUO)) + '  Cuota, Sin interes ' "+
+            "ELSE RTRIM(CONVERT(char, Cantidad_CUO)) + ' Cuotas ' + RTRIM(CONVERT(char, (Interes_CUO - 1) * 100)) + '% de ineteres' "+
+            "END AS 'Metodo'"+
+            "FROM TARJETAS inner join CuotasxTarjetas "+
+            "ON IDTarjeta_TARJ = IDTarjeta_CxT inner join CUOTAS "+
+            "ON IDCuota_CUO = IDCuota_CxT WHERE IDTarjeta_TARJ = '"+id+"'", "MetodosDePago");
             return tbl;
         }
 

@@ -49,12 +49,12 @@
             </EmptyDataTemplate>
             
             <ItemTemplate>
-                     <td runat="server" class="rounded border-light" style="text-align: center !important">
+                     <td runat="server" class="rounded border-light" style="text-align: center !important; min-width:150px; max-width:200px;">
 
                         <table class="altaclase">
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="imgProducto" runat="server" CssClass="miniatura" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" OnCommand="imgProducto_Command" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' style="max-height:144px;max-width:200px;height:auto;width:auto;" />
+                                    <asp:ImageButton ID="imgProducto" runat="server" CssClass="miniatura" CommandArgument='<%# Eval("IDProducto") %>' CommandName="IdProd" OnCommand="imgProducto_Command" ImageUrl='<%# Eval("RutaImagen").ToString().Trim() %>' style="max-height:144px;max-width:175px;height:auto;width:auto;" />
                                 </td>
                             </tr>
                             <tr>
@@ -105,7 +105,7 @@
                 </div>
             </LayoutTemplate>
         </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT [IDProducto], [Nombre_PROD], [Precio_PROD], [RutaImagen], [Descuento_PROD] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([Descuento_PROD] &gt; @Descuento_PROD)) ORDER BY [Descuento_PROD] DESC">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT TOP 6 [IDProducto], [Nombre_PROD], [Precio_PROD], [RutaImagen], [Descuento_PROD] FROM [PRODUCTOS] WHERE (([ACTIVO] = @ACTIVO) AND ([Descuento_PROD] &gt; @Descuento_PROD)) ORDER BY [Descuento_PROD] DESC">
             <SelectParameters>
                 <asp:Parameter DefaultValue="true" Name="ACTIVO" Type="Boolean" />
                 <asp:Parameter DefaultValue="0" Name="Descuento_PROD" Type="Double" />

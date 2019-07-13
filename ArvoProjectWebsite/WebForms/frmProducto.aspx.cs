@@ -56,6 +56,8 @@ namespace ArvoProjectWebsite.WebForms
             gestionProductos gp = new gestionProductos();
             LogicaCarrito.añadirCarrito((DataTable)this.Session["Carrito"]
                 , gp.getProducto(e.CommandArgument.ToString()));
+
+            Server.Transfer("/WebForms/frmCarrito.aspx", false);
         }
     }
 }

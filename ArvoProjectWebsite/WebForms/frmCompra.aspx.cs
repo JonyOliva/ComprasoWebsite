@@ -79,6 +79,10 @@ namespace ArvoProjectWebsite.WebForms
                 ddlCuotas.DataValueField = "IDCuota_CUO";
                 ddlCuotas.DataBind();
             }
+            else
+            {
+                ddlCuotas.Items.Insert(0, "<Seleccione cuotas>");
+            }
         }
         protected void llenarDirecciones()
         {
@@ -119,6 +123,18 @@ namespace ArvoProjectWebsite.WebForms
             else
             {
                 ddlTarxu.Enabled = false;
+            }
+            if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus()))
+            {
+                chbGuardartarj.Visible = false;
+                chbGuardartarj.Checked = false;
+                lblErrorntar.Visible = true;
+                lblVto.Visible = false;
+                txtVencimiento.Visible = false;
+            }
+            if(ddlIndextarxus())
+            {
+                lblErrorntar.Visible = false;
             }
         }
 
@@ -236,17 +252,11 @@ namespace ArvoProjectWebsite.WebForms
         {
             if (ddlIndexmetodos())
             {
-
                 lblErrormetodo.Visible = false;
             }
             if (ddlIndexcuotas())
             {
                 lblErrorncuota.Visible = false;
-            }
-            if (!(!ddlIndextarxus() && txtNrotarjeta.Text == string.Empty))
-            {
-                lblErrorntar.Visible = false;
-                lblErrorntartarus.Visible = false;
             }
             if (ddlIndexdireccion())
             {
@@ -305,16 +315,19 @@ namespace ArvoProjectWebsite.WebForms
             }
             if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus()))
             {
+                bandera = false;
                 lblErrorntar.Visible = true;
             }
             if (ddlIndextarxus())
             {
+                bandera = true;
                 lblErrorntar.Visible = false;
             }
             if (txtVencimiento.Visible)
             {
                 if (!(LogicaCompra.verificarstringFecha(txtVencimiento.Text)))
                 {
+                    bandera = false;
                     lblErrorfecha.Visible = true;
                 }
             }
@@ -434,7 +447,17 @@ namespace ArvoProjectWebsite.WebForms
                     chbGuardartarj.Checked = false;
                     ddlMetodopago.Enabled = false;
                     txtNrotarjeta.Enabled = false;
+                    llenarCuotas();
                 }
+            }
+        }
+
+        protected void chbGuardartarj_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chbGuardartarj.Checked == false)
+            {
+                lblVto.Visible = false;
+                txtVencimiento.Visible = false;
             }
         }
     }

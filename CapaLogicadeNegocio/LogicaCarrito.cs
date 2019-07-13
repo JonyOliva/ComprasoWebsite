@@ -18,12 +18,11 @@ namespace CapaLogicadeNegocio
             DataRow row = tbl.NewRow();
             row["Producto"] = prod.Nombre;
             row["Marca"] = gp.getMarca(prod.Marca);
-            row["Precio"] = prod.Precio;
             row["RutaImagen"] = prod.RutaImagen.Trim();
             row["IDProducto"] = prod.IDProducto;
             row["Cantidad"] = 1;
             row["Stock"] = prod.Stock;
-
+            row["Precio"] =Utilidades.getPrecioConDescuento(prod.Precio,prod.Descuento);
             if (tbl.Rows.Contains(prod.IDProducto))
             {
                 foreach (DataRow item in tbl.Rows)
@@ -58,6 +57,22 @@ namespace CapaLogicadeNegocio
             clave[0] = columna;
             tbl.PrimaryKey = clave;
             return tbl;
+        }
+
+        public static DataTable getEnvios()
+        {
+            DataTable tbl = new DataTable();
+            CADVentas cv = new CADVentas();
+            tbl = cv.getEnvios();
+            return tbl;
+        }
+
+        public static float getPrecioenvio(string idenvio)
+        {
+            float precio;
+            CADVentas cv = new CADVentas();
+            precio = float.Parse(cv.getEnvio(idenvio).Rows[0]["Costo_ENVIO"].ToString());
+            return precio;
         }
     }
 }
