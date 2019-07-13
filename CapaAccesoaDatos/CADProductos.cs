@@ -19,6 +19,12 @@ namespace CapaAccesoaDatos
             return bd.getTable("SELECT * FROM PRODUCTOS", "productos");
         }
 
+        public DataTable getDataTable2()
+        {
+            return bd.getTable("SELECT * FROM PRODUCTOS inner join MARCAS on IDMarca_PROD = IDMarca INNER JOIN CATEGORIAS ON IDCategoria_PROD = IDCategoria INNER JOIN SUBCATEGORIAS ON IDSubCategoria_PROD = IDSubCategoria",
+                "productos");
+        }
+
         public DataTable getDataTable(string nombre = "", string idCategoria = "", string idSubCat = "", string idMarca = "", string ordenarPor = "Precio_PROD ASC")
         {
             string selectCommand = "SELECT * FROM PRODUCTOS WHERE (ACTIVO = 1)";
@@ -111,30 +117,28 @@ namespace CapaAccesoaDatos
             return busqueda;
         }
 
-        private void ArmarParametrosProductos(ref SqlCommand Comando, Producto prod)
+        private void ArmarParametrosProductos(ref SqlCommand cm, Producto prod)
         {
-            SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = Comando.Parameters.Add("@IdProd", SqlDbType.Char, 4);
-            SqlParametros.Value = prod.IDProducto;
-            SqlParametros = Comando.Parameters.Add("@NombreProd", SqlDbType.Char, 30);
-            SqlParametros.Value = prod.Nombre;
-            SqlParametros = Comando.Parameters.Add("@Descripcion", SqlDbType.Char, 1000);
-            SqlParametros.Value = prod.Descripcion;
-            SqlParametros = Comando.Parameters.Add("@Stock", SqlDbType.Int);
-            SqlParametros.Value = prod.Stock;
-            SqlParametros = Comando.Parameters.Add("@Precio", SqlDbType.Money);
-            SqlParametros.Value = prod.Precio;
-            SqlParametros = Comando.Parameters.Add("@Descuento", SqlDbType.Float);
-            SqlParametros.Value = prod.Descuento;
-            SqlParametros = Comando.Parameters.Add("@ACTIVO", SqlDbType.Bit);
-            SqlParametros.Value = prod.Activo;
+            
+            
+            cm.Parameters.AddWithValue("@IDProducto", prod.IDProducto);
+            cm.Parameters.AddWithValue("@Nombre_PROD", prod.Nombre);
+            cm.Parameters.AddWithValue("@Descripcion_PROD", prod.Descripcion);
+            cm.Parameters.AddWithValue("@IdCategoria_PROD", prod.Categoria);
+            cm.Parameters.AddWithValue("@IdSubCategoria_PROD", prod.SubCategoria);
+            cm.Parameters.AddWithValue("@IDMarca_PROD", prod.Marca);
+            cm.Parameters.AddWithValue("@Stock_PROD", prod.Stock);
+            cm.Parameters.AddWithValue("@Precio_PROD", prod.Precio);
+            cm.Parameters.AddWithValue("@Descuento_PROD", prod.Descuento);
+            cm.Parameters.AddWithValue("@ACTIVO", prod.Activo);
+
         }
 
         public int insertarProducto(Producto prod)
         {
-            SqlCommand cm = new SqlCommand();
-            ArmarParametrosProductos(ref cm, prod);
-            return bd.ExecStoredProcedure(cm, "spAgregarProducto");
+            SqlCommand Comando = new SqlCommand();
+            ArmarParametrosProductos(ref Comando, prod);
+            return bd.ExecStoredProcedure(Comando, "spAgregarProducto");
         }
 
         public bool actualizarProducto(Producto prod)

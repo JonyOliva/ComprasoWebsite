@@ -65,6 +65,15 @@
 .categorias {
     width: 60%;
 }
+
+.celloverflowtext {
+    white-space: nowrap;
+    max-width: 100px;
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 @media {
 
 

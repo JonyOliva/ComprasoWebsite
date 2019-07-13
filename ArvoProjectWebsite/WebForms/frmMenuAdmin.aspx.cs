@@ -13,68 +13,75 @@ namespace ArvoProjectWebsite
 {
     public partial class frmMenuAdmin : System.Web.UI.Page
     {
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+
+            //if (!IsPostBack)
+            //{
+            //    if (!((Usuario)Application["Usuario"]).Admin)
+            //    {
+
+            //        Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
+
+            //    }
+
+
+            //}
 
             if (!IsPostBack)
             {
-                if (!((Usuario)Application["Usuario"]).Admin)
-                {
-
-                    Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
-
-                }
-
+                llenarddlCategorias(ref ddlCategorias);
+                llenarFiltroSubCats(ref ddlSubcat);
+                llenarddlMarcas(ref ddlMarcas);
             }
+            
 
-            if (!IsPostBack)
-            {
-                llenarddl2();
-                llenarFiltroSubCats();
-            }
-            llenarddlMarcas();
         }
 
         protected void btnProductos_Click(object sender, EventArgs e)
         {
             MultiViewAdmin.ActiveViewIndex = 0;
             cargarGridViewProd();
-
+           
 
         }
-
-        void llenarFiltroSubCats()
+        
+        void llenarFiltroSubCats(ref DropDownList ddl)
         {
             if (ddlCategorias.SelectedValue != null)
             {
                 gestionProductos gp = new gestionProductos();
-                ddlSubcat.DataValueField = "IDSubCategoria";
-                ddlSubcat.DataTextField = "Nombre_SUBCAT";
-                ddlSubcat.DataSource = gp.getListaSubCategorias(ddlCategorias.SelectedValue);
-                ddlSubcat.DataBind();
-            }
+                ddl.DataValueField = "IDSubCategoria";
+                ddl.DataTextField = "Nombre_SUBCAT";
+                ddl.DataSource = gp.getListaSubCategorias(ddlCategorias.SelectedValue);
+                ddl.DataBind();
+                
+                           }
         }
 
-        public void llenarddl2()
+        public void llenarddlCategorias(ref DropDownList ddl)
         {
             gestionProductos gp = new gestionProductos();
-
-            ddlCategorias.DataValueField = "IDCategoria";
-            ddlCategorias.DataTextField = "Nombre_CAT";
-            ddlCategorias.DataSource = gp.getListaCategorias();
-            ddlCategorias.DataBind();
-
+                    
+            ddl.DataValueField = "IDCategoria";
+            ddl.DataTextField = "Nombre_CAT";
+            ddl.DataSource = gp.getListaCategorias();
+            ddl.DataBind();
+            
 
         }
 
-        public void llenarddlMarcas()
+        public void llenarddlMarcas(ref DropDownList ddl)
         {
             gestionProductos gp = new gestionProductos();
-            ddlMarcas.DataValueField = "IDMarca";
-            ddlMarcas.DataTextField = "Nombre_MARCA";
-            ddlMarcas.DataSource = gp.getListaMarcas();
-            ddlMarcas.DataBind();
+            ddl.DataValueField = "IDMarca";
+            ddl.DataTextField = "Nombre_MARCA";
+            ddl.DataSource = gp.getListaMarcas();
+            ddl.DataBind();
+
 
         }
 
@@ -87,22 +94,23 @@ namespace ArvoProjectWebsite
 
         protected void btnVentas_Click(object sender, EventArgs e)
         {
-
+            
             MultiViewAdmin.ActiveViewIndex = 2;
-
+            
         }
         public void cargarGridViewProd()
         {
             gestionProductos gp = new gestionProductos();
-            grdProd.DataSource = gp.getListaProductos();
+            grdProd.DataSource = gp.getListaProductos2();
             grdProd.DataBind();
         }
 
+        
         private void Estados()
         {
-
-            Enum.GetNames(typeof(EstadoCompra));
-
+            
+           Enum.GetNames(typeof(EstadoCompra));
+                      
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -119,43 +127,12 @@ namespace ArvoProjectWebsite
 
         }
 
-        protected void GridProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            bool s_Activo;
-            String s_IdProd = ((Label)grdProd.Rows[e.RowIndex].FindControl("lblID2")).Text;
-            String s_Nombre = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtNombre")).Text;
-            String s_Stock = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtStock")).Text;
-            String s_Precio = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtPrecio")).Text;
-            String s_Descuento = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtDescuento")).Text;
-            String s_Descrip = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtDescrip")).Text;
-            if (!chkActivo.Checked)
-            {
-                s_Activo = true;
-            }
-            else { s_Activo = false; }
-            String s_Foto = ((Label)grdProd.Rows[e.RowIndex].FindControl("lblRuta2")).Text;
-
-            Producto prod = new Producto();
-            prod.IDProducto = s_IdProd;
-            prod.Nombre = s_Nombre;
-            prod.Stock = int.Parse(s_Stock);
-            prod.Precio = float.Parse(s_Precio);
-            prod.Descuento = float.Parse(s_Descuento);
-            prod.Descripcion = s_Descrip;
-            prod.Activo = s_Activo;
-
-            gestionProductos gp = new gestionProductos();
-            gp.actualizarProducto(prod);
-
-
-
-            grdProd.EditIndex = -1;
-        }
-
+        
         protected void grdProd_RowEditing(object sender, GridViewEditEventArgs e)
         {
             grdProd.EditIndex = e.NewEditIndex;
             cargarGridViewProd();
+            gestionProductos gp = new gestionProductos();
         }
 
         protected void grdProd_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -167,25 +144,21 @@ namespace ArvoProjectWebsite
         protected void grdProd_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             bool s_Activo;
+           
+            s_Activo = ((CheckBox)grdProd.Rows[e.RowIndex].FindControl("chkActivo2")).Checked;
             String s_IdProd = ((Label)grdProd.Rows[e.RowIndex].FindControl("lblId")).Text;
             String s_Nombre = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtNombre")).Text;
+            String s_Marca = ((DropDownList)grdProd.Rows[e.RowIndex].FindControl("ddlMarcasEdit")).SelectedValue;
             String s_Stock = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtStock")).Text;
             String s_Precio = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtPrecio")).Text;
             String s_Descuento = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtDescuento")).Text;
             String s_Descrip = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtDescrip")).Text;
-            if (chkActivo.Checked == true)
-            {
-                s_Activo = true;
-            }
-            else
-            {
-                s_Activo = false;
-            }
             String s_Foto = ((Label)grdProd.Rows[e.RowIndex].FindControl("lblRuta2")).Text;
 
             Producto prod = new Producto();
             prod.IDProducto = s_IdProd;
             prod.Nombre = s_Nombre;
+            prod.Marca = s_Marca;
             prod.Stock = int.Parse(s_Stock);
             prod.Precio = float.Parse(s_Precio);
             prod.Descuento = float.Parse(s_Descuento);
@@ -194,43 +167,114 @@ namespace ArvoProjectWebsite
 
             gestionProductos gp = new gestionProductos();
             gp.actualizarProducto(prod);
+
+
+
             grdProd.EditIndex = -1;
             cargarGridViewProd();
         }
 
+        
 
-
-        protected void btnAgregar_Click1(object sender, EventArgs e)
+               protected void btnAgregar_Click1(object sender, EventArgs e)
         {
-            Producto prod = new Producto();
-            gestionProductos gp = new gestionProductos();
-            prod.Activo = true;
-            prod.IDProducto = txtIdProd.Text.Trim();
-            prod.Nombre = txtNombreProd.Text.Trim();
-            prod.Precio = float.Parse(txtPrecio.Text);
-            prod.Stock = int.Parse(txtStock.Text);
-            prod.Categoria = ddlCategorias.SelectedValue;
-            prod.SubCategoria = ddlSubcat.SelectedValue;
-            prod.Marca = ddlMarcas.SelectedValue;
-            prod.Descripcion = txtDescripcion.Text.Trim();
-            gp.insertarProducto(prod);
+    
+            
+                Producto prod = new Producto();
+                gestionProductos gp = new gestionProductos();
+
+                prod.Activo = true;
+                prod.IDProducto = txtIdProd.Text.Trim();
+                prod.Nombre = txtNombreProd.Text.Trim();
+                prod.Precio = float.Parse(txtPrecio.Text);
+                prod.Stock = int.Parse(txtStock.Text);
+                prod.Categoria = ddlCategorias.SelectedValue;
+                prod.SubCategoria = ddlSubcat.SelectedValue;
+                prod.Marca = ddlMarcas.SelectedValue;
+                prod.Descripcion = txtDescripcion.Text.Trim();
 
 
-            Server.Transfer("/WebForms/frmMenuAdmin.aspx", false);
+                gp.insertarProducto(prod);
+
+                Server.Transfer("/WebForms/frmMenuAdmin.aspx", false);
+            
+            
         }
 
         protected void ddlCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            llenarFiltroSubCats();
+            llenarFiltroSubCats(ref ddlSubcat);
         }
 
-        protected void btnStats_Click(object sender, EventArgs e)
+        protected void grdProd_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            Response.Redirect("/WebForms/Stats");
+            grdProd.PageIndex = e.NewPageIndex;
+            cargarGridViewProd();
+        }
+
+        protected void grdProd_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    DropDownList ddlSubcat = (DropDownList)e.Row.FindControl("ddlSubcatEdit");
+                    DropDownList ddlListCat = (DropDownList)e.Row.FindControl("ddlCatEdit");
+                    DropDownList ddlListMarcas = (DropDownList)e.Row.FindControl("ddlMarcasEdit");
+
+                gestionProductos gp = new gestionProductos();
+                    llenarddlCategorias(ref ddlListCat);
+                    llenarddlMarcas(ref ddlListMarcas);
+
+                    
+                    ddlSubcat.DataValueField = "IDSubCategoria";
+                    ddlSubcat.DataTextField = "Nombre_SUBCAT";
+                    ddlSubcat.DataSource = gp.getListaSubCategorias(ddlListCat.SelectedValue);
+                     ddlSubcat.DataBind();
+
+                    DataRowView dr = e.Row.DataItem as DataRowView;
+                    ddlListCat.SelectedValue = dr["IDCategoria"].ToString();
+                    ddlSubcat.SelectedValue = dr["IDSubCategoria"].ToString();
+                    ddlListMarcas.SelectedValue = dr["IDMarca"].ToString();
+
+
+
+                }
+            }
+        }
+
+        protected void btnConfirmar_Command(object sender, CommandEventArgs e)
+        {
+
+        }
+
+        protected void btnCancelar_Command(object sender, CommandEventArgs e)
+        {
+
+        }
+
+        protected void GridVentas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Button btnSi = (Button)e.Row.FindControl("btnConfirmar");
+            Button btnNo = (Button)e.Row.FindControl("btnCancelar");
+
+            if (btnSi != null)
+            {
+                if (DataBinder.Eval(e.Row.DataItem, "Estado").ToString() == "1")
+                {
+                    btnSi.Visible = true;
+                    btnNo.Visible = true;
+                }
+                else
+                {
+                    btnSi.Visible = false;
+                    btnNo.Visible = false;
+                }
+            }
         }
     }
 
-
+   
 
 }
-
+    

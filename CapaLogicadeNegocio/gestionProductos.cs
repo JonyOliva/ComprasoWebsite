@@ -23,6 +23,11 @@ namespace CapaLogicadeNegocio
             return cp.getDataTable();
         }
 
+        public DataTable getListaProductos2()
+        {
+            return cp.getDataTable2();
+        }
+
         public DataTable getProductos(string nombre = "", string idCategoria = "", string idSubCat = "", string idMarca = "", string ordenarPor = "Precio_PROD ASC")
         {
             return cp.getDataTable(nombre, idCategoria, idSubCat, idMarca, ordenarPor);
@@ -62,6 +67,7 @@ namespace CapaLogicadeNegocio
         {
             return cp.actualizarProducto(prod);
         }
+
         public string[] Buscar(string[] search)
         {
             List<string> strs = new List<string>();
