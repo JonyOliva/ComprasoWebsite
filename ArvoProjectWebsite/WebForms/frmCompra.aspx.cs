@@ -127,7 +127,14 @@ namespace ArvoProjectWebsite.WebForms
             if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus()))
             {
                 chbGuardartarj.Visible = false;
+                chbGuardartarj.Checked = false;
                 lblErrorntar.Visible = true;
+                lblVto.Visible = false;
+                txtVencimiento.Visible = false;
+            }
+            if(ddlIndextarxus())
+            {
+                lblErrorntar.Visible = false;
             }
         }
 
@@ -446,6 +453,15 @@ namespace ArvoProjectWebsite.WebForms
                     txtNrotarjeta.Enabled = false;
                     llenarCuotas();
                 }
+            }
+        }
+
+        protected void chbGuardartarj_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chbGuardartarj.Checked == false)
+            {
+                lblVto.Visible = false;
+                txtVencimiento.Visible = false;
             }
         }
     }
