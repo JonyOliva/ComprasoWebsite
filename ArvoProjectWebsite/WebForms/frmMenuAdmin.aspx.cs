@@ -322,10 +322,16 @@ namespace ArvoProjectWebsite
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            gestionProductos gp = new gestionProductos();
-            grdProd.DataSource = gp.getProductos(txtBuscar.Text, ddlBuscarCat.SelectedValue, ddlBuscarSubcat.SelectedValue, ddlBuscarMarcas.SelectedValue);
-            grdProd.DataBind();
+            if (txtBuscar.Text != string.Empty || ddlBuscarCat.SelectedIndex != 0 || ddlBuscarMarcas.SelectedIndex != 0)
+            {
+                gestionProductos gp = new gestionProductos();
+                grdProd.DataSource = gp.getProductos(txtBuscar.Text, ddlBuscarCat.SelectedValue, ddlBuscarSubcat.SelectedValue, ddlBuscarMarcas.SelectedValue);
+                grdProd.DataBind();
+            }
+            else
+                cargarGridViewProd();
         } 
+        
 
         protected void GridMarcas_SelectedIndexChanged(object sender, EventArgs e)
         {
