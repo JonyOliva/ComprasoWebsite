@@ -7,7 +7,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
-<asp:MultiView ID="multi" runat="server">
+    <asp:MultiView ID="multi" runat="server">
 <asp:View ID="vista1" runat="server">
     <div class="general">
      <div style="margin-left: 40px">
@@ -76,6 +76,9 @@
     <asp:DropDownList ID="ddlDireccion" runat="server" OnSelectedIndexChanged="ddlDireccion_SelectedIndexChanged" AutoPostBack="True">
     </asp:DropDownList>
     <asp:Label ID="lblErrorDire" runat="server" Font-Names="Britannic Bold" Font-Size="Medium" Font-Strikeout="False" ForeColor="Red" Text="*Elija una opción"></asp:Label>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:LinkButton ID="lbtnCargardir" runat="server" OnClick="lbtnCargardir_Click">Cargar dirección.</asp:LinkButton>
 
      <br />
 
