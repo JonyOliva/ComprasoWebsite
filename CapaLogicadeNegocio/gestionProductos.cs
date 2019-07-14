@@ -63,6 +63,11 @@ namespace CapaLogicadeNegocio
             return cp.insertarProducto(prod);
         }
 
+        public int insertarMarca(string id, string n)
+        {
+            return cp.insertarMarca(id,n);
+        }
+
         public bool actualizarProducto(Producto prod)
         {
             return cp.actualizarProducto(prod);

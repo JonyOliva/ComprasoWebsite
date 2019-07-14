@@ -42,6 +42,9 @@ namespace ArvoProjectWebsite
                 llenarddlCategorias(ref ddlCategorias);
                 llenarFiltroSubCats(ref ddlSubcat);
                 llenarddlMarcas(ref ddlMarcas);
+                llenarddlCategorias(ref ddlBuscarCat);
+                llenarFiltroSubCats(ref ddlBuscarSubcat);
+                llenarddlMarcas(ref ddlBuscarMarcas);
 
             }
             
@@ -300,6 +303,47 @@ namespace ArvoProjectWebsite
                     btnNo.Visible = false;
                 }
             }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridMarcas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void AgregarMarca_Click(object sender, EventArgs e)
+        {
+            if (!tblAgregarMarca.Visible)
+                tblAgregarMarca.Visible = true;
+            else
+                tblAgregarMarca.Visible = false;
+        }
+
+        protected void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtIdMArca.Text)
+                       || string.IsNullOrWhiteSpace(txtNombreMarca.Text))
+            {
+                lblErrorMarca.Text = "* No pueden quedar campos vacios";
+                lblErrorMarca.Visible = true; }
+            else if (txtIdMArca.Text.Length > 4)
+            {
+                lblErrorMarca.Text = "* El Id debe tener máximo 4 caracteres";
+                lblErrorMarca.Visible = true;
+            }
+            else
+            {
+                gestionProductos gp = new gestionProductos();
+                gp.insertarMarca(txtIdMArca.Text, txtNombreMarca.Text);
+                lblErrorMarca.Visible = false;
+                GridMarcas.DataBind();
+            }
+
+                        
         }
     }
 

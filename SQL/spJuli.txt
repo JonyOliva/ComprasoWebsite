@@ -51,3 +51,15 @@ AS
 UPDATE VENTAS
 SET Estado = 2 WHERE IDVenta = @IdVenta
 GO
+
+CREATE PROCEDURE spAgregarMarca
+(
+	@IDMarca char(4),
+	@Nombre_MARCA char(20)
+	
+)
+	AS
+	
+	INSERT INTO MARCAS(IDMarca, Nombre_MARCA)
+	SELECT @IDMarca, @Nombre_MARCA
+GO

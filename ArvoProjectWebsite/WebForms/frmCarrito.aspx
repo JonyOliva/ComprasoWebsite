@@ -18,7 +18,7 @@
         <asp:GridView ID="grdCarrito" runat="server" OnRowCommand="grdCarrito_RowCommand" OnRowDeleting="grdCarrito_RowDeleting" AllowSorting="True" OnRowDataBound="grdCarrito_RowDataBound" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" HorizontalAlign="Center" OnSorting="grdCarrito_Sorting" CssClass="text-center" OnRowCancelingEdit="grdCarrito_RowCancelingEdit" OnRowEditing="grdCarrito_RowEditing" OnRowUpdating="grdCarrito_RowUpdating" OnRowCreated="grdCarrito_RowCreated">
             <Columns>
                 <asp:ImageField DataImageUrlField="RutaImagen">
-                    <ControlStyle Height="100px" Width="150px" />
+                    <ControlStyle CssClass="miniatura" />
                 </asp:ImageField>
                 <asp:CommandField DeleteText="Quitar" ShowDeleteButton="True" />
                 <asp:TemplateField>

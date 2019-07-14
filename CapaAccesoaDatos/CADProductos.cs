@@ -141,6 +141,14 @@ namespace CapaAccesoaDatos
             return bd.ExecStoredProcedure(Comando, "spAgregarProducto");
         }
 
+        public int insertarMarca(string Id, string Nombre)
+        {
+            SqlCommand cm = new SqlCommand();
+            cm.Parameters.AddWithValue("@IDMarca", Id);
+            cm.Parameters.AddWithValue("@Nombre_MARCA", Nombre);
+            return bd.ExecStoredProcedure(cm, "spAgregarMarca");
+        }
+
         public bool actualizarProducto(Producto prod)
         {
             SqlCommand Comando = new SqlCommand();

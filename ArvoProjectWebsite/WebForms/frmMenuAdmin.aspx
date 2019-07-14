@@ -99,6 +99,22 @@
                         </asp:TableRow>
                     </asp:Table>
                    
+                    <br />
+                    <asp:Table ID="Table1" runat="server">
+                        <asp:TableRow runat="server">
+                            <asp:TableCell runat="server">
+                                <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox></asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:DropDownList ID="ddlBuscarMarcas" runat="server"></asp:DropDownList></asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:DropDownList ID="ddlBuscarCat" runat="server"></asp:DropDownList></asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:DropDownList ID="ddlBuscarSubcat" runat="server"></asp:DropDownList></asp:TableCell>
+                                                        <asp:TableCell runat="server">
+                                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" /> </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+                   
                     <asp:GridView ID="grdProd" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AutoGenerateColumns="False" AutoGenerateEditButton="True" OnRowCancelingEdit="grdProd_RowCancelingEdit" OnRowEditing="grdProd_RowEditing" OnRowUpdating="grdProd_RowUpdating"  OnPageIndexChanging="grdProd_PageIndexChanging" Width="100%" OnRowDataBound="grdProd_RowDataBound">
                         <Columns>
                             <asp:TemplateField HeaderText="Imagen">
@@ -223,8 +239,27 @@
             </asp:View>
 
             <asp:View ID="ViewMarcas" runat="server">
-                <div class="container-fluid mb-4">
-                <asp:GridView ID="GridMarcas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IDMarca" DataSourceID="SqlDataSource_Marcas" ForeColor="#333333" GridLines="None" AllowPaging="True" HorizontalAlign="Center" >
+                <div class="container-fluid mb-4 text-center">
+                    <asp:LinkButton ID="AgregarMarca" runat="server" OnClick="AgregarMarca_Click"><i class="fas fa-plus-circle"></i> &nbsp; Agregar Marca</asp:LinkButton>
+                    <asp:Table ID="tblAgregarMarca" runat="server" Visible="false" HorizontalAlign="Center">
+
+                        <asp:TableRow runat="server">
+                            <asp:TableCell runat="server">
+                                <asp:TextBox ID="txtIdMArca" runat="server" placeholder="Id Marca"></asp:TextBox></asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:TextBox ID="txtNombreMarca" runat="server" placeholder="Nombre Marca"></asp:TextBox></asp:TableCell>
+                    <asp:TableCell runat="server">
+                        <asp:Button ID="btnAgregarMarca" runat="server" Text="Agregar" OnClick="btnAgregarMarca_Click" /></asp:TableCell>
+                          <asp:TableCell runat="server">
+                              <asp:Label ID="lblErrorMarca" runat="server" Text="" Visible="false" Font-Italic="True" ForeColor="Red"></asp:Label></asp:TableCell> 
+                            
+                        </asp:TableRow>
+                        
+                               
+                        
+                    </asp:Table>
+                    <br />
+                     <asp:GridView ID="GridMarcas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IDMarca" DataSourceID="SqlDataSource_Marcas" ForeColor="#333333" GridLines="None" AllowPaging="True" HorizontalAlign="Center" OnSelectedIndexChanged="GridMarcas_SelectedIndexChanged" >
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="IDMarca" HeaderText="IDMarca" ReadOnly="True" SortExpression="IDMarca" />
@@ -313,6 +348,5 @@
        
     </div>
 
-
-
+    
 </asp:Content>
