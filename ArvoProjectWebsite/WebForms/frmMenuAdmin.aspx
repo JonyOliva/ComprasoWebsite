@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Menú Administración" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmMenuAdmin.aspx.cs" Inherits="ArvoProjectWebsite.frmMenuAdmin" %>
+﻿<%@ Page Language="C#" Title="Menú Administración" MaintainScrollPositionOnPostback="true" MasterPageFile="~/WebForms/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmMenuAdmin.aspx.cs" Inherits="ArvoProjectWebsite.frmMenuAdmin" %>
 
 <script runat="server">
 
@@ -25,7 +25,7 @@
         <asp:Button ID="btnProductos" runat="server" Text="Productos" CssClass="btn btn-primary ml-3" OnClick="btnProductos_Click" Font-Bold="True" />
         <asp:Button ID="btnMarcas" runat="server" Text="Marcas" CssClass="btn btn-success ml-3" OnClick="btnMarcas_Click" Font-Bold="True" />
         <asp:Button ID="btnVentas" runat="server" Text="Ventas" CssClass="btn btn-danger ml-3" OnClick="btnVentas_Click" Font-Bold="True" />
-        <asp:Button ID="btnEstadist" runat="server" Text="Estadísticas" CssClass="btn btn-primary ml-3" OnClick="btnEstadist_Click" Font-Bold="True" />
+        <asp:Button ID="btnEstadist" runat="server" Text="Estadísticas" CssClass="btn btn-info ml-3" OnClick="btnEstadist_Click" Font-Bold="True" />
 
     </p>
 
