@@ -120,10 +120,11 @@
                             <asp:TemplateField HeaderText="Imagen">
                                 <EditItemTemplate>
                                     <asp:Image ID="Image2" runat="server" ImageUrl='<%# Eval("RutaImagen") %>' />
+                                      <asp:Label ID="lblRuta2" runat="server" Text='<%# Bind("RutaImagen") %>' Visible="False"></asp:Label>
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("RutaImagen") %>' />
-                                </ItemTemplate>
+                                  </ItemTemplate>
                                 <ControlStyle CssClass="miniatura" />
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                             </asp:TemplateField>
@@ -305,11 +306,11 @@
                         <asp:BoundField DataField="IDVenta" HeaderText="IDVenta" InsertVisible="False" ReadOnly="True" SortExpression="IDVenta" />
                         <asp:BoundField DataField="NroTarjeta_VENTA" HeaderText="NroTarjeta" SortExpression="NroTarjeta_VENTA" />
                         <asp:BoundField DataField="IDUsuario_VENTA" HeaderText="IDUsuario" SortExpression="IDUsuario_VENTA" />
-                        <asp:BoundField DataField="CodDirreccion_VENTA" HeaderText="CodDirreccion" SortExpression="CodDirreccion_VENTA" />
-                        <asp:BoundField DataField="Descuento_VENTA" HeaderText="Descuento" SortExpression="Descuento_VENTA" />
+                        <asp:BoundField DataField="CodDirreccion_VENTA" HeaderText="CodDirreccion" SortExpression="CodDirreccion_VENTA" Visible="False" />
+                        <asp:BoundField DataField="Descuento_VENTA" HeaderText="Descuento" SortExpression="Descuento_VENTA" DataFormatString="{0:p}" />
                         <asp:BoundField DataField="Total_VENTA" HeaderText="Total" SortExpression="Total_VENTA" />
                         <asp:BoundField DataField="IDEnvio_VENTA" HeaderText="IDEnvio" SortExpression="IDEnvio_VENTA" />
-                        <asp:TemplateField HeaderText="Estado" SortExpression="Estado">
+                        <asp:TemplateField HeaderText="Estado" SortExpression="Estado" Visible="False">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlEstado" runat="server">
                                 </asp:DropDownList>
@@ -318,12 +319,16 @@
                                 <asp:Label ID="lblEstado" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Estado Pedido">
+                            <ItemTemplate>
+                                <asp:Label ID="lblEstadoPedido" runat="server"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:CommandField ShowEditButton="True" Visible="False" />
-                       
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button ID="btnConfirmar" runat="server" Font-Size="Smaller" OnCommand="btnConfirmar_Command" CommandArgument='<%# Eval("IDVenta") %>' Text="Confirmar" />
-                                <asp:Button ID="btnCancelar" runat="server" Font-Size="Smaller" OnCommand="btnCancelar_Command" CommandArgument='<%# Eval("IDVenta") %>' Text="Cancelar" />
+                                <asp:Button ID="btnConfirmar" runat="server" CommandArgument='<%# Eval("IDVenta") %>' Font-Size="Smaller" OnCommand="btnConfirmar_Command" Text="Confirmar" />
+                                <asp:Button ID="btnCancelar" runat="server" CommandArgument='<%# Eval("IDVenta") %>' Font-Size="Smaller" OnCommand="btnCancelar_Command" Text="Cancelar" />
                             </ItemTemplate>
                         </asp:TemplateField>
                        

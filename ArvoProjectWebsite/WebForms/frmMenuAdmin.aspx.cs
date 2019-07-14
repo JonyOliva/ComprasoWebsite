@@ -125,6 +125,7 @@ namespace ArvoProjectWebsite
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
+            lblError.Visible = false;
             if (!AgregarProducto.Visible)
                 AgregarProducto.Visible = true;
             else
@@ -188,6 +189,7 @@ namespace ArvoProjectWebsite
 
                protected void btnAgregar_Click1(object sender, EventArgs e)
         {
+            
             if (string.IsNullOrWhiteSpace(txtIdProd.Text)
                        || string.IsNullOrWhiteSpace(txtNombreProd.Text)
                        || string.IsNullOrWhiteSpace(txtPrecio.Text)
@@ -289,6 +291,7 @@ namespace ArvoProjectWebsite
         {
             Button btnSi = (Button)e.Row.FindControl("btnConfirmar");
             Button btnNo = (Button)e.Row.FindControl("btnCancelar");
+            Label lblEstado = (Label)e.Row.FindControl("lblEstadoPedido");
 
             if (btnSi != null)
             {
@@ -302,6 +305,10 @@ namespace ArvoProjectWebsite
                     btnSi.Visible = false;
                     btnNo.Visible = false;
                 }
+            }
+            if(lblEstado != null)
+            {
+                lblEstado.Text = Enum.GetName(typeof(EstadoCompra), DataBinder.Eval(e.Row.DataItem, "Estado"));
             }
         }
 
@@ -317,6 +324,7 @@ namespace ArvoProjectWebsite
 
         protected void AgregarMarca_Click(object sender, EventArgs e)
         {
+            lblErrorMarca.Visible = false;
             if (!tblAgregarMarca.Visible)
                 tblAgregarMarca.Visible = true;
             else
