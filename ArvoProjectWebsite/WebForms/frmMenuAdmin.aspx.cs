@@ -149,8 +149,13 @@ namespace ArvoProjectWebsite
         protected void grdProd_RowEditing(object sender, GridViewEditEventArgs e)
         {
             grdProd.EditIndex = e.NewEditIndex;
-            cargarGridViewProd();
             gestionProductos gp = new gestionProductos();
+            if (txtBuscar.Text != string.Empty || ddlBuscarCat.SelectedIndex != 0 || ddlBuscarMarcas.SelectedIndex != 0)
+            {
+                grdProd.DataSource = gp.getProductos(txtBuscar.Text, ddlBuscarCat.SelectedValue, ddlBuscarSubcat.SelectedValue, ddlBuscarMarcas.SelectedValue);
+                grdProd.DataBind();
+            }
+            
         }
 
         protected void grdProd_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -327,6 +332,7 @@ namespace ArvoProjectWebsite
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            grdProd.EditIndex = -1;
             if (txtBuscar.Text != string.Empty || ddlBuscarCat.SelectedIndex != 0 || ddlBuscarMarcas.SelectedIndex != 0)
             {
                 gestionProductos gp = new gestionProductos();
