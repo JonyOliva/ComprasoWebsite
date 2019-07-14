@@ -3,13 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="/Assets/Styles/Compras.css" rel="stylesheet" />
-    <!--
-        ESTE FORM ES PARA FINALIZAR LA COMPRA DE TODOS LOS PRODUCTOS, OSEA EL FORM SIGUIENTE AL DEL CARRITO
--->
 </asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
+<asp:MultiView ID="multi" runat="server">
+<asp:View ID="vista1" runat="server">
     <div class="general">
      <div style="margin-left: 40px">
      <asp:Label ID="lblMetodo" runat="server" Text="Seleccione tipo de tarjeta" EnableTheming="True" CssClass="label1"></asp:Label>
@@ -103,4 +102,24 @@
         <br />
         <br />
 </div>
+</asp:View>
+    <asp:View ID ="Vista2" runat="server">
+        <div class="text-center">
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="lblCompraExitosa" runat="server" Text="La compra ha sido exitosa !! Lo/a esperamos de vuelta!! :D" Font-Bold="True" Font-Names="Comic Sans MS" Font-Size="X-Large" ForeColor="#336600"></asp:Label>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:LinkButton ID="lnbtnHastapronto" runat="server" CssClass="btn btn-success" OnClick="lnbtnHastapronto_Click">Hasta pronto!</asp:LinkButton>
+            <br />
+            <br />
+        </div>
+    </asp:View>
+</asp:MultiView>
 </asp:Content>

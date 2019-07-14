@@ -18,6 +18,7 @@ namespace ArvoProjectWebsite.WebForms
         protected void Page_Load(object sender, EventArgs e)
         {
             suma = 0;
+            multi.ActiveViewIndex = 0;
             grdCompra.DataSource = (DataTable)this.Session["Compras"];
             grdCompra.DataBind();
             if (this.Application["Usuario"] == null)
@@ -161,8 +162,8 @@ namespace ArvoProjectWebsite.WebForms
             {
                 registroVenta();
                 detalleVenta();
-                this.Session.Abandon();
-                Response.Redirect("/default.aspx");
+                this.Session["Carrito"] = null;
+                multi.ActiveViewIndex = 1;
             }
         }
 
@@ -459,6 +460,11 @@ namespace ArvoProjectWebsite.WebForms
                 lblVto.Visible = false;
                 txtVencimiento.Visible = false;
             }
+        }
+
+        protected void lnbtnHastapronto_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/default.aspx");
         }
     }
 }
