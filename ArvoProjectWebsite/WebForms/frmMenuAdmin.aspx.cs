@@ -389,13 +389,18 @@ namespace ArvoProjectWebsite
             return prods;
         }
 
+
         protected void ddlBuscarCat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            llenarFiltroSubCats(ref ddlBuscarSubcat, ddlBuscarCat.SelectedValue);
+            llenarFiltroSubCats(ref ddlBuscarSubcat, ddlBuscarCat.SelectedValue); }
+
+        protected void btnEstadist_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebForms/Estadisticas");
+
         }
     }
-
-   
+      
 
 }
     
