@@ -27,7 +27,7 @@ namespace CapaAccesoaDatos
 
         public DataTable getDataTable(string nombre = "", string idCategoria = "", string idSubCat = "", string idMarca = "", string ordenarPor = "Precio_PROD ASC")
         {
-            string selectCommand = "SELECT * FROM PRODUCTOS WHERE (ACTIVO = 1)";
+            string selectCommand = "SELECT * FROM PRODUCTOS inner join MARCAS on IDMarca_PROD = IDMarca INNER JOIN CATEGORIAS ON IDCategoria_PROD = IDCategoria INNER JOIN SUBCATEGORIAS ON IDSubCategoria_PROD = IDSubCategoria WHERE (ACTIVO = 1)";
             if (!string.IsNullOrEmpty(nombre))
             {
                 selectCommand += " AND Nombre_PROD LIKE '%" + nombre + "%'";

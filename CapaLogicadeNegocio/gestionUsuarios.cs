@@ -160,6 +160,7 @@ namespace CapaLogicadeNegocio
             return cadu.ObtenerDetalleVentaCAD(id);
         }
 
+        
 
 
     }

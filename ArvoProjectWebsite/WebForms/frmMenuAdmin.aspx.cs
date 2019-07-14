@@ -43,9 +43,11 @@ namespace ArvoProjectWebsite
                 llenarFiltroSubCats(ref ddlSubcat);
                 llenarddlMarcas(ref ddlMarcas);
                 llenarddlCategorias(ref ddlBuscarCat);
+                ddlBuscarCat.Items.Insert(0, new ListItem("", null));
                 llenarFiltroSubCats(ref ddlBuscarSubcat);
+                ddlBuscarSubcat.Items.Insert(0, new ListItem("", null));
                 llenarddlMarcas(ref ddlBuscarMarcas);
-
+                ddlBuscarMarcas.Items.Insert(0, new ListItem("", null));
             }
             
 
@@ -289,6 +291,12 @@ namespace ArvoProjectWebsite
 
         protected void GridVentas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int n = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "IDVenta"));
+                e.Row.ToolTip = GetProductos(n);
+            }
+
             Button btnSi = (Button)e.Row.FindControl("btnConfirmar");
             Button btnNo = (Button)e.Row.FindControl("btnCancelar");
             Label lblEstado = (Label)e.Row.FindControl("lblEstadoPedido");
@@ -314,8 +322,10 @@ namespace ArvoProjectWebsite
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-
-        }
+            gestionProductos gp = new gestionProductos();
+            grdProd.DataSource = gp.getProductos(txtBuscar.Text, ddlBuscarCat.SelectedValue, ddlBuscarSubcat.SelectedValue, ddlBuscarMarcas.SelectedValue);
+            grdProd.DataBind();
+        } 
 
         protected void GridMarcas_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -353,6 +363,21 @@ namespace ArvoProjectWebsite
 
                         
         }
+
+        public string GetProductos(int IdVenta)
+        {
+            string prods = "";
+            gestionUsuarios gu = new gestionUsuarios();
+            DataTable dt = gu.ObtenerDetalleVenta(IdVenta);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                prods+= row["Producto"].ToString() + " ";
+            }
+
+            return prods;
+        }
+
     }
 
    
