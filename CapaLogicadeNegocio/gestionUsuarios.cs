@@ -83,6 +83,12 @@ namespace CapaLogicadeNegocio
             return cadu.CancelarCompraCAD(IdVenta);
         }
 
+        public bool ProcesarCompra(int IdVenta)
+        {
+            return cadu.ProcesarCompraCAD(IdVenta);
+        }
+
+
         public DataTable CargarTablaCompras(Usuario usu)
         {
             DataTable Tabla;

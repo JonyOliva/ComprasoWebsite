@@ -17,12 +17,18 @@ namespace ArvoProjectWebsite
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
+           
+            
             //if (!IsPostBack)
             //{
-            //    if (!((Usuario)Application["Usuario"]).Admin)
+            //    if (Application["Usuario"] == null)
             //    {
+
+            //        Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
+
+            //    }
+
+            //    else if (((Usuario)Application["Usuario"]).Admin == false) {
 
             //        Response.Write("<script language='javascript'>window.alert('NO TIENE PERMISO PARA INGRESAR');window.location='/default.aspx';</script>");
 
@@ -179,8 +185,25 @@ namespace ArvoProjectWebsite
 
                protected void btnAgregar_Click1(object sender, EventArgs e)
         {
-    
-            
+            if (string.IsNullOrWhiteSpace(txtIdProd.Text)
+                       || string.IsNullOrWhiteSpace(txtNombreProd.Text)
+                       || string.IsNullOrWhiteSpace(txtPrecio.Text)
+                       || string.IsNullOrWhiteSpace(txtStock.Text)
+                       || string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            {
+                
+                lblError.Text = "* No pueden quedar campos vacios";
+                lblError.Visible = true;
+            }
+            else if (!Utilidades.validarString(txtPrecio.Text.Trim(), true, false, false) ||
+                    !Utilidades.validarString(txtStock.Text.Trim(), true, false, false)
+                   ||!Utilidades.validarString(txtDescuento.Text.Trim(), true, false, false))
+            {
+                lblError.Visible = true;
+                lblError.Text = "* Los campos numéricos no pueden contener letras";
+            }
+            else
+            {
                 Producto prod = new Producto();
                 gestionProductos gp = new gestionProductos();
 
@@ -198,7 +221,8 @@ namespace ArvoProjectWebsite
                 gp.insertarProducto(prod);
 
                 Server.Transfer("/WebForms/frmMenuAdmin.aspx", false);
-            
+                lblError.Visible = false;
+            }
             
         }
 
@@ -246,12 +270,16 @@ namespace ArvoProjectWebsite
 
         protected void btnConfirmar_Command(object sender, CommandEventArgs e)
         {
-
+            gestionUsuarios gu = new gestionUsuarios();
+            gu.ProcesarCompra(Convert.ToInt32(e.CommandArgument));
+            GridVentas.DataBind();
         }
 
         protected void btnCancelar_Command(object sender, CommandEventArgs e)
         {
-
+            gestionUsuarios gu = new gestionUsuarios();
+            gu.CancelarCompra(Convert.ToInt32(e.CommandArgument));
+            GridVentas.DataBind();
         }
 
         protected void GridVentas_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -261,7 +289,7 @@ namespace ArvoProjectWebsite
 
             if (btnSi != null)
             {
-                if (DataBinder.Eval(e.Row.DataItem, "Estado").ToString() == "1")
+                if (DataBinder.Eval(e.Row.DataItem, "Estado").ToString() == "0")
                 {
                     btnSi.Visible = true;
                     btnNo.Visible = true;

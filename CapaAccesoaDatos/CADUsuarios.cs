@@ -82,6 +82,15 @@ namespace CapaAccesoaDatos
             return eliminada;
         }
 
+        public bool ProcesarCompraCAD(int IdVenta)
+        {
+            bool procesada = false;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("IdVenta", IdVenta);
+            procesada = Convert.ToBoolean(bd.ExecStoredProcedure(cmd, "spProcesarCompra"));
+            return procesada;
+        }
+
         public bool EliminarMediodePagoxUsuCAD(Usuario usu, string Id, string NumTarj)
         {
             bool Eliminado = false;

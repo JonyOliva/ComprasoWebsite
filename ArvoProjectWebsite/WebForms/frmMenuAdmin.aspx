@@ -36,10 +36,10 @@
                
                  <p>
                      <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"><i class="fas fa-plus-circle"></i> &nbsp Agregar producto</asp:LinkButton></p>
-                 <div class="ml-5 mb-2">
-                     <asp:LinkButton ID="btnBuscar" runat="server"><i class="fas fa-search"></i> Buscar</asp:LinkButton>
-                 </div>
+                 
                 <div class="container-fluid mb-3">
+
+                    <asp:Label ID="lblError" runat="server" Font-Italic="True" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
 
  <asp:Table ID="AgregarProducto" runat="server" Width="77%" Visible="False" CssClass="mb-3">
      <asp:TableRow runat="server" TableSection="TableHeader" BackColor="#3366FF" Font-Bold="True" ForeColor="White" CssClass="text-center">
@@ -287,8 +287,8 @@
                        
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button ID="btnConfirmar" runat="server" Font-Size="Smaller" OnCommand="btnConfirmar_Command" Text="Confirmar" />
-                                <asp:Button ID="btnCancelar" runat="server" Font-Size="Smaller" OnCommand="btnCancelar_Command" Text="Cancelar" />
+                                <asp:Button ID="btnConfirmar" runat="server" Font-Size="Smaller" OnCommand="btnConfirmar_Command" CommandArgument='<%# Eval("IDVenta") %>' Text="Confirmar" />
+                                <asp:Button ID="btnCancelar" runat="server" Font-Size="Smaller" OnCommand="btnCancelar_Command" CommandArgument='<%# Eval("IDVenta") %>' Text="Cancelar" />
                             </ItemTemplate>
                         </asp:TemplateField>
                        
