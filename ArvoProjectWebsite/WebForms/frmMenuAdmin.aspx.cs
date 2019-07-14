@@ -39,11 +39,11 @@ namespace ArvoProjectWebsite
             if (!IsPostBack)
             {
                 llenarddlCategorias(ref ddlCategorias);
-                llenarFiltroSubCats(ref ddlSubcat);
+                llenarFiltroSubCats(ref ddlSubcat, ddlCategorias.SelectedValue);
                 llenarddlMarcas(ref ddlMarcas);
                 llenarddlCategorias(ref ddlBuscarCat);
                 ddlBuscarCat.Items.Insert(0, new ListItem("", null));
-                llenarFiltroSubCats(ref ddlBuscarSubcat);
+                llenarFiltroSubCats(ref ddlBuscarSubcat, ddlBuscarCat.SelectedValue);
                 ddlBuscarSubcat.Items.Insert(0, new ListItem("", null));
                 llenarddlMarcas(ref ddlBuscarMarcas);
                 ddlBuscarMarcas.Items.Insert(0, new ListItem("", null));
@@ -66,14 +66,14 @@ namespace ArvoProjectWebsite
 
         }
         
-        void llenarFiltroSubCats(ref DropDownList ddl)
+        void llenarFiltroSubCats(ref DropDownList ddl, string valor)
         {
-            if (ddlCategorias.SelectedValue != null)
+            if (valor != null)
             {
                 gestionProductos gp = new gestionProductos();
                 ddl.DataValueField = "IDSubCategoria";
                 ddl.DataTextField = "Nombre_SUBCAT";
-                ddl.DataSource = gp.getListaSubCategorias(ddlCategorias.SelectedValue);
+                ddl.DataSource = gp.getListaSubCategorias(valor);
                 ddl.DataBind();
                 
                            }
@@ -240,7 +240,7 @@ namespace ArvoProjectWebsite
 
         protected void ddlCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            llenarFiltroSubCats(ref ddlSubcat);
+            llenarFiltroSubCats(ref ddlSubcat, ddlCategorias.SelectedValue);
         }
 
         protected void grdProd_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -389,6 +389,10 @@ namespace ArvoProjectWebsite
             return prods;
         }
 
+        protected void ddlBuscarCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            llenarFiltroSubCats(ref ddlBuscarSubcat, ddlBuscarCat.SelectedValue);
+        }
     }
 
    

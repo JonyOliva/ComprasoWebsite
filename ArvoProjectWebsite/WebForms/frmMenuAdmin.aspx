@@ -107,7 +107,7 @@
                             <asp:TableCell runat="server">
                                 <asp:DropDownList ID="ddlBuscarMarcas" runat="server"></asp:DropDownList></asp:TableCell>
                             <asp:TableCell runat="server">
-                                <asp:DropDownList ID="ddlBuscarCat" runat="server"></asp:DropDownList></asp:TableCell>
+                                <asp:DropDownList ID="ddlBuscarCat" AutoPostBack="true" OnSelectedIndexChanged="ddlBuscarCat_SelectedIndexChanged" runat="server"></asp:DropDownList></asp:TableCell>
                             <asp:TableCell runat="server">
                                 <asp:DropDownList ID="ddlBuscarSubcat" runat="server"></asp:DropDownList></asp:TableCell>
                                                         <asp:TableCell runat="server">
