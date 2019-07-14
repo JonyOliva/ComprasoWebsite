@@ -164,7 +164,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Subcategoria" SortExpression="Nombre_SUBCAT">
                                 <EditItemTemplate>
-                                    <asp:DropDownList ID="ddlSubcatEdit" runat="server" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddlSubcatEdit" runat="server">
                                     </asp:DropDownList>
                                 </EditItemTemplate>
                                 <ItemTemplate>

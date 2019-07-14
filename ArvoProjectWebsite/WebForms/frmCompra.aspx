@@ -29,7 +29,7 @@
     <asp:GridView ID="grdCompra" runat="server" HorizontalAlign="Right" OnRowDataBound="GridView1_RowDataBound" ShowFooter="True" CssClass="text-center" OnRowCreated="grdCompra_RowCreated">
         <Columns>
             <asp:ImageField DataImageUrlField="RutaImagen">
-                <ControlStyle Width="100" Height ="50" />
+                <ControlStyle  CssClass="miniatura" />
             </asp:ImageField>
             <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" FooterText="Total:" />
         </Columns>

@@ -13,8 +13,8 @@ namespace ArvoProjectWebsite
 {
     public partial class frmMenuAdmin : System.Web.UI.Page
     {
-       
 
+        static int index = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -49,8 +49,16 @@ namespace ArvoProjectWebsite
                 llenarddlMarcas(ref ddlBuscarMarcas);
                 ddlBuscarMarcas.Items.Insert(0, new ListItem("", null));
             }
-            
+            gestionProductos gp = new gestionProductos();
+            if (index != -1)
+            {
+                string cat = ((DropDownList)grdProd.Rows[index].FindControl("ddlCatEdit")).SelectedValue;
+                ((DropDownList)grdProd.Rows[index].FindControl("ddlSubcatEdit")).DataSource =
+                    gp.getListaSubCategorias(cat);
+                ((DropDownList)grdProd.Rows[index].FindControl("ddlSubcatEdit")).DataBind();
 
+            }
+            
         }
 
         protected void btnProductos_Click(object sender, EventArgs e)
@@ -144,6 +152,7 @@ namespace ArvoProjectWebsite
         protected void grdProd_RowEditing(object sender, GridViewEditEventArgs e)
         {
             grdProd.EditIndex = e.NewEditIndex;
+            index = grdProd.EditIndex;
             cargarGridViewProd();
             gestionProductos gp = new gestionProductos();
         }
