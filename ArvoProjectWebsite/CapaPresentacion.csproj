@@ -97,7 +97,7 @@
     <Content Include="WebForms\frmMenuAdmin.aspx" />
     <Content Include="default.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForms\Stats\default.aspx" />
+    <Content Include="WebForms\Estadisticas\default.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WebForms\default.aspx.designer.cs" />
@@ -172,11 +172,11 @@
     <Compile Include="WebForms\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\Stats\default.aspx.cs">
+    <Compile Include="WebForms\Estadisticas\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Stats\default.aspx.designer.cs">
+    <Compile Include="WebForms\Estadisticas\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

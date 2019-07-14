@@ -40,13 +40,13 @@ namespace ArvoProjectWebsite {
         protected global::System.Web.UI.WebControls.Button btnVentas;
         
         /// <summary>
-        /// Control btnStats.
+        /// Control btnEstadist.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStats;
+        protected global::System.Web.UI.WebControls.Button btnEstadist;
         
         /// <summary>
         /// Control MultiViewAdmin.

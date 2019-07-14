@@ -388,10 +388,12 @@ namespace ArvoProjectWebsite
 
             return prods;
         }
-
+        protected void btnEstadist_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebForms/Estadisticas");
+        }
     }
-
-   
+      
 
 }
     
