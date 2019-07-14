@@ -125,7 +125,7 @@ namespace ArvoProjectWebsite.WebForms
             {
                 ddlTarxu.Enabled = false;
             }
-            if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus()))
+            if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && (!ddlIndextarxus()|| ddlTarxu.SelectedIndex == -1)))
             {
                 chbGuardartarj.Visible = false;
                 chbGuardartarj.Checked = false;
@@ -187,7 +187,7 @@ namespace ArvoProjectWebsite.WebForms
                 venta.IdEnvio = LogicaCompra.recuperarEnvio(ddlDireccion.SelectedValue)[0].ToString();
                 venta.EstadoEnvio = 0;
                 venta.Descuento = 0;
-                if (ddlIndextarxus())
+                if (ddlIndextarxus() && ddlTarxu.SelectedIndex != -1)
                     venta.NroTarjeta = ddlTarxu.SelectedItem.Text;
                 else if (txtNrotarjeta.Enabled ==true)
                     venta.NroTarjeta = txtNrotarjeta.Text;
@@ -234,7 +234,7 @@ namespace ArvoProjectWebsite.WebForms
 
         protected void habilitarTxttarjeta()
         {
-            if (ddlTarxu.SelectedIndex == 0)
+            if (ddlTarxu.SelectedIndex <= 0 )
             {
                 txtNrotarjeta.Enabled = true;
             }
@@ -271,7 +271,7 @@ namespace ArvoProjectWebsite.WebForms
             {
                 lblErrorntar.Visible = false;
             }
-            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus())
+            if (LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && (!ddlIndextarxus() || ddlTarxu.SelectedIndex ==-1))
             {
                 chbGuardartarj.Visible = true;
                 if (chbGuardartarj.Checked)
@@ -292,47 +292,61 @@ namespace ArvoProjectWebsite.WebForms
 
         protected bool validacionesBtnCompras()
         {
-            bool bandera = true;
+            bool a= true;
+            bool b = true;
+            bool c = true;
+            bool d= true;
+            bool e = true;
+            bool f = true;//banderas
             if (!ddlIndexmetodos())
             {
-                bandera = false;
+                a = false;
                 lblErrormetodo.Visible = true;
             }
             if (!ddlIndexcuotas())
             {
-                bandera = false;
+                b = false;
                 lblErrorncuota.Visible = true;
             }
             if (!ddlIndextarxus() && txtNrotarjeta.Text == string.Empty)
             {
-                bandera = false;
+               c = false;
                 lblErrorntartarus.Visible = true;
                 lblErrorntar.Visible = true;
             }
             if (!ddlIndexdireccion())
             {
-                bandera = false;
+                d = false;
                 lblErrorDire.Visible = true;
+                if(ddlDireccion.Items.Count == 1)
+                {
+                    lblErrorDire.Text = "Cargue una dirección en el menu";
+                    lbtnCargardir.Visible = true;
+                }
+                
             }
-            if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && !ddlIndextarxus()))
+            if (!(LogicaCompra.verificarTarjeta(txtNrotarjeta.Text) && (!ddlIndextarxus()|| ddlTarxu.SelectedIndex ==-1)))
             {
-                bandera = false;
+                e = false;
                 lblErrorntar.Visible = true;
+                lblErrorntartarus.Visible = false;
             }
-            if (ddlIndextarxus())
+            if (ddlIndextarxus() && ddlTarxu.SelectedIndex != -1)
             {
-                bandera = true;
+                e = true;
                 lblErrorntar.Visible = false;
             }
             if (txtVencimiento.Visible)
             {
                 if (!(LogicaCompra.verificarstringFecha(txtVencimiento.Text)))
                 {
-                    bandera = false;
+                    f = false;
                     lblErrorfecha.Visible = true;
                 }
             }
-            return bandera;
+            if (a && b && c && d && e && f)
+                return true;
+            else return false;
         }
 
         protected void iniciarMensajeserror()
@@ -343,6 +357,7 @@ namespace ArvoProjectWebsite.WebForms
             lblErrorDire.Visible = false;
             lblErrormetodo.Visible = false;
             lblErrorfecha.Visible = false;
+            lbtnCargardir.Visible = false;
         }
 
         protected void ddlTarxu_SelectedIndexChanged(object sender, EventArgs e)
@@ -354,6 +369,7 @@ namespace ArvoProjectWebsite.WebForms
                 chbGuardartarj.Visible = false;
                 chbGuardartarj.Checked = false;
                 ddlMetodopago.Enabled = false;
+                lblErrorntartarus.Visible = false;
             }
             else
             {
@@ -450,6 +466,10 @@ namespace ArvoProjectWebsite.WebForms
                     txtNrotarjeta.Enabled = false;
                     llenarCuotas();
                 }
+                else
+                {
+                    txtNrotarjeta.Enabled = true;
+                }
             }
         }
 
@@ -465,6 +485,12 @@ namespace ArvoProjectWebsite.WebForms
         protected void lnbtnHastapronto_Click(object sender, EventArgs e)
         {
             Response.Redirect("/default.aspx");
+        }
+
+        protected void lbtnCargardir_Click(object sender, EventArgs e)
+        {
+            this.Session["redir"] = "Direccion";
+            Response.Redirect("~/WebForms/frmMenuUsuario.aspx");
         }
     }
 }

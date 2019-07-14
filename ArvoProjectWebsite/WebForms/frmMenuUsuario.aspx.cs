@@ -15,6 +15,11 @@ namespace ArvoProjectWebsite.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(this.Session["redir"]!=null)
+            {
+                lbtnDireccionesMenuUsuario_Click(new object(), new EventArgs());
+                this.Session["redir"] = null;
+            }
             if (!IsPostBack)
             {
                 if (Application["Usuario"] == null)

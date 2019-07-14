@@ -211,6 +211,15 @@ namespace ArvoProjectWebsite.WebForms {
         protected global::System.Web.UI.WebControls.Label lblErrorDire;
         
         /// <summary>
+        /// Control lbtnCargardir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnCargardir;
+        
+        /// <summary>
         /// Control lblEnvio.
         /// </summary>
         /// <remarks>
