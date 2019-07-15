@@ -150,7 +150,7 @@ namespace ArvoProjectWebsite
         {
             grdProd.EditIndex = e.NewEditIndex;
             cargarGridViewProd();
-            gestionProductos gp = new gestionProductos();
+            
         }
 
         protected void grdProd_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -167,6 +167,8 @@ namespace ArvoProjectWebsite
             String s_IdProd = ((Label)grdProd.Rows[e.RowIndex].FindControl("lblId")).Text;
             String s_Nombre = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtNombre")).Text;
             String s_Marca = ((DropDownList)grdProd.Rows[e.RowIndex].FindControl("ddlMarcasEdit")).SelectedValue;
+            String s_Cat = ((DropDownList)grdProd.Rows[e.RowIndex].FindControl("ddlCatEdit")).SelectedValue;
+            String s_SubCat = ((DropDownList)grdProd.Rows[e.RowIndex].FindControl("ddlSubcatEdit")).SelectedValue;
             String s_Stock = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtStock")).Text;
             String s_Precio = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtPrecio")).Text;
             String s_Descuento = ((TextBox)grdProd.Rows[e.RowIndex].FindControl("txtDescuento")).Text;
@@ -177,6 +179,8 @@ namespace ArvoProjectWebsite
             prod.IDProducto = s_IdProd;
             prod.Nombre = s_Nombre;
             prod.Marca = s_Marca;
+            prod.Categoria = s_Cat;
+            prod.SubCategoria = s_SubCat;
             prod.Stock = int.Parse(s_Stock);
             prod.Precio = float.Parse(s_Precio);
             prod.Descuento = float.Parse(s_Descuento);
