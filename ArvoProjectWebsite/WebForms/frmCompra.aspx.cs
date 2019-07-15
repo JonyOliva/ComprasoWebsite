@@ -82,7 +82,8 @@ namespace ArvoProjectWebsite.WebForms
             }
             else
             {
-                ddlCuotas.Items.Insert(0, "<Seleccione cuotas>");
+                if(ddlCuotas.Items.Count == 0)
+                    ddlCuotas.Items.Insert(0, "<Seleccione cuotas>");
             }
         }
         protected void llenarDirecciones()
