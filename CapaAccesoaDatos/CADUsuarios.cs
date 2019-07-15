@@ -27,7 +27,7 @@ namespace CapaAccesoaDatos
 
         public DataTable getListaDirecxUsuarioCAD(string id)
         {
-            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IDUsuario_DIR = " + id+"AND Activo_DIR = 1", "Direcxusuario");
+            return bd.getTable("SELECT * FROM DIRECXUSUARIO WHERE IDUsuario_DIR = '"+ id+"' AND Activo_DIR = 1", "Direcxusuario");
         }
 
         public int AgregarUsuarioCAD(Usuario usu)
