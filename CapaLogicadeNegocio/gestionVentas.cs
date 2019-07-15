@@ -76,6 +76,17 @@ namespace CapaLogicadeNegocio
             return dates;
         }
 
+        public DataTable getListaVentas()
+        {
+            return cv.getListaVentas();
+        }
+
+        public DataTable getVentasporEstado(int estado)
+        {
+           
+           return cv.getVentasPorEstado(estado);
+        }
+
         public void statsCantidadProdVendidos(Series serie, string fecha)
         {
             DateTime date = DateTime.Parse(fecha);
@@ -107,6 +118,7 @@ namespace CapaLogicadeNegocio
             return cv.getCantVentasPorSubcategoria(date.Month, date.Year, categoria);
         }
 
+        
         public float statsTotalEnVentas(string fecha)
         {
             DateTime date = DateTime.Parse(fecha);

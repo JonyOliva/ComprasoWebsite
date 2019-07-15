@@ -310,9 +310,20 @@
 
             <asp:View ID="ViewVentas" runat="server">
                 <div class="container-fluid mb-3 text-center align-items-center">
-                    <asp:GridView ID="GridVentas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IDVenta" DataSourceID="SqlDataSource_Ventas" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" HorizontalAlign="Center" OnRowDataBound="GridVentas_RowDataBound">
+                    <br />
+                    
+                    <asp:Label ID="Label4" runat="server" Text="Ver Estado: "></asp:Label>
+                    <asp:DropDownList ID="ddlVentas" runat="server">
+                    </asp:DropDownList>
+                    <asp:Button ID="btnBuscarVentas" runat="server" Text="Buscar" OnClick="btnBuscarVentas_Click" />
+                    <asp:Button ID="btnQuitarFiltroVentas" runat="server" OnClick="btnQuitarFiltroVentas_Click" Text="Quitar Filtro" />
+                    <br />
+                    <br />
+
+                    <asp:GridView ID="GridVentas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IDVenta" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" HorizontalAlign="Center" OnRowDataBound="GridVentas_RowDataBound">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
+                            <asp:BoundField DataField="Fecha_VENTA" DataFormatString="{0:MM-dd-yyyy}" HeaderText="Fecha" SortExpression="Fecha_VENTA" />
                             <asp:BoundField DataField="IDVenta" HeaderText="IDVenta" InsertVisible="False" ReadOnly="True" SortExpression="IDVenta" />
                             <asp:BoundField DataField="NroTarjeta_VENTA" HeaderText="NroTarjeta" SortExpression="NroTarjeta_VENTA" />
                             <asp:BoundField DataField="IDUsuario_VENTA" HeaderText="IDUsuario" SortExpression="IDUsuario_VENTA" />
@@ -354,7 +365,7 @@
                         <SortedDescendingCellStyle BackColor="#FFFDF8" />
                         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource_Ventas" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT * FROM [VENTAS]"></asp:SqlDataSource>
+                  <%--  <asp:SqlDataSource ID="SqlDataSource_Ventas" runat="server" ConnectionString="<%$ ConnectionStrings:ComprasoBDConnectionStringLocal %>" SelectCommand="SELECT * FROM [VENTAS]"></asp:SqlDataSource>--%>
 
                 </div>
             </asp:View>

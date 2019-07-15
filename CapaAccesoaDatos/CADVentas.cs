@@ -38,6 +38,11 @@ namespace CapaLogicadeNegocio
                 
 
         }
+        public DataTable getListaVentas()
+        {
+            return bd.getTable("SELECT * FROM VENTAS", "ventas");
+        }
+
 
         public bool insertarDetalleventas(DetalleVentas detVenta)
         {
@@ -113,5 +118,12 @@ namespace CapaLogicadeNegocio
         {
             return bd.getTable("SELECT * FROM ENVIOS WHERE IDEnvio = '"+idenvio+"'", "ENVIOS");
         }
+
+        public DataTable getVentasPorEstado(int estado)
+        {
+            return bd.getTable("SELECT * FROM VENTAS WHERE Estado = '" + estado + "' ORDER BY Fecha_VENTA DESC", "VENTAS");
+        }
+
+
     }
 }

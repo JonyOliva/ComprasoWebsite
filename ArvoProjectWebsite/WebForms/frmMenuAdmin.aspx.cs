@@ -47,6 +47,7 @@ namespace ArvoProjectWebsite
                 ddlBuscarSubcat.Items.Insert(0, new ListItem("", null));
                 llenarddlMarcas(ref ddlBuscarMarcas);
                 ddlBuscarMarcas.Items.Insert(0, new ListItem("", null));
+                llenarEstados();
             }
             gestionProductos gp = new gestionProductos();
             if (grdProd.EditIndex != -1)
@@ -113,7 +114,9 @@ namespace ArvoProjectWebsite
         {
             
             MultiViewAdmin.ActiveViewIndex = 2;
-            
+            cargarGridViewVentas();
+
+
         }
         public void cargarGridViewProd()
         {
@@ -122,12 +125,23 @@ namespace ArvoProjectWebsite
             grdProd.DataBind();
         }
 
-        
-        private void Estados()
+        public void cargarGridViewVentas()
         {
-            
-           Enum.GetNames(typeof(EstadoCompra));
-                      
+            gestionVentas gv = new gestionVentas();
+            GridVentas.DataSource = gv.getListaVentas();
+            GridVentas.DataBind();
+        }
+
+
+        private void llenarEstados()
+        {
+
+            foreach (EstadoCompra e in Enum.GetValues(typeof(EstadoCompra)))
+            {
+                ListItem item = new ListItem(Enum.GetName(typeof(EstadoCompra), e), e.ToString());
+                ddlVentas.Items.Add(item);
+            }
+
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -295,14 +309,15 @@ namespace ArvoProjectWebsite
         {
             gestionUsuarios gu = new gestionUsuarios();
             gu.ProcesarCompra(Convert.ToInt32(e.CommandArgument));
-            GridVentas.DataBind();
-        }
+            cargarGridViewVentas();
+                }
 
         protected void btnCancelar_Command(object sender, CommandEventArgs e)
         {
             gestionUsuarios gu = new gestionUsuarios();
             gu.CancelarCompra(Convert.ToInt32(e.CommandArgument));
             GridVentas.DataBind();
+            cargarGridViewVentas();
         }
 
         protected void GridVentas_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -412,6 +427,18 @@ namespace ArvoProjectWebsite
         {
             Response.Redirect("/WebForms/Estadisticas");
 
+        }
+
+        protected void btnBuscarVentas_Click(object sender, EventArgs e)
+        {
+            gestionVentas gv = new gestionVentas();
+            GridVentas.DataSource= gv.getVentasporEstado(ddlVentas.SelectedIndex);
+            GridVentas.DataBind();
+        }
+
+        protected void btnQuitarFiltroVentas_Click(object sender, EventArgs e)
+        {
+            cargarGridViewVentas();
         }
     }
       
