@@ -149,7 +149,14 @@ namespace ArvoProjectWebsite
         protected void grdProd_RowEditing(object sender, GridViewEditEventArgs e)
         {
             grdProd.EditIndex = e.NewEditIndex;
-            cargarGridViewProd();
+            if (txtBuscar.Text != string.Empty || ddlBuscarCat.SelectedIndex != 0 || ddlBuscarMarcas.SelectedIndex != 0)
+            {
+                gestionProductos gp = new gestionProductos();
+                grdProd.DataSource = gp.getProductos(txtBuscar.Text, ddlBuscarCat.SelectedValue, ddlBuscarSubcat.SelectedValue, ddlBuscarMarcas.SelectedValue);
+                grdProd.DataBind();
+            }
+            else
+                cargarGridViewProd();
             
         }
 
