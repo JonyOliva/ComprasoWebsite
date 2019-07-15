@@ -394,7 +394,10 @@ namespace ArvoProjectWebsite
 
             foreach (DataRow row in dt.Rows)
             {
-                prods+= row["Producto"].ToString() + " ";
+                prods += "Cantidad: " + row["Cantidad"].ToString() + " ";
+                prods += "(Cod: "+ row["Cod.Producto"].ToString() +")";
+                prods += row["Producto"].ToString();
+                
             }
 
             return prods;
