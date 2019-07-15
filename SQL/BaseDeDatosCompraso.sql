@@ -642,6 +642,33 @@ CREATE PROCEDURE spAgregarMarca
 	INSERT INTO MARCAS(IDMarca, Nombre_MARCA)
 	SELECT @IDMarca, @Nombre_MARCA
 GO
+
+CREATE procedure ActualizarProd(
+@IDProducto char(4),
+@Nombre_PROD char(30),
+@IDMarca_PROD char(4),
+@IDCategoria_PROD char(4),
+@IDSubCategoria_PROD char (4),
+@Descripcion_PROD char(1000),
+@Stock_PROD int,
+@Precio_PROD money,
+@Descuento_PROD float,
+@ACTIVO bit
+)
+as
+update PRODUCTOS 
+set Nombre_PROD=@Nombre_PROD, 
+Descripcion_PROD=@Descripcion_PROD,
+Stock_PROD=@Stock_PROD,
+Precio_PROD=@Precio_PROD,
+IDMarca_PROD=@IDMarca_PROD,
+IDCategoria_PROD = @IDCategoria_PROD,
+IDSubCategoria_PROD = @IDSubCategoria_PROD,
+Descuento_PROD=@Descuento_PROD,
+ACTIVO=@ACTIVO
+where IDProducto=@IDProducto
+GO
+
 --------------TRIGGERS-----------------
 
 CREATE TRIGGER DevolverStock
