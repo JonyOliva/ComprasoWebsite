@@ -601,6 +601,47 @@ SELECT @IDVenta,@IDProducto,@Descuento,@Cantidad,@PrecioUni
 
 GO
 
+CREATE PROCEDURE spAgregarProducto
+(
+	@IDProducto char(4),
+	@Nombre_PROD char(30),
+	@IdCategoria_PROD char(4),
+	@IdSubCategoria_PROD char(4),
+	@IDMarca_PROD char(4),
+	@Descripcion_PROD char(1000),
+	@Stock_PROD int,
+	@Precio_PROD money,
+	@Descuento_PROD float,
+	@Activo bit
+)
+	AS
+	
+	INSERT INTO PRODUCTOS(IDProducto, Nombre_PROD, IDCategoria_PROD,IDSubCategoria_PROD, IDMarca_PROD, Descripcion_PROD, Stock_PROD
+	, Precio_PROD, Descuento_PROD, RutaImagen, ACTIVO)
+	SELECT @IDProducto, @Nombre_PROD, @IdCategoria_PROD, @IdSubCategoria_PROD, @IDMarca_PROD, @Descripcion_PROD,
+	 @Stock_PROD, @Precio_PROD,@Descuento_PROD,'~/Assets/Images/PDef.png',1
+GO
+
+create procedure spProcesarCompra
+(
+	@IdVenta int
+)
+AS
+UPDATE VENTAS
+SET Estado = 2 WHERE IDVenta = @IdVenta
+GO
+
+CREATE PROCEDURE spAgregarMarca
+(
+	@IDMarca char(4),
+	@Nombre_MARCA char(20)
+	
+)
+	AS
+	
+	INSERT INTO MARCAS(IDMarca, Nombre_MARCA)
+	SELECT @IDMarca, @Nombre_MARCA
+GO
 --------------TRIGGERS-----------------
 
 CREATE TRIGGER DevolverStock
